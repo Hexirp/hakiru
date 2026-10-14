@@ -6,6 +6,12 @@
 
 stackage を利用してコンパイラと依存ライブラリのバージョンを固定する。では、どのバージョンに固定するべきだろうか？
 
+GHC の LTS は "[GHC LTS Releases](https://www.haskell.org/ghc/blog/20250702-ghc-release-schedules.html)" と "[GHC LTS Releases](https://blog.haskell.org/ghc-lts-releases/)" にあるように 9.14 からだから、まだまだである。 "post-hoc LTS" というのもあるそうだけど。
+
+"[GHC LTS Releases](https://discourse.haskell.org/t/ghc-lts-releases-the-glasgow-haskell-compiler/12469/3)" には 8.10, 9.2, 9.6 が "post-hoc LTS" だとある。なお "[Bump ghc major version to 10?](https://gitlab.haskell.org/ghc/ghc/-/work_items/26198)" という GHC 9.14 の次を GHC 10 にする提案がある。
+
+"post-hoc LTS" を選ぶか？
+
 "[Stackage Server](https://www.stackage.org/)" には次のリストがある。
 
 * Stackage Nightly 2026-10-12 (ghc-9.12.4), 2 days ago
