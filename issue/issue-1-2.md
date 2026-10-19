@@ -101,7 +101,7 @@ type PP a b = (Parser b, Printer a)
 
 "[Writerを使ってはならない](https://qiita.com/ruicc/items/28b1cd2df215ce724e26)" (ruicc, 2022) と "[Writerを使いたいけどスペースリークが怖い](https://www.ncaq.net/2022/05/19/19/10/58/)" (ncaq, 2022) に目を通したけど分かんないな。
 
-`Writer` 型を `State` 型で表現すると存在形式の `Lens` 型と同じになる。
+`Writer` 型を `State` 型で表現すると存在形式の lens と同じになる。
 
 ```hs
 type PP a b = (String -> (a, String), a -> String -> ((), String))
@@ -115,11 +115,11 @@ type PP a b = (String -> (a, String), (a, String) -> String)
 
 あれ、でも、パース失敗の表現は？
 
-`Prism` 型になるよなあ。つまり `(String -> Either a String, Either a String -> String)` に？
+prism になるよなあ。つまり `(String -> Either a String, Either a String -> String)` に？
 
 どっちなんだろう？
 
-`Prism` 型と `Lens` 型の組み合わせ？
+prism と lens の組み合わせ？
 
 そもそも `PP` 型において失敗は考慮されていない。
 
@@ -159,7 +159,7 @@ Elm の公式ライブラリだと、成功失敗の二種類があって、バ�
 
 `pop` 関数は失敗しうる。空の文字列もあり得る。リストの構造に沿って `String` と `Either () (Char, String)` を同一視する。
 
-結局は `Prism` 型と `Lens` 型の組み合わせであるというわけだ。
+結局は prism と lens の組み合わせであるというわけだ。
 
 `pop :: m Char` は `pop :: m (Maybe Char)` と `exit :: m Void` に分解できる。
 
@@ -219,7 +219,7 @@ type Lens s t a b = exists x. (s -> (a, x), (b, x) -> t)
 type Lens s t a b = exists x. (s -> (b, x), (a, x) -> t)
 ```
 
-元の記事の Lens のモナドの実装を見て考えよう。
+元の記事の lens のモナドの実装を見て考えよう。
 
 ```hs
 pure :: b -> Lens s s a b
@@ -243,3 +243,306 @@ indexed monad になるかも？
 うーん、 `Vect` 型の定義（[リンク](https://github.com/marcosh/existential-optics/blob/b4727e2ae6119d7039d7575d5eb64fc5ae74dc1f/src/Vect.hs)）を見ても、暗黙変数のような痕跡はない。
 
 純粋なミスかな？
+
+## comment 2026-10-16 1
+
+`Parser` モナドのバックトラックを `Alternative` 型クラスではなく継続モナドにより実装する。
+
+`String -> [(a, String)]` のような構造は、パースエラーの記録を残せないという時点で、大きな欠陥を持っている。
+
+パースエラーは、よく起こり、そのまま終了したり、バックトラックしたりする。
+
+パースエラーの記録がリスト状に連なっていて、リストの最後が「成功」だったら成功していることで「失敗」だったら失敗していることになるように。
+
+あまり「成功」と「失敗」を特別扱いしない。
+
+`Writer` モナドを混ぜることで実現できる？
+
+`forall r. s -> (a -> s -> m r) -> m r -> m r` において `callCC` 関数を実装できるのか？
+
+リストモナドは合成が難しい。変換子にならない。
+
+ストリームで代替しないと。
+
+## comment 2026-10-16 2
+
+```hs
+type Parser s a b = (State s b, a -> Writer s b)
+```
+
+プリンターに該当する部分はクライスリ圏としてモナドになる。
+
+```hs
+type Parser s a b = (State s b, a -> Writer s ())
+```
+
+これは `Writer s` と `Proxy` の合成が交換可能ではないため（つまり `Proxy` がモナド変換子ではないため）モナドになれない。
+
+```hs
+type F a = (G a, H a)
+```
+
+`G` と `H` がモナドである時に `F` がモナドになれるかどうか。
+
+"[Monadic profunctors for bidirectional programming](https://www.reddit.com/r/haskell/comments/8kkmqq/monadic_profunctors_for_bidirectional_programming/)" (Reddit, 2018) を読んだ。
+
+実例が Reddit のコメントにある。
+
+[chshersh](https://www.reddit.com/user/chshersh/) さんが "[chpatrick/codec](https://github.com/chpatrick/codec)" を紹介する投稿（[リンク](https://www.reddit.com/r/haskell/comments/8kkmqq/comment/dzt8pqc/)）をしている。
+
+[kowainik](https://www.reddit.com/user/kowainik/) さんが "[kowainik/tomland](https://github.com/kowainik/tomland)" を紹介する投稿（[リンク](https://www.reddit.com/r/haskell/comments/8kkmqq/comment/dza8xkv/)）をしている。
+
+"[kowainik/tomland](https://github.com/kowainik/tomland)" の実装におけるパーサーの部分を読む。（[リンク](https://github.com/kowainik/tomland/blob/4d71d4a6f8026f9d4b4c909799b2493e6aa60e7b/src/Toml/Codec/Types.hs#L155)）
+
+`s -> (Maybe a, s)` タイプなのね。
+
+「やはりか」という気持ちと自分で辿り着けなくて悔しいという気持ちが同居している。
+
+`push` するバックトラックとか、状態を残すことが前提のやつは考えていたけど。
+
+lens のままにするには `Maybe` 型を使うしかないからなあ。
+
+あと、状態を残さないとプリンターの時にうまく書き戻せないというか、逆関数にならないっぽいのもあったな。
+
+いや、ちょっと待って。
+
+これって、プリンターの方じゃん？
+
+`TomlEnv` 型の方がパーサーだよ。
+
+勘違いしていた。
+
+これ（[リンク](https://github.com/kowainik/tomland/blob/4d71d4a6f8026f9d4b4c909799b2493e6aa60e7b/src/Toml/Codec/Types.hs#L50)）やね。
+
+なんかよくわからん。
+
+"[chpatrick/codec](https://github.com/chpatrick/codec)" の方を読む。
+
+定義（[リンク](https://github.com/chpatrick/codec/blob/0faf37a1cefb21dc46cc2857e538dd983bb28652/src/Control/Monad/Codec.hs#L17)）を見つけた。
+
+```hs
+data CodecFor r w c a = Codec
+  { codecIn :: r a
+  , codecOut :: c -> w a
+  } deriving (Functor)
+```
+
+なんて単純なんだ。
+
+`Monad` 型クラスのインスタンスの定義（[リンク](https://github.com/chpatrick/codec/blob/0faf37a1cefb21dc46cc2857e538dd983bb28652/src/Control/Monad/Codec.hs#L34)）を見つけた。
+
+```hs
+instance (Monad r, Monad w) => Monad (CodecFor r w c) where
+  return = pure
+  m >>= f = Codec
+    { codecIn = codecIn m >>= \x -> codecIn (f x)
+    , codecOut = \c -> codecOut m c >>= \x -> codecOut (f x) c
+    }
+```
+
+なんて単純なんだ……！
+
+```hs
+type Codec r w a b = (a -> w b, r b)
+```
+
+順番という観点から見ると、プリンターを前に置いた方が良いかな？
+
+プリンターの実装の方が簡単というのもあるし。
+
+```hs
+type F a = (G a, H a)
+```
+
+このモナドの件だけど `(:*:)` という型（[リンク](https://hackage-content.haskell.org/package/ghc-internal-9.1401.0/docs/src/GHC.Internal.Generics.html#line-976)）がしっかりあった。
+
+issue の番号の符号化の件だけど。
+
+`issue-10-1000000000` を超えると辞書式順序になるのは終わりだと思っていたけど `issue-99-1000000000` とすれば続けられることに気付いた。 `999...` というアルファ符号の変種を使う。
+
+いや、もっと詰め込める。
+
+`issue-91-1000000000` とすればいい。
+
+`9` を `n / 9` だけ並べる。その後に `n % 9` をつける。
+
+いや、一つだけずれているから、もう少し考えないといけない。
+
+`` n `mod` 9 == 0 `` のとき `9` の数を一つ減らして余りを `9` とする。
+
+桁数が `(9 / 10) * n` となる。
+
+ガンマ符号の変種だけではなくデルタ符号の変種にも同じことができる。アルファ符号の変種にも。
+
+このようにして延長した場合、ガンマ版よりデルタ版の方が短くなる最小の `n` はいくつだろうか？
+
+とんでもなく大きくなりそうなのは分かる。
+
+これでわずかにだけあった極めて巨大な数値を表現できなくなる上限があるという問題が解決されたので、ガンマ版が最良ということにしてもよさそう。
+
+ライブラリとするなら `issue` をつけていない `3-123` のように切り出そう。
+
+Lean 4 で証明したいんだけど、そうすると環境構築が膨大になるかもしれない。
+
+文字列としてのみならず、数列としても辞書式順序になってほしい。
+
+`"1-1" < "10-10" < "11-100" < ... < "2-10000000000"` みたいなものは、文字列として辞書式順序になっていてもダメである。
+
+ようするに、正の自然数から正の自然数のリストに変換する関数である。
+
+`PositiveInteger` 型を新しく定義する。お馴染みの `newtype` 宣言による制約。
+
+`f : PositiveInteger -> [PositiveInteger]` が本体というわけで。
+
+`x < y` ならば `f x < f y` なのは当然で。
+
+`` (<) `on` (intercalate "-" . showPositiveInteger) `` においても単調増加になる。
+
+`encode : Proxy a -> PositiveInteger -> [PositiveInteger]` を型クラスにする。本体に型が現れないので `Proxy` 型を使用する。
+
+`PositiveInteger -> a` と `a -> [PositiveInteger]` に分けようと思ったけど、めんどうくさいよね。
+
+でも、やっぱり分けた方が良いかな？
+
+さらに追加の条件として `last (encode _ n) == n` もつける。
+
+`NonEmpty` 型の方が良いな。
+
+アルファ版を実装する時には `replicateWithTail` が欲しくなる。
+
+```hs
+replicateWithTail :: Int -> a -> [a] -> [a]
+replicateWithTail 0 x s = s
+replicateWithTail n x s = replicateWithTail (n - 1) x (x : s)
+```
+
+リスト系の関数が裏で `build` 関数を使って fusion しているのはすごいよね。ただ、私は `foldl` ライブラリみたいなアプローチの方が好みなのだけど。
+
+名前はどうしよう？
+
+"easy readable lexicographic encoding" を "ERLE" に。
+
+"very easy readable lexicographic encoding" を "VERLE" に。
+
+"prefix" はつけるか？
+
+prefix code ではなさそう。
+
+"universal" をつけるか？
+
+universal coding ではなさそう。
+
+"decimal" をつけるか？
+
+他の底にも応用できる。
+
+"very easy readable lexicographic coding" を "VERLC" に。
+
+"coding" より "encoding" の方がいいな。
+
+"very easy human-readable and human-writable lexicographic encoding" を "VEHRAHWLE" に。
+
+"very easy human-readable and very easy human-writable lexicographic encoding" を "VEHRAVEHWLE" に。
+
+"writable" と "lexicographic" の間に母音が欲しいな。
+
+"very easy human-readable and human-writable uniquely lexicographic encoding" を "VEHRAHWULE" に。
+
+"wu" の並びは不都合。
+
+"very easy human-readable and human-writable Elias lexicographic encoding" を "VEHRAHWELE" に。
+
+"very easy human-readable and human-writable integer lexicographic encoding" を "VEHRAHWILE" に。
+
+"very easy human-readable and human-writable integer sequence lexicographic encoding" を "VEHRAHWICLE" に。
+
+"very easy human-readable and human-writable integer sequence encoding" を "VEHRAHWICE" に。
+
+"very easy human-readable and human-writable Elias-like lexicographic encoding" を "VEHRAHWELE" に。
+
+"very easy human-readable-and-writable Elias-like lexicographic encoding" を "VEHRAWELE" に。
+
+もう "Vehrawele" でいいや。複合語を分解するかどうかに恣意性があるのは、ご愛敬で。
+
+`1, 2, 3, 9, 90, 91, 92, ...` という風に `0` も使える。
+
+`n / 10` 個の `9` と `n % 10` となって極めて理解しやすくなった。
+
+アルファ符号の変種を実装してみるか？
+
+```hs
+alpha :: PositiveInteger -> PositiveInteger
+alpha n = case n - 10 of { Nothing -> n; Just n' -> 9 ++ alpha n' }
+```
+
+ハイパー数学である。
+
+```hs
+alpha :: PositiveInteger -> PositiveInteger -> PositiveInteger
+alpha n s = case n - 10 of { Nothing -> 10 * s + n; Just n' -> alpha n' (10 * s + 9) }
+```
+
+`(-) :: PositiveInteger -> PositiveInteger -> Maybe PositiveInteger` であるわけだけど `n == 10` の時にうまくいかない。
+
+```hs
+alpha :: Word -> Word -> Word
+alpha n s = if n < 10 then 10 * s + n else alpha (n - 10) (10 * s + 9)
+```
+
+`Word` を使ってみる。
+
+```hs
+alpha :: Word -> [Word8]
+alpha n = case n - 10 of { Nothing -> [n]; Just n' -> 9 : alpha n' }
+```
+
+リストを使ってみる。
+
+```hs
+alpha :: Word -> NonEmpty Word8
+alpha n = case n - 10 of { Nothing -> singleton n; Just n' -> 9 <| alpha n' }
+```
+
+`NonEmpty` 型を使ってみる。
+
+除算を使った方が早いかも？
+
+`f n = g (n / 10) + h (n % 10)` と仮定する。
+
+```txt
+g 0 = 0
+g 1 = 90
+g 2 = 990
+g 3 = 9990
+```
+
+`g` の計算結果は上記の通りである。
+
+```txt
+g n = (10 ^ n - 1) × 10
+g n = 10 ^ (n + 1) - 10
+```
+
+よって、上記の式で表すことができる。
+
+```txt
+f n = 10 ^ (n / 10 + 1) - 10 + n % 10
+```
+
+定義をまとめる。
+
+『[第37回　書き換え規則を使って不要な計算や中間データを除去](https://xtech.nikkei.com/it/article/COLUMN/20100112/343099/)』を読んだ。
+
+うーん？
+
+リストを使うと `a ^ (n * 2) = (a ^ n) ^ 2` を使った最適化ができない。
+
+```txt
+f n = (10 ^ (n / 10) - 1) * 10 + n % 10
+```
+
+こういうことで。
+
+見た目がすっきりして、負にならないことも分かりやすい。
+
+あ、途中で現れる数値の大きさが小さいという効果もあるのか。
