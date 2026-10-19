@@ -95,9 +95,9 @@ type PP a b = (Parser b, Printer a)
 
 こうすると `PP` 型がモナドになれるようになる。（二〇二六年一〇月一九日に追記する：間違っている。）
 
-スペースリークするから `Writer` 型を `Strict` 版にするべき？
+スペースリークするから `Writer` 型を `Strict` 版（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-Strict.html)）にするべき？
 
-今は `CPS` 版というのがあるらしいんだけど、その正体が全く分からない。コードを読んでも別に継続モナドは使っていないみたいだし。
+今は `CPS` 版（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-CPS.html)）というのがあるらしいんだけど、その正体が全く分からない。コードを読んでも別に継続モナドは使っていないみたいだし。
 
 "[Writerを使ってはならない](https://qiita.com/ruicc/items/28b1cd2df215ce724e26)" (ruicc, 2022) と "[Writerを使いたいけどスペースリークが怖い](https://www.ncaq.net/2022/05/19/19/10/58/)" (ncaq, 2022) に目を通したけど分かんないな。
 
@@ -155,7 +155,7 @@ Elm の公式ライブラリだと、成功失敗の二種類があって、バ�
 
 そもそもバックトラックという時点で継続モナドなんだわ。気づいていなかったんだけど。
 
-`Codensity` モナドで性能よく継続と `Free` の作用を加える。
+`Codensity` モナド（[リンク](https://hackage-content.haskell.org/package/kan-extensions-5.2.8/docs/Control-Monad-Codensity.html)）で性能よく継続と `Free` の作用を加える。
 
 `pop` 関数は失敗しうる。空の文字列もあり得る。リストの構造に沿って `String` と `Either () (Char, String)` を同一視する。
 
@@ -687,3 +687,15 @@ data TreeF a r = Leaf a | Node (Bool -> r)
 ```
 
 これを使えば？
+
+## comment 2026-10-20 1
+
+わずか 2 文字を追加するだけで漸近的に最適になるのは魅力的なので、やっぱりデルタ版にする。
+
+`CPS` 版（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-CPS.html)）というのは、ただ単に `seq` 関数を噛ませる箇所が違うだけであるようである。
+
+`forall r. s -> (a -> s -> m r) -> m r -> m r` において `callCC` 関数を実装できるのか考えるよりも `ContT` 型を追加して明示的に継続の作用を追加した方が良さそうである。とはいえ `m` が `Applicative` であるという条件を追加したりすれば `shift` 関数を実装できるかもしれない。
+
+self-synchronizing code には区切りが必要であるというわけだけど、どれかのパターンを区切りのために割り当ててしまうと、たとえば 4 種類のパターンのうち 1 つのパターンを区切りに割り当てると、残りの 3 つのパターンだけを使って表現する必要があるので、符号の長さが `log 4 / log 3` 倍になってしまい、 asymptotically optimal にならなくなるのでは。つまり、両立は不可能なのでは。
+
+名前は、最初に考えた "very easy readable lexicographic encoding" の略である "verle" でいいんじゃないかな？
