@@ -1,18 +1,20 @@
 # issue 3
 
+## comment 2026-10-15 1
+
 コンパイラと依存ライブラリのバージョンを一つに固定する。バージョンを固定しないと、ビルドするたびに依存ライブラリのバージョンが変化して、キャッシュが膨大になるため。
 
 まずは書き直しに集中したいので、新しいバージョンに追従するとか、複数バージョンに対応するとか、そういうことは後回しにしたい。
 
 stackage を利用してコンパイラと依存ライブラリのバージョンを固定する。では、どのバージョンに固定するべきだろうか？
 
-GHC の LTS は "[GHC LTS Releases](https://www.haskell.org/ghc/blog/20250702-ghc-release-schedules.html)" と "[GHC LTS Releases](https://blog.haskell.org/ghc-lts-releases/)" にあるように 9.14 からだから、まだまだである。 "post-hoc LTS" というのもあるそうだけど。
+GHC の LTS は "[GHC LTS Releases](https://www.haskell.org/ghc/blog/20250702-ghc-release-schedules.html)" と "[GHC LTS Releases](https://blog.haskell.org/ghc-lts-releases/)" にあるように 9.14 からだから、まだまだ枯れていない。 "post-hoc LTS" というのもあるそうだけど。
 
-"[GHC LTS Releases](https://discourse.haskell.org/t/ghc-lts-releases-the-glasgow-haskell-compiler/12469/3)" には 8.10, 9.2, 9.6 が "post-hoc LTS" だとある。なお "[Bump ghc major version to 10?](https://gitlab.haskell.org/ghc/ghc/-/work_items/26198)" という GHC 9.14 の次を GHC 10 にする提案がある。
+"[GHC LTS Releases](https://discourse.haskell.org/t/ghc-lts-releases-the-glasgow-haskell-compiler/12469)" において [George Thomas](https://discourse.haskell.org/u/george.fst) さんにより 8.10, 9.2, 9.6 が "post-hoc LTS" だというコメント（[リンク](https://discourse.haskell.org/t/ghc-lts-releases-the-glasgow-haskell-compiler/12469/3)）がつけられている。なお "[Bump ghc major version to 10?](https://gitlab.haskell.org/ghc/ghc/-/work_items/26198)" という GHC 9.14 の次を GHC 10 にする提案がある。
 
 "post-hoc LTS" を選ぶか？
 
-"[Stackage Server](https://www.stackage.org/)" には次のリストがある。
+Stackage Server のメインページ（[リンク](https://www.stackage.org/)）には次のリストがある。
 
 * Stackage Nightly 2026-10-12 (ghc-9.12.4), 2 days ago
 * LTS 24.63 for ghc-9.10.3, published 3 days ago
