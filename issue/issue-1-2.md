@@ -531,7 +531,7 @@ f n = 10 ^ (n / 10 + 1) - 10 + n % 10
 
 定義をまとめる。
 
-『[第37回　書き換え規則を使って不要な計算や中間データを除去](https://xtech.nikkei.com/it/article/COLUMN/20100112/343099/)』を読んだ。
+"[第37回　書き換え規則を使って不要な計算や中間データを除去](https://xtech.nikkei.com/it/article/COLUMN/20100112/343099/)" (shelarcy, 2010) を読んだ。
 
 うーん？
 
@@ -546,3 +546,144 @@ f n = (10 ^ (n / 10) - 1) * 10 + n % 10
 見た目がすっきりして、負にならないことも分かりやすい。
 
 あ、途中で現れる数値の大きさが小さいという効果もあるのか。
+
+## comment 2026-10-19 1
+
+ガンマ版の方がデルタ版より良いと考えてきたけど、改めてノートを読み直すと、なんか 2 文字増えるだけで済むんならデルタ版でいいんじゃないかと思えてきた。
+
+ただ、本当に asymptotically optimal になるのかな？
+
+ウィキペディアのオメガ符号の記事では Kraft-McMillan inequality を使って証明するというスケッチがあるけど、どうして証明できていることになるのか分からないんだよなあ。
+
+そもそも prefix code になるのかな？　`2-13-1000000000000` と書くのではなく `2131000000000000` というようにハイフンをなくした場合において。
+
+ウィキペディアのデルタ符号の記事では `00001` みたいなアルファ符号を使っているんだけど、私が定義したデルタ版では `11110` みたいな反転したバージョンを使っているんだよね。
+
+アルファ符号の定義を取り換えた時に prefix code になるのかどうかの質問文を Microsoft Copilot に入力してみたけど、その返答が明らかに矛盾していて、その論理が通るなら `0001` みたいなアルファ符号を使ったバージョンまでも prefix code にならないはずなのに、ゼロから始まる版は prefix code であり 1 から始まる版は prefix code ではないというような返答が返ってきた。
+
+これはおかしいと否定するために prefix code の定義を再確認したけど、やはり私が定義した符号化は prefix code になる。
+
+ついでに、一般の n 進法について asymptotically optimal universal coding を作れるのかを尋ねている質問（[リンク](https://cs.stackexchange.com/questions/141440/asymptotically-optimal-universal-code-in-other-bases)）を見つけた。
+
+ついでに、符号の開始位置が不明である場合に読み取りを間違えたまま連鎖することを防ぐことができる性質を "self-synchronizing" と呼ぶことも知った。ウィキペディアの記事（[リンク](https://en.wikipedia.org/wiki/Self-synchronizing_code)）を読んだ。
+
+Microsoft Copilot の返答の出力は、 prefix code と self-synchronizing code を混同して、後者でないことをもって前者であることを否定していた。
+
+私の入力は "prefix code" にだけ言及していて、 "self-synchronizing code" については名称についても（たとえ名称と結びついていないとしても）性質についても現在においても過去においても全く言及していない。そもそも符号化に関係した質問をするのも初めてである。
+
+ただ、 "self-synchronizing code" という言葉を知らなくても、そうであるかどうかということは気になっていたので、そのことを明確に否定できたのは良かった。私自身も prefix code と self-synchronizing code を混同していて、木構造として考えると prefix code になるはずなのに、途中から読み込もうとしたら失敗するから非 prefix code なんじゃないかという考えもあって、もやもやしていたし。
+
+asymptotically optimal であるというのはどういうことなのか再確認したけど、よく分からない。
+
+とりあえず、なんかの比率が極限において 1 になることらしい？
+
+元の長さを `x` として符号化した後の長さを `y` とする。
+
+ガンマ符号は `y / x` がだいたい `(x + x) / x` だから極限において 2 になる。
+
+デルタ符号は `y / x` がだいたい `(x + log x + log x) / x` だから極限において 1 になる。
+
+こういうことなのかな？
+
+私が定義したデルタ版は asymptotically optimal だけど universal coding ではない。最初の桁が 0 にならないので。 universal coding にするためには、いわゆる Excel 進法である bijective numeration を使わないといけない。 2 進法なら、ケチ表現と同じ原理により最初の桁が 1 であることが確定しているので省略できるけど、より底が大きいと省略できなくなるから。 asymptotically optimal であるのは、元の長さと符号化した後の長さの比が 1 に近づくから。
+
+asymptotically optimal universal coding は self-synchronizing code になれるのだろうか？
+
+Fibonacci coding は self-synchronizing code だけど asymptotically optimal ではない。
+
+Elias delta coding は asymptotically optimal だけど self-synchronizing code ではない。
+
+なんか両立しないように思えてくるんだけど。
+
+Google AI は「両立できる」と出力しているけど、これの出力は信用できないからなあ。
+
+## comment 2026-10-19 2
+
+lens をモナドにする。
+
+indexed monad においては `m i o a` において `i` が反変であり `o` が共変である必要がある。
+
+```hs
+type Lens s t a b = forall x. Lens (s -> (x, b), (x, a) -> t)
+
+fmap :: (b -> b') -> Lens s t a b -> Lens s t a b'
+fmap f (Lens (ge, se)) = Lens (fmap f . ge, se)
+
+-- ge は get の略である。 se は set の略である。
+
+pure :: b -> Lens s s a b
+pure be = Lens (\se -> (se, be), \(se, _) -> se)
+
+-- ついでに別の変数の末尾にも e をつける。
+
+(<*>) :: Lens t u a (b -> b') -> Lens s t a b -> Lens s u a b'
+Lens (ge0, se0) (ge1, se1) = Lens (assoc . fmap se0 . se1) _
+```
+
+うーん？
+
+"[Glassery](https://oleg.fi/gists/posts/2017-04-18-glassery.html)" (Oleg Grenrus, 2017) を読んだ。
+
+存在量化された変数を明示的に扱える言語で、たとえば Rocq か Lean 4 かでやらないと分かりにくいな。
+
+まあ、それでも手で書けば良い。
+
+いや、これだと lens の合成になる。
+
+`a <*> b` と書いた時に `b` の状態を `a` に引き継がないといけないけど `b` の中で存在量化された変数 `x` と `t` が一致しなければならない。
+
+モナドは作れない。
+
+```hs
+type Lens a b c d e f = (a -> (b, c), (d, e) -> f)
+```
+
+もうこんな感じにするか？
+
+```hs
+type Lens s a b = (s -> (s, a), (s, b) -> s)
+```
+
+微妙だな……
+
+```hs
+type Codec pr ps a b = (a -> pr b, ps b)
+```
+
+汎用性を持っている。
+
+エラーについて `NonEmpty` 型を使うことを想定していたけど、バックトラックすることを考えると木構造の方が良いかもしれない。
+
+パースに成功した場合も複数含めることができるため、多値となる。
+
+```hs
+data Result e a = Failure e | Success a | Backtrack (Result e a) (Result e a)
+```
+
+バックトラックの情報を含めるためには、継続に対して `Backtrack (Failure e)` を適用することになる。
+
+モナドの `bind` 関数の時は、それぞれの `Success` である葉に対して関数を適用して「接ぎ木」することになる。
+
+ああ、でも、そうなると、状態について微妙なのでは？
+
+```hs
+data Result e s a = Failure e | Success a s | Backtrack (Result e a) (Result e a)
+```
+
+こんな感じかな？
+
+継続モナドを混ぜにくいけど、継続モナドがないと結合法則が成り立たない。
+
+`s -> [Either e (a, s)]` でいいんちゃう？
+
+`StateT s (ExceptT e [])` という感じで。
+
+そもそも継続モナドでのバックトラックはどうやるのか詳しく覚えていないんだよな。再確認するか？
+
+リストモナドをやめてストリームモナドにした方が、その性能が良くなるんじゃない？
+
+```hs
+data TreeF a r = Leaf a | Node (Bool -> r)
+```
+
+これを使えば？
