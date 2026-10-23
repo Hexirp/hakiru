@@ -1,5 +1,7 @@
 # issue 4
 
+## comment 2026-10-16 1
+
 古い依存ライブラリを更新する。何が古いのかという基準は次の通りである。
 
 * deprecated になっている。
@@ -10,3 +12,14 @@
 * GitHub のリポジトリにおいて大量のバグ報告が溜まっている。
 * `head` 関数のような部分関数や `undefined` 関数のようなエラー関数などを乱用している。
 * 不完全な `case` 式などのような GHC の警告オプションにより容易に発見できる不適切なコードが残留している。
+
+## comment 2026-10-19 1
+
+テンプレートエンジンである `mustache` ライブラリ（[リンク](https://hackage.haskell.org/package/mustache)）と統合する。 `shake` ライブラリ（[リンク](https://hackage.haskell.org/package/shake)）のキャッシュを利用するのも良いのかもしれない。
+
+古いライブラリの条件について。
+
+* stack や Hadrian のような Haskell 最先端のソフトウェアにおいて使われている代替ライブラリが存在する。
+* そのライブラリの欠点を指摘して新しい書き方を示しているブログ記事や Reddit の投稿などが存在する。
+
+`path` ライブラリ（[リンク](https://hackage.haskell.org/package/path)）もどうかな？
