@@ -857,3 +857,13 @@ PEG だと `0|[1-9][0-9]*` という風にバックトラックするしかな�
 ## comment 2026-10-24 1
 
 0 の桁数を気にするのは、デルタ符号が概ね `n` と `n` の桁数と `n` の桁数の桁数のアルファ符号の連結だと要約できるから。
+
+## comment 2026-10-24 2
+
+`Forest` 型のログにおいて、ある特定の区域の計算をまとめたいという件だけど、 `local` 関数（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Reader.html#v:local)）を使えば行けるんじゃ？
+
+いや、 `local` 関数（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Reader.html#v:local)）は `Writer` モナドではなく `Reader` モナドの作用だから、正確に言うと「その双対」だな。
+
+やっぱりあった！　`censor` 関数（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-CPS.html#v:censor)）である。
+
+となると `Codensity` モナドを加える意義は性能の他にはなくなるといってもいいのかな？　継続の作用の使い所がないわけだし。
