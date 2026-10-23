@@ -294,7 +294,7 @@ type F a = (G a, H a)
 
 [kowainik](https://www.reddit.com/user/kowainik/) さんが "[kowainik/tomland](https://github.com/kowainik/tomland)" を紹介する投稿（[リンク](https://www.reddit.com/r/haskell/comments/8kkmqq/comment/dza8xkv/)）をしている。
 
-"[kowainik/tomland](https://github.com/kowainik/tomland)" の実装におけるパーサーの部分を読む。（[リンク](https://github.com/kowainik/tomland/blob/4d71d4a6f8026f9d4b4c909799b2493e6aa60e7b/src/Toml/Codec/Types.hs#L155)）
+"[kowainik/tomland](https://github.com/kowainik/tomland)" の実装におけるパーサーの部分を読む。（[リンク](https://github.com/kowainik/tomland/blob/4d71d4a6f8026f9d4b4c909799b2493e6aa60e7b/src/Toml/Codec/Types.hs#L154-L156)）
 
 `s -> (Maybe a, s)` タイプなのね。
 
@@ -320,7 +320,7 @@ lens のままにするには `Maybe` 型を使うしかないからなあ。
 
 "[chpatrick/codec](https://github.com/chpatrick/codec)" の方を読む。
 
-定義（[リンク](https://github.com/chpatrick/codec/blob/0faf37a1cefb21dc46cc2857e538dd983bb28652/src/Control/Monad/Codec.hs#L17)）を見つけた。
+定義（[リンク](https://github.com/chpatrick/codec/blob/0faf37a1cefb21dc46cc2857e538dd983bb28652/src/Control/Monad/Codec.hs#L17-L20)）を見つけた。
 
 ```hs
 data CodecFor r w c a = Codec
@@ -331,7 +331,7 @@ data CodecFor r w c a = Codec
 
 なんて単純なんだ。
 
-`Monad` 型クラスのインスタンスの定義（[リンク](https://github.com/chpatrick/codec/blob/0faf37a1cefb21dc46cc2857e538dd983bb28652/src/Control/Monad/Codec.hs#L34)）を見つけた。
+`Monad` 型クラスのインスタンスの定義（[リンク](https://github.com/chpatrick/codec/blob/0faf37a1cefb21dc46cc2857e538dd983bb28652/src/Control/Monad/Codec.hs#L34-L39)）を見つけた。
 
 ```hs
 instance (Monad r, Monad w) => Monad (CodecFor r w c) where
