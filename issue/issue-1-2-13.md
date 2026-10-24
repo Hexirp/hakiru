@@ -6,11 +6,11 @@ Hakyll のコードの中には Hakyll 自身さえ対応していないバー�
 
 ## comment 2026-10-24 1
 
-`hexirp-hakyll` ライブラリを開発している時に、そういうコードに遭遇したという記憶はあるんだけど、どこだったかは思い出せない。
+[`Hexirp/hexirp-hakyll`](https://github.com/Hexirp/hexirp-hakyll) を開発している時に、そういうコードに遭遇したという記憶はあるんだけど、どこだったかは思い出せない。
 
 「現実だったかな……？」と思ったので、調査してみる。
 
-`hexirp-hakyll` ライブラリにおいて CPP を除去したコミット（[リンク](https://github.com/Hexirp/hexirp-hakyll/commit/5ce2aa39800c6bc787e2a619d1deea6262f62281)）を参考にして、それぞれの分岐の条件になっているライブラリのバージョンを、その時期における Cabal ファイル（[リンク](https://github.com/Hexirp/hexirp-hakyll/blob/a312fd4972f9add0736a9f8335bcd51e0e163b06/hakyll.cabal)）にある依存ライブラリのバージョン範囲と照らし合わせる。
+[`Hexirp/hexirp-hakyll`](https://github.com/Hexirp/hexirp-hakyll) において CPP を除去したコミット（[リンク](https://github.com/Hexirp/hexirp-hakyll/commit/5ce2aa39800c6bc787e2a619d1deea6262f62281)）を参考にして、それぞれの分岐の条件になっているライブラリのバージョンを、その時期における Cabal ファイル（[リンク](https://github.com/Hexirp/hexirp-hakyll/blob/a312fd4972f9add0736a9f8335bcd51e0e163b06/hakyll.cabal)）にある依存ライブラリのバージョン範囲と照らし合わせる。
 
 "[古いライブラリに対応するためのコードを削除する](https://github.com/Hexirp/hexirp-hakyll/issues/14)" (Hexirp, 2019-11-17) と "[古いライブラリに対応するためのコードを掃除する](https://github.com/Hexirp/hexirp-hakyll/pull/47)" (Hexirp, 2019-11-23) も参考に。
 
@@ -95,3 +95,9 @@ fileModificationTime fp = do
 一つのファイルの編集だけなら大丈夫なんだけど、複数のファイルを一度に編集するとなると、できないっぽい。
 
 ちょっと Hakiru を離れて Hakyll の方でやっておく。
+
+## comment 2026-10-24 2
+
+[`jaspervdj/hakyll`](https://github.com/jaspervdj/hakyll) の方で "[Remove unnecessary CPP directives for `directory < 1.2.6`](https://github.com/jaspervdj/hakyll/pull/1113)" (Hexirp, 2026-10-24) を出した。
+
+外向けのプルリクエストは何年ぶりだろう？　オールジャンルだと "[fix(frontend): \\"メッセージを送信\\" の初期テキストを修正する](https://github.com/misskey-dev/misskey/pull/11721)" (Hexirp, 2023-08-14) 以来の 3 年ぶりで、 Haskell 関連に限定すると "[Fix about file path for compatibility with Windows](https://github.com/jaspervdj/hakyll/pull/664)" (Hexirp, 2018-09-29) 以来の 8 年ぶりか "[Clean stack.yaml](https://github.com/jaspervdj/hakyll/pull/745)" (Hexirp, 2019-12-12) 以来の 7 年ぶりかである。
