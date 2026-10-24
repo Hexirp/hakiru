@@ -9,3 +9,7 @@ GitHub Actions を使って CI をする。全面的に stack に依存するこ
 ## comment 2026-10-25 1
 
 ローカル環境でビルドを通す、つまり "[issue-1-1-8.md](issue-1-1-8.md)" が終わるのを待ってから、 GitHub Actions のことをやる。
+
+## comment 2026-10-25 2
+
+[issue-1-1-9.md](issue-1-1-9.md) と重複しているから、こっちの方を正とする。こっちの方に具体性があるから。
