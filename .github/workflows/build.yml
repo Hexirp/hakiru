@@ -1,0 +1,46 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        ghc:
+          - 9.8.4
+    name: Build os-${{ matrix.os }} ghc-${{ matrix.ghc }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Setup
+        id: setup
+        uses: haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d # v2.12.1
+        with:
+          ghc-version: ${{ matrix.ghc }}
+          cabal-version: 3.16.1.0
+          stack-version: 3.11.1
+          enable-stack: true
+      - name: Dependencies Build
+        id: dependencies
+        run: stack build --fast --system-ghc --test --no-run-tests --only-dependencies
+      - name: Build
+        id: build
+        run: stack build --fast --system-ghc --test --no-run-tests
+      - name: Test
+        id: test
+        run: stack build --fast --system-ghc --test
+      - name: Cache
+        id: cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.setup.outputs.stack-root }}
+          key: stack-root-${{ matrix.os }}-${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}
+          restore-keys: stack-root-${{ matrix.os }}-${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}
