@@ -37,4 +37,4 @@ GHC のバージョンを固定すると、古い GHC に対応するための�
 
 ## comment 2026-10-22 1
 
-55c374ba4089b8fb02ee29fb82223e90a5b0a5ee において resolver を `lts-23.28` に設定した。
+`55c374ba4089b8fb02ee29fb82223e90a5b0a5ee` において resolver を `lts-23.28` に設定した。
