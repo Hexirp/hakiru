@@ -28,8 +28,18 @@ jobs:
           cabal-version: 3.16.1.0
           stack-version: 3.11.1
           enable-stack: true
+      - name: Dependencies Snapshot
+        id: dependencies-snapshot
+        run: stack ls dependencies json --system-ghc --test > dependencies-snapshot.json
+      - name: Cache
+        id: cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.setup.outputs.stack-root }}
+          key: stack-root-${{ runner.os }}-${{ matrix.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('dependencies-snapshot.json') }}
+          restore-keys: stack-root-${{ runner.os }}-${{ matrix.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('dependencies-snapshot.json') }}
       - name: Dependencies Build
-        id: dependencies
+        id: dependencies-build
         run: stack build --fast --system-ghc --test --no-run-tests --only-dependencies
       - name: Build
         id: build
@@ -37,10 +47,3 @@ jobs:
       - name: Test
         id: test
         run: stack build --fast --system-ghc --test
-      - name: Cache
-        id: cache
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: ${{ steps.setup.outputs.stack-root }}
-          key: stack-root-${{ matrix.os }}-${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}
-          restore-keys: stack-root-${{ matrix.os }}-${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}
