@@ -94,3 +94,11 @@ Hakyll は macOS でテストしているんだよな。どうやっているん
 macOS でのテストは諦めるべきか？
 
 ここまで "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-26 1` の一部をコピーする。
+
+## comment 2026-10-28 1
+
+一時期 macOS のジョブを削除しようかと思っていたわけだけど。
+
+"[actions/runner-images](https://github.com/actions/runner-images)" の [`README.md`](https://github.com/actions/runner-images/blob/09456acd2718d935451373231c236286f861fd9c/README.md) には `macos-latest-large` のアーキテクチャが x64 であると書いてある。
+
+こっちの方を使えば通るかも？
