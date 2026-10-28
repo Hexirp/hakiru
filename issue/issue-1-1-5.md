@@ -155,7 +155,7 @@ Stack を使用した場合のサンプル（[リンク](https://github.com/acti
 
 それよりもやばいのが、 macOS のビルドがよくわからない理由で落ちていること。
 
-"error: unknown architecture" だそうだけど。
+`error: unknown architecture` だそうだけど。
 
 たぶん古いコンパイラだから新しいアーキテクチャに対応できていない？
 
