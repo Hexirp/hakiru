@@ -867,3 +867,35 @@ PEG だと `0|[1-9][0-9]*` という風にバックトラックするしかな�
 やっぱりあった！　`censor` 関数（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-CPS.html#v:censor)）である。
 
 となると `Codensity` モナドを加える意義は性能の他にはなくなるといってもいいのかな？　継続の作用の使い所がないわけだし。
+
+## comment 2026-10-28 1
+
+符号の仕様を確定しないといけなくて、その前に名前を決めないといけないけど、名前に悩んでいる。
+
+alpha 版の定義は？
+
+たとえば……
+
+```hs
+subtract : Word -> Word -> Maybe Word
+subtract a b = if a < b then Nothing else Just (a - b)
+
+alpha : Word -> String
+alpha x = case subtract x 10 of { Nothing -> show x; Just x' -> '9' : alpha x'; }
+```
+
+……とか。
+
+`quotRem` 関数からの `x / 10` と ``x `mod` 10`` で分けて生成するやつとどっちが早いんだろう？
+
+`Show Word` の内部実装（[リンク](https://hackage-content.haskell.org/package/ghc-internal-9.1401.0/docs/src/GHC.Internal.Show.html#line-202)）を見に行くか。
+
+`'0' + x` で文字を数値に変換するとか C 言語みたいなテクニックを使っていて面白い。
+
+普通に 10 で繰り返し割っているだけだった。
+
+`showPrec` 関数を使った方が良いな。
+
+`Integer` 型での除算の定義はどうしているんだ？
+
+結局、ファイルの名前の長さに上限があることも考えると、引き算の繰り返しが最良になりそうな雰囲気だけど。
