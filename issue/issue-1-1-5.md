@@ -230,3 +230,7 @@ GHCup を通して使うんだから GitHub Actions でも `--system-ghc` フラ
 `git push --force` で書き換えるか。
 
 [`fd1769cc62d9819803f639e5b442791f2d7d4aed`](https://github.com/Hexirp/hakiru/commit/fd1769cc62d9819803f639e5b442791f2d7d4aed) に置き換えた。
+
+## comment 2026-10-29 1
+
+さらに凡ミスをしていたので [`ea6b9083da4d4213930537e8affb89346f0f201d`](https://github.com/Hexirp/hakiru/commit/ea6b9083da4d4213930537e8affb89346f0f201d) に書き換えた。
