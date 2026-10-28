@@ -886,16 +886,22 @@ alpha x = case subtract x 10 of { Nothing -> show x; Just x' -> '9' : alpha x'; 
 
 ……とか。
 
-`quotRem` 関数からの `x / 10` と ``x `mod` 10`` で分けて生成するやつとどっちが早いんだろう？
+`quotRem` 関数（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Prelude.html#v:quotRem)）からの `x / 10` と ``x `mod` 10`` で分けて生成するやつとどっちが早いんだろう？
 
-`Show Word` の内部実装（[リンク](https://hackage-content.haskell.org/package/ghc-internal-9.1401.0/docs/src/GHC.Internal.Show.html#line-202)）を見に行くか。
+`Show Word` インスタンスの内部実装（[リンク](https://hackage-content.haskell.org/package/ghc-internal-9.1401.0/docs/src/GHC.Internal.Show.html#line-202)）を見に行くか。
 
 `'0' + x` で文字を数値に変換するとか C 言語みたいなテクニックを使っていて面白い。
 
 普通に 10 で繰り返し割っているだけだった。
 
-`showPrec` 関数を使った方が良いな。
+`showPrec` 関数（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Prelude.html#v:showsPrec)）を使った方が良いな。
 
-`Integer` 型での除算の定義はどうしているんだ？
+`Integer` 型（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Prelude.html#t:Integer)）での除算の定義はどうしているんだ？
 
 結局、ファイルの名前の長さに上限があることも考えると、引き算の繰り返しが最良になりそうな雰囲気だけど。
+
+## comment 2026-10-29 1
+
+gamma 版は alpha 版を内蔵している。その際、 alpha 版を生成する関数に 10 進法での桁数を渡すことになる。ここで、 10 進法表記への変換と 10 進法表記の長さの計算を同時に行うことになる。そこで、この二つの計算をまとめて行う関数を使うのはどうだろうか。
+
+`Word` 型（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Prelude.html#t:Word)）でもなく `Integer` 型（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Prelude.html#t:Integer)）でもなく `Natural` 型（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Numeric-Natural.html#t:Natural)）を使った方が良い。
