@@ -192,3 +192,41 @@ Stack のリポジトリを探していたら Travis CI の設定のサンプル
 懐かしい。
 
 初めての CI は Travis CI を使っていたんだよね。いつも `--only-dependencies` フラグを使って依存ライブラリだけ先にビルドするようにしているのも、このサンプルを参考にしたのが染みついているからなんだよね。
+
+## comment 2026-10-28 2
+
+間違ってローカルの環境で `stack ls dependencies` に `--system-ghc` フラグをつけてしまったら、なんか Hackage の Cabal ファイルを全部ダウンロードし始めた。
+
+`--system-ghc` フラグをつけるのは、 GHCup とは無関係に GHC が入っている GitHub Actions 環境だけなのよね。
+
+ローカルの環境だと GHCup を使って Stack をダウンロードしているので `--system-ghc` フラグをつけるとおかしくなる。
+
+`--external` フラグもつけていたけど、デフォルトでオンであるみたい。
+
+大量のファイルをダウンロードしたみたいから、パソコンの容量を節約するために、削除を試みる。
+
+まずは場所探しである。場所がログに出力されている。とりあえず、 1 GB 以上のファイルが入っている `hackage` ディレクトリの名前を変えたけど、何も影響がないみたい。
+
+`pantry.sqlite3` ファイルも 1 GB ほどに肥大化していたから今度は `pantry` ディレクトリの名前も変えてみる。今度は再生成されたけど、その内容は小さい。
+
+やはり、 Hackage にある全ライブラリの情報が `pantry` ディレクトリの中に登録されてしまったらしい？
+
+`hackage.fpcomplete.com` がまだ Hackage のミラーとして Stack から参照されている。
+
+`--system-ghc` フラグを使っていなくても `stack ls dependencies json` を使うとなんか長いダウンロード処理が挟まる。
+
+でも、 1,672 KB 程度で止まった。
+
+## comment 2026-10-28 3
+
+GHCup を通して使うんだから GitHub Actions でも `--system-ghc` フラグはいらなくなっているのでは？　"[Stack integration](https://www.haskell.org/ghcup/guide/stack/)" によると Stack のバージョン 2.9.1 から GHCup との連携が追加されている。
+
+## comment 2026-10-28 4
+
+コミットのメッセージ。
+
+[`79ad444d59503e7e6986a3354c963a31871ef0e6`](https://github.com/Hexirp/hakiru/commit/79ad444d59503e7e6986a3354c963a31871ef0e6) のメッセージはあまり良くなかった。キャッシュに関連する問題に焦点を絞っていることを書いていなかった。わざと macOS の問題に対応していないことを書いていなかった。
+
+`git push --force` で書き換えるか。
+
+[`fd1769cc62d9819803f639e5b442791f2d7d4aed`](https://github.com/Hexirp/hakiru/commit/fd1769cc62d9819803f639e5b442791f2d7d4aed) に置き換えた。
