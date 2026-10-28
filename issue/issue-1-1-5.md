@@ -184,3 +184,11 @@ macOS でのテストは諦めるべきか？
 `restore-keys` においては間違った前方一致を防ぐためにハイフンを最後につけないといけない。
 
 手元で失敗するのを再現するために git の改行の設定も変えないと。
+
+## comment 2026-10-28 1
+
+Stack のリポジトリを探していたら Travis CI の設定のサンプル（[リンク](https://github.com/commercialhaskell/stack/blob/11a148f7b871e90ef96daab0b3d933d51449e5b0/doc/resources/travis-simple.yml)）を見つけた。
+
+懐かしい。
+
+初めての CI は Travis CI を使っていたんだよね。いつも `--only-dependencies` フラグを使って依存ライブラリだけ先にビルドするようにしているのも、このサンプルを参考にしたのが染みついているからなんだよね。
