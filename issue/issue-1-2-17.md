@@ -18,3 +18,12 @@ GitHub Actions といえば `hakyll-master` ブランチも GitHub Actions を�
 いや、 `hakyll-master` ブランチにおけるワークフローのファイルの設定は `master` ブランチにおいてのみ実行するという設定になっているから大丈夫なのか。
 
 `main` ブランチにおけるワークフローのファイルの設定でもジョブを実行するブランチをホワイトリストで絞ろうかな。
+
+## comment 2026-10-29 2
+
+以下のブランチをプッシュした。
+
+* [`stale-1-1-1`](https://github.com/Hexirp/hakiru/tree/stale-1-1-1) - [`6a8472703050dd9bae415eac3f0061b5c671c3b4`](https://github.com/Hexirp/hakiru/commit/6a8472703050dd9bae415eac3f0061b5c671c3b4)
+* [`stale-1-1-2`](https://github.com/Hexirp/hakiru/tree/stale-1-1-2) - [`79ad444d59503e7e6986a3354c963a31871ef0e6`](https://github.com/Hexirp/hakiru/commit/79ad444d59503e7e6986a3354c963a31871ef0e6)
+* [`stale-1-1-3`](https://github.com/Hexirp/hakiru/tree/stale-1-1-3) - [`fd1769cc62d9819803f639e5b442791f2d7d4aed`](https://github.com/Hexirp/hakiru/commit/fd1769cc62d9819803f639e5b442791f2d7d4aed)
+* [`hakyll-master`](https://github.com/Hexirp/hakiru/tree/hakyll-master) - [`3b62127a9d9c9c6df84acc9db0a42f02a4d8e07c`](https://github.com/Hexirp/hakiru/commit/3b62127a9d9c9c6df84acc9db0a42f02a4d8e07c)
