@@ -1,0 +1,86 @@
+﻿2026-10-29T16:22:54.3511473Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-29T16:22:54.3512557Z with:
+2026-10-29T16:22:54.3513009Z   repository: Hexirp/hakiru
+2026-10-29T16:22:54.3516903Z   token: ***
+2026-10-29T16:22:54.3517339Z   ssh-strict: true
+2026-10-29T16:22:54.3517786Z   ssh-user: git
+2026-10-29T16:22:54.3518230Z   persist-credentials: true
+2026-10-29T16:22:54.3518710Z   clean: true
+2026-10-29T16:22:54.3519357Z   sparse-checkout-cone-mode: true
+2026-10-29T16:22:54.3519906Z   fetch-depth: 1
+2026-10-29T16:22:54.3520341Z   fetch-tags: false
+2026-10-29T16:22:54.3520781Z   show-progress: true
+2026-10-29T16:22:54.3521222Z   lfs: false
+2026-10-29T16:22:54.3521634Z   submodules: false
+2026-10-29T16:22:54.3522080Z   set-safe-directory: true
+2026-10-29T16:22:54.3522609Z   allow-unsafe-pr-checkout: false
+2026-10-29T16:22:54.3523402Z ##[endgroup]
+2026-10-29T16:22:54.6092153Z Syncing repository: Hexirp/hakiru
+2026-10-29T16:22:54.6095213Z ##[group]Getting Git version info
+2026-10-29T16:22:54.6096662Z Working directory is '/home/runner/work/hakiru/hakiru'
+2026-10-29T16:22:54.6098222Z [command]/usr/bin/git version
+2026-10-29T16:22:54.6163334Z git version 2.56.0
+2026-10-29T16:22:54.6190340Z ##[endgroup]
+2026-10-29T16:22:54.6197148Z Temporarily overriding HOME='/home/runner/work/_temp/f2b92a3a-c3a4-4635-9eae-5062180af14d' before making global git config changes
+2026-10-29T16:22:54.6199993Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-29T16:22:54.6204987Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-10-29T16:22:54.6255112Z Deleting the contents of '/home/runner/work/hakiru/hakiru'
+2026-10-29T16:22:54.6258967Z ##[group]Determining repository object format
+2026-10-29T16:22:54.6266315Z ##[endgroup]
+2026-10-29T16:22:54.6267574Z ##[group]Initializing the repository
+2026-10-29T16:22:54.6289595Z [command]/usr/bin/git init /home/runner/work/hakiru/hakiru
+2026-10-29T16:22:54.6387242Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-29T16:22:54.6389794Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-29T16:22:54.6391677Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-29T16:22:54.6392689Z hint: call:
+2026-10-29T16:22:54.6393611Z hint:
+2026-10-29T16:22:54.6394590Z hint: 	git config --global init.defaultBranch <name>
+2026-10-29T16:22:54.6395632Z hint:
+2026-10-29T16:22:54.6396617Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-29T16:22:54.6398296Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-29T16:22:54.6399762Z hint:
+2026-10-29T16:22:54.6400504Z hint: 	git branch -m <name>
+2026-10-29T16:22:54.6401435Z hint:
+2026-10-29T16:22:54.6402581Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-29T16:22:54.6404240Z Initialized empty Git repository in /home/runner/work/hakiru/hakiru/.git/
+2026-10-29T16:22:54.6414916Z [command]/usr/bin/git remote add origin https://github.com/Hexirp/hakiru
+2026-10-29T16:22:54.6463685Z ##[endgroup]
+2026-10-29T16:22:54.6465024Z ##[group]Disabling automatic garbage collection
+2026-10-29T16:22:54.6468799Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-29T16:22:54.6504304Z ##[endgroup]
+2026-10-29T16:22:54.6505586Z ##[group]Setting up auth
+2026-10-29T16:22:54.6511124Z Removing SSH command configuration
+2026-10-29T16:22:54.6512712Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-29T16:22:54.6553744Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-29T16:22:54.6950510Z Removing HTTP extra header
+2026-10-29T16:22:54.6952520Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-29T16:22:54.7000367Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-29T16:22:54.7247142Z Removing includeIf entries pointing to credentials config files
+2026-10-29T16:22:54.7253966Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-29T16:22:54.7302553Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-29T16:22:54.7548706Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-1a9fadde-aad2-472e-8ad2-7303419b7fc8.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-29T16:22:54.7599602Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git.path /home/runner/work/_temp/git-credentials-1a9fadde-aad2-472e-8ad2-7303419b7fc8.config
+2026-10-29T16:22:54.7644889Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-1a9fadde-aad2-472e-8ad2-7303419b7fc8.config
+2026-10-29T16:22:54.7690312Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-1a9fadde-aad2-472e-8ad2-7303419b7fc8.config
+2026-10-29T16:22:54.7733945Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-1a9fadde-aad2-472e-8ad2-7303419b7fc8.config
+2026-10-29T16:22:54.7775166Z ##[endgroup]
+2026-10-29T16:22:54.7775988Z ##[group]Fetching the repository
+2026-10-29T16:22:54.7781607Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6efd8a0084e5b94da0229a7be52764ad8d8d3c80:refs/remotes/origin/main
+2026-10-29T16:22:56.4905336Z From https://github.com/Hexirp/hakiru
+2026-10-29T16:22:56.4907993Z  * [new ref]         6efd8a0084e5b94da0229a7be52764ad8d8d3c80 -> origin/main
+2026-10-29T16:22:56.4915455Z [command]/usr/bin/git branch --list --remote origin/main
+2026-10-29T16:22:56.4956081Z   origin/main
+2026-10-29T16:22:56.4965110Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-10-29T16:22:56.5002488Z 6efd8a0084e5b94da0229a7be52764ad8d8d3c80
+2026-10-29T16:22:56.5007727Z ##[endgroup]
+2026-10-29T16:22:56.5009119Z ##[group]Determining the checkout info
+2026-10-29T16:22:56.5010963Z ##[endgroup]
+2026-10-29T16:22:56.5013321Z [command]/usr/bin/git sparse-checkout disable
+2026-10-29T16:22:56.5077177Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-29T16:22:56.5122300Z ##[group]Checking out the ref
+2026-10-29T16:22:56.5125635Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-29T16:22:56.5342269Z Switched to a new branch 'main'
+2026-10-29T16:22:56.5348057Z branch 'main' set up to track 'origin/main'.
+2026-10-29T16:22:56.5357010Z ##[endgroup]
+2026-10-29T16:22:56.5410645Z [command]/usr/bin/git log -1 --format=%H
+2026-10-29T16:22:56.5451110Z 6efd8a0084e5b94da0229a7be52764ad8d8d3c80

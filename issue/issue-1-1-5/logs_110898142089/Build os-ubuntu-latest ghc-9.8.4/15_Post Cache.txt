@@ -1,0 +1,8 @@
+﻿2026-10-29T16:26:54.1463147Z Post job cleanup.
+2026-10-29T16:26:54.3005560Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/hakiru/hakiru --files-from manifest.txt --use-compress-program zstdmt
+2026-10-29T16:26:59.9955214Z Sent 20047153 of 355591473 (5.6%), 19.1 MBs/sec
+2026-10-29T16:27:00.9956396Z Sent 288482609 of 355591473 (81.1%), 137.6 MBs/sec
+2026-10-29T16:27:01.9953274Z Sent 288482609 of 355591473 (81.1%), 91.7 MBs/sec
+2026-10-29T16:27:02.9954426Z Sent 288482609 of 355591473 (81.1%), 68.8 MBs/sec
+2026-10-29T16:27:03.2657096Z Sent 355591473 of 355591473 (100.0%), 79.4 MBs/sec
+2026-10-29T16:27:03.5293523Z Cache saved with key: stack-root-Linux-ubuntu-latest-9.8.4-41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357-5d1ffabf5287193fbd4e4c377e832a80a64ea0f26ae6b79d98ce649e5f803b83

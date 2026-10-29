@@ -249,6 +249,7 @@ GHCup を通して使うんだから GitHub Actions でも `--system-ghc` フラ
   * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40697634591/job/122848546129)
 * [build #4](https://github.com/Hexirp/hakiru/actions/runs/40726439891)
   * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40726439891/job/122950884072)
+  * [Build os-macos-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40726439891/job/122950884585)
   * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40726439891/job/122950884504)
 
 これらのログは 90 日間で消えるので、以下のように保存してある。
@@ -265,8 +266,45 @@ GHCup を通して使うんだから GitHub Actions でも `--system-ghc` フラ
   * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_110392183366/2_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
   * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_110392183366/1_Build%20os-windows-latest%20ghc-9.8.4.txt)
 
-最後のビルドにおいて macOS だけ欠けているのは 3 回の `Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.` から `The job was not acquired by Runner of type hosted even after multiple attempts` となって落ちているから。
+最後のビルドにおいて macOS だけ欠けているのは 3 回の `Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.` から `The job was not acquired by Runner of type hosted even after multiple attempts` となって `Internal server error. Correlation ID: 0e359e02-a74d-4e1a-9d87-a4ea4a9b8084` となって落ちているから。
 
 エラーの内容は、ようするに `stack ls dependencies json` コマンドに `--system-ghc` フラグをつけられないということである。手元で実行していた時は `--system-ghc` フラグをつけていなかったから気付かなかった。
 
 そもそも `--system-ghc` フラグが Stack と GHCup の連携において不要となったはずであるので、他の場所の `--system-ghc` フラグも外してみるのが良いかもしれない。
+
+## comment 2026-10-30 2
+
+push した。
+
+以下の通りになった。
+
+* [build #5](https://github.com/Hexirp/hakiru/actions/runs/40910985150)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40910985150/job/123578562635)
+  * [Build os-macos-latest-large ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40910985150/job/123578562760)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40910985150/job/123578562207)
+
+保存したログは以下の通り。
+
+* build #5
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_110898142089/0_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_110898142089/2_Build%20os-windows-latest%20ghc-9.8.4.txt)
+
+`macos-latest-large` のジョブは `The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings` と出た。これはもうダメかな。 macOS は外そう。
+
+`stack ls dependencies json` コマンドは動いたけど、別の GHC をインストールしてしまっている。
+
+つけないと GHC をインストールしてしまうのに、つけることができない。矛盾している。
+
+そもそも `--system-ghc` フラグは "[Document how to cache stack](https://github.com/haskell-actions/setup/issues/86)" の方で勧められていたんだよな。それが急に不可能になったというわけではないよね？
+
+読み返そう。 TravisCardwell さん（[リンク](https://github.com/TravisCardwell)）のコメント（[リンク](https://github.com/haskell-actions/setup/issues/86#issuecomment-2213273002)）を引用させていただく。
+
+````md
+When listing dependencies, `--system-ghc` is necessary to prevent Stack from installing GHC.  It looks like the following argument order works:
+
+```
+stack --system-ghc ls dependencies json
+```
+````
+
+つまり、 `--system-ghc` の位置が違う、そういうこと？

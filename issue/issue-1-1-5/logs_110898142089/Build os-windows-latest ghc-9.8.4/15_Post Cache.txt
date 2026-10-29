@@ -1,0 +1,4 @@
+﻿2026-10-29T16:28:35.3918888Z Post job cleanup.
+2026-10-29T16:28:35.6786915Z [command]"C:\Program Files\Git\usr\bin\tar.exe" --posix -cf cache.tzst --exclude cache.tzst -P -C D:/a/hakiru/hakiru --files-from manifest.txt --force-local --use-compress-program "zstd -T0"
+2026-10-29T16:28:36.0377357Z Sent 477508 of 477508 (100.0%), 5.4 MBs/sec
+2026-10-29T16:28:36.3080361Z Cache saved with key: stack-root-Windows-windows-latest-9.8.4-23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d-60b14e200ff5a10e3ab3c4e9938113e40719704e8ceaa8ea334afc1ff782a93c
