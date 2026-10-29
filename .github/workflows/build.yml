@@ -31,7 +31,7 @@ jobs:
           enable-stack: true
       - name: Dependencies Snapshot
         id: dependencies-snapshot
-        run: stack ls dependencies json --test > dependencies-snapshot.json
+        run: stack --system-ghc ls dependencies json --test > dependencies-snapshot.json
       - name: Cache
         id: cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -43,14 +43,14 @@ jobs:
         id: dependencies-build
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
         if: false
-        run: stack build --fast --test --no-run-tests --only-dependencies
+        run: stack --system-ghc build --fast --test --no-run-tests --only-dependencies
       - name: Build
         id: build
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
         if: false
-        run: stack build --fast --test --no-run-tests
+        run: stack --system-ghc build --fast --test --no-run-tests
       - name: Test
         id: test
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
         if: false
-        run: stack build --fast --test
+        run: stack --system-ghc build --fast --test
