@@ -905,3 +905,13 @@ alpha x = case subtract x 10 of { Nothing -> show x; Just x' -> '9' : alpha x'; 
 gamma 版は alpha 版を内蔵している。その際、 alpha 版を生成する関数に 10 進法での桁数を渡すことになる。ここで、 10 進法表記への変換と 10 進法表記の長さの計算を同時に行うことになる。そこで、この二つの計算をまとめて行う関数を使うのはどうだろうか。
 
 `Word` 型（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Prelude.html#t:Word)）でもなく `Integer` 型（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Prelude.html#t:Integer)）でもなく `Natural` 型（[リンク](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Numeric-Natural.html#t:Natural)）を使った方が良い。
+
+## comment 2026-10-29 2
+
+alpha 版のパーサーは……
+
+`9` とか `99` とかを禁止しないと prefix にならない。
+
+`1`, `2`, ..., `8`, `90`, `91`, ..., `98`, `990`, `991`, ... となる。
+
+このとき、それぞれの桁の総和をとると元の数に戻る。
