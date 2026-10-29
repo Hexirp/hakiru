@@ -10,7 +10,8 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest-large
+          # アーキテクチャの問題のため無効化する。詳細は /issue/issue-1-1-5.md と /issue/issue-1-2-16.md に書いてある。
+          # - macos-latest
           - windows-latest
         ghc:
           - 9.8.4
