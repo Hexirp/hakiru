@@ -308,3 +308,9 @@ stack --system-ghc ls dependencies json
 ````
 
 つまり、 `--system-ghc` の位置が違う、そういうこと？
+
+## comment 2026-10-30 3
+
+"[Blessed recipe how to use stack on github actions, in particular caching?](https://github.com/commercialhaskell/stack/issues/5754)" にある ulidtko さん（[リンク](https://github.com/ulidtko)）のコメント（[リンク](https://github.com/commercialhaskell/stack/issues/5754#issuecomment-1696156869)）を参考にして変更しよう。
+
+`config.yaml` までキャッシュするのはいけないとか、マニュアルリセットのための変数を入れるとか、既に 1 つのハイフンが区切りに使われているので 2 つのハイフンで区切っておくとか、参考になる。
