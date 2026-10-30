@@ -375,3 +375,25 @@ GHCup を使って GHC をインストールしている場合、それもキャ
 サンプルのコードでは `$STACK_ROOT/stack.sqlite3` と `STACK_ROOT/snapshots` を同時にキャッシュしている。 `stack.sqlite3.pantry-write-lock` は、おそらく必要ない。調べてみたら、なんか Stack に固有の仕組みで、ファイルを排他的に開いたり閉じたりするのをロック機構に転用しているみたい？
 
 サンプルのコードでは `./.stack-work/` もキャッシュしているけど、まあ、今のところはやる予定がない。
+
+## comment 2026-10-31 1
+
+`env` の書き方は……
+
+"[Store information in variables](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables)" を読む。
+
+サンプルのコードでは `steps.pantry.outputs.cache-hit != 'true'` と書いているけど `steps.pantry.outputs.cache-hit == 'false'` ではないのかな？　Google AI によると部分的に一致したりする場合に空文字列になったりするので `true` と等しくないと書く方が良いと。
+
+リセットのための環境変数は `CACHE_VERSION` と名付ける。 `v-1-1-1` という書式に。
+
+`$STACK_ROOT/pantry` は、私の理解だと GHC のバージョンが違う場合でも複数のパッケージが共存するだけで問題ないはずなんだけど、なぜかサンプルのコードでは resolver のバージョンがキーになっている。ううむ、 resolver のバージョンが違う時にまで共有すると、さすがに肥大化し過ぎるという判断なのかな？　ううむ、いったん GHC のバージョンはキーから外す。
+
+いや、そのままにしておく。後から `cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--` を `restore-keys` に追加すればいいし。
+
+`$STACK_ROOT/snapshots` は resolver が違う場合でも `restore-keys` からとってくるようになっている。ううむ？
+
+最初はサンプルのコードに合わせていたけど、やはり後から `cache--stack-snapshots--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.ghc }}--` を追加すればいいということで保守的に行こう。
+
+`key` と `restore-keys` が全く同じである場合 `restore-keys` を省略できる。
+
+`4dbf48553e1d023bb19abf006de42a3033405b39` をコミットした。今回は Stack だけ。 GHCup は後で。
