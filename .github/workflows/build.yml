@@ -3,6 +3,10 @@ name: build
 on:
   push:
 
+env:
+  STACK_PANTRY_CACHE_VERSION: v-1-1-1
+  STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+
 jobs:
   build:
     strategy:
@@ -29,16 +33,28 @@ jobs:
           cabal-version: 3.16.1.0
           stack-version: 3.11.1
           enable-stack: true
-      - name: Dependencies Snapshot
-        id: dependencies-snapshot
-        run: stack --system-ghc ls dependencies json --test > dependencies-snapshot.json
-      - name: Cache
-        id: cache
+      - name: Stack Pantry Cache
+        id: stack-pantry-cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        env:
+          CACHE_VERSION: ${{ env.STACK_PANTRY_CACHE_VERSION }}
         with:
-          path: ${{ steps.setup.outputs.stack-root }}
-          key: stack-root-${{ runner.os }}-${{ matrix.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('dependencies-snapshot.json') }}
-          restore-keys: stack-root-${{ runner.os }}-${{ matrix.os }}-${{ matrix.ghc }}-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('dependencies-snapshot.json') }}
+          path: ${{ steps.setup.outputs.stack-root }}/pantry
+          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.ghc }}
+      - name: Package Index Update
+        id: package-index-update
+        if: steps.stack-pantry-cache.outputs.cache-hit != 'true'
+        run: stack --system-ghc update
+      - name: Stack Snapshot Cache
+        id: stack-snapshot-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        env:
+          CACHE_VERSION: ${{ env.STACK_SNAPSHOT_CACHE_VERSION }}
+        with:
+          path: |
+            ${{ steps.setup.outputs.stack-root }}/stack.sqlite3
+            ${{ steps.setup.outputs.stack-root }}/snapshots
+          key: cache--stack-snapshots--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.ghc }}--${{ hashFiles('stack.yaml.lock') }}
       - name: Dependencies Build
         id: dependencies-build
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
