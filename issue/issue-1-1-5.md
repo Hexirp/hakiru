@@ -314,3 +314,64 @@ stack --system-ghc ls dependencies json
 "[Blessed recipe how to use stack on github actions, in particular caching?](https://github.com/commercialhaskell/stack/issues/5754)" にある ulidtko さん（[リンク](https://github.com/ulidtko)）のコメント（[リンク](https://github.com/commercialhaskell/stack/issues/5754#issuecomment-1696156869)）を参考にして変更しよう。
 
 `config.yaml` までキャッシュするのはいけないとか、マニュアルリセットのための変数を入れるとか、既に 1 つのハイフンが区切りに使われているので 2 つのハイフンで区切っておくとか、参考になる。
+
+## comment 2026-10-30 4
+
+push した。
+
+以下の通りになった。
+
+* [build #6](https://github.com/Hexirp/hakiru/actions/runs/40917187453)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40917187453/job/123600437913)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40917187453/job/123600437568)
+
+保存したログは以下の通り。
+
+* build #5
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_110915492883/0_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_110915492883/1_Build%20os-windows-latest%20ghc-9.8.4.txt)
+
+きちんと成功している！
+
+Windows で 7-Zip と msys2 をインストールしているんだけど、これはキャッシュできるのかな……？
+
+あと、 `stack ls dependencies` には `$STACK_ROOT/pantry` の更新が必要だから、キャッシュをするために `stack ls dependencies` が必要で、 `stack ls dependencies` を実行すると `$STACK_ROOT/pantry` が動いて、 `$STACK_ROOT/pantry` が動く前にキャッシュからとってこないといけないというデッドロックがある。
+
+Cargo における `Cargo.lock` みたいな機能があったらいいんだけど。 `stack.yaml.lock` に追加するのは、個別のプロジェクトに対する機能ではないことから、意味論としては微妙ぎみだけど。 Hackage における revision について固定していないというのもあるけど、これは Stackage の resolver を使う限りにおいてはコードの変化がなくメタデータが変わっていないことから問題ない。メタデータが変わると依存関係も変わる可能性があるけど、 resolver を使っているなら依存関係は変わらないから。
+
+* "[Hackage: The Haskell Package Repository](https://hackage.haskell.org/)"
+* "[Uploading packages § Package versioning and curation](https://hackage.haskell.org/upload#versioning_and_curation)"
+* "[Hackage Metadata Revisions — What They Are, How They Work](https://github.com/haskell-infra/hackage-trustees/blob/98e67ce2f5febf3ea7d47eee9d411daf1e423485/revisions-information.md)"
+* "[Cookbook for common build-failures § Best practice for managing meta-data](https://github.com/haskell-infra/hackage-trustees/blob/98e67ce2f5febf3ea7d47eee9d411daf1e423485/cookbook.md#best-practice-for-managing-meta-data)"
+
+revision について調べている。ようするに、依存ライブラリのバージョンの上限を変えたい時はメタデータを編集しろってことね。新しいバージョンをアップロードすると、それぞれのバージョンにおける重複ファイルが大量になるから。かといって、広めの上限を指定すると "[Haskell Package Versioning Policy](https://pvp.haskell.org/)" に違反する。
+
+というか Hackage におけるバージョニングは "[Haskell Package Versioning Policy](https://pvp.haskell.org/)" のみだと規定されているのね。それにしてはセマンティック・バージョニングに従っているように見えるパッケージをちらほら見かけたような記憶があるけど……？
+
+"[Blessed recipe how to use stack on github actions, in particular caching?](https://github.com/commercialhaskell/stack/issues/5754)" にある ulidtko さん（[リンク](https://github.com/ulidtko)）のコメント（[リンク](https://github.com/commercialhaskell/stack/issues/5754#issuecomment-1696156869)）について。
+
+`STACK_ROOT` 環境変数について調べていたら "[stack ignores STACK_ROOT and --stack-root](https://github.com/commercialhaskell/stack/issues/5664) を見つけたんだけど Windows の時だけ `local-programs-path` が `$STACK_ROOT/programs` ではなく `$LOCALAPPDATA\Programs\stack` になっているのは歴史的経緯らしい。このせいで Stack のキャッシュを D ドライブに保存しようとした時に困ったんだけど。
+
+`$STACK_ROOT` を丸ごとキャッシュするのではなく `$STACK_ROOT/pantry` と `$STACK_ROOT/snapshots` と `$STACK_ROOT/programs` を別々にキャッシュするべきだと。 `$STACK_ROOT/pantry` は Hackage にある Cabal ファイルをキャッシュするもので。 `$STACK_ROOT/snapshots` は実際のライブラリのコードをキャッシュするもので。 `$STACK_ROOT/programs` は GHC などをキャッシュするもので。
+
+そういや `stack ls --system-ghc dependencies --external txt > dependencies.txt` を実行した時に Hackage にある全 Cabal ファイルがダウンロードされたのは `stack ls` だけを実行した時の不具合であるのかもしれない。いや、違うか？　よくわからないな。
+
+`$STACK_ROOT/pantry` と `$STACK_ROOT/snapshots` と `$STACK_ROOT/programs` はそれぞれ再利用できる範囲が異なるため別々のキーにする。
+
+`hashFiles('stack.yaml')` と `hashFiles('package.yaml')` ではなく `hashFiles('stack.yaml.lock')` をキーにするべきだと。まあ、これらについては依存ライブラリを無視すればそうであるよね。既に使わない依存ライブラリが `$STACK_ROOT/snapshots` に残るリスクと `hashFiles('package.yaml')` が少し変わるだけで全部の依存ライブラリを再ビルドするリスクを比較して、前者を選ぶべきだと。
+
+やっぱり `stack ls dependencies` はやめようかな。あるいは、諦めようかな。既に使わない依存ライブラリが `$STACK_ROOT/snapshots` に残るリスクを低く見積もる。
+
+サンプルのコードもついている。
+
+GHCup を使って GHC をインストールしている場合、それもキャッシュして、キャッシュがある場合には GHCup のセットアップをしない。ここもキャッシュできないかなと思っていたので、できるというのは嬉しいポイントである。
+
+`$STACK_ROOT/pantry` のキャッシュの時には `stack update` で `$STACK_ROOT/pantry` を更新している。ああ、なるほど？　`stack ls --system-ghc dependencies --external txt > dependencies.txt` に起こったことは、もしかして、これなの？
+
+肥大化した `$STACK_ROOT/pantry` は `$STACK_ROOT/pantry-old` に移動させたまま調査が終わるまで残していたから、そろそろ消そうかなと思っていたんだけど、いったん戻してみるか。
+
+よし、この状態で `stack update` を実行したら更新は少しだけだった。やはりこれが関係しているのか。そして、肥大化しているのは困るけど、残しておくか。
+
+サンプルのコードでは `$STACK_ROOT/stack.sqlite3` と `STACK_ROOT/snapshots` を同時にキャッシュしている。 `stack.sqlite3.pantry-write-lock` は、おそらく必要ない。調べてみたら、なんか Stack に固有の仕組みで、ファイルを排他的に開いたり閉じたりするのをロック機構に転用しているみたい？
+
+サンプルのコードでは `./.stack-work/` もキャッシュしているけど、まあ、今のところはやる予定がない。

@@ -1,0 +1,322 @@
+﻿2026-10-29T17:00:56.6138143Z Current runner version: '2.338.0'
+2026-10-29T17:00:56.6164925Z ##[group]Runner Image Provisioner
+2026-10-29T17:00:56.6165855Z Hosted Compute Agent
+2026-10-29T17:00:56.6166593Z Version: 20261021.618
+2026-10-29T17:00:56.6167299Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-29T17:00:56.6168129Z Build Date: 2026-10-21T00:45:21Z
+2026-10-29T17:00:56.6169331Z Worker ID: {086bc596-9cab-486f-adfc-2ec0b7ff8984}
+2026-10-29T17:00:56.6170127Z Region: westus
+2026-10-29T17:00:56.6171152Z Cloud: Azure
+2026-10-29T17:00:56.6171764Z ##[endgroup]
+2026-10-29T17:00:56.6173550Z ##[group]Operating System
+2026-10-29T17:00:56.6174658Z Ubuntu
+2026-10-29T17:00:56.6175241Z 24.04.5
+2026-10-29T17:00:56.6175848Z LTS
+2026-10-29T17:00:56.6176405Z ##[endgroup]
+2026-10-29T17:00:56.6176970Z ##[group]Runner Image
+2026-10-29T17:00:56.6177697Z Image: ubuntu-24.04
+2026-10-29T17:00:56.6178300Z Version: 20261025.353.1
+2026-10-29T17:00:56.6179904Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-29T17:00:56.6181593Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-10-29T17:00:56.6182758Z ##[endgroup]
+2026-10-29T17:00:56.6184017Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T17:00:56.6186290Z Contents: read
+2026-10-29T17:00:56.6186935Z Metadata: read
+2026-10-29T17:00:56.6187596Z Packages: read
+2026-10-29T17:00:56.6188252Z ##[endgroup]
+2026-10-29T17:00:56.6190630Z Secret source: Actions
+2026-10-29T17:00:56.6191742Z Cache mode: write
+2026-10-29T17:00:56.6192460Z Prepare workflow directory
+2026-10-29T17:00:56.6536067Z Prepare all required actions
+2026-10-29T17:00:56.6592633Z Getting action download info
+2026-10-29T17:00:57.0816965Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-29T17:00:57.2207172Z Download action repository 'haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-10-29T17:00:57.5377990Z Download action repository 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-10-29T17:00:57.7643178Z Complete job name: Build os-ubuntu-latest ghc-9.8.4
+2026-10-29T17:00:57.8573778Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-29T17:00:57.8574875Z with:
+2026-10-29T17:00:57.8575324Z   repository: Hexirp/hakiru
+2026-10-29T17:00:57.8579454Z   token: ***
+2026-10-29T17:00:57.8579909Z   ssh-strict: true
+2026-10-29T17:00:57.8580401Z   ssh-user: git
+2026-10-29T17:00:57.8580867Z   persist-credentials: true
+2026-10-29T17:00:57.8581372Z   clean: true
+2026-10-29T17:00:57.8581839Z   sparse-checkout-cone-mode: true
+2026-10-29T17:00:57.8582375Z   fetch-depth: 1
+2026-10-29T17:00:57.8582820Z   fetch-tags: false
+2026-10-29T17:00:57.8583275Z   show-progress: true
+2026-10-29T17:00:57.8583735Z   lfs: false
+2026-10-29T17:00:57.8584161Z   submodules: false
+2026-10-29T17:00:57.8584626Z   set-safe-directory: true
+2026-10-29T17:00:57.8585179Z   allow-unsafe-pr-checkout: false
+2026-10-29T17:00:57.8585990Z ##[endgroup]
+2026-10-29T17:00:58.3031513Z Syncing repository: Hexirp/hakiru
+2026-10-29T17:00:58.3033552Z ##[group]Getting Git version info
+2026-10-29T17:00:58.3034468Z Working directory is '/home/runner/work/hakiru/hakiru'
+2026-10-29T17:00:58.3035601Z [command]/usr/bin/git version
+2026-10-29T17:00:58.3177811Z git version 2.56.0
+2026-10-29T17:00:58.3205579Z ##[endgroup]
+2026-10-29T17:00:58.3217040Z Temporarily overriding HOME='/home/runner/work/_temp/5491ae3f-5c2f-430d-91b1-c184d0319f97' before making global git config changes
+2026-10-29T17:00:58.3219879Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-29T17:00:58.3222287Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-10-29T17:00:58.3297277Z Deleting the contents of '/home/runner/work/hakiru/hakiru'
+2026-10-29T17:00:58.3301719Z ##[group]Determining repository object format
+2026-10-29T17:00:58.3303892Z ##[endgroup]
+2026-10-29T17:00:58.3304848Z ##[group]Initializing the repository
+2026-10-29T17:00:58.3310681Z [command]/usr/bin/git init /home/runner/work/hakiru/hakiru
+2026-10-29T17:00:58.3505689Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-29T17:00:58.3507970Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-29T17:00:58.3510334Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-29T17:00:58.3511912Z hint: call:
+2026-10-29T17:00:58.3512897Z hint:
+2026-10-29T17:00:58.3514070Z hint: 	git config --global init.defaultBranch <name>
+2026-10-29T17:00:58.3515514Z hint:
+2026-10-29T17:00:58.3516812Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-29T17:00:58.3518813Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-29T17:00:58.3520193Z hint:
+2026-10-29T17:00:58.3521163Z hint: 	git branch -m <name>
+2026-10-29T17:00:58.3522233Z hint:
+2026-10-29T17:00:58.3523386Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-29T17:00:58.3525244Z Initialized empty Git repository in /home/runner/work/hakiru/hakiru/.git/
+2026-10-29T17:00:58.3537571Z [command]/usr/bin/git remote add origin https://github.com/Hexirp/hakiru
+2026-10-29T17:00:58.3602071Z ##[endgroup]
+2026-10-29T17:00:58.3603400Z ##[group]Disabling automatic garbage collection
+2026-10-29T17:00:58.3606760Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-29T17:00:58.3647474Z ##[endgroup]
+2026-10-29T17:00:58.3650045Z ##[group]Setting up auth
+2026-10-29T17:00:58.3656656Z Removing SSH command configuration
+2026-10-29T17:00:58.3658781Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-29T17:00:58.3706278Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-29T17:00:58.4178740Z Removing HTTP extra header
+2026-10-29T17:00:58.4185241Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-29T17:00:58.4244099Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-29T17:00:58.4507955Z Removing includeIf entries pointing to credentials config files
+2026-10-29T17:00:58.4514547Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-29T17:00:58.4566560Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-29T17:00:58.4834604Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-29T17:00:58.4892832Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git.path /home/runner/work/_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:00:58.4944457Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:00:58.4993894Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:00:58.5040218Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:00:58.5084748Z ##[endgroup]
+2026-10-29T17:00:58.5085751Z ##[group]Fetching the repository
+2026-10-29T17:00:58.5092617Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +30b8007411e29c87487f7a7558ddd4eaec86deb1:refs/remotes/origin/main
+2026-10-29T17:00:58.9856692Z From https://github.com/Hexirp/hakiru
+2026-10-29T17:00:58.9859463Z  * [new ref]         30b8007411e29c87487f7a7558ddd4eaec86deb1 -> origin/main
+2026-10-29T17:00:58.9866455Z [command]/usr/bin/git branch --list --remote origin/main
+2026-10-29T17:00:58.9906708Z   origin/main
+2026-10-29T17:00:58.9916314Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-10-29T17:00:58.9955350Z 30b8007411e29c87487f7a7558ddd4eaec86deb1
+2026-10-29T17:00:58.9962670Z ##[endgroup]
+2026-10-29T17:00:58.9965443Z ##[group]Determining the checkout info
+2026-10-29T17:00:58.9968241Z ##[endgroup]
+2026-10-29T17:00:58.9970424Z [command]/usr/bin/git sparse-checkout disable
+2026-10-29T17:00:59.0048315Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-29T17:00:59.0101297Z ##[group]Checking out the ref
+2026-10-29T17:00:59.0105059Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-29T17:00:59.0347086Z Switched to a new branch 'main'
+2026-10-29T17:00:59.0354419Z branch 'main' set up to track 'origin/main'.
+2026-10-29T17:00:59.0366746Z ##[endgroup]
+2026-10-29T17:00:59.0444693Z [command]/usr/bin/git log -1 --format=%H
+2026-10-29T17:00:59.0491215Z 30b8007411e29c87487f7a7558ddd4eaec86deb1
+2026-10-29T17:00:59.0985418Z ##[group]Run haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d
+2026-10-29T17:00:59.0987527Z with:
+2026-10-29T17:00:59.0988811Z   ghc-version: 9.8.4
+2026-10-29T17:00:59.0989979Z   cabal-version: 3.16.1.0
+2026-10-29T17:00:59.0991429Z   stack-version: 3.11.1
+2026-10-29T17:00:59.0992571Z   enable-stack: true
+2026-10-29T17:00:59.0993611Z   cabal-update: true
+2026-10-29T17:00:59.0994656Z ##[endgroup]
+2026-10-29T17:00:59.1877520Z Preparing to setup a Haskell environment
+2026-10-29T17:00:59.1890613Z ##[group]Preparing ghcup environment
+2026-10-29T17:00:59.1892800Z Adding ghcup release channel: prereleases
+2026-10-29T17:00:59.6731877Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup config add-release-channel prereleases
+2026-10-29T17:00:59.7407674Z ##[endgroup]
+2026-10-29T17:00:59.7409595Z ##[group]Preparing ghc environment
+2026-10-29T17:00:59.9843920Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset ghc
+2026-10-29T17:01:00.0557528Z [1m[92m[ Info  ][0m[0m ghc successfully unset
+2026-10-29T17:01:00.0619669Z ##[endgroup]
+2026-10-29T17:01:00.0621186Z ##[group]Installing ghc version 9.8.4
+2026-10-29T17:01:00.2725897Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis ghc 9.8.4
+2026-10-29T17:01:00.2847196Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-29T17:01:00.2891469Z 
+2026-10-29T17:01:00.2891505Z 
+2026-10-29T17:01:00.2892528Z Attempting to access tool ghc at location /home/runner/.ghcup/bin
+2026-10-29T17:01:00.2894924Z Succeeded accessing tool ghc at location /home/runner/.ghcup/bin
+2026-10-29T17:01:00.4670583Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-29T17:01:00.4800277Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml as file /usr/local/.ghcup/cache/ghcup-0.1.0.yaml
+2026-10-29T17:01:00.4916001Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-29T17:01:00.4917357Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-29T17:01:00.4918806Z 
+2026-10-29T17:01:00.5196536Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-29T17:01:00.5197580Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-29T17:01:00.5232825Z [1m[93m[ Warn  ][0m[0m setModificationTime failed with: /usr/local/.ghcup/cache/ghcup-0.1.0.yaml: setModificationTime:setFileTimes: permission denied (Operation not permitted)
+2026-10-29T17:01:00.5241501Z [1m[93m[ Warn  ][0m[0m setAccessTime failed with: /usr/local/.ghcup/cache/ghcup-0.1.0.yaml: setAccessTime:setFileTimes: permission denied (Operation not permitted)
+2026-10-29T17:01:00.6286194Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-prereleases-0.1.0.yaml as file /usr/local/.ghcup/cache/ghcup-prereleases-0.1.0.yaml
+2026-10-29T17:01:00.6364864Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-29T17:01:00.6367134Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-29T17:01:00.6367863Z 
+2026-10-29T17:01:00.6661586Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-29T17:01:00.6662746Z 100  373k  100  373k    0     0  12.1M      0 --:--:-- --:--:-- --:--:-- 12.5M
+2026-10-29T17:01:00.7153867Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-29T17:01:00.9229170Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset ghc
+2026-10-29T17:01:00.9354975Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool ghc
+2026-10-29T17:01:00.9416987Z Attempting to install ghc 9.8.4 using ghcup
+2026-10-29T17:01:01.1244039Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup install ghc 9.8.4
+2026-10-29T17:01:01.2661337Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghc/9.8.4/ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz as file /usr/local/.ghcup/tmp/ghcup-525f8f3aa435fd8b/ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz
+2026-10-29T17:01:01.2741809Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-29T17:01:01.2742976Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-29T17:01:01.2743643Z 
+2026-10-29T17:01:01.2976554Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-29T17:01:02.2983409Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-29T17:01:02.3811003Z  93  213M   93  199M    0     0   194M      0  0:00:01  0:00:01 --:--:--  194M
+2026-10-29T17:01:02.3812373Z 100  213M  100  213M    0     0   192M      0  0:00:01  0:00:01 --:--:--  192M
+2026-10-29T17:01:02.3848095Z [1m[92m[ Info  ][0m[0m verifying digest of: ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz
+2026-10-29T17:01:03.1862871Z [1m[92m[ Info  ][0m[0m Unpacking: ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz to /usr/local/.ghcup/tmp/ghcup-e222c3140fc9b650
+2026-10-29T17:01:16.0869803Z [1m[92m[ Info  ][0m[0m Installing ghc
+2026-10-29T17:01:16.0881984Z 
+2026-10-29T17:01:16.0882682Z 
+2026-10-29T17:01:16.0882691Z 
+2026-10-29T17:01:16.0882697Z 
+2026-10-29T17:01:16.0882707Z 
+2026-10-29T17:01:16.0882713Z 
+2026-10-29T17:01:28.8569749Z 
+2026-10-29T17:01:28.8627414Z [6A[0J
+2026-10-29T17:01:28.8627634Z 
+2026-10-29T17:01:28.8627640Z 
+2026-10-29T17:01:28.8627645Z 
+2026-10-29T17:01:28.8627649Z 
+2026-10-29T17:01:28.8627687Z 
+2026-10-29T17:02:41.9243001Z 
+2026-10-29T17:02:50.7461528Z [6A[0J[1m[92m[ Info  ][0m[0m ghc installation successful
+2026-10-29T17:02:50.8071208Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-29T17:02:50.9447825Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-29T17:02:51.4291330Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis ghc 9.8.4
+2026-10-29T17:02:51.4477239Z /usr/local/.ghcup/ghc/9.8.4/bin/ghc-9.8.4
+2026-10-29T17:02:51.4477706Z 
+2026-10-29T17:02:51.4478404Z Attempting to access tool ghc at location /home/runner/.ghcup/bin
+2026-10-29T17:02:51.4488135Z Succeeded accessing tool ghc at location /home/runner/.ghcup/bin
+2026-10-29T17:02:51.6656722Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-29T17:02:51.8087487Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-29T17:02:51.8284908Z Found ghc 9.8.4 in cache at path /home/runner/.ghcup/bin. Setup successful.
+2026-10-29T17:02:51.8287420Z ##[endgroup]
+2026-10-29T17:02:51.8288155Z ##[group]Preparing cabal environment
+2026-10-29T17:02:52.0398919Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset cabal
+2026-10-29T17:02:52.0595888Z [1m[92m[ Info  ][0m[0m cabal successfully unset
+2026-10-29T17:02:52.0697351Z ##[endgroup]
+2026-10-29T17:02:52.0699172Z ##[group]Installing cabal version 3.16.1.0
+2026-10-29T17:02:52.2834556Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis cabal 3.16.1.0
+2026-10-29T17:02:52.2966816Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-29T17:02:52.3020088Z 
+2026-10-29T17:02:52.3020097Z 
+2026-10-29T17:02:52.3020978Z Attempting to access tool cabal at location /home/runner/.ghcup/bin
+2026-10-29T17:02:52.3021925Z Succeeded accessing tool cabal at location /home/runner/.ghcup/bin
+2026-10-29T17:02:52.5222929Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-29T17:02:52.6547268Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-29T17:02:52.8998138Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset cabal
+2026-10-29T17:02:52.9121765Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool cabal
+2026-10-29T17:02:52.9175668Z Attempting to install cabal 3.16.1.0 using ghcup
+2026-10-29T17:02:53.1492186Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup install cabal 3.16.1.0
+2026-10-29T17:02:53.2901909Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghcup/unofficial-bindists/cabal/3.16.1.0/cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz as file /usr/local/.ghcup/tmp/ghcup-f514ca9a1542119c/cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz
+2026-10-29T17:02:53.2981589Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-29T17:02:53.2986731Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-29T17:02:53.2987234Z 
+2026-10-29T17:02:53.3198533Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-29T17:02:53.3422571Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-29T17:02:53.3423859Z 100 5310k  100 5310k    0     0   115M      0 --:--:-- --:--:-- --:--:--  115M
+2026-10-29T17:02:53.3453245Z [1m[92m[ Info  ][0m[0m verifying digest of: cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz
+2026-10-29T17:02:53.3691549Z [1m[92m[ Info  ][0m[0m Unpacking: cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz to /usr/local/.ghcup/tmp/ghcup-7a9112e43e893063
+2026-10-29T17:02:53.6609337Z [1m[92m[ Info  ][0m[0m Installing cabal
+2026-10-29T17:02:53.7537732Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-29T17:02:53.7541670Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-29T17:02:53.7543944Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-29T17:02:53.8013742Z [1m[92m[ Info  ][0m[0m cabal installation successful
+2026-10-29T17:02:53.8184644Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-29T17:02:53.9532057Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-29T17:02:53.9533911Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-29T17:02:53.9539488Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-29T17:02:53.9847390Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-29T17:02:54.2378742Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis cabal 3.16.1.0
+2026-10-29T17:02:54.2550056Z /usr/local/.ghcup/cabal/3.16.1.0/cabal
+2026-10-29T17:02:54.2550547Z 
+2026-10-29T17:02:54.2551452Z Attempting to access tool cabal at location /home/runner/.ghcup/bin
+2026-10-29T17:02:54.2552568Z Succeeded accessing tool cabal at location /home/runner/.ghcup/bin
+2026-10-29T17:02:54.5393690Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-29T17:02:54.6853498Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-29T17:02:54.6857153Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-29T17:02:54.6862976Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-29T17:02:54.6938179Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-29T17:02:54.7105650Z Found cabal 3.16.1.0 in cache at path /home/runner/.ghcup/bin. Setup successful.
+2026-10-29T17:02:54.7107093Z ##[endgroup]
+2026-10-29T17:02:54.7107903Z ##[group]Preparing stack environment
+2026-10-29T17:02:54.7109421Z ##[endgroup]
+2026-10-29T17:02:54.7110220Z ##[group]Installing stack version 3.11.1
+2026-10-29T17:02:55.0431037Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis stack 3.11.1
+2026-10-29T17:02:55.0557300Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.11.1' of the tool stack is not installed.
+2026-10-29T17:02:55.0597994Z 
+2026-10-29T17:02:55.0598180Z 
+2026-10-29T17:02:55.0603466Z Attempting to install stack 3.11.1 for arch x86_64
+2026-10-29T17:02:55.9559514Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/22935248-8581-47f1-bcdc-d287c6c34570 -f /home/runner/work/_temp/493a9120-52f4-49ca-9dce-baf3779140bb
+2026-10-29T17:02:56.5758373Z Found stack 3.11.1 in cache at path /opt/hostedtoolcache/stack/3.11.1/x64. Setup successful.
+2026-10-29T17:02:56.5760447Z ##[endgroup]
+2026-10-29T17:02:56.5761134Z ##[group]Setting up cabal
+2026-10-29T17:02:56.6168866Z Adding /home/runner/.cabal/bin to PATH
+2026-10-29T17:02:56.6169923Z ##[endgroup]
+2026-10-29T17:02:56.6408945Z ##[group]Run stack --system-ghc ls dependencies json --test > dependencies-snapshot.json
+2026-10-29T17:02:56.6409910Z [36;1mstack --system-ghc ls dependencies json --test > dependencies-snapshot.json[0m
+2026-10-29T17:02:56.6441785Z shell: /usr/bin/bash -e {0}
+2026-10-29T17:02:56.6442119Z ##[endgroup]
+2026-10-29T17:04:36.8080018Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-29T17:04:36.8080538Z with:
+2026-10-29T17:04:36.8080814Z   path: /home/runner/.stack
+2026-10-29T17:04:36.8081942Z   key: stack-root-Linux-ubuntu-latest-9.8.4-41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357-5d1ffabf5287193fbd4e4c377e832a80a64ea0f26ae6b79d98ce649e5f803b83
+2026-10-29T17:04:36.8083989Z   restore-keys: stack-root-Linux-ubuntu-latest-9.8.4-41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357-5d1ffabf5287193fbd4e4c377e832a80a64ea0f26ae6b79d98ce649e5f803b83
+2026-10-29T17:04:36.8085224Z   enableCrossOsArchive: false
+2026-10-29T17:04:36.8085557Z   fail-on-cache-miss: false
+2026-10-29T17:04:36.8085859Z   lookup-only: false
+2026-10-29T17:04:36.8086134Z   save-always: false
+2026-10-29T17:04:36.8086399Z ##[endgroup]
+2026-10-29T17:04:37.2506951Z Cache hit for: stack-root-Linux-ubuntu-latest-9.8.4-41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357-5d1ffabf5287193fbd4e4c377e832a80a64ea0f26ae6b79d98ce649e5f803b83
+2026-10-29T17:04:38.5357884Z Received 12582912 of 355591473 (3.5%), 12.0 MBs/sec
+2026-10-29T17:04:39.5365741Z Received 134217728 of 355591473 (37.7%), 64.0 MBs/sec
+2026-10-29T17:04:40.5379618Z Received 268435456 of 355591473 (75.5%), 85.3 MBs/sec
+2026-10-29T17:04:41.1081184Z Received 355591473 of 355591473 (100.0%), 94.9 MBs/sec
+2026-10-29T17:04:41.1083195Z Cache Size: ~339 MB (355591473 B)
+2026-10-29T17:04:41.1175340Z [command]/usr/bin/tar -xf /home/runner/work/_temp/0795f655-39ae-4b60-bc49-ffe69f4ff659/cache.tzst -P -C /home/runner/work/hakiru/hakiru --use-compress-program unzstd
+2026-10-29T17:04:45.7021306Z Cache restored successfully
+2026-10-29T17:04:46.6381773Z Cache restored from key: stack-root-Linux-ubuntu-latest-9.8.4-41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357-5d1ffabf5287193fbd4e4c377e832a80a64ea0f26ae6b79d98ce649e5f803b83
+2026-10-29T17:04:46.9571648Z Post job cleanup.
+2026-10-29T17:04:47.0925679Z Cache hit occurred on the primary key stack-root-Linux-ubuntu-latest-9.8.4-41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357-5d1ffabf5287193fbd4e4c377e832a80a64ea0f26ae6b79d98ce649e5f803b83, not saving cache.
+2026-10-29T17:04:47.1456845Z Post job cleanup.
+2026-10-29T17:04:47.2442479Z [command]/usr/bin/git version
+2026-10-29T17:04:47.2507161Z git version 2.56.0
+2026-10-29T17:04:47.2556337Z Temporarily overriding HOME='/home/runner/work/_temp/1f14d98d-3c0e-4718-a8d3-0cefd8c479ed' before making global git config changes
+2026-10-29T17:04:47.2559170Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-29T17:04:47.2563365Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-10-29T17:04:47.2885343Z Removing SSH command configuration
+2026-10-29T17:04:47.2937349Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-29T17:04:47.2994529Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-29T17:04:47.3275601Z Removing HTTP extra header
+2026-10-29T17:04:47.3290088Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-29T17:04:47.3378173Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-29T17:04:47.3732573Z Removing includeIf entries pointing to credentials config files
+2026-10-29T17:04:47.3743235Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-29T17:04:47.4896873Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-10-29T17:04:47.4899383Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-10-29T17:04:47.4911658Z includeif.gitdir:/github/workspace/.git.path
+2026-10-29T17:04:47.4912857Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-29T17:04:47.4915811Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-10-29T17:04:47.4960392Z /home/runner/work/_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:04:47.4972130Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-0f0babdb\-ab8c\-497f\-accc\-c42df7a58726\.config
+2026-10-29T17:04:47.5382870Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-10-29T17:04:47.5423932Z /home/runner/work/_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:04:47.5435574Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-0f0babdb\-ab8c\-497f\-accc\-c42df7a58726\.config
+2026-10-29T17:04:47.6481833Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-29T17:04:47.6534028Z /github/runner_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:04:47.6544893Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-0f0babdb\-ab8c\-497f\-accc\-c42df7a58726\.config
+2026-10-29T17:04:47.6953026Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-29T17:04:47.7004653Z /github/runner_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config
+2026-10-29T17:04:47.7017207Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-0f0babdb\-ab8c\-497f\-accc\-c42df7a58726\.config
+2026-10-29T17:04:47.7435433Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-29T17:04:47.7718044Z Removing credentials config '/home/runner/work/_temp/git-credentials-0f0babdb-ab8c-497f-accc-c42df7a58726.config'
+2026-10-29T17:04:47.7912629Z Cleaning up orphan processes
