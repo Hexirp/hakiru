@@ -17,9 +17,12 @@ jobs:
           # アーキテクチャの問題のため無効化する。詳細は /issue/issue-1-1-5.md と /issue/issue-1-2-16.md に書いてある。
           # - macos-latest
           - windows-latest
-        ghc:
-          - 9.8.4
-    name: Build os-${{ matrix.os }} ghc-${{ matrix.ghc }}
+        haskell:
+          - ghc: 9.8.4
+            cabal: 3.16.1.0
+            stack: 3.11.1
+            resolver: lts-23.28
+    name: Build os-${{ matrix.os }} ghc-${{ matrix.haskell.ghc }}
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -29,9 +32,9 @@ jobs:
         id: setup
         uses: haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d # v2.12.1
         with:
-          ghc-version: ${{ matrix.ghc }}
-          cabal-version: 3.16.1.0
-          stack-version: 3.11.1
+          ghc-version: ${{ matrix.haskell.ghc }}
+          cabal-version: ${{ matrix.haskell.cabal }}
+          stack-version: ${{ matrix.haskell.stack }}
           enable-stack: true
       - name: Stack Pantry Cache
         id: stack-pantry-cache
@@ -40,7 +43,7 @@ jobs:
           CACHE_VERSION: ${{ env.STACK_PANTRY_CACHE_VERSION }}
         with:
           path: ${{ steps.setup.outputs.stack-root }}/pantry
-          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.ghc }}
+          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}
       - name: Package Index Update
         id: package-index-update
         if: steps.stack-pantry-cache.outputs.cache-hit != 'true'
@@ -54,7 +57,7 @@ jobs:
           path: |
             ${{ steps.setup.outputs.stack-root }}/stack.sqlite3
             ${{ steps.setup.outputs.stack-root }}/snapshots
-          key: cache--stack-snapshots--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.ghc }}--${{ hashFiles('stack.yaml.lock') }}
+          key: cache--stack-snapshots--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ hashFiles('stack.yaml.lock') }}
       - name: Dependencies Build
         id: dependencies-build
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
