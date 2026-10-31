@@ -43,11 +43,10 @@ jobs:
           CACHE_VERSION: ${{ env.STACK_PANTRY_CACHE_VERSION }}
         with:
           path: ${{ steps.setup.outputs.stack-root }}/pantry
-          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}
-      - name: Package Index Update
-        id: package-index-update
-        if: steps.stack-pantry-cache.outputs.cache-hit != 'true'
-        run: stack --system-ghc update
+          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+          restore-keys: |
+            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
+            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
       - name: Stack Snapshot Cache
         id: stack-snapshot-cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -57,19 +56,22 @@ jobs:
           path: |
             ${{ steps.setup.outputs.stack-root }}/stack.sqlite3
             ${{ steps.setup.outputs.stack-root }}/snapshots
-          key: cache--stack-snapshots--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ hashFiles('stack.yaml.lock') }}
+          key: cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+          restore-keys: |
+            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
+            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
       - name: Dependencies Build
         id: dependencies-build
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
         if: false
-        run: stack --system-ghc build --fast --test --no-run-tests --only-dependencies
+        run: stack --system-ghc --no-install-ghc --stack-yaml stack-${{ matrix.haskell.resolver }}.yaml build --fast --test --no-run-tests --only-dependencies
       - name: Build
         id: build
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
         if: false
-        run: stack --system-ghc build --fast --test --no-run-tests
+        run: stack --system-ghc --no-install-ghc --stack-yaml stack-${{ matrix.haskell.resolver }}.yaml build --fast --test --no-run-tests
       - name: Test
         id: test
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
         if: false
-        run: stack --system-ghc build --fast --test
+        run: stack --system-ghc --no-install-ghc --stack-yaml stack-${{ matrix.haskell.resolver }}.yaml build --fast --test
