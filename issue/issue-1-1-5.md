@@ -309,6 +309,10 @@ stack --system-ghc ls dependencies json
 
 つまり、 `--system-ghc` の位置が違う、そういうこと？
 
+`fbfe1c0603c6f6ae67317ba3405244c7a64a32f3` で macOS を指定する部分をコメントアウトした。
+
+`30b8007411e29c87487f7a7558ddd4eaec86deb1` で `--system-ghc` フラグを適切な場所に追加した。
+
 ## comment 2026-10-30 3
 
 "[Blessed recipe how to use stack on github actions, in particular caching?](https://github.com/commercialhaskell/stack/issues/5754)" にある ulidtko さん（[リンク](https://github.com/ulidtko)）のコメント（[リンク](https://github.com/commercialhaskell/stack/issues/5754#issuecomment-1696156869)）を参考にして変更しよう。
