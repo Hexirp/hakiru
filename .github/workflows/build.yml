@@ -42,7 +42,7 @@ jobs:
             ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/cache/*
             ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/config.yaml
             ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/ghc/${{ matrix.haskell.ghc }}
-          key: cache--ghcup--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.cabal }}--${{ matrix.haskell.stack }}
+          key: cache--ghcup--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--cabal-${{ matrix.haskell.cabal }}--stack-${{ matrix.haskell.stack }}
       - name: Setup
         id: setup
         uses: haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d # v2.12.1
@@ -59,10 +59,10 @@ jobs:
           CACHE_VERSION: ${{ env.STACK_PANTRY_CACHE_VERSION }}
         with:
           path: ${{ steps.setup.outputs.stack-root }}/pantry
-          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
           restore-keys: |
-            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
-            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
+            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
+            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--
       - name: Stack Snapshot Cache
         id: stack-snapshot-cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -72,10 +72,10 @@ jobs:
           path: |
             ${{ steps.setup.outputs.stack-root }}/stack.sqlite3
             ${{ steps.setup.outputs.stack-root }}/snapshots
-          key: cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+          key: cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
           restore-keys: |
-            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
-            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
+            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
+            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--
       - name: Dependencies Build
         id: dependencies-build
         # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
