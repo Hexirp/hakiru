@@ -1,0 +1,871 @@
+﻿2026-10-30T16:39:28.3750784Z Current runner version: '2.338.0'
+2026-10-30T16:39:28.3771174Z ##[group]Runner Image Provisioner
+2026-10-30T16:39:28.3771889Z Hosted Compute Agent
+2026-10-30T16:39:28.3772295Z Version: 20261021.618
+2026-10-30T16:39:28.3772730Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-30T16:39:28.3773177Z Build Date: 2026-10-21T00:45:21Z
+2026-10-30T16:39:28.3773579Z Worker ID: {799d24fd-a84b-4724-8287-f83078eae7ce}
+2026-10-30T16:39:28.3774058Z Region: southcentralus
+2026-10-30T16:39:28.3774454Z Cloud: Azure
+2026-10-30T16:39:28.3774822Z ##[endgroup]
+2026-10-30T16:39:28.3775897Z ##[group]Operating System
+2026-10-30T16:39:28.3776522Z Ubuntu
+2026-10-30T16:39:28.3776912Z 24.04.5
+2026-10-30T16:39:28.3777275Z LTS
+2026-10-30T16:39:28.3777625Z ##[endgroup]
+2026-10-30T16:39:28.3777988Z ##[group]Runner Image
+2026-10-30T16:39:28.3778360Z Image: ubuntu-24.04
+2026-10-30T16:39:28.3778756Z Version: 20261025.353.1
+2026-10-30T16:39:28.3779618Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-30T16:39:28.3780589Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-10-30T16:39:28.3781166Z ##[endgroup]
+2026-10-30T16:39:28.3781987Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T16:39:28.3783313Z Contents: read
+2026-10-30T16:39:28.3783729Z Metadata: read
+2026-10-30T16:39:28.3784085Z Packages: read
+2026-10-30T16:39:28.3784497Z ##[endgroup]
+2026-10-30T16:39:28.3785971Z Secret source: Actions
+2026-10-30T16:39:28.3786722Z Cache mode: write
+2026-10-30T16:39:28.3787240Z Prepare workflow directory
+2026-10-30T16:39:28.4041064Z Prepare all required actions
+2026-10-30T16:39:28.4077349Z Getting action download info
+2026-10-30T16:39:28.8094468Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-30T16:39:28.9075825Z Download action repository 'haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-10-30T16:39:29.2834249Z Download action repository 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-10-30T16:39:29.5143299Z Complete job name: Build os-ubuntu-latest ghc-9.8.4
+2026-10-30T16:39:29.5703676Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-30T16:39:29.5704274Z with:
+2026-10-30T16:39:29.5704537Z   repository: Hexirp/hakiru
+2026-10-30T16:39:29.5706975Z   token: ***
+2026-10-30T16:39:29.5707231Z   ssh-strict: true
+2026-10-30T16:39:29.5707495Z   ssh-user: git
+2026-10-30T16:39:29.5707767Z   persist-credentials: true
+2026-10-30T16:39:29.5708060Z   clean: true
+2026-10-30T16:39:29.5708345Z   sparse-checkout-cone-mode: true
+2026-10-30T16:39:29.5708663Z   fetch-depth: 1
+2026-10-30T16:39:29.5708939Z   fetch-tags: false
+2026-10-30T16:39:29.5709220Z   show-progress: true
+2026-10-30T16:39:29.5709505Z   lfs: false
+2026-10-30T16:39:29.5709771Z   submodules: false
+2026-10-30T16:39:29.5710047Z   set-safe-directory: true
+2026-10-30T16:39:29.5710378Z   allow-unsafe-pr-checkout: false
+2026-10-30T16:39:29.5710770Z env:
+2026-10-30T16:39:29.5711035Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-30T16:39:29.5711375Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-30T16:39:29.5711747Z ##[endgroup]
+2026-10-30T16:39:29.7689356Z Syncing repository: Hexirp/hakiru
+2026-10-30T16:39:29.7691240Z ##[group]Getting Git version info
+2026-10-30T16:39:29.7691911Z Working directory is '/home/runner/work/hakiru/hakiru'
+2026-10-30T16:39:29.7692982Z [command]/usr/bin/git version
+2026-10-30T16:39:29.7751403Z git version 2.56.0
+2026-10-30T16:39:29.7766531Z ##[endgroup]
+2026-10-30T16:39:29.7775565Z Temporarily overriding HOME='/home/runner/work/_temp/662740fe-e491-4be4-86c6-4a2a10f637cb' before making global git config changes
+2026-10-30T16:39:29.7777324Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-30T16:39:29.7782020Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-10-30T16:39:29.7832954Z Deleting the contents of '/home/runner/work/hakiru/hakiru'
+2026-10-30T16:39:29.7835448Z ##[group]Determining repository object format
+2026-10-30T16:39:29.7836944Z ##[endgroup]
+2026-10-30T16:39:29.7837667Z ##[group]Initializing the repository
+2026-10-30T16:39:29.7840394Z [command]/usr/bin/git init /home/runner/work/hakiru/hakiru
+2026-10-30T16:39:29.7924146Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-30T16:39:29.7925547Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-30T16:39:29.7926797Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-30T16:39:29.7927688Z hint: call:
+2026-10-30T16:39:29.7928412Z hint:
+2026-10-30T16:39:29.7928884Z hint: 	git config --global init.defaultBranch <name>
+2026-10-30T16:39:29.7929424Z hint:
+2026-10-30T16:39:29.7929966Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-30T16:39:29.7930908Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-30T16:39:29.7931598Z hint:
+2026-10-30T16:39:29.7931976Z hint: 	git branch -m <name>
+2026-10-30T16:39:29.7932445Z hint:
+2026-10-30T16:39:29.7933021Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-30T16:39:29.7933718Z Initialized empty Git repository in /home/runner/work/hakiru/hakiru/.git/
+2026-10-30T16:39:29.7943360Z [command]/usr/bin/git remote add origin https://github.com/Hexirp/hakiru
+2026-10-30T16:39:29.7997928Z ##[endgroup]
+2026-10-30T16:39:29.7998704Z ##[group]Disabling automatic garbage collection
+2026-10-30T16:39:29.8000395Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-30T16:39:29.8036920Z ##[endgroup]
+2026-10-30T16:39:29.8038022Z ##[group]Setting up auth
+2026-10-30T16:39:29.8038520Z Removing SSH command configuration
+2026-10-30T16:39:29.8042866Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-30T16:39:29.8084194Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-30T16:39:29.8407155Z Removing HTTP extra header
+2026-10-30T16:39:29.8412530Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-30T16:39:29.8453195Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-30T16:39:29.8653176Z Removing includeIf entries pointing to credentials config files
+2026-10-30T16:39:29.8658035Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-30T16:39:29.8699486Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-30T16:39:29.8908569Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-30T16:39:29.8955096Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git.path /home/runner/work/_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:39:29.8996956Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:39:29.9039730Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:39:29.9082102Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:39:29.9121904Z ##[endgroup]
+2026-10-30T16:39:29.9122689Z ##[group]Fetching the repository
+2026-10-30T16:39:29.9128097Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1d8e91268701dc3cfece3a8da8c1f1f43803251f:refs/remotes/origin/main
+2026-10-30T16:39:30.4325660Z From https://github.com/Hexirp/hakiru
+2026-10-30T16:39:30.4326992Z  * [new ref]         1d8e91268701dc3cfece3a8da8c1f1f43803251f -> origin/main
+2026-10-30T16:39:30.4353193Z [command]/usr/bin/git branch --list --remote origin/main
+2026-10-30T16:39:30.4376942Z   origin/main
+2026-10-30T16:39:30.4385724Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-10-30T16:39:30.4422848Z 1d8e91268701dc3cfece3a8da8c1f1f43803251f
+2026-10-30T16:39:30.4428397Z ##[endgroup]
+2026-10-30T16:39:30.4429549Z ##[group]Determining the checkout info
+2026-10-30T16:39:30.4430756Z ##[endgroup]
+2026-10-30T16:39:30.4434069Z [command]/usr/bin/git sparse-checkout disable
+2026-10-30T16:39:30.4498625Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-30T16:39:30.4544968Z ##[group]Checking out the ref
+2026-10-30T16:39:30.4546467Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-30T16:39:30.4729330Z Switched to a new branch 'main'
+2026-10-30T16:39:30.4732266Z branch 'main' set up to track 'origin/main'.
+2026-10-30T16:39:30.4739627Z ##[endgroup]
+2026-10-30T16:39:30.4789861Z [command]/usr/bin/git log -1 --format=%H
+2026-10-30T16:39:30.4826041Z 1d8e91268701dc3cfece3a8da8c1f1f43803251f
+2026-10-30T16:39:30.5171881Z ##[group]Run haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d
+2026-10-30T16:39:30.5172980Z with:
+2026-10-30T16:39:30.5173507Z   ghc-version: 9.8.4
+2026-10-30T16:39:30.5174104Z   cabal-version: 3.16.1.0
+2026-10-30T16:39:30.5174741Z   stack-version: 3.11.1
+2026-10-30T16:39:30.5175363Z   enable-stack: true
+2026-10-30T16:39:30.5175953Z   cabal-update: true
+2026-10-30T16:39:30.5176618Z env:
+2026-10-30T16:39:30.5177170Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-30T16:39:30.5177981Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-30T16:39:30.5178696Z ##[endgroup]
+2026-10-30T16:39:30.5790048Z Preparing to setup a Haskell environment
+2026-10-30T16:39:30.5795365Z ##[group]Preparing ghcup environment
+2026-10-30T16:39:30.5796385Z Adding ghcup release channel: prereleases
+2026-10-30T16:39:31.1526819Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup config add-release-channel prereleases
+2026-10-30T16:39:31.1996829Z ##[endgroup]
+2026-10-30T16:39:31.1998225Z ##[group]Preparing ghc environment
+2026-10-30T16:39:31.5510606Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset ghc
+2026-10-30T16:39:31.6122929Z [1m[92m[ Info  ][0m[0m ghc successfully unset
+2026-10-30T16:39:31.6169069Z ##[endgroup]
+2026-10-30T16:39:31.6173891Z ##[group]Installing ghc version 9.8.4
+2026-10-30T16:39:31.9603156Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis ghc 9.8.4
+2026-10-30T16:39:31.9697967Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-30T16:39:31.9767580Z 
+2026-10-30T16:39:31.9767633Z 
+2026-10-30T16:39:31.9769959Z Attempting to access tool ghc at location /home/runner/.ghcup/bin
+2026-10-30T16:39:31.9771292Z Succeeded accessing tool ghc at location /home/runner/.ghcup/bin
+2026-10-30T16:39:32.2398512Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-30T16:39:32.2490803Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml as file /usr/local/.ghcup/cache/ghcup-0.1.0.yaml
+2026-10-30T16:39:32.2578059Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-30T16:39:32.2578666Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-30T16:39:32.2578828Z 
+2026-10-30T16:39:32.2996415Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-30T16:39:32.2996952Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-30T16:39:32.3029058Z [1m[93m[ Warn  ][0m[0m setModificationTime failed with: /usr/local/.ghcup/cache/ghcup-0.1.0.yaml: setModificationTime:setFileTimes: permission denied (Operation not permitted)
+2026-10-30T16:39:32.3034535Z [1m[93m[ Warn  ][0m[0m setAccessTime failed with: /usr/local/.ghcup/cache/ghcup-0.1.0.yaml: setAccessTime:setFileTimes: permission denied (Operation not permitted)
+2026-10-30T16:39:32.4283066Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-prereleases-0.1.0.yaml as file /usr/local/.ghcup/cache/ghcup-prereleases-0.1.0.yaml
+2026-10-30T16:39:32.4343868Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-30T16:39:32.4344403Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-30T16:39:32.4344581Z 
+2026-10-30T16:39:32.5858375Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-30T16:39:32.5859396Z 100  373k  100  373k    0     0  2498k      0 --:--:-- --:--:-- --:--:-- 2507k
+2026-10-30T16:39:32.6162767Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-30T16:39:32.9367146Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset ghc
+2026-10-30T16:39:32.9457424Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool ghc
+2026-10-30T16:39:32.9531403Z Attempting to install ghc 9.8.4 using ghcup
+2026-10-30T16:39:33.2766506Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup install ghc 9.8.4
+2026-10-30T16:39:33.3575755Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghc/9.8.4/ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz as file /usr/local/.ghcup/tmp/ghcup-080f94501c6ffaa6/ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz
+2026-10-30T16:39:33.3647459Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-30T16:39:33.3651965Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-30T16:39:33.3656757Z 
+2026-10-30T16:39:33.9637272Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-30T16:39:33.9637769Z 100  213M  100  213M    0     0   355M      0 --:--:-- --:--:-- --:--:--  355M
+2026-10-30T16:39:33.9665673Z [1m[92m[ Info  ][0m[0m verifying digest of: ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz
+2026-10-30T16:39:34.5629389Z [1m[92m[ Info  ][0m[0m Unpacking: ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz to /usr/local/.ghcup/tmp/ghcup-5973a37f50d9f56d
+2026-10-30T16:39:44.4776386Z [1m[92m[ Info  ][0m[0m Installing ghc
+2026-10-30T16:39:44.4787392Z 
+2026-10-30T16:39:44.4787417Z 
+2026-10-30T16:39:44.4787424Z 
+2026-10-30T16:39:44.4787431Z 
+2026-10-30T16:39:44.4787438Z 
+2026-10-30T16:39:44.4787447Z 
+2026-10-30T16:39:49.6537920Z 
+2026-10-30T16:39:49.6581294Z [6A[0J
+2026-10-30T16:39:49.6581463Z 
+2026-10-30T16:39:49.6581467Z 
+2026-10-30T16:39:49.6581473Z 
+2026-10-30T16:39:49.6581476Z 
+2026-10-30T16:39:49.6581478Z 
+2026-10-30T16:40:51.7366766Z 
+2026-10-30T16:41:04.7583005Z [6A[0J[1m[92m[ Info  ][0m[0m ghc installation successful
+2026-10-30T16:41:04.7961746Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-30T16:41:04.9097812Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-30T16:41:05.5283186Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis ghc 9.8.4
+2026-10-30T16:41:05.5455433Z /usr/local/.ghcup/ghc/9.8.4/bin/ghc-9.8.4
+2026-10-30T16:41:05.5455850Z 
+2026-10-30T16:41:05.5456662Z Attempting to access tool ghc at location /home/runner/.ghcup/bin
+2026-10-30T16:41:05.5467809Z Succeeded accessing tool ghc at location /home/runner/.ghcup/bin
+2026-10-30T16:41:05.8683683Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-30T16:41:05.9529555Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-30T16:41:05.9685904Z Found ghc 9.8.4 in cache at path /home/runner/.ghcup/bin. Setup successful.
+2026-10-30T16:41:05.9687800Z ##[endgroup]
+2026-10-30T16:41:05.9688259Z ##[group]Preparing cabal environment
+2026-10-30T16:41:06.2633098Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset cabal
+2026-10-30T16:41:06.2785404Z [1m[92m[ Info  ][0m[0m cabal successfully unset
+2026-10-30T16:41:06.2902851Z ##[endgroup]
+2026-10-30T16:41:06.2903365Z ##[group]Installing cabal version 3.16.1.0
+2026-10-30T16:41:06.6426246Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis cabal 3.16.1.0
+2026-10-30T16:41:06.6585503Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-30T16:41:06.6696521Z 
+2026-10-30T16:41:06.6696531Z 
+2026-10-30T16:41:06.6697548Z Attempting to access tool cabal at location /home/runner/.ghcup/bin
+2026-10-30T16:41:06.6698066Z Succeeded accessing tool cabal at location /home/runner/.ghcup/bin
+2026-10-30T16:41:07.1708636Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-30T16:41:07.2568293Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-30T16:41:07.7479112Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset cabal
+2026-10-30T16:41:07.7592911Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool cabal
+2026-10-30T16:41:07.7649007Z Attempting to install cabal 3.16.1.0 using ghcup
+2026-10-30T16:41:08.2278718Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup install cabal 3.16.1.0
+2026-10-30T16:41:08.3101182Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghcup/unofficial-bindists/cabal/3.16.1.0/cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz as file /usr/local/.ghcup/tmp/ghcup-980adb11fae77a0d/cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz
+2026-10-30T16:41:08.3167923Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-30T16:41:08.3168710Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-30T16:41:08.3169062Z 
+2026-10-30T16:41:08.3422968Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-30T16:41:08.4265622Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-30T16:41:08.4275773Z 100 5310k  100 5310k    0     0  47.1M      0 --:--:-- --:--:-- --:--:-- 47.1M
+2026-10-30T16:41:08.4338719Z [1m[92m[ Info  ][0m[0m verifying digest of: cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz
+2026-10-30T16:41:08.4517377Z [1m[92m[ Info  ][0m[0m Unpacking: cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz to /usr/local/.ghcup/tmp/ghcup-d3d240771ea5cc9d
+2026-10-30T16:41:08.6862096Z [1m[92m[ Info  ][0m[0m Installing cabal
+2026-10-30T16:41:08.7534410Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-30T16:41:08.7535616Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-30T16:41:08.7539322Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-30T16:41:08.8136286Z [1m[92m[ Info  ][0m[0m cabal installation successful
+2026-10-30T16:41:08.8263221Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-30T16:41:08.9123628Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-30T16:41:08.9124549Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-30T16:41:08.9127307Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-30T16:41:08.9678047Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-30T16:41:09.4578403Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis cabal 3.16.1.0
+2026-10-30T16:41:09.4742758Z /usr/local/.ghcup/cabal/3.16.1.0/cabal
+2026-10-30T16:41:09.4742996Z 
+2026-10-30T16:41:09.4743344Z Attempting to access tool cabal at location /home/runner/.ghcup/bin
+2026-10-30T16:41:09.4744649Z Succeeded accessing tool cabal at location /home/runner/.ghcup/bin
+2026-10-30T16:41:09.8875668Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-30T16:41:09.9708934Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-30T16:41:09.9710248Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-30T16:41:09.9713492Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-30T16:41:10.0288443Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-30T16:41:10.0466694Z Found cabal 3.16.1.0 in cache at path /home/runner/.ghcup/bin. Setup successful.
+2026-10-30T16:41:10.0467431Z ##[endgroup]
+2026-10-30T16:41:10.0467803Z ##[group]Preparing stack environment
+2026-10-30T16:41:10.0468208Z ##[endgroup]
+2026-10-30T16:41:10.0468854Z ##[group]Installing stack version 3.11.1
+2026-10-30T16:41:10.3881193Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis stack 3.11.1
+2026-10-30T16:41:10.3980562Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.11.1' of the tool stack is not installed.
+2026-10-30T16:41:10.4041745Z 
+2026-10-30T16:41:10.4041777Z 
+2026-10-30T16:41:10.4047026Z Attempting to install stack 3.11.1 for arch x86_64
+2026-10-30T16:41:10.8509821Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/fb58227d-56c3-425f-bb01-0ec3d3534f30 -f /home/runner/work/_temp/542100d3-89a0-4c17-8735-b81f8f1890c7
+2026-10-30T16:41:12.7000209Z Found stack 3.11.1 in cache at path /opt/hostedtoolcache/stack/3.11.1/x64. Setup successful.
+2026-10-30T16:41:12.7000788Z ##[endgroup]
+2026-10-30T16:41:12.7001978Z ##[group]Setting up cabal
+2026-10-30T16:41:12.7371224Z Adding /home/runner/.cabal/bin to PATH
+2026-10-30T16:41:12.7372370Z ##[endgroup]
+2026-10-30T16:41:12.7596586Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-30T16:41:12.7596812Z with:
+2026-10-30T16:41:12.7596969Z   path: /home/runner/.stack/pantry
+2026-10-30T16:41:12.7597184Z   key: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--9.8.4
+2026-10-30T16:41:12.7597416Z   enableCrossOsArchive: false
+2026-10-30T16:41:12.7597570Z   fail-on-cache-miss: false
+2026-10-30T16:41:12.7597710Z   lookup-only: false
+2026-10-30T16:41:12.7597842Z   save-always: false
+2026-10-30T16:41:12.7597984Z env:
+2026-10-30T16:41:12.7598112Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-30T16:41:12.7598278Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-30T16:41:12.7598437Z   CACHE_VERSION: v-1-1-1
+2026-10-30T16:41:12.7598575Z ##[endgroup]
+2026-10-30T16:41:13.0083940Z Cache not found for input keys: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--9.8.4
+2026-10-30T16:41:13.0202039Z ##[group]Run stack --system-ghc update
+2026-10-30T16:41:13.0202274Z [36;1mstack --system-ghc update[0m
+2026-10-30T16:41:13.0225374Z shell: /usr/bin/bash -e {0}
+2026-10-30T16:41:13.0225529Z env:
+2026-10-30T16:41:13.0242515Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-30T16:41:13.0242724Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-30T16:41:13.0242885Z ##[endgroup]
+2026-10-30T16:41:13.0873744Z Selected mirror https://hackage.haskell.org/
+2026-10-30T16:41:13.0874199Z Downloading root
+2026-10-30T16:41:13.3471567Z Waiting to acquire cache lock on /home/runner/.stack/pantry/hackage/hackage-security-lock
+2026-10-30T16:41:13.3472601Z Acquired cache lock on /home/runner/.stack/pantry/hackage/hackage-security-lock
+2026-10-30T16:41:13.3473274Z Released cache lock on /home/runner/.stack/pantry/hackage/hackage-security-lock
+2026-10-30T16:41:13.3473752Z Selected mirror https://hackage.haskell.org/
+2026-10-30T16:41:13.3482009Z Downloading timestamp
+2026-10-30T16:41:13.3608945Z Downloading snapshot
+2026-10-30T16:41:13.3736958Z Downloading mirrors
+2026-10-30T16:41:13.3864945Z Cannot update index (no local copy)
+2026-10-30T16:41:13.3865348Z Downloading index
+2026-10-30T16:41:14.4019635Z Waiting to acquire cache lock on /home/runner/.stack/pantry/hackage/hackage-security-lock
+2026-10-30T16:41:14.4020192Z Acquired cache lock on /home/runner/.stack/pantry/hackage/hackage-security-lock
+2026-10-30T16:41:24.7927658Z Released cache lock on /home/runner/.stack/pantry/hackage/hackage-security-lock
+2026-10-30T16:41:24.7928542Z Updated package index downloaded
+2026-10-30T16:41:24.7932916Z Calculating hashes to check for hackage-security rebases or filesystem changes
+2026-10-30T16:41:24.7934059Z No old cache found, populating cache from scratch
+2026-10-30T16:41:27.7660084Z Populating cache from file size 1047751168, hash 8768336474eafd3a2414c159067a9ea9008d045aaa0056fe7889bee89326b553
+2026-10-30T16:41:27.7660631Z Populating package index cache ...
+2026-10-30T16:41:27.8072922Z Processed 400 cabal files
+2026-10-30T16:41:27.8477174Z Processed 800 cabal files
+2026-10-30T16:41:27.8881007Z Processed 1200 cabal files
+2026-10-30T16:41:27.9273476Z Processed 1600 cabal files
+2026-10-30T16:41:27.9654477Z Processed 2000 cabal files
+2026-10-30T16:41:28.0036883Z Processed 2400 cabal files
+2026-10-30T16:41:28.0405963Z Processed 2800 cabal files
+2026-10-30T16:41:28.0784055Z Processed 3200 cabal files
+2026-10-30T16:41:28.1163038Z Processed 3600 cabal files
+2026-10-30T16:41:28.1537752Z Processed 4000 cabal files
+2026-10-30T16:41:28.1929911Z Processed 4400 cabal files
+2026-10-30T16:41:28.2314721Z Processed 4800 cabal files
+2026-10-30T16:41:28.2687501Z Processed 5200 cabal files
+2026-10-30T16:41:28.3055007Z Processed 5600 cabal files
+2026-10-30T16:41:28.3517779Z Processed 6000 cabal files
+2026-10-30T16:41:28.3909751Z Processed 6400 cabal files
+2026-10-30T16:41:28.4284395Z Processed 6800 cabal files
+2026-10-30T16:41:28.4657240Z Processed 7200 cabal files
+2026-10-30T16:41:28.5032786Z Processed 7600 cabal files
+2026-10-30T16:41:28.5400868Z Processed 8000 cabal files
+2026-10-30T16:41:28.5779620Z Processed 8400 cabal files
+2026-10-30T16:41:28.6329200Z Processed 8800 cabal files
+2026-10-30T16:41:28.6801824Z Processed 9200 cabal files
+2026-10-30T16:41:28.7175659Z Processed 9600 cabal files
+2026-10-30T16:41:28.7543553Z Processed 10000 cabal files
+2026-10-30T16:41:28.7916364Z Processed 10400 cabal files
+2026-10-30T16:41:28.8289699Z Processed 10800 cabal files
+2026-10-30T16:41:28.8677052Z Processed 11200 cabal files
+2026-10-30T16:41:28.9087819Z Processed 11600 cabal files
+2026-10-30T16:41:28.9458153Z Processed 12000 cabal files
+2026-10-30T16:41:28.9830937Z Processed 12400 cabal files
+2026-10-30T16:41:29.0215525Z Processed 12800 cabal files
+2026-10-30T16:41:29.0586780Z Processed 13200 cabal files
+2026-10-30T16:41:29.0962504Z Processed 13600 cabal files
+2026-10-30T16:41:29.1332065Z Processed 14000 cabal files
+2026-10-30T16:41:29.1707110Z Processed 14400 cabal files
+2026-10-30T16:41:29.2080261Z Processed 14800 cabal files
+2026-10-30T16:41:29.2473332Z Processed 15200 cabal files
+2026-10-30T16:41:29.2841376Z Processed 15600 cabal files
+2026-10-30T16:41:29.3230019Z Processed 16000 cabal files
+2026-10-30T16:41:29.3617596Z Processed 16400 cabal files
+2026-10-30T16:41:29.4005377Z Processed 16800 cabal files
+2026-10-30T16:41:29.4380966Z Processed 17200 cabal files
+2026-10-30T16:41:29.4775288Z Processed 17600 cabal files
+2026-10-30T16:41:29.5165982Z Processed 18000 cabal files
+2026-10-30T16:41:29.5558886Z Processed 18400 cabal files
+2026-10-30T16:41:29.5947361Z Processed 18800 cabal files
+2026-10-30T16:41:29.6336946Z Processed 19200 cabal files
+2026-10-30T16:41:29.6726692Z Processed 19600 cabal files
+2026-10-30T16:41:29.7110912Z Processed 20000 cabal files
+2026-10-30T16:41:29.7500081Z Processed 20400 cabal files
+2026-10-30T16:41:29.7888968Z Processed 20800 cabal files
+2026-10-30T16:41:29.8271352Z Processed 21200 cabal files
+2026-10-30T16:41:29.8659475Z Processed 21600 cabal files
+2026-10-30T16:41:29.9051841Z Processed 22000 cabal files
+2026-10-30T16:41:29.9480055Z Processed 22400 cabal files
+2026-10-30T16:41:29.9888889Z Processed 22800 cabal files
+2026-10-30T16:41:30.0282690Z Processed 23200 cabal files
+2026-10-30T16:41:30.0680742Z Processed 23600 cabal files
+2026-10-30T16:41:30.1082642Z Processed 24000 cabal files
+2026-10-30T16:41:30.1481038Z Processed 24400 cabal files
+2026-10-30T16:41:30.1865176Z Processed 24800 cabal files
+2026-10-30T16:41:30.2275236Z Processed 25200 cabal files
+2026-10-30T16:41:30.2662977Z Processed 25600 cabal files
+2026-10-30T16:41:30.3075261Z Processed 26000 cabal files
+2026-10-30T16:41:30.3474717Z Processed 26400 cabal files
+2026-10-30T16:41:30.3875058Z Processed 26800 cabal files
+2026-10-30T16:41:30.4269621Z Processed 27200 cabal files
+2026-10-30T16:41:30.4653915Z Processed 27600 cabal files
+2026-10-30T16:41:30.5045370Z Processed 28000 cabal files
+2026-10-30T16:41:30.5473482Z Processed 28400 cabal files
+2026-10-30T16:41:30.5918192Z Processed 28800 cabal files
+2026-10-30T16:41:30.6316884Z Processed 29200 cabal files
+2026-10-30T16:41:30.6702896Z Processed 29600 cabal files
+2026-10-30T16:41:30.7094664Z Processed 30000 cabal files
+2026-10-30T16:41:30.7511833Z Processed 30400 cabal files
+2026-10-30T16:41:30.7910574Z Processed 30800 cabal files
+2026-10-30T16:41:30.8321621Z Processed 31200 cabal files
+2026-10-30T16:41:30.8722380Z Processed 31600 cabal files
+2026-10-30T16:41:30.9128416Z Processed 32000 cabal files
+2026-10-30T16:41:30.9542878Z Processed 32400 cabal files
+2026-10-30T16:41:30.9969389Z Processed 32800 cabal files
+2026-10-30T16:41:31.0392577Z Processed 33200 cabal files
+2026-10-30T16:41:32.8516061Z Processed 33600 cabal files
+2026-10-30T16:41:32.9105625Z Processed 34000 cabal files
+2026-10-30T16:41:32.9696227Z Processed 34400 cabal files
+2026-10-30T16:41:33.0301822Z Processed 34800 cabal files
+2026-10-30T16:41:33.0911684Z Processed 35200 cabal files
+2026-10-30T16:41:33.1509991Z Processed 35600 cabal files
+2026-10-30T16:41:33.2166673Z Processed 36000 cabal files
+2026-10-30T16:41:33.2770582Z Processed 36400 cabal files
+2026-10-30T16:41:33.3382572Z Processed 36800 cabal files
+2026-10-30T16:41:33.4001063Z Processed 37200 cabal files
+2026-10-30T16:41:33.4621470Z Processed 37600 cabal files
+2026-10-30T16:41:33.5242418Z Processed 38000 cabal files
+2026-10-30T16:41:33.5879479Z Processed 38400 cabal files
+2026-10-30T16:41:33.6513023Z Processed 38800 cabal files
+2026-10-30T16:41:33.7154701Z Processed 39200 cabal files
+2026-10-30T16:41:33.7792168Z Processed 39600 cabal files
+2026-10-30T16:41:33.8415502Z Processed 40000 cabal files
+2026-10-30T16:41:33.9039790Z Processed 40400 cabal files
+2026-10-30T16:41:33.9671544Z Processed 40800 cabal files
+2026-10-30T16:41:34.0282580Z Processed 41200 cabal files
+2026-10-30T16:41:34.0860673Z Processed 41600 cabal files
+2026-10-30T16:41:34.1442469Z Processed 42000 cabal files
+2026-10-30T16:41:34.2061988Z Processed 42400 cabal files
+2026-10-30T16:41:34.2653734Z Processed 42800 cabal files
+2026-10-30T16:41:34.3258351Z Processed 43200 cabal files
+2026-10-30T16:41:34.3874612Z Processed 43600 cabal files
+2026-10-30T16:41:34.4491684Z Processed 44000 cabal files
+2026-10-30T16:41:34.5119053Z Processed 44400 cabal files
+2026-10-30T16:41:34.5735000Z Processed 44800 cabal files
+2026-10-30T16:41:34.6349714Z Processed 45200 cabal files
+2026-10-30T16:41:34.6935955Z Processed 45600 cabal files
+2026-10-30T16:41:34.7549876Z Processed 46000 cabal files
+2026-10-30T16:41:34.8147516Z Processed 46400 cabal files
+2026-10-30T16:41:34.8759248Z Processed 46800 cabal files
+2026-10-30T16:41:34.9385133Z Processed 47200 cabal files
+2026-10-30T16:41:35.0005287Z Processed 47600 cabal files
+2026-10-30T16:41:35.0639500Z Processed 48000 cabal files
+2026-10-30T16:41:35.1174160Z Processed 48400 cabal files
+2026-10-30T16:41:35.1762905Z Processed 48800 cabal files
+2026-10-30T16:41:35.2335494Z Processed 49200 cabal files
+2026-10-30T16:41:35.2837512Z Processed 49600 cabal files
+2026-10-30T16:41:35.3345854Z Processed 50000 cabal files
+2026-10-30T16:41:35.3805394Z Processed 50400 cabal files
+2026-10-30T16:41:35.4331059Z Processed 50800 cabal files
+2026-10-30T16:41:35.4828473Z Processed 51200 cabal files
+2026-10-30T16:41:35.5328700Z Processed 51600 cabal files
+2026-10-30T16:41:35.5758397Z Processed 52000 cabal files
+2026-10-30T16:41:35.6414315Z Processed 52400 cabal files
+2026-10-30T16:41:35.6959146Z Processed 52800 cabal files
+2026-10-30T16:41:35.7583989Z Processed 53200 cabal files
+2026-10-30T16:41:35.8205541Z Processed 53600 cabal files
+2026-10-30T16:41:35.8827986Z Processed 54000 cabal files
+2026-10-30T16:41:35.9455845Z Processed 54400 cabal files
+2026-10-30T16:41:36.0067883Z Processed 54800 cabal files
+2026-10-30T16:41:36.0669830Z Processed 55200 cabal files
+2026-10-30T16:41:36.1261438Z Processed 55600 cabal files
+2026-10-30T16:41:36.1814816Z Processed 56000 cabal files
+2026-10-30T16:41:36.2394607Z Processed 56400 cabal files
+2026-10-30T16:41:36.2982709Z Processed 56800 cabal files
+2026-10-30T16:41:36.3561274Z Processed 57200 cabal files
+2026-10-30T16:41:36.4153472Z Processed 57600 cabal files
+2026-10-30T16:41:36.4687925Z Processed 58000 cabal files
+2026-10-30T16:41:36.5193851Z Processed 58400 cabal files
+2026-10-30T16:41:36.5738824Z Processed 58800 cabal files
+2026-10-30T16:41:36.6247925Z Processed 59200 cabal files
+2026-10-30T16:41:36.6729059Z Processed 59600 cabal files
+2026-10-30T16:41:36.7325780Z Processed 60000 cabal files
+2026-10-30T16:41:36.7879303Z Processed 60400 cabal files
+2026-10-30T16:41:36.8426445Z Processed 60800 cabal files
+2026-10-30T16:41:36.8944928Z Processed 61200 cabal files
+2026-10-30T16:41:36.9426762Z Processed 61600 cabal files
+2026-10-30T16:41:36.9989466Z Processed 62000 cabal files
+2026-10-30T16:41:37.0435993Z Processed 62400 cabal files
+2026-10-30T16:41:37.1032096Z Processed 62800 cabal files
+2026-10-30T16:41:37.1619843Z Processed 63200 cabal files
+2026-10-30T16:41:37.2167380Z Processed 63600 cabal files
+2026-10-30T16:41:37.2772370Z Processed 64000 cabal files
+2026-10-30T16:41:37.3415207Z Processed 64400 cabal files
+2026-10-30T16:41:37.4020503Z Processed 64800 cabal files
+2026-10-30T16:41:37.4638180Z Processed 65200 cabal files
+2026-10-30T16:41:37.5246006Z Processed 65600 cabal files
+2026-10-30T16:41:37.5845139Z Processed 66000 cabal files
+2026-10-30T16:41:37.6462754Z Processed 66400 cabal files
+2026-10-30T16:41:37.7045904Z Processed 66800 cabal files
+2026-10-30T16:41:37.7651760Z Processed 67200 cabal files
+2026-10-30T16:41:37.8240904Z Processed 67600 cabal files
+2026-10-30T16:41:37.8880698Z Processed 68000 cabal files
+2026-10-30T16:41:37.9464553Z Processed 68400 cabal files
+2026-10-30T16:41:37.9938026Z Processed 68800 cabal files
+2026-10-30T16:41:38.0523605Z Processed 69200 cabal files
+2026-10-30T16:41:38.1107928Z Processed 69600 cabal files
+2026-10-30T16:41:38.1728215Z Processed 70000 cabal files
+2026-10-30T16:41:38.2336823Z Processed 70400 cabal files
+2026-10-30T16:41:38.2890226Z Processed 70800 cabal files
+2026-10-30T16:41:38.3405586Z Processed 71200 cabal files
+2026-10-30T16:41:38.3982198Z Processed 71600 cabal files
+2026-10-30T16:41:38.4530657Z Processed 72000 cabal files
+2026-10-30T16:41:38.5139077Z Processed 72400 cabal files
+2026-10-30T16:41:38.5703069Z Processed 72800 cabal files
+2026-10-30T16:41:38.6315983Z Processed 73200 cabal files
+2026-10-30T16:41:38.6994618Z Processed 73600 cabal files
+2026-10-30T16:41:38.7673780Z Processed 74000 cabal files
+2026-10-30T16:41:38.8278518Z Processed 74400 cabal files
+2026-10-30T16:41:38.8881096Z Processed 74800 cabal files
+2026-10-30T16:41:38.9506327Z Processed 75200 cabal files
+2026-10-30T16:41:39.0150561Z Processed 75600 cabal files
+2026-10-30T16:41:39.0717016Z Processed 76000 cabal files
+2026-10-30T16:41:39.1284327Z Processed 76400 cabal files
+2026-10-30T16:41:39.1784323Z Processed 76800 cabal files
+2026-10-30T16:41:39.2365841Z Processed 77200 cabal files
+2026-10-30T16:41:39.2986959Z Processed 77600 cabal files
+2026-10-30T16:41:39.3596393Z Processed 78000 cabal files
+2026-10-30T16:41:39.4229083Z Processed 78400 cabal files
+2026-10-30T16:41:39.4777642Z Processed 78800 cabal files
+2026-10-30T16:41:39.5393432Z Processed 79200 cabal files
+2026-10-30T16:41:39.6008579Z Processed 79600 cabal files
+2026-10-30T16:41:39.6615801Z Processed 80000 cabal files
+2026-10-30T16:41:39.7167048Z Processed 80400 cabal files
+2026-10-30T16:41:39.7761065Z Processed 80800 cabal files
+2026-10-30T16:41:39.8362119Z Processed 81200 cabal files
+2026-10-30T16:41:39.8963333Z Processed 81600 cabal files
+2026-10-30T16:41:39.9563298Z Processed 82000 cabal files
+2026-10-30T16:41:40.0193361Z Processed 82400 cabal files
+2026-10-30T16:41:40.0860197Z Processed 82800 cabal files
+2026-10-30T16:41:40.1495415Z Processed 83200 cabal files
+2026-10-30T16:41:40.2115489Z Processed 83600 cabal files
+2026-10-30T16:41:40.2666188Z Processed 84000 cabal files
+2026-10-30T16:41:40.3197050Z Processed 84400 cabal files
+2026-10-30T16:41:40.3774198Z Processed 84800 cabal files
+2026-10-30T16:41:40.4322292Z Processed 85200 cabal files
+2026-10-30T16:41:40.4935104Z Processed 85600 cabal files
+2026-10-30T16:41:40.5490123Z Processed 86000 cabal files
+2026-10-30T16:41:40.6061899Z Processed 86400 cabal files
+2026-10-30T16:41:40.6657831Z Processed 86800 cabal files
+2026-10-30T16:41:40.7277090Z Processed 87200 cabal files
+2026-10-30T16:41:40.7887977Z Processed 87600 cabal files
+2026-10-30T16:41:40.8476794Z Processed 88000 cabal files
+2026-10-30T16:41:40.9087424Z Processed 88400 cabal files
+2026-10-30T16:41:40.9740428Z Processed 88800 cabal files
+2026-10-30T16:41:41.0307825Z Processed 89200 cabal files
+2026-10-30T16:41:41.0880552Z Processed 89600 cabal files
+2026-10-30T16:41:41.1475904Z Processed 90000 cabal files
+2026-10-30T16:41:41.2052419Z Processed 90400 cabal files
+2026-10-30T16:41:41.2660340Z Processed 90800 cabal files
+2026-10-30T16:41:41.3272943Z Processed 91200 cabal files
+2026-10-30T16:41:41.4045308Z Processed 91600 cabal files
+2026-10-30T16:41:41.4877241Z Processed 92000 cabal files
+2026-10-30T16:41:41.5441164Z Processed 92400 cabal files
+2026-10-30T16:41:41.6024300Z Processed 92800 cabal files
+2026-10-30T16:41:41.6606238Z Processed 93200 cabal files
+2026-10-30T16:41:41.7249733Z Processed 93600 cabal files
+2026-10-30T16:41:41.7835078Z Processed 94000 cabal files
+2026-10-30T16:41:41.8451193Z Processed 94400 cabal files
+2026-10-30T16:41:41.9050780Z Processed 94800 cabal files
+2026-10-30T16:41:41.9637472Z Processed 95200 cabal files
+2026-10-30T16:41:42.0245314Z Processed 95600 cabal files
+2026-10-30T16:41:42.0871206Z Processed 96000 cabal files
+2026-10-30T16:41:42.1504847Z Processed 96400 cabal files
+2026-10-30T16:41:42.2139499Z Processed 96800 cabal files
+2026-10-30T16:41:42.2743801Z Processed 97200 cabal files
+2026-10-30T16:41:42.3365348Z Processed 97600 cabal files
+2026-10-30T16:41:42.3991395Z Processed 98000 cabal files
+2026-10-30T16:41:42.4637877Z Processed 98400 cabal files
+2026-10-30T16:41:42.5279870Z Processed 98800 cabal files
+2026-10-30T16:41:42.5905520Z Processed 99200 cabal files
+2026-10-30T16:41:42.6490003Z Processed 99600 cabal files
+2026-10-30T16:41:42.7110046Z Processed 100000 cabal files
+2026-10-30T16:41:42.7742032Z Processed 100400 cabal files
+2026-10-30T16:41:42.8342327Z Processed 100800 cabal files
+2026-10-30T16:41:42.8970208Z Processed 101200 cabal files
+2026-10-30T16:41:42.9581779Z Processed 101600 cabal files
+2026-10-30T16:41:43.0141766Z Processed 102000 cabal files
+2026-10-30T16:41:43.0700519Z Processed 102400 cabal files
+2026-10-30T16:41:43.1299326Z Processed 102800 cabal files
+2026-10-30T16:41:43.1902345Z Processed 103200 cabal files
+2026-10-30T16:41:43.2464828Z Processed 103600 cabal files
+2026-10-30T16:41:43.3039223Z Processed 104000 cabal files
+2026-10-30T16:41:43.3619076Z Processed 104400 cabal files
+2026-10-30T16:41:43.4175578Z Processed 104800 cabal files
+2026-10-30T16:41:43.4643046Z Processed 105200 cabal files
+2026-10-30T16:41:43.5126952Z Processed 105600 cabal files
+2026-10-30T16:41:43.5711546Z Processed 106000 cabal files
+2026-10-30T16:41:43.6316373Z Processed 106400 cabal files
+2026-10-30T16:41:43.6944375Z Processed 106800 cabal files
+2026-10-30T16:41:43.7553067Z Processed 107200 cabal files
+2026-10-30T16:41:43.8163098Z Processed 107600 cabal files
+2026-10-30T16:41:43.8723811Z Processed 108000 cabal files
+2026-10-30T16:41:43.9225997Z Processed 108400 cabal files
+2026-10-30T16:41:43.9792054Z Processed 108800 cabal files
+2026-10-30T16:41:44.0347817Z Processed 109200 cabal files
+2026-10-30T16:41:44.0953124Z Processed 109600 cabal files
+2026-10-30T16:41:44.1529008Z Processed 110000 cabal files
+2026-10-30T16:41:44.2089681Z Processed 110400 cabal files
+2026-10-30T16:41:44.2662441Z Processed 110800 cabal files
+2026-10-30T16:41:44.3243545Z Processed 111200 cabal files
+2026-10-30T16:41:44.3763345Z Processed 111600 cabal files
+2026-10-30T16:41:44.4290899Z Processed 112000 cabal files
+2026-10-30T16:41:44.4720398Z Processed 112400 cabal files
+2026-10-30T16:41:44.5200407Z Processed 112800 cabal files
+2026-10-30T16:41:44.5722877Z Processed 113200 cabal files
+2026-10-30T16:41:44.6308787Z Processed 113600 cabal files
+2026-10-30T16:41:44.6813671Z Processed 114000 cabal files
+2026-10-30T16:41:44.7309227Z Processed 114400 cabal files
+2026-10-30T16:41:44.7742219Z Processed 114800 cabal files
+2026-10-30T16:41:44.8217256Z Processed 115200 cabal files
+2026-10-30T16:41:44.8757008Z Processed 115600 cabal files
+2026-10-30T16:41:44.9264925Z Processed 116000 cabal files
+2026-10-30T16:41:44.9823182Z Processed 116400 cabal files
+2026-10-30T16:41:45.0437312Z Processed 116800 cabal files
+2026-10-30T16:41:45.1090007Z Processed 117200 cabal files
+2026-10-30T16:41:45.1686606Z Processed 117600 cabal files
+2026-10-30T16:41:45.2235714Z Processed 118000 cabal files
+2026-10-30T16:41:45.2833262Z Processed 118400 cabal files
+2026-10-30T16:41:45.3234430Z Processed 118800 cabal files
+2026-10-30T16:41:45.3728199Z Processed 119200 cabal files
+2026-10-30T16:41:45.4229312Z Processed 119600 cabal files
+2026-10-30T16:41:45.4646601Z Processed 120000 cabal files
+2026-10-30T16:41:45.5202182Z Processed 120400 cabal files
+2026-10-30T16:41:45.5665499Z Processed 120800 cabal files
+2026-10-30T16:41:45.6313595Z Processed 121200 cabal files
+2026-10-30T16:41:45.6758650Z Processed 121600 cabal files
+2026-10-30T16:41:45.7216785Z Processed 122000 cabal files
+2026-10-30T16:41:45.7785023Z Processed 122400 cabal files
+2026-10-30T16:41:45.8382203Z Processed 122800 cabal files
+2026-10-30T16:41:45.8955410Z Processed 123200 cabal files
+2026-10-30T16:41:45.9543502Z Processed 123600 cabal files
+2026-10-30T16:41:46.0182797Z Processed 124000 cabal files
+2026-10-30T16:41:46.0756802Z Processed 124400 cabal files
+2026-10-30T16:41:46.1264660Z Processed 124800 cabal files
+2026-10-30T16:41:46.1792799Z Processed 125200 cabal files
+2026-10-30T16:41:46.2319883Z Processed 125600 cabal files
+2026-10-30T16:41:46.2892050Z Processed 126000 cabal files
+2026-10-30T16:41:46.3426384Z Processed 126400 cabal files
+2026-10-30T16:41:46.4107073Z Processed 126800 cabal files
+2026-10-30T16:41:46.4761346Z Processed 127200 cabal files
+2026-10-30T16:41:46.5362052Z Processed 127600 cabal files
+2026-10-30T16:41:46.5992180Z Processed 128000 cabal files
+2026-10-30T16:41:46.6971366Z Processed 128400 cabal files
+2026-10-30T16:41:46.7598611Z Processed 128800 cabal files
+2026-10-30T16:41:46.8296536Z Processed 129200 cabal files
+2026-10-30T16:41:46.8825347Z Processed 129600 cabal files
+2026-10-30T16:41:46.9374905Z Processed 130000 cabal files
+2026-10-30T16:41:46.9950386Z Processed 130400 cabal files
+2026-10-30T16:41:47.0532404Z Processed 130800 cabal files
+2026-10-30T16:41:47.1178690Z Processed 131200 cabal files
+2026-10-30T16:41:47.1818457Z Processed 131600 cabal files
+2026-10-30T16:41:47.2470363Z Processed 132000 cabal files
+2026-10-30T16:41:47.3118257Z Processed 132400 cabal files
+2026-10-30T16:41:47.3759589Z Processed 132800 cabal files
+2026-10-30T16:41:47.4310096Z Processed 133200 cabal files
+2026-10-30T16:41:47.4960445Z Processed 133600 cabal files
+2026-10-30T16:41:47.5599105Z Processed 134000 cabal files
+2026-10-30T16:41:47.6240966Z Processed 134400 cabal files
+2026-10-30T16:41:47.6871140Z Processed 134800 cabal files
+2026-10-30T16:41:47.7485639Z Processed 135200 cabal files
+2026-10-30T16:41:47.8142269Z Processed 135600 cabal files
+2026-10-30T16:41:47.8789388Z Processed 136000 cabal files
+2026-10-30T16:41:47.9385891Z Processed 136400 cabal files
+2026-10-30T16:41:47.9949446Z Processed 136800 cabal files
+2026-10-30T16:41:48.0565630Z Processed 137200 cabal files
+2026-10-30T16:41:48.1203994Z Processed 137600 cabal files
+2026-10-30T16:41:48.1846848Z Processed 138000 cabal files
+2026-10-30T16:41:48.2502246Z Processed 138400 cabal files
+2026-10-30T16:41:48.3115427Z Processed 138800 cabal files
+2026-10-30T16:41:48.3748948Z Processed 139200 cabal files
+2026-10-30T16:41:48.4402008Z Processed 139600 cabal files
+2026-10-30T16:41:48.5020587Z Processed 140000 cabal files
+2026-10-30T16:41:48.5638312Z Processed 140400 cabal files
+2026-10-30T16:41:48.6285413Z Processed 140800 cabal files
+2026-10-30T16:41:48.6922698Z Processed 141200 cabal files
+2026-10-30T16:41:48.7540582Z Processed 141600 cabal files
+2026-10-30T16:41:48.8190687Z Processed 142000 cabal files
+2026-10-30T16:41:48.8727932Z Processed 142400 cabal files
+2026-10-30T16:41:48.9355981Z Processed 142800 cabal files
+2026-10-30T16:41:49.0020303Z Processed 143200 cabal files
+2026-10-30T16:41:49.0689036Z Processed 143600 cabal files
+2026-10-30T16:41:49.1358187Z Processed 144000 cabal files
+2026-10-30T16:41:49.2023554Z Processed 144400 cabal files
+2026-10-30T16:41:49.2690328Z Processed 144800 cabal files
+2026-10-30T16:41:49.3321341Z Processed 145200 cabal files
+2026-10-30T16:41:49.3918454Z Processed 145600 cabal files
+2026-10-30T16:41:49.4600369Z Processed 146000 cabal files
+2026-10-30T16:41:49.5143646Z Processed 146400 cabal files
+2026-10-30T16:41:49.5719322Z Processed 146800 cabal files
+2026-10-30T16:41:49.6342715Z Processed 147200 cabal files
+2026-10-30T16:41:49.6979264Z Processed 147600 cabal files
+2026-10-30T16:41:49.7608627Z Processed 148000 cabal files
+2026-10-30T16:41:49.8247065Z Processed 148400 cabal files
+2026-10-30T16:41:49.8878963Z Processed 148800 cabal files
+2026-10-30T16:41:49.9525189Z Processed 149200 cabal files
+2026-10-30T16:41:50.0223600Z Processed 149600 cabal files
+2026-10-30T16:41:50.1157302Z Processed 150000 cabal files
+2026-10-30T16:41:50.1811628Z Processed 150400 cabal files
+2026-10-30T16:41:50.2429152Z Processed 150800 cabal files
+2026-10-30T16:41:50.3052975Z Processed 151200 cabal files
+2026-10-30T16:41:50.3646170Z Processed 151600 cabal files
+2026-10-30T16:41:50.4273598Z Processed 152000 cabal files
+2026-10-30T16:41:50.4862367Z Processed 152400 cabal files
+2026-10-30T16:41:50.5282308Z Processed 152800 cabal files
+2026-10-30T16:41:50.5815288Z Processed 153200 cabal files
+2026-10-30T16:41:50.6390148Z Processed 153600 cabal files
+2026-10-30T16:41:50.6975633Z Processed 154000 cabal files
+2026-10-30T16:41:50.7490723Z Processed 154400 cabal files
+2026-10-30T16:41:50.8042384Z Processed 154800 cabal files
+2026-10-30T16:41:50.8568365Z Processed 155200 cabal files
+2026-10-30T16:41:50.9166008Z Processed 155600 cabal files
+2026-10-30T16:41:50.9765904Z Processed 156000 cabal files
+2026-10-30T16:41:51.0286891Z Processed 156400 cabal files
+2026-10-30T16:41:51.0919737Z Processed 156800 cabal files
+2026-10-30T16:41:51.1581464Z Processed 157200 cabal files
+2026-10-30T16:41:51.2184029Z Processed 157600 cabal files
+2026-10-30T16:41:51.2791247Z Processed 158000 cabal files
+2026-10-30T16:41:51.3414664Z Processed 158400 cabal files
+2026-10-30T16:41:51.4037924Z Processed 158800 cabal files
+2026-10-30T16:41:51.4655322Z Processed 159200 cabal files
+2026-10-30T16:41:51.5281104Z Processed 159600 cabal files
+2026-10-30T16:41:51.5816045Z Processed 160000 cabal files
+2026-10-30T16:41:51.6313705Z Processed 160400 cabal files
+2026-10-30T16:41:51.6907271Z Processed 160800 cabal files
+2026-10-30T16:41:51.7422275Z Processed 161200 cabal files
+2026-10-30T16:41:51.7976676Z Processed 161600 cabal files
+2026-10-30T16:41:51.8544347Z Processed 162000 cabal files
+2026-10-30T16:41:51.9135310Z Processed 162400 cabal files
+2026-10-30T16:41:51.9676380Z Processed 162800 cabal files
+2026-10-30T16:41:52.0318686Z Processed 163200 cabal files
+2026-10-30T16:41:52.0893808Z Processed 163600 cabal files
+2026-10-30T16:41:52.1507705Z Processed 164000 cabal files
+2026-10-30T16:41:52.2116071Z Processed 164400 cabal files
+2026-10-30T16:41:52.2675053Z Processed 164800 cabal files
+2026-10-30T16:41:52.3291023Z Processed 165200 cabal files
+2026-10-30T16:41:52.3886421Z Processed 165600 cabal files
+2026-10-30T16:41:52.4529969Z Processed 166000 cabal files
+2026-10-30T16:41:52.5081518Z Processed 166400 cabal files
+2026-10-30T16:41:52.5667483Z Processed 166800 cabal files
+2026-10-30T16:41:52.6222959Z Processed 167200 cabal files
+2026-10-30T16:41:52.6794984Z Processed 167600 cabal files
+2026-10-30T16:41:52.7395678Z Processed 168000 cabal files
+2026-10-30T16:41:52.7922104Z Processed 168400 cabal files
+2026-10-30T16:41:52.8525901Z Processed 168800 cabal files
+2026-10-30T16:41:52.9091100Z Processed 169200 cabal files
+2026-10-30T16:41:52.9725317Z Processed 169600 cabal files
+2026-10-30T16:41:53.0411474Z Processed 170000 cabal files
+2026-10-30T16:41:53.1032142Z Processed 170400 cabal files
+2026-10-30T16:41:53.1648606Z Processed 170800 cabal files
+2026-10-30T16:41:53.2214868Z Processed 171200 cabal files
+2026-10-30T16:41:53.2803846Z Processed 171600 cabal files
+2026-10-30T16:41:53.3497309Z Processed 172000 cabal files
+2026-10-30T16:41:53.4128168Z Processed 172400 cabal files
+2026-10-30T16:41:53.4745199Z Processed 172800 cabal files
+2026-10-30T16:41:53.5349026Z Processed 173200 cabal files
+2026-10-30T16:41:53.5951665Z Processed 173600 cabal files
+2026-10-30T16:41:53.6543565Z Processed 174000 cabal files
+2026-10-30T16:41:53.7124718Z Processed 174400 cabal files
+2026-10-30T16:41:53.7711632Z Processed 174800 cabal files
+2026-10-30T16:41:53.8317575Z Processed 175200 cabal files
+2026-10-30T16:41:53.8896677Z Processed 175600 cabal files
+2026-10-30T16:41:53.9497286Z Processed 176000 cabal files
+2026-10-30T16:41:54.0175108Z Processed 176400 cabal files
+2026-10-30T16:41:54.0812930Z Processed 176800 cabal files
+2026-10-30T16:41:54.1429953Z Processed 177200 cabal files
+2026-10-30T16:41:54.2122279Z Processed 177600 cabal files
+2026-10-30T16:41:54.2721957Z Processed 178000 cabal files
+2026-10-30T16:41:54.3362499Z Processed 178400 cabal files
+2026-10-30T16:41:54.3932460Z Processed 178800 cabal files
+2026-10-30T16:41:54.4446266Z Processed 179200 cabal files
+2026-10-30T16:41:54.4836478Z Processed 179600 cabal files
+2026-10-30T16:41:54.5246217Z Processed 180000 cabal files
+2026-10-30T16:41:54.5667009Z Processed 180400 cabal files
+2026-10-30T16:41:54.6076343Z Processed 180800 cabal files
+2026-10-30T16:41:54.6484762Z Processed 181200 cabal files
+2026-10-30T16:41:54.6905149Z Processed 181600 cabal files
+2026-10-30T16:41:54.7302253Z Processed 182000 cabal files
+2026-10-30T16:41:54.7837811Z Processed 182400 cabal files
+2026-10-30T16:41:54.8459251Z Processed 182800 cabal files
+2026-10-30T16:41:54.9116460Z Processed 183200 cabal files
+2026-10-30T16:41:54.9720702Z Processed 183600 cabal files
+2026-10-30T16:41:55.0343365Z Processed 184000 cabal files
+2026-10-30T16:41:55.0981099Z Processed 184400 cabal files
+2026-10-30T16:41:55.1586315Z Processed 184800 cabal files
+2026-10-30T16:41:55.2176369Z Processed 185200 cabal files
+2026-10-30T16:41:55.2798422Z Processed 185600 cabal files
+2026-10-30T16:41:55.3450178Z Processed 186000 cabal files
+2026-10-30T16:41:55.4046705Z Processed 186400 cabal files
+2026-10-30T16:41:55.4677883Z Processed 186800 cabal files
+2026-10-30T16:41:55.5262388Z Processed 187200 cabal files
+2026-10-30T16:41:55.5895890Z Processed 187600 cabal files
+2026-10-30T16:41:55.6533776Z Processed 188000 cabal files
+2026-10-30T16:41:55.7184394Z Processed 188400 cabal files
+2026-10-30T16:41:55.7824612Z Processed 188800 cabal files
+2026-10-30T16:41:55.8475416Z Processed 189200 cabal files
+2026-10-30T16:41:55.9156330Z Processed 189600 cabal files
+2026-10-30T16:41:55.9851842Z Processed 190000 cabal files
+2026-10-30T16:41:56.0478100Z Processed 190400 cabal files
+2026-10-30T16:41:56.1129246Z Processed 190800 cabal files
+2026-10-30T16:41:56.1772144Z Processed 191200 cabal files
+2026-10-30T16:41:56.2422498Z Processed 191600 cabal files
+2026-10-30T16:41:56.3061228Z Processed 192000 cabal files
+2026-10-30T16:41:56.3714019Z Processed 192400 cabal files
+2026-10-30T16:41:56.4374251Z Processed 192800 cabal files
+2026-10-30T16:41:56.4999915Z Processed 193200 cabal files
+2026-10-30T16:41:56.5648554Z Processed 193600 cabal files
+2026-10-30T16:41:56.6262200Z Processed 194000 cabal files
+2026-10-30T16:41:56.6898625Z Processed 194400 cabal files
+2026-10-30T16:41:56.7536597Z Processed 194800 cabal files
+2026-10-30T16:41:56.8181173Z Processed 195200 cabal files
+2026-10-30T16:41:56.8820532Z Processed 195600 cabal files
+2026-10-30T16:41:56.9467327Z Processed 196000 cabal files
+2026-10-30T16:41:57.0133602Z Processed 196400 cabal files
+2026-10-30T16:41:57.0804188Z Processed 196800 cabal files
+2026-10-30T16:41:57.1487760Z Processed 197200 cabal files
+2026-10-30T16:41:57.2105481Z Processed 197600 cabal files
+2026-10-30T16:41:57.2731675Z Processed 198000 cabal files
+2026-10-30T16:41:57.3411533Z Processed 198400 cabal files
+2026-10-30T16:41:57.4116001Z Processed 198800 cabal files
+2026-10-30T16:41:57.4822551Z Processed 199200 cabal files
+2026-10-30T16:41:57.5495489Z Processed 199600 cabal files
+2026-10-30T16:41:57.6207911Z Processed 200000 cabal files
+2026-10-30T16:41:57.6893155Z Processed 200400 cabal files
+2026-10-30T16:41:57.7551124Z Processed 200800 cabal files
+2026-10-30T16:41:57.8241448Z Processed 201200 cabal files
+2026-10-30T16:41:57.8937947Z Processed 201600 cabal files
+2026-10-30T16:42:02.3929826Z Package index cache populated
+2026-10-30T16:42:02.4546372Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-30T16:42:02.4546695Z with:
+2026-10-30T16:42:02.4546883Z   path: /home/runner/.stack/stack.sqlite3
+/home/runner/.stack/snapshots
+
+2026-10-30T16:42:02.4547324Z   key: cache--stack-snapshots--v-1-1-1--Linux--ubuntu-latest--9.8.4--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-10-30T16:42:02.4547728Z   enableCrossOsArchive: false
+2026-10-30T16:42:02.4547880Z   fail-on-cache-miss: false
+2026-10-30T16:42:02.4548020Z   lookup-only: false
+2026-10-30T16:42:02.4548146Z   save-always: false
+2026-10-30T16:42:02.4548269Z env:
+2026-10-30T16:42:02.4548392Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-30T16:42:02.4548553Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-30T16:42:02.4548707Z   CACHE_VERSION: v-1-1-1
+2026-10-30T16:42:02.4548838Z ##[endgroup]
+2026-10-30T16:42:02.7030084Z Cache not found for input keys: cache--stack-snapshots--v-1-1-1--Linux--ubuntu-latest--9.8.4--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-10-30T16:42:02.7600134Z Post job cleanup.
+2026-10-30T16:42:02.8555911Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/hakiru/hakiru --files-from manifest.txt --use-compress-program zstdmt
+2026-10-30T16:42:03.2139431Z Sent 1197 of 1197 (100.0%), 0.0 MBs/sec
+2026-10-30T16:42:03.4124583Z Cache saved with key: cache--stack-snapshots--v-1-1-1--Linux--ubuntu-latest--9.8.4--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-10-30T16:42:03.4226024Z Post job cleanup.
+2026-10-30T16:42:03.5182543Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/hakiru/hakiru --files-from manifest.txt --use-compress-program zstdmt
+2026-10-30T16:42:06.6321175Z Sent 0 of 372576103 (0.0%), 0.0 MBs/sec
+2026-10-30T16:42:07.4482331Z Sent 372576103 of 372576103 (100.0%), 195.0 MBs/sec
+2026-10-30T16:42:07.6472834Z Cache saved with key: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--9.8.4
+2026-10-30T16:42:07.6609287Z Post job cleanup.
+2026-10-30T16:42:07.7196699Z [command]/usr/bin/git version
+2026-10-30T16:42:07.7233381Z git version 2.56.0
+2026-10-30T16:42:07.7259938Z Temporarily overriding HOME='/home/runner/work/_temp/5acb47a1-315b-4c33-a5c2-39aad8850b6c' before making global git config changes
+2026-10-30T16:42:07.7260956Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-30T16:42:07.7263484Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-10-30T16:42:07.7304858Z Removing SSH command configuration
+2026-10-30T16:42:07.7310256Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-30T16:42:07.7345297Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-30T16:42:07.7559838Z Removing HTTP extra header
+2026-10-30T16:42:07.7564840Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-30T16:42:07.7617041Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-30T16:42:07.7845249Z Removing includeIf entries pointing to credentials config files
+2026-10-30T16:42:07.7850797Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-30T16:42:07.7889118Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-10-30T16:42:07.7889594Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-10-30T16:42:07.7889874Z includeif.gitdir:/github/workspace/.git.path
+2026-10-30T16:42:07.7890100Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-30T16:42:07.7896011Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-10-30T16:42:07.7928392Z /home/runner/work/_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:42:07.7936753Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-bf6a71c3\-6f39\-4351\-b046\-574ac1da00eb\.config
+2026-10-30T16:42:07.7980570Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-10-30T16:42:07.8043939Z /home/runner/work/_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:42:07.8051388Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-bf6a71c3\-6f39\-4351\-b046\-574ac1da00eb\.config
+2026-10-30T16:42:07.8096408Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-30T16:42:07.8128451Z /github/runner_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:42:07.8133854Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-bf6a71c3\-6f39\-4351\-b046\-574ac1da00eb\.config
+2026-10-30T16:42:07.8174350Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-30T16:42:07.8206045Z /github/runner_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config
+2026-10-30T16:42:07.8212162Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-bf6a71c3\-6f39\-4351\-b046\-574ac1da00eb\.config
+2026-10-30T16:42:07.8254691Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-30T16:42:07.8452198Z Removing credentials config '/home/runner/work/_temp/git-credentials-bf6a71c3-6f39-4351-b046-574ac1da00eb.config'
+2026-10-30T16:42:07.8645986Z Cleaning up orphan processes

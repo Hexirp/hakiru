@@ -331,7 +331,7 @@ push した。
 
 保存したログは以下の通り。
 
-* build #5
+* build #6
   * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_110915492883/0_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
   * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_110915492883/1_Build%20os-windows-latest%20ghc-9.8.4.txt)
 
@@ -401,3 +401,296 @@ GHCup を使って GHC をインストールしている場合、それもキャ
 `key` と `restore-keys` が全く同じである場合 `restore-keys` を省略できる。
 
 `4dbf48553e1d023bb19abf006de42a3033405b39` をコミットした。今回は Stack だけ。 GHCup は後で。
+
+## comment 2026-10-31 2
+
+push した。
+
+以下の通りになった。
+
+* [build #7](https://github.com/Hexirp/hakiru/actions/runs/41091865199)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41091865199/job/124187523039)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41091865199/job/124187523320)
+
+保存したログは以下の通り。
+
+* build #7
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_111391323375/0_Build%20os-windows-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_111391323375/1_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+
+`stack upload` により長いダウンロードが入っているけど、これ以降はキャッシュにより高速で通るはずである。
+
+やっぱり `$STACK_ROOT/pantry` に GHC のバージョンあるいは resolver のバージョンが関係するとは思えないんだよな。おそらく Hackage に存在する全部のパッケージの全部のバージョンのメタデータを保存しているだろうから。やはり GHC のバージョンに合わせて更新する必要があるとは思えない。
+
+サンプルのコードの説明を読み直そう。なるほど、 resolver を更新するタイミングでダウンロードするようにしたいと。これだと複数の resolver を共存させたい時に対応していないんじゃない？
+
+キャッシュがある場合に `stack update` をしないのも微妙である気がしてきた。それだったら最初から `stack update` をしないで自然に `$STACK_ROOT/pantry` が大きくなるのに任せてキャッシュしていった方がいいんじゃない？
+
+resolver をキャッシュのキーに使うとなると resolver も変数にしたくなるわけだけど GHC のバージョンと整合しないのは避けたいので GHC のバージョンと resolver のバージョンを通常の組にして OS の種類との直積にしたいんだよね。
+
+"[Running variations of jobs in a workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations)" を読んでも `include` を使って一つずつ指定していくしか方法がなさそうなんだけど。いや、 `include` の意味論は命令型になっていて、きちんと指定すれば OS のバージョンとの直積を実現することができる。いや、それは違うんじゃない？
+
+GitHub Actions の `matrix` において、複数の要素を持つ組の集合が二つあるとして、それらを掛け合わせたい。つまり、 `[{foo: A, bar: B}, {foo: C, bar: D}]` と `[{baz: W, baq: X}, {baz: Y, baq: Z}]` があるとして、それらの直積をとって `[{foo: A, bar: B, baz: W, baq: X}, {foo: A, bar: B, baz: Y, baq: Z}, {foo: C, bar: D, baz: W, baq: X}, {foo: C, bar: D, baz: Y, baq: Z}]` を生成したいのである。すべての組み合わせを直接書き下さないで、このような設定を行う方法はあるのだろうか？
+
+上記の段落のテキストを Microsoft Copilot に入れた。連想配列を入れ子にすれば可能であると出てきた。ええ……？　もっと頭を柔らかくするべきだったか？　その発想はなかったけど、本当にできるの？
+
+ようするに、以下のような感じだよね？
+
+```yml
+matrix:
+  os:
+    - ubuntu-latest
+    - windows-latest
+  haskell:
+    - ghc: 9.8.4
+      resolver: lts-23.28
+    - ghc: 9.6.7
+      resolver: lts-22.44
+```
+
+Stack のキャッシュの設定の次は GHCup のキャッシュの設定だな。コードのサンプルだと `~/.ghcup/bin/*` と `~/.ghcup/cache/*` と `~/.ghcup/config.yaml` と `~/.ghcup/ghc/${{ env.GHC_VERSION }}` をキャッシュしている。ただ、 `config.yaml` をキャッシュしても大丈夫なのかな？
+
+あと、これは Linux 用のファイルパスなので Windows 用のために一般化しないといけない。たぶん `GHCUP_INSTALL_BASE_PREFIX` 環境変数を使えば大丈夫かな？　よし、ローカルの環境において `echo "$GHCUP_INSTALL_BASE_PREFIX"` で見てみたけど、これで大丈夫である。
+
+ああ、でも Linux だと `.ghcup` ディレクトリで Windows だと `ghcup` ディレクトリだという罠がある。この違いを吸収するのは `if` でいいのかな。それとも `matrix` で？　うーん…… `if` でいいかな？　`GHCUP_ROOT` みたいな環境変数があれば良かったんだけど。
+
+`~/.ghcup/bin/*` には Cabal と Stack の実行ファイルも入っているんだけど、これらもキャッシュすることになるのかな？
+
+今は Cabal と Stack のバージョンを固定しているんだけど、この先 Cabal と Stack のバージョンを上げるたびに、キャッシュされた実行ファイルが蓄積するのでは？
+
+`matrix` に Cabal のバージョンと Stack のバージョンも含めれば？
+
+いや、それだと解決策にはならない。バージョンを上げたい場合なんだから。
+
+でも `latest` を指定するよりはマシではある。 Haskell に関連したツールの全部についてバージョンを指定するという分かりやすさもある。
+
+GHCup についてのキャッシュがあったら `haskell-actions/setup` をスキップしている。これは、別にいいかな。 GHC のバージョンと Cabal のバージョンと Stack のバージョンを固定していれば。ああ、なるほど、ここで Cabal と Stack のバージョンを `latest` にしているとスキップするかしないかで、その後の状態が変わる可能性がある。
+
+まあ、コードのサンプルだと Stack のバージョンを `latest` にしているんだけど。
+
+`$STACK_ROOT/pantry` については、キャッシュのサイズを大きくすることを許容して、繰り返し `stack update` をするか、自然にサイズが増えるのに任せて、キャッシュのサイズを小さく保つか、だよね。キャッシュがあるかどうかで `stack update` をスキップしたりしなかったりするのは、スキップをするかしないかによって、その後の状態が変わるから、あまり好きじゃない。だから、 `stack update` を使うなら毎回実行する。
+
+うーん、自然にサイズが増えるのに任せた方が良いかな？
+
+`$STACK_ROOT/snapshots` と `stack ls dependencies` については、依存ライブラリが少し増えただけで全ての依存ライブラリを再コンパイルすることになるので、使わない。 `$STACK_ROOT/snapshots` の内容が大きく変わるであろう resolver が変わる場合にだけ `$STACK_ROOT/snapshots` のキャッシュのキーを変える。
+
+えーと、まずは Stack のキャッシュの設定から進めよう。
+
+いや、その前に `matrix` 機能から。
+
+GitHub Actions の `matrix` 戦略の設定を変更する。
+
+現在において resolver のバージョンは `lts-23.28` のみであるが、複数のバージョンに対してテストしたい。
+
+そこで、最初は `matrix` 戦略において複数の resolver を指定することを考えたが、そうすると resolver のバージョンは特定の GHC のバージョンと結びついているため、 resolver のバージョンの指定と GHC のバージョンの指定が整合しなくなって問題が起こってしまう。
+
+`exclude` 設定を使うことを検討したが、その場合は m 個の resolver と n 個の GHC の組み合わせにおいて `O ( m * n )` 個の組み合わせに対して除外設定を行う必要があり、設定漏れの可能性もあり、かなり良くない。
+
+`include` 設定を使うことを検討したが、その場合は OS のバージョンの配列との直積をとることができず、それぞれの組み合わせを一つずつ指定していくことになってしまう。
+
+resolver のバージョンから GHC のバージョンを求めることを検討したが、そのような仕組みはないし、新しく作るにしても無数の分岐を記述することになり、記述を圧縮することができず、意義が薄い。
+
+GHC のバージョンの変数と resolver のバージョンの変数を二つ組にして、それらをまとめる配列を用意して、 OS のバージョンの配列との直積をとって結合すれば、 GHC のバージョンと resolver のバージョンの対応を保ち、これらの変数を `matrix.os` と `matrix.ghc` と `matrix.resolver` として利用できるようになる。ちょうど SQL の `CROSS JOIN` のような操作である。しかし、その方法が分からず、かなり悩んでいた。
+
+件の問題について抽象化したテキストを Microsoft Copilot に入れたところ、 `matrix.ghc` と `matrix.resolver` のような平坦な形にすることをやめて、 GHC のバージョンと resolver のバージョンの二つ組そのものをまとめる新しい変数を用意して、その変数を配列にすれば良いと出てきた。
+
+私は、 `matrix.os` と `matrix.ghc` と `matrix.resolver` という枠組みに嵌まり込んでいたし、 `matrix.haskell.ghc` のような多段階のアクセスができることにも気付いていなくて、この方法に辿り着くことができなかった。
+
+ようするに、 GHC のバージョンの変数と resolver のバージョンの変数を二つ組にして、それらをまとめる変数を用意することで、 GHC のバージョンと resolver のバージョンの対応を保つことができる。
+
+GHC のバージョンの変数と resolver のバージョンの変数を用意したが、そのついでに Cabal のバージョンの変数と Stack のバージョンの変数も用意する。
+
+現在のコードでは Cabal のバージョンと Stack のバージョンをハードコーディングしてしまっている。後から変更したり GHC のバージョンに応じて変更したりするかもしれない。 Haskell に関係するツールのバージョンをまとめて指定するのも美しい。
+
+GitHub Actions の `matrix` 戦略の設定を変更して `96159eb56f3e2d978c92b2c5c92059539ef180c0` としてコミットした。
+
+そういや "[Running variations of jobs in a workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations)" によれば `matrix` は strategy と分類するのね。 `matrix :: Map String (Array a) -> Array (Map String a)` みたいな？　いや、 `a` に該当する型がそれぞれにおいて不定だから、この型は違うわ。
+
+`$STACK_ROOT/pantry` のキャッシュについて。
+
+`stack update` を使わないで自然にサイズが増えるのに任せる方法をとるので `stack.yaml.lock` ファイルをキャッシュのキーに加えたんだけど、ここで resolver が違うと `stack.yaml.lock` ファイルも違うという問題に気付いた。
+
+えーと、 `matrix.haskell.resolver` に変更するべきなのかな？　`$STACK_ROOT/pantry` だけなら、これで済むけど、ロックファイルについても差し替える必要があるよね？
+
+"[Lock Files](https://docs.haskellstack.org/en/stable/topics/lock_files/)" と "[Stack's global flags and options § `--lock-file` option](https://docs.haskellstack.org/en/stable/configure/global_flags/#-lock-file-option) を読んだ。
+
+つまり `--stack-yaml` オプションに `stack-lts-23.28.yaml` を渡すと `stack-lts-23.28.yaml.lock` をロックファイルとして扱うのね。となると、別のディレクトリに `stack-lts-22.44.yaml` を置いたりするのはやめて、べた置きの方がいいかな。 `hashFiles('stack-lts-23.28.yaml.lock')` をキーにするのもできる。
+
+Cabal のバージョンと Stack のバージョンはキーにいれない。これらのツールのバージョンが変わってもキャッシュには影響がないし、そうであるべきなので。
+
+```yaml
+key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles('stack-${{ matrix.haskell.resolver }}.yaml.lock') }}
+```
+
+えーと、こういう感じなのかな？
+
+`hashFiles` 関数に渡すファイルの名前の中に変数を埋め込みたいんだけど。 `${{ hashFiles('stack-${{ matrix.haskell.resolver }}.yaml.lock') }}` は大丈夫なのかな？
+
+「 `hashFiles` 関数に渡すファイルの名前の中に変数を埋め込みたい」という旨の文章を入れて Google AI が出力した文章によると `format` 関数を使うべきだと。えーと、 "[Evaluate expressions in workflows and actions § format](https://docs.github.com/en/enterprise-cloud@latest/actions/reference/workflows-and-actions/expressions#format)" によると `{0}`, `{1}`, `{2}`, ... の場所に埋め込む関数だと。
+
+```yaml
+key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+```
+
+こうね。
+
+えーと、 `restore-keys` については resolver のバージョンをキーに入れている以上はロックファイルにおいて変わりうるのは `extra-deps` 設定だけで `$STACK_ROOT/pantry` どころか `$STACK_ROOT/snapshots` においても引き継ぐことを許容できる範囲に収まるはず。
+
+それどころか resolver が変わっていても `$STACK_ROOT/pantry` においては再ビルドもないから大丈夫であるはず。
+
+```yaml
+restore-keys: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+```
+
+こういう風に `key` と完全一致する名前を `restore-keys` に指定することは意味があるのかな？
+
+"[Dependency caching reference](https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching)" によると最初は `key` と一致するかどうかを確かめるから意味がなさそう。サンプルのコードでも完全一致するパターンは入れていない。
+
+```yaml
+restore-keys: |
+  cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
+  cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
+```
+
+特定の GHC に対して存在する resolver の範囲には制限があるから resolver をキーにいれなくても依存ライブラリの範囲に制限があって肥大化しないはずである。
+
+GHC については……
+
+悩むところだけど、 `base` ライブラリが変わるから `$STACK_ROOT/snapshots` のすべてを更新することになるのに対して、 `$STACK_ROOT/pantry` はそこまでという感じだと思う。
+
+でも……うーん…… `stack update` をしない限りは軽量な範囲に収まるはずだし GHC のバージョンが異なるキャッシュを引き継ぐことで不都合が生じるならば引き継がないように削除すればいけるはず。ああ、でも、キャッシュの引き継ぎがあるから既に GHC のバージョンが異なるキャッシュも引き継ぐことになるのか？
+
+```yaml
+restore-keys: |
+  cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
+  cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
+  cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--
+```
+
+色々と悩んだけど `${{ env.CACHE_VERSION }}` もあるから GHC のバージョンも外す。いや、外したら肥大化してしまった過去のキャッシュも引き継ぐことになるのでは？　そのままにしておこう。
+
+```yaml
+restore-keys: |
+  cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
+  cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
+```
+
+こうする。
+
+`$STACK_ROOT/snapshots` の方は以下の通りにする。
+
+```yaml
+key: cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+restore-keys: |
+  cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
+```
+
+GHC のバージョンが同じでも `base` ライブラリのバージョンは変わる可能性がある。
+
+うーん、でも resolver を変えることがそうそうはないよね。いや、 GHC 9.14 のような resolver の更新が落ち着いていないバージョンに対応させるなら、その可能性はある。その場合でも GHC のバージョンで切れるから、それほど問題にはならない可能性もある。
+
+```yaml
+restore-keys: |
+  cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.resolver }}--
+  cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--
+```
+
+やっぱり最新の GHC に対応させることを考えて、とりあえずはこうで。
+
+`stack-lts-23.28.yaml` ファイルと `stack-lts-23.28.yaml.lock` ファイルを作らないと。
+
+`stack.yaml` ファイルからコピーして作成した。 `stack.yaml` ファイルの設定を変える時は追従しないと。
+
+`--no-install-ghc` オプションを書き加えた時には手癖で後から追加した方を後に書いたけど `--system-ghc` オプションと `--no-install-ghc` オプションはどっちを先に置くべきかな？　辞書式順序だと後者が先なんだよね。でも、 GHC を探す場所の指定と GHC がない場合の処理を指定しているとすると、いい順番になるかな。
+
+`6b39c40cd8a7ec58926bf2912cf1d52326a2144a` としてコミットした。
+
+GHCup のキャッシュについては……
+
+まずは Windows と Linux での分岐の仕方について。
+
+"[GitHub Actions の if と env](https://zenn.dev/matken/articles/github-actions-if-and-env)" (Ken Matsui, 2022) と "[Workflow syntax for GitHub Actions § `jobs.<job_id>.steps[*].if`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsif)" を読んだけどよくわからないな。
+
+おそらくできる方法が多すぎるタイプだ。
+
+うーん？
+
+```yaml
+env:
+  - if: runner.os == 'Linux'
+    GHCUP_ROOT: $GHCUP_INSTALL_BASE_PREFIX/.ghcup
+  - if: runner.os == 'Windows'
+    GHCUP_ROOT: $GHCUP_INSTALL_BASE_PREFIX/ghcup
+```
+
+こういう風にできるかな？
+
+「 GitHub Actions において OS に合わせてキャッシュするディレクトリを変えたい」という旨の文章を Google AI に入れた。環境変数の名前に OS の名前を組み込んで、キャッシュの際に OS の名前を展開する方法と、 `matrix` 戦略を使う方法の、二つの方法を提案する文章が出てきた。
+
+後者の `matrix` 戦略については前に検討したけど GHCup に関する設定が OS の設定と混ざるのが変だと思って却下している。前者の方で。
+
+```yaml
+env:
+  GHCUP_ROOT_Linux: $GHCUP_INSTALL_BASE_PREFIX/.ghcup
+  GHCUP_ROOT_Windows: $GHCUP_INSTALL_BASE_PREFIX/ghcup
+with:
+  path: ${{ env[format('$GHCUP_ROOT_{0}', runner.os)] }}
+```
+
+Google AI の書き方に従って、こういうことで。
+
+```yaml
+env:
+  CACHE_VERSION: ${{ env.GHCUP_CACHE_VERSION }}
+  GHCUP_ROOT_Linux: ~/.ghcup
+  GHCUP_ROOT_Windows: 'C:\ghcup'
+with:
+  path: |
+    env.GHCUP_ROOT_${{ runner.os }}
+  key: cache--ghcup--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--${{ matrix.haskell.ghc }}--${{ matrix.haskell.cabal }}--${{ matrix.haskell.stack }}
+```
+
+やっぱりいけるかどうかはわからないけどこうする。 GHCup のキャッシュは `haskell-actions/setup` を起動していないタイミングでやるんだけど、その状態だと `GHCUP_INSTALL_BASE_PREFIX` 環境変数が存在しない。そうなので、こうするしかない。
+
+Windows のバックスラッシュはエスケープ文字にならないようにシングルクォーテーションで囲む。
+
+Cabal のバージョンと Stack のバージョンでキャッシュを固定して別のバージョンのキャッシュは引き継がない。後の `haskell-actions/setup` をスキップするかしないかどうかで状態が変わらないようにする。
+
+ああ、いや？
+
+`${{ env.GHCUP_ROOT_${{ runner.os }} }}/bin/*` とは書けないな。
+
+`${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/bin/*` とするしかないな。
+
+そもそも `env.GHCUP_ROOT_${{ runner.os }}` は `env.GHCUP_ROOT_Linux` ファイルとして解釈してしまうはず。結局は Google AI が出力した文章と同じ方法に戻ってきたな。
+
+```yaml
+path: |
+  ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/bin/*
+  ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/cache/*
+  ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/config.yaml
+  ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/ghc/${{ matrix.haskell.ghc }}
+```
+
+こうする。
+
+`haskell-actions/setup` の方には `if: steps.ghcup-cache.outputs.cache-hit != 'true'` と書く。
+
+GitHub Actions の時間の節約のために GHCup のファイルをキャッシュする。
+
+`${{ }}` expression syntax は二重にすることができないため property dereference syntax ではなく index syntax を使っている。
+
+`Setup` ステップをスキップしてもしなくても状態が変化しないようにするために、 GHC と Cabal と Stack のバージョンが一致している場合のみにキャッシュを取得する。
+
+`7ad11f39ea058a7f078cd21840601b284582711f` としてコミットした。
+
+`${{ }}` のことを "`${{ }}` expression sytax" と呼ぶ理由は "[Workflow syntax for GitHub Actions § `jobs.<job_id>.steps[*].if`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsif)" において次のようにあるから。
+
+> When you use expressions in an `if` conditional, you can, optionally, omit the `${{ }}` expression syntax because GitHub Actions automatically evaluates the `if` conditional as an expression. However, this exception does not apply everywhere.
+
+`env.GHCUP_ROOT_Linux` のことを "property dereference syntax" と呼んで `env['GHCUP_ROOT_Linux']` のことを "index syntax" と呼ぶ理由は "[Contexts reference § Available contexts](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#available-contexts)" において次のようにあるから。
+
+> As part of an expression, you can access context information using one of two syntaxes.
+> <!-- blank line -->
+> * Index syntax: `github['sha']`
+> * Property dereference syntax: `github.sha`
