@@ -1,5 +1,4 @@
-resolver: lts-23.28 # If you change this, please update GHC version "stack / ghc" job in .github/workflows/main.yaml
-
+resolver: lts-23.28
 flags:
   hakyll:
     previewServer: true
@@ -7,15 +6,5 @@ flags:
     checkExternal: true
     usePandoc:     true
     buildWebsite:  true
-
 packages:
-  - '.'
-
-nix:
-  packages:
-    - openssh  # for deployment
-    - rsync    # for deployment
-    - zlib
-    - pkgconfig
-
-extra-deps:
+  - .
