@@ -1,0 +1,35 @@
+﻿2026-10-31T15:05:05.9736362Z Current runner version: '2.338.2'
+2026-10-31T15:05:05.9764190Z ##[group]Runner Image Provisioner
+2026-10-31T15:05:05.9765302Z Hosted Compute Agent
+2026-10-31T15:05:05.9765993Z Version: 20261021.618
+2026-10-31T15:05:05.9766636Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-31T15:05:05.9767368Z Build Date: 2026-10-21T00:45:21Z
+2026-10-31T15:05:05.9768194Z Worker ID: {849c8cd7-e9e7-44c6-b74d-c92e0d90d5f6}
+2026-10-31T15:05:05.9769373Z Region: southcentralus
+2026-10-31T15:05:05.9770155Z Cloud: Azure
+2026-10-31T15:05:05.9770711Z ##[endgroup]
+2026-10-31T15:05:05.9772542Z ##[group]Operating System
+2026-10-31T15:05:05.9773236Z Ubuntu
+2026-10-31T15:05:05.9773805Z 24.04.5
+2026-10-31T15:05:05.9774404Z LTS
+2026-10-31T15:05:05.9774928Z ##[endgroup]
+2026-10-31T15:05:05.9775474Z ##[group]Runner Image
+2026-10-31T15:05:05.9776210Z Image: ubuntu-24.04
+2026-10-31T15:05:05.9776817Z Version: 20261025.353.1
+2026-10-31T15:05:05.9777972Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-31T15:05:05.9780112Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-10-31T15:05:05.9781249Z ##[endgroup]
+2026-10-31T15:05:05.9782445Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T15:05:05.9784706Z Contents: read
+2026-10-31T15:05:05.9785343Z Metadata: read
+2026-10-31T15:05:05.9786000Z Packages: read
+2026-10-31T15:05:05.9786607Z ##[endgroup]
+2026-10-31T15:05:05.9788678Z Secret source: Actions
+2026-10-31T15:05:05.9790206Z Cache mode: write
+2026-10-31T15:05:05.9791202Z Prepare workflow directory
+2026-10-31T15:05:06.0202280Z Prepare all required actions
+2026-10-31T15:05:06.0252425Z Getting action download info
+2026-10-31T15:05:06.3197924Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-31T15:05:06.4421947Z Download action repository 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-10-31T15:05:06.5637498Z Download action repository 'haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-10-31T15:05:07.0910383Z Complete job name: Build os-ubuntu-latest ghc-9.8.4

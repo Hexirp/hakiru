@@ -1,0 +1,348 @@
+﻿2026-10-31T15:05:05.8671541Z Current runner version: '2.338.2'
+2026-10-31T15:05:05.8704761Z ##[group]Runner Image Provisioner
+2026-10-31T15:05:05.8706094Z Hosted Compute Agent
+2026-10-31T15:05:05.8706993Z Version: 20261021.618
+2026-10-31T15:05:05.8708158Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-31T15:05:05.8709411Z Build Date: 2026-10-21T00:45:21Z
+2026-10-31T15:05:05.8710528Z Worker ID: {62a3468f-06ce-48cf-9d7c-2cf3892f7944}
+2026-10-31T15:05:05.8711651Z Region: eastus
+2026-10-31T15:05:05.8712478Z Cloud: Azure
+2026-10-31T15:05:05.8713694Z ##[endgroup]
+2026-10-31T15:05:05.8715976Z ##[group]Operating System
+2026-10-31T15:05:05.8717099Z Microsoft Windows Server 2025
+2026-10-31T15:05:05.8718050Z 10.0.26100
+2026-10-31T15:05:05.8718903Z Datacenter
+2026-10-31T15:05:05.8719742Z ##[endgroup]
+2026-10-31T15:05:05.8720552Z ##[group]Runner Image
+2026-10-31T15:05:05.8721505Z Image: windows-2025-vs2026
+2026-10-31T15:05:05.8722613Z Version: 20261021.278.1
+2026-10-31T15:05:05.8725600Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261021.278/images/windows/Windows2025-VS2026-Readme.md
+2026-10-31T15:05:05.8728952Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261021.278
+2026-10-31T15:05:05.8730714Z ##[endgroup]
+2026-10-31T15:05:05.8732751Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T15:05:05.8735557Z Contents: read
+2026-10-31T15:05:05.8736496Z Metadata: read
+2026-10-31T15:05:05.8737298Z Packages: read
+2026-10-31T15:05:05.8738233Z ##[endgroup]
+2026-10-31T15:05:05.8740978Z Secret source: Actions
+2026-10-31T15:05:05.8742386Z Cache mode: write
+2026-10-31T15:05:05.8743527Z Prepare workflow directory
+2026-10-31T15:05:05.9166328Z Prepare all required actions
+2026-10-31T15:05:05.9217293Z Getting action download info
+2026-10-31T15:05:06.0848540Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-31T15:05:06.2216643Z Download action repository 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-10-31T15:05:06.3702817Z Download action repository 'haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-10-31T15:05:06.6558237Z Complete job name: Build os-windows-latest ghc-9.8.4
+2026-10-31T15:05:06.8076581Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-31T15:05:06.8077799Z with:
+2026-10-31T15:05:06.8078212Z   repository: Hexirp/hakiru
+2026-10-31T15:05:06.8081984Z   token: ***
+2026-10-31T15:05:06.8082390Z   ssh-strict: true
+2026-10-31T15:05:06.8082795Z   ssh-user: git
+2026-10-31T15:05:06.8083214Z   persist-credentials: true
+2026-10-31T15:05:06.8083669Z   clean: true
+2026-10-31T15:05:06.8084082Z   sparse-checkout-cone-mode: true
+2026-10-31T15:05:06.8084583Z   fetch-depth: 1
+2026-10-31T15:05:06.8084987Z   fetch-tags: false
+2026-10-31T15:05:06.8085403Z   show-progress: true
+2026-10-31T15:05:06.8085836Z   lfs: false
+2026-10-31T15:05:06.8086245Z   submodules: false
+2026-10-31T15:05:06.8086671Z   set-safe-directory: true
+2026-10-31T15:05:06.8087150Z   allow-unsafe-pr-checkout: false
+2026-10-31T15:05:06.8087841Z env:
+2026-10-31T15:05:06.8088238Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:06.8088788Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:06.8089330Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:06.8089848Z ##[endgroup]
+2026-10-31T15:05:07.3468751Z Syncing repository: Hexirp/hakiru
+2026-10-31T15:05:07.3471470Z ##[group]Getting Git version info
+2026-10-31T15:05:07.3472186Z Working directory is 'D:\a\hakiru\hakiru'
+2026-10-31T15:05:07.4395426Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-31T15:05:08.2841061Z git version 2.56.0.windows.2
+2026-10-31T15:05:08.2898917Z ##[endgroup]
+2026-10-31T15:05:08.2916069Z Temporarily overriding HOME='D:\a\_temp\00d61c13-6014-4690-9a57-d2e9a290b7fa' before making global git config changes
+2026-10-31T15:05:08.2919767Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T15:05:08.2929597Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\hakiru\hakiru
+2026-10-31T15:05:08.3609576Z Deleting the contents of 'D:\a\hakiru\hakiru'
+2026-10-31T15:05:08.3615803Z ##[group]Determining repository object format
+2026-10-31T15:05:08.3618685Z ##[endgroup]
+2026-10-31T15:05:08.3620244Z ##[group]Initializing the repository
+2026-10-31T15:05:08.3627308Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\hakiru\hakiru
+2026-10-31T15:05:08.4598051Z Initialized empty Git repository in D:/a/hakiru/hakiru/.git/
+2026-10-31T15:05:08.4651644Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Hexirp/hakiru
+2026-10-31T15:05:08.5350886Z ##[endgroup]
+2026-10-31T15:05:08.5352733Z ##[group]Disabling automatic garbage collection
+2026-10-31T15:05:08.5360384Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-31T15:05:08.5759059Z ##[endgroup]
+2026-10-31T15:05:08.5760871Z ##[group]Setting up auth
+2026-10-31T15:05:08.5762190Z Removing SSH command configuration
+2026-10-31T15:05:08.5769676Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T15:05:08.6177875Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-31T15:05:10.1550041Z Removing HTTP extra header
+2026-10-31T15:05:10.1560697Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T15:05:10.1955349Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-31T15:05:10.8687212Z Removing includeIf entries pointing to credentials config files
+2026-10-31T15:05:10.8702601Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T15:05:10.9164150Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-31T15:05:11.5356018Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-31T15:05:11.5776283Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/hakiru/hakiru/.git.path D:\a\_temp\git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:05:11.6186498Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path D:\a\_temp\git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:05:11.6641005Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:05:11.7035985Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:05:11.7441979Z ##[endgroup]
+2026-10-31T15:05:11.7443055Z ##[group]Fetching the repository
+2026-10-31T15:05:11.7460961Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +922673b9be5942e18c3a491c837af38e3e868b34:refs/remotes/origin/main
+2026-10-31T15:05:12.6522623Z From https://github.com/Hexirp/hakiru
+2026-10-31T15:05:12.6523637Z  * [new ref]         922673b9be5942e18c3a491c837af38e3e868b34 -> origin/main
+2026-10-31T15:05:12.6594009Z [command]"C:\Program Files\Git\bin\git.exe" branch --list --remote origin/main
+2026-10-31T15:05:12.7066505Z   origin/main
+2026-10-31T15:05:12.7118861Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/remotes/origin/main
+2026-10-31T15:05:12.7529624Z 922673b9be5942e18c3a491c837af38e3e868b34
+2026-10-31T15:05:12.7572237Z ##[endgroup]
+2026-10-31T15:05:12.7572718Z ##[group]Determining the checkout info
+2026-10-31T15:05:12.7574266Z ##[endgroup]
+2026-10-31T15:05:12.7583612Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-31T15:05:12.8137939Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-31T15:05:12.8541870Z ##[group]Checking out the ref
+2026-10-31T15:05:12.8553485Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-10-31T15:05:12.9968012Z Switched to a new branch 'main'
+2026-10-31T15:05:12.9995087Z branch 'main' set up to track 'origin/main'.
+2026-10-31T15:05:13.0045630Z ##[endgroup]
+2026-10-31T15:05:13.0554946Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-31T15:05:13.0929602Z 922673b9be5942e18c3a491c837af38e3e868b34
+2026-10-31T15:05:13.1460217Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-31T15:05:13.1460653Z with:
+2026-10-31T15:05:13.1461027Z   path: C:\ghcup/bin/*
+C:\ghcup/cache/*
+C:\ghcup/config.yaml
+C:\ghcup/ghc/9.8.4
+
+2026-10-31T15:05:13.1461657Z   key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-10-31T15:05:13.1462177Z   enableCrossOsArchive: false
+2026-10-31T15:05:13.1462417Z   fail-on-cache-miss: false
+2026-10-31T15:05:13.1462629Z   lookup-only: false
+2026-10-31T15:05:13.1462820Z   save-always: false
+2026-10-31T15:05:13.1462993Z env:
+2026-10-31T15:05:13.1463157Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1463387Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1463642Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1463891Z   CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1464122Z   GHCUP_ROOT_Linux: ~/.ghcup
+2026-10-31T15:05:13.1464336Z   GHCUP_ROOT_Windows: C:\ghcup
+2026-10-31T15:05:13.1464577Z ##[endgroup]
+2026-10-31T15:05:13.5517622Z Cache not found for input keys: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-10-31T15:05:13.5873910Z ##[group]Run haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d
+2026-10-31T15:05:13.5874383Z with:
+2026-10-31T15:05:13.5874563Z   ghc-version: 9.8.4
+2026-10-31T15:05:13.5874769Z   cabal-version: 3.16.1.0
+2026-10-31T15:05:13.5874976Z   stack-version: 3.11.1
+2026-10-31T15:05:13.5875170Z   enable-stack: true
+2026-10-31T15:05:13.5875354Z   cabal-update: true
+2026-10-31T15:05:13.5875530Z env:
+2026-10-31T15:05:13.5875699Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.5875931Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.5876181Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.5876413Z ##[endgroup]
+2026-10-31T15:05:13.6934130Z Preparing to setup a Haskell environment
+2026-10-31T15:05:13.6945988Z ##[group]Preparing ghcup environment
+2026-10-31T15:05:13.6946429Z Adding ghcup release channel: prereleases
+2026-10-31T15:05:13.8040144Z [command]C:\ghcup\bin\ghcup.exe config add-release-channel prereleases
+2026-10-31T15:05:15.6318910Z ##[endgroup]
+2026-10-31T15:05:15.6319493Z ##[group]Preparing ghc environment
+2026-10-31T15:05:15.6320059Z ##[endgroup]
+2026-10-31T15:05:15.6320552Z ##[group]Installing ghc version 9.8.4
+2026-10-31T15:05:15.7177403Z [command]C:\ghcup\bin\ghcup.exe whereis ghc 9.8.4
+2026-10-31T15:05:16.1637247Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-31T15:05:16.1700415Z 
+2026-10-31T15:05:16.1700427Z 
+2026-10-31T15:05:16.1701244Z Attempting to access tool ghc at location <not-found>
+2026-10-31T15:05:16.1706305Z Failed to access tool ghc at location <not-found>
+2026-10-31T15:05:16.1708113Z Attempting to access tool ghc at location C:/ghcup/bin
+2026-10-31T15:05:16.1708765Z Succeeded accessing tool ghc at location C:/ghcup/bin
+2026-10-31T15:05:16.2529179Z [command]C:\ghcup\bin\ghcup.exe set ghc 9.8.4
+2026-10-31T15:05:16.3645889Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml as file C:\ghcup\cache\ghcup-0.1.0.yaml
+2026-10-31T15:05:17.9047405Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+2026-10-31T15:05:17.9048136Z                                  Dload  Upload  Total   Spent   Left   Speed
+2026-10-31T15:05:17.9048531Z 
+2026-10-31T15:05:18.0310470Z   0      0   0      0   0      0      0      0                              0
+2026-10-31T15:05:18.0312201Z   0      0   0      0   0      0      0      0                              0
+2026-10-31T15:05:18.0312976Z   0      0   0      0   0      0      0      0                              0
+2026-10-31T15:05:18.0313603Z   0      0   0      0   0      0      0      0                              0
+2026-10-31T15:05:18.2343452Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-prereleases-0.1.0.yaml as file C:\ghcup\cache\ghcup-prereleases-0.1.0.yaml
+2026-10-31T15:05:18.3012408Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+2026-10-31T15:05:18.3013214Z                                  Dload  Upload  Total   Spent   Left   Speed
+2026-10-31T15:05:18.3013635Z 
+2026-10-31T15:05:18.3257040Z   0      0   0      0   0      0      0      0                              0
+2026-10-31T15:05:18.3258922Z 100 373.5k 100 373.5k   0      0  6.35M      0                              0
+2026-10-31T15:05:18.3260706Z 100 373.5k 100 373.5k   0      0  6.33M      0                              0
+2026-10-31T15:05:18.3261421Z 100 373.5k 100 373.5k   0      0  6.33M      0                              0
+2026-10-31T15:05:18.3837171Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:05:18.5021988Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-31T15:05:18.5835199Z [command]C:\ghcup\bin\ghcup.exe unset ghc
+2026-10-31T15:05:18.6136300Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool ghc
+2026-10-31T15:05:18.6192133Z Attempting to install ghc 9.8.4 using ghcup
+2026-10-31T15:05:18.7088949Z [command]C:\ghcup\bin\ghcup.exe install ghc 9.8.4
+2026-10-31T15:05:19.1358500Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:05:19.1486493Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghc/9.8.4/ghc-9.8.4-x86_64-unknown-mingw32.tar.xz as file C:\ghcup\tmp\ghcup-fe6b81c6ecbf7757\ghc-9.8.4-x86_64-unknown-mingw32.tar.xz
+2026-10-31T15:05:19.4021507Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+2026-10-31T15:05:19.4022130Z                                  Dload  Upload  Total   Spent   Left   Speed
+2026-10-31T15:05:19.4022371Z 
+2026-10-31T15:05:20.4051209Z   0      0   0      0   0      0      0      0                              0
+2026-10-31T15:05:20.9969630Z  52 322.7M  52 169.8M   0      0 136.7M      0   00:02   00:01   00:01 169.3M
+2026-10-31T15:05:20.9971391Z 100 322.7M 100 322.7M   0      0 175.9M      0   00:01   00:01         169.3M
+2026-10-31T15:05:20.9971943Z 100 322.7M 100 322.7M   0      0 175.9M      0   00:01   00:01         169.3M
+2026-10-31T15:05:20.9972315Z 100 322.7M 100 322.7M   0      0 175.9M      0   00:01   00:01         169.3M
+2026-10-31T15:05:21.4102207Z [1m[92m[ Info  ][0m[0m verifying digest of: ghc-9.8.4-x86_64-unknown-mingw32.tar.xz
+2026-10-31T15:05:23.2045124Z [1m[92m[ Info  ][0m[0m Unpacking: ghc-9.8.4-x86_64-unknown-mingw32.tar.xz to C:\ghcup\tmp\ghcup-b7749a837b0ad4c3
+2026-10-31T15:06:20.7596845Z [1m[92m[ Info  ][0m[0m Installing ghc
+2026-10-31T15:08:17.0589309Z [1m[92m[ Info  ][0m[0m ghc installation successful
+2026-10-31T15:08:17.1617022Z [command]C:\ghcup\bin\ghcup.exe set ghc 9.8.4
+2026-10-31T15:08:17.3241843Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:08:17.3704012Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-31T15:08:17.4916970Z [command]C:\ghcup\bin\ghcup.exe whereis ghc 9.8.4
+2026-10-31T15:08:17.5249743Z C:/ghcup/ghc/9.8.4/bin/ghc.exe
+2026-10-31T15:08:17.5250153Z 
+2026-10-31T15:08:17.5250593Z Attempting to access tool ghc at location <not-found>
+2026-10-31T15:08:17.5253417Z Failed to access tool ghc at location <not-found>
+2026-10-31T15:08:17.5255495Z Attempting to access tool ghc at location C:/ghcup/bin
+2026-10-31T15:08:17.5256102Z Succeeded accessing tool ghc at location C:/ghcup/bin
+2026-10-31T15:08:17.6028590Z [command]C:\ghcup\bin\ghcup.exe set ghc 9.8.4
+2026-10-31T15:08:17.7773209Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:08:17.8505482Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-31T15:08:17.9465072Z Found ghc 9.8.4 in cache at path C:/ghcup/bin. Setup successful.
+2026-10-31T15:08:17.9466230Z ##[endgroup]
+2026-10-31T15:08:17.9466940Z ##[group]Preparing cabal environment
+2026-10-31T15:08:17.9467850Z ##[endgroup]
+2026-10-31T15:08:17.9468532Z ##[group]Installing cabal version 3.16.1.0
+2026-10-31T15:08:18.0251669Z [command]C:\ghcup\bin\ghcup.exe whereis cabal 3.16.1.0
+2026-10-31T15:08:18.0503492Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-31T15:08:18.0561551Z 
+2026-10-31T15:08:18.0561757Z 
+2026-10-31T15:08:18.0563471Z Attempting to access tool cabal at location <not-found>
+2026-10-31T15:08:18.0565635Z Failed to access tool cabal at location <not-found>
+2026-10-31T15:08:18.0566620Z Attempting to access tool cabal at location C:/ghcup/bin
+2026-10-31T15:08:18.0567705Z Succeeded accessing tool cabal at location C:/ghcup/bin
+2026-10-31T15:08:18.1333868Z [command]C:\ghcup\bin\ghcup.exe set cabal 3.16.1.0
+2026-10-31T15:08:18.2867237Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:08:18.2996479Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-31T15:08:18.3916783Z [command]C:\ghcup\bin\ghcup.exe unset cabal
+2026-10-31T15:08:18.4186291Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool cabal
+2026-10-31T15:08:18.4242558Z Attempting to install cabal 3.16.1.0 using ghcup
+2026-10-31T15:08:18.5032070Z [command]C:\ghcup\bin\ghcup.exe install cabal 3.16.1.0
+2026-10-31T15:08:18.6552175Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:08:18.6589990Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghcup/unofficial-bindists/cabal/3.16.1.0/cabal-install-3.16.1.0-x86_64-mingw64.zip as file C:\ghcup\tmp\ghcup-5db8c5bce81799a1\cabal-install-3.16.1.0-x86_64-mingw64.zip
+2026-10-31T15:08:18.8625882Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+2026-10-31T15:08:18.8628570Z                                  Dload  Upload  Total   Spent   Left   Speed
+2026-10-31T15:08:18.8629507Z 
+2026-10-31T15:08:18.9100900Z   0      0   0      0   0      0      0      0                              0
+2026-10-31T15:08:18.9103283Z 100 14.17M 100 14.17M   0      0 59.65M      0                              0
+2026-10-31T15:08:18.9105405Z 100 14.17M 100 14.17M   0      0 59.62M      0                              0
+2026-10-31T15:08:18.9106200Z 100 14.17M 100 14.17M   0      0 59.60M      0                              0
+2026-10-31T15:08:18.9169553Z [1m[92m[ Info  ][0m[0m verifying digest of: cabal-install-3.16.1.0-x86_64-mingw64.zip
+2026-10-31T15:08:18.9953182Z [1m[92m[ Info  ][0m[0m Unpacking: cabal-install-3.16.1.0-x86_64-mingw64.zip to C:\ghcup\tmp\ghcup-bf40f55cbac8ecbe
+2026-10-31T15:08:19.2247283Z [1m[92m[ Info  ][0m[0m Installing cabal
+2026-10-31T15:08:19.3094327Z [1m[92m[ Info  ][0m[0m cabal installation successful
+2026-10-31T15:08:19.4053602Z [command]C:\ghcup\bin\ghcup.exe set cabal 3.16.1.0
+2026-10-31T15:08:19.5599273Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:08:19.5805612Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-31T15:08:19.6727713Z [command]C:\ghcup\bin\ghcup.exe whereis cabal 3.16.1.0
+2026-10-31T15:08:19.7066673Z C:/ghcup/cabal/3.16.1.0/cabal.exe
+2026-10-31T15:08:19.7067061Z 
+2026-10-31T15:08:19.7067701Z Attempting to access tool cabal at location <not-found>
+2026-10-31T15:08:19.7070316Z Failed to access tool cabal at location <not-found>
+2026-10-31T15:08:19.7071105Z Attempting to access tool cabal at location C:/ghcup/bin
+2026-10-31T15:08:19.7071780Z Succeeded accessing tool cabal at location C:/ghcup/bin
+2026-10-31T15:08:19.7814800Z [command]C:\ghcup\bin\ghcup.exe set cabal 3.16.1.0
+2026-10-31T15:08:19.9308854Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-10-31T15:08:20.0277257Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-31T15:08:20.1337924Z Found cabal 3.16.1.0 in cache at path C:/ghcup/bin. Setup successful.
+2026-10-31T15:08:20.1339124Z ##[endgroup]
+2026-10-31T15:08:20.1339880Z ##[group]Preparing stack environment
+2026-10-31T15:08:20.1340883Z ##[endgroup]
+2026-10-31T15:08:20.1341721Z ##[group]Installing stack version 3.11.1
+2026-10-31T15:08:20.2163058Z Found stack 3.11.1 in cache at path C:\hostedtoolcache\windows\stack\3.11.1\x64. Setup successful.
+2026-10-31T15:08:20.2164381Z ##[endgroup]
+2026-10-31T15:08:20.2165312Z ##[group]Setting up cabal
+2026-10-31T15:08:21.5115200Z ##[endgroup]
+2026-10-31T15:08:21.6569198Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-31T15:08:21.6569725Z with:
+2026-10-31T15:08:21.6569995Z   path: C:\sr/pantry
+2026-10-31T15:08:21.6570780Z   key: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-10-31T15:08:21.6572178Z   restore-keys: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+
+2026-10-31T15:08:21.6573075Z   enableCrossOsArchive: false
+2026-10-31T15:08:21.6573382Z   fail-on-cache-miss: false
+2026-10-31T15:08:21.6573665Z   lookup-only: false
+2026-10-31T15:08:21.6573914Z   save-always: false
+2026-10-31T15:08:21.6574152Z env:
+2026-10-31T15:08:21.6574365Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6574662Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6575032Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6575270Z   STACK_ROOT: C:\sr
+2026-10-31T15:08:21.6575486Z   CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6575754Z ##[endgroup]
+2026-10-31T15:08:21.9879931Z Cache not found for input keys: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d, cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+2026-10-31T15:08:22.1208473Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-31T15:08:22.1208989Z with:
+2026-10-31T15:08:22.1209273Z   path: C:\sr/stack.sqlite3
+C:\sr/snapshots
+
+2026-10-31T15:08:22.1210145Z   key: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-10-31T15:08:22.1211537Z   restore-keys: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+
+2026-10-31T15:08:22.1212700Z   enableCrossOsArchive: false
+2026-10-31T15:08:22.1213001Z   fail-on-cache-miss: false
+2026-10-31T15:08:22.1213279Z   lookup-only: false
+2026-10-31T15:08:22.1213571Z   save-always: false
+2026-10-31T15:08:22.1213812Z env:
+2026-10-31T15:08:22.1214025Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:22.1214320Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:22.1214751Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:22.1215069Z   STACK_ROOT: C:\sr
+2026-10-31T15:08:22.1215323Z   CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:22.1215585Z ##[endgroup]
+2026-10-31T15:08:22.4539448Z Cache not found for input keys: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d, cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+2026-10-31T15:08:22.5865252Z Post job cleanup.
+2026-10-31T15:08:22.8827695Z [warning]Path Validation Error: Path(s) specified in the action for caching do(es) not exist, hence no cache is being saved.
+2026-10-31T15:08:23.0133703Z Post job cleanup.
+2026-10-31T15:08:23.2982057Z [warning]Path Validation Error: Path(s) specified in the action for caching do(es) not exist, hence no cache is being saved.
+2026-10-31T15:08:23.3285971Z Post job cleanup.
+2026-10-31T15:08:23.6479802Z [command]"C:\Program Files\Git\usr\bin\tar.exe" --posix -cf cache.tzst --exclude cache.tzst -P -C D:/a/hakiru/hakiru --files-from manifest.txt --force-local --use-compress-program "zstd -T0"
+2026-10-31T15:08:38.7579139Z Sent 0 of 585186842 (0.0%), 0.0 MBs/sec
+2026-10-31T15:08:39.5684278Z Sent 585186842 of 585186842 (100.0%), 308.0 MBs/sec
+2026-10-31T15:08:39.6941615Z Cache saved with key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-10-31T15:08:39.7282270Z Post job cleanup.
+2026-10-31T15:08:39.9541315Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-31T15:08:39.9956777Z git version 2.56.0.windows.2
+2026-10-31T15:08:40.0048934Z Temporarily overriding HOME='D:\a\_temp\2e0fe1e5-78cf-43d0-b4dd-c7b58a40f1d7' before making global git config changes
+2026-10-31T15:08:40.0050787Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T15:08:40.0062586Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\hakiru\hakiru
+2026-10-31T15:08:40.0459543Z Removing SSH command configuration
+2026-10-31T15:08:40.0470710Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T15:08:40.0885758Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-31T15:08:40.6893299Z Removing HTTP extra header
+2026-10-31T15:08:40.6904699Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T15:08:40.7322627Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-31T15:08:41.3291746Z Removing includeIf entries pointing to credentials config files
+2026-10-31T15:08:41.3302977Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T15:08:41.3669356Z includeif.gitdir:D:/a/hakiru/hakiru/.git.path
+2026-10-31T15:08:41.3670792Z includeif.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path
+2026-10-31T15:08:41.3671781Z includeif.gitdir:/github/workspace/.git.path
+2026-10-31T15:08:41.3672549Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T15:08:41.3718424Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/hakiru/hakiru/.git.path
+2026-10-31T15:08:41.4086648Z D:\a\_temp\git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:08:41.4137332Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/hakiru/hakiru/.git.path D\:\\a\\_temp\\git\-credentials\-a598a08c\-348c\-4c01\-9146\-8ee27cd3aa01\.config
+2026-10-31T15:08:41.4546165Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path
+2026-10-31T15:08:41.4903961Z D:\a\_temp\git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:08:41.4964552Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path D\:\\a\\_temp\\git\-credentials\-a598a08c\-348c\-4c01\-9146\-8ee27cd3aa01\.config
+2026-10-31T15:08:41.5378104Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-31T15:08:41.5748748Z /github/runner_temp/git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:08:41.5798533Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-a598a08c\-348c\-4c01\-9146\-8ee27cd3aa01\.config
+2026-10-31T15:08:41.6204692Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T15:08:41.6552578Z /github/runner_temp/git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config
+2026-10-31T15:08:41.6598953Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-a598a08c\-348c\-4c01\-9146\-8ee27cd3aa01\.config
+2026-10-31T15:08:41.7008809Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-31T15:08:42.2799046Z Removing credentials config 'D:\a\_temp\git-credentials-a598a08c-348c-4c01-9146-8ee27cd3aa01.config'
+2026-10-31T15:08:42.3014202Z Cleaning up orphan processes

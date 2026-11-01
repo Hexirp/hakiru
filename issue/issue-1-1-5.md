@@ -700,3 +700,21 @@ GitHub Actions の時間の節約のために GHCup のファイルをキャッ�
 > <!-- blank line -->
 > * Index syntax: `github['sha']`
 > * Property dereference syntax: `github.sha`
+
+## comment 2026-11-01 1
+
+push した。
+
+以下の通りになった。
+
+* [build #8](https://github.com/Hexirp/hakiru/actions/runs/41213126294)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41213126294/job/124572073238)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41213126294/job/124572073079)
+
+保存したログは以下の通り。
+
+* build #8
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_111713733724/1_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_111713733724/0_Build%20os-windows-latest%20ghc-9.8.4.txt)
+
+Windows においてシングルクォーテーションを囲んで `C:\ghcup` をキャッシュしている件だけど、その必要がないように `C:/ghcup` に変更しよう。

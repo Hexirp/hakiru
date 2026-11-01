@@ -1,0 +1,144 @@
+﻿2026-10-31T15:05:08.6297100Z ##[group]Run haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d
+2026-10-31T15:05:08.6299168Z with:
+2026-10-31T15:05:08.6300145Z   ghc-version: 9.8.4
+2026-10-31T15:05:08.6301155Z   cabal-version: 3.16.1.0
+2026-10-31T15:05:08.6302209Z   stack-version: 3.11.1
+2026-10-31T15:05:08.6303239Z   enable-stack: true
+2026-10-31T15:05:08.6304222Z   cabal-update: true
+2026-10-31T15:05:08.6305178Z env:
+2026-10-31T15:05:08.6306050Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:08.6307216Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:08.6308459Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:08.6309917Z ##[endgroup]
+2026-10-31T15:05:08.7160586Z Preparing to setup a Haskell environment
+2026-10-31T15:05:08.7173110Z ##[group]Preparing ghcup environment
+2026-10-31T15:05:08.7175046Z Adding ghcup release channel: prereleases
+2026-10-31T15:05:09.1584417Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup config add-release-channel prereleases
+2026-10-31T15:05:09.2189642Z ##[endgroup]
+2026-10-31T15:05:09.2191261Z ##[group]Preparing ghc environment
+2026-10-31T15:05:09.5346507Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset ghc
+2026-10-31T15:05:09.5950100Z [1m[92m[ Info  ][0m[0m ghc successfully unset
+2026-10-31T15:05:09.6010289Z ##[endgroup]
+2026-10-31T15:05:09.6016537Z ##[group]Installing ghc version 9.8.4
+2026-10-31T15:05:09.8811984Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis ghc 9.8.4
+2026-10-31T15:05:09.8924422Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-31T15:05:09.8974809Z 
+2026-10-31T15:05:09.8974872Z 
+2026-10-31T15:05:09.8977098Z Attempting to access tool ghc at location /home/runner/.ghcup/bin
+2026-10-31T15:05:09.8977954Z Succeeded accessing tool ghc at location /home/runner/.ghcup/bin
+2026-10-31T15:05:10.1542427Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-31T15:05:10.1655273Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml as file /usr/local/.ghcup/cache/ghcup-0.1.0.yaml
+2026-10-31T15:05:10.1770596Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-31T15:05:10.1772838Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-31T15:05:10.1773825Z 
+2026-10-31T15:05:10.2230684Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-31T15:05:10.2231825Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-31T15:05:10.2273970Z [1m[93m[ Warn  ][0m[0m setModificationTime failed with: /usr/local/.ghcup/cache/ghcup-0.1.0.yaml: setModificationTime:setFileTimes: permission denied (Operation not permitted)
+2026-10-31T15:05:10.2285175Z [1m[93m[ Warn  ][0m[0m setAccessTime failed with: /usr/local/.ghcup/cache/ghcup-0.1.0.yaml: setAccessTime:setFileTimes: permission denied (Operation not permitted)
+2026-10-31T15:05:10.3257918Z [1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-prereleases-0.1.0.yaml as file /usr/local/.ghcup/cache/ghcup-prereleases-0.1.0.yaml
+2026-10-31T15:05:10.3329900Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-31T15:05:10.3331373Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-31T15:05:10.3332130Z 
+2026-10-31T15:05:10.4203706Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-31T15:05:10.4204954Z 100  373k  100  373k    0     0  4265k      0 --:--:-- --:--:-- --:--:-- 4294k
+2026-10-31T15:05:10.4685541Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '9.8.4' of the tool ghc is not installed.
+2026-10-31T15:05:10.7508577Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset ghc
+2026-10-31T15:05:10.7613929Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool ghc
+2026-10-31T15:05:10.7699907Z Attempting to install ghc 9.8.4 using ghcup
+2026-10-31T15:05:11.0132904Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup install ghc 9.8.4
+2026-10-31T15:05:11.1450204Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghc/9.8.4/ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz as file /usr/local/.ghcup/tmp/ghcup-e77a18a057fa7010/ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz
+2026-10-31T15:05:11.1520258Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-31T15:05:11.1522675Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-31T15:05:11.1523182Z 
+2026-10-31T15:05:11.7783080Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-31T15:05:11.7784034Z 100  213M  100  213M    0     0   340M      0 --:--:-- --:--:-- --:--:--  340M
+2026-10-31T15:05:11.7846097Z [1m[92m[ Info  ][0m[0m verifying digest of: ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz
+2026-10-31T15:05:12.5671964Z [1m[92m[ Info  ][0m[0m Unpacking: ghc-9.8.4-x86_64-ubuntu20_04-linux.tar.xz to /usr/local/.ghcup/tmp/ghcup-7b1ce174519bae91
+2026-10-31T15:05:24.6257424Z [1m[92m[ Info  ][0m[0m Installing ghc
+2026-10-31T15:05:24.6268046Z 
+2026-10-31T15:05:24.6268092Z 
+2026-10-31T15:05:24.6268213Z 
+2026-10-31T15:05:24.6268271Z 
+2026-10-31T15:05:24.6268433Z 
+2026-10-31T15:05:24.6273594Z 
+2026-10-31T15:05:37.6582005Z 
+2026-10-31T15:05:37.6636881Z [6A[0J
+2026-10-31T15:05:37.6637071Z 
+2026-10-31T15:05:37.6637079Z 
+2026-10-31T15:05:37.6637083Z 
+2026-10-31T15:05:37.6637086Z 
+2026-10-31T15:05:37.6637089Z 
+2026-10-31T15:06:46.1825892Z 
+2026-10-31T15:06:54.8148532Z [6A[0J[1m[92m[ Info  ][0m[0m ghc installation successful
+2026-10-31T15:06:54.8533059Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-31T15:06:54.9909173Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-31T15:06:55.3498254Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis ghc 9.8.4
+2026-10-31T15:06:55.3670797Z /usr/local/.ghcup/ghc/9.8.4/bin/ghc-9.8.4
+2026-10-31T15:06:55.3671249Z 
+2026-10-31T15:06:55.3671908Z Attempting to access tool ghc at location /home/runner/.ghcup/bin
+2026-10-31T15:06:55.3673813Z Succeeded accessing tool ghc at location /home/runner/.ghcup/bin
+2026-10-31T15:06:55.6689133Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set ghc 9.8.4
+2026-10-31T15:06:55.7981644Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-10-31T15:06:55.8096549Z Found ghc 9.8.4 in cache at path /home/runner/.ghcup/bin. Setup successful.
+2026-10-31T15:06:55.8097707Z ##[endgroup]
+2026-10-31T15:06:55.8098707Z ##[group]Preparing cabal environment
+2026-10-31T15:06:56.0829494Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset cabal
+2026-10-31T15:06:56.1015098Z [1m[92m[ Info  ][0m[0m cabal successfully unset
+2026-10-31T15:06:56.1101182Z ##[endgroup]
+2026-10-31T15:06:56.1102036Z ##[group]Installing cabal version 3.16.1.0
+2026-10-31T15:06:56.3706205Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis cabal 3.16.1.0
+2026-10-31T15:06:56.3820359Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-31T15:06:56.3878386Z 
+2026-10-31T15:06:56.3878598Z 
+2026-10-31T15:06:56.3879945Z Attempting to access tool cabal at location /home/runner/.ghcup/bin
+2026-10-31T15:06:56.3880788Z Succeeded accessing tool cabal at location /home/runner/.ghcup/bin
+2026-10-31T15:06:56.6758435Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-31T15:06:56.7976967Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.16.1.0' of the tool cabal is not installed.
+2026-10-31T15:06:57.0473944Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup unset cabal
+2026-10-31T15:06:57.0627685Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00300\GHCup-00300]8;;\] No version is set for tool cabal
+2026-10-31T15:06:57.0680097Z Attempting to install cabal 3.16.1.0 using ghcup
+2026-10-31T15:06:57.3178547Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup install cabal 3.16.1.0
+2026-10-31T15:06:57.4426572Z [1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghcup/unofficial-bindists/cabal/3.16.1.0/cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz as file /usr/local/.ghcup/tmp/ghcup-4baaf4f84bd327ed/cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz
+2026-10-31T15:06:57.4495723Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-31T15:06:57.4496733Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-31T15:06:57.4497291Z 
+2026-10-31T15:06:57.5747082Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-31T15:06:57.5748193Z 100 5310k  100 5310k    0     0  41.4M      0 --:--:-- --:--:-- --:--:-- 41.4M
+2026-10-31T15:06:57.5775318Z [1m[92m[ Info  ][0m[0m verifying digest of: cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz
+2026-10-31T15:06:57.6006227Z [1m[92m[ Info  ][0m[0m Unpacking: cabal-install-3.16.1.0-x86_64-linux-glibc.tar.xz to /usr/local/.ghcup/tmp/ghcup-ec25578cb331ef2b
+2026-10-31T15:06:57.8687367Z [1m[92m[ Info  ][0m[0m Installing cabal
+2026-10-31T15:06:57.9412798Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-31T15:06:57.9415558Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-31T15:06:57.9421334Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-31T15:06:57.9948007Z [1m[92m[ Info  ][0m[0m cabal installation successful
+2026-10-31T15:06:58.0063180Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-31T15:06:58.1399530Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-31T15:06:58.1401131Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-31T15:06:58.1405647Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-31T15:06:58.1771475Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-31T15:06:58.5916729Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis cabal 3.16.1.0
+2026-10-31T15:06:58.6086260Z /usr/local/.ghcup/cabal/3.16.1.0/cabal
+2026-10-31T15:06:58.6086568Z 
+2026-10-31T15:06:58.6086984Z Attempting to access tool cabal at location /home/runner/.ghcup/bin
+2026-10-31T15:06:58.6089652Z Succeeded accessing tool cabal at location /home/runner/.ghcup/bin
+2026-10-31T15:06:58.8916140Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup set cabal 3.16.1.0
+2026-10-31T15:06:59.0182062Z [1m[93m[ Warn  ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00330\GHCup-00330]8;;\] cabal version 3.16.1.0 has shadowed binaries:
+2026-10-31T15:06:59.0184696Z [1m[93m[ ...   ] [0m[0m  * /usr/local/.ghcup/bin/cabal shadowed by /home/runner/.ghcup/bin/cabal.
+2026-10-31T15:06:59.0190966Z [1m[93m[ ...   ] [0m[0mThe upgrade will not be in effect, unless you make sure that /usr/local/.ghcup/bin comes first in PATH.
+2026-10-31T15:06:59.0785885Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-10-31T15:06:59.0917962Z Found cabal 3.16.1.0 in cache at path /home/runner/.ghcup/bin. Setup successful.
+2026-10-31T15:06:59.0919302Z ##[endgroup]
+2026-10-31T15:06:59.0921221Z ##[group]Preparing stack environment
+2026-10-31T15:06:59.0921984Z ##[endgroup]
+2026-10-31T15:06:59.0922610Z ##[group]Installing stack version 3.11.1
+2026-10-31T15:06:59.4438579Z [command]/opt/hostedtoolcache/ghcup/0.2.6.2/x64/ghcup whereis stack 3.11.1
+2026-10-31T15:06:59.4558350Z [1m[91m[ Error ][0m[0m []8;;https://errors.haskell.org/messages/GHCup-00130\GHCup-00130]8;;\] The version '3.11.1' of the tool stack is not installed.
+2026-10-31T15:06:59.4610504Z 
+2026-10-31T15:06:59.4610538Z 
+2026-10-31T15:06:59.4613765Z Attempting to install stack 3.11.1 for arch x86_64
+2026-10-31T15:06:59.9227198Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/69305bfb-3a0f-4ec8-a24d-4509bf9c5c3a -f /home/runner/work/_temp/379f0b14-e00e-4df6-a830-d284b8cae001
+2026-10-31T15:07:00.5292338Z Found stack 3.11.1 in cache at path /opt/hostedtoolcache/stack/3.11.1/x64. Setup successful.
+2026-10-31T15:07:00.5293850Z ##[endgroup]
+2026-10-31T15:07:00.5294849Z ##[group]Setting up cabal
+2026-10-31T15:07:00.5670688Z Adding /home/runner/.cabal/bin to PATH
+2026-10-31T15:07:00.5671751Z ##[endgroup]

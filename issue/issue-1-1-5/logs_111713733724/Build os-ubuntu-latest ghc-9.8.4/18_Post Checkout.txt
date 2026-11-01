@@ -1,0 +1,32 @@
+﻿2026-10-31T15:07:09.9727994Z Post job cleanup.
+2026-10-31T15:07:10.0622589Z [command]/usr/bin/git version
+2026-10-31T15:07:10.0704797Z git version 2.56.0
+2026-10-31T15:07:10.0747625Z Temporarily overriding HOME='/home/runner/work/_temp/e8a7e1c1-7ae0-47f6-87f2-db1e050e452e' before making global git config changes
+2026-10-31T15:07:10.0749811Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T15:07:10.0753335Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-10-31T15:07:10.0791937Z Removing SSH command configuration
+2026-10-31T15:07:10.0800613Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T15:07:10.0844169Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T15:07:10.1107580Z Removing HTTP extra header
+2026-10-31T15:07:10.1114599Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T15:07:10.1159382Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T15:07:10.1449729Z Removing includeIf entries pointing to credentials config files
+2026-10-31T15:07:10.1458333Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T15:07:10.1503261Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-10-31T15:07:10.1504246Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-10-31T15:07:10.1505100Z includeif.gitdir:/github/workspace/.git.path
+2026-10-31T15:07:10.1505516Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T15:07:10.1515352Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-10-31T15:07:10.1552325Z /home/runner/work/_temp/git-credentials-3c110294-0392-409f-bc5e-b6ecb1ddb547.config
+2026-10-31T15:07:10.1565842Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-3c110294\-0392\-409f\-bc5e\-b6ecb1ddb547\.config
+2026-10-31T15:07:10.1621240Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-10-31T15:07:10.1657166Z /home/runner/work/_temp/git-credentials-3c110294-0392-409f-bc5e-b6ecb1ddb547.config
+2026-10-31T15:07:10.1670046Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-3c110294\-0392\-409f\-bc5e\-b6ecb1ddb547\.config
+2026-10-31T15:07:10.1724415Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-31T15:07:10.1765069Z /github/runner_temp/git-credentials-3c110294-0392-409f-bc5e-b6ecb1ddb547.config
+2026-10-31T15:07:10.1780580Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-3c110294\-0392\-409f\-bc5e\-b6ecb1ddb547\.config
+2026-10-31T15:07:10.1828773Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T15:07:10.1867890Z /github/runner_temp/git-credentials-3c110294-0392-409f-bc5e-b6ecb1ddb547.config
+2026-10-31T15:07:10.1878287Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-3c110294\-0392\-409f\-bc5e\-b6ecb1ddb547\.config
+2026-10-31T15:07:10.1933037Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T15:07:10.2200826Z Removing credentials config '/home/runner/work/_temp/git-credentials-3c110294-0392-409f-bc5e-b6ecb1ddb547.config'

@@ -1,0 +1,5 @@
+﻿2026-10-31T15:07:01.7684223Z Post job cleanup.
+2026-10-31T15:07:01.9364999Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/hakiru/hakiru --files-from manifest.txt --use-compress-program zstdmt
+2026-10-31T15:07:08.6960172Z Sent 30131126 of 365675446 (8.2%), 28.7 MBs/sec
+2026-10-31T15:07:09.6962734Z Sent 365675446 of 365675446 (100.0%), 174.1 MBs/sec
+2026-10-31T15:07:09.9561919Z Cache saved with key: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1

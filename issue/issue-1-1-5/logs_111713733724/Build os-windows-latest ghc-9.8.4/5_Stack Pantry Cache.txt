@@ -1,0 +1,19 @@
+﻿2026-10-31T15:08:21.6569178Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-31T15:08:21.6569721Z with:
+2026-10-31T15:08:21.6569992Z   path: C:\sr/pantry
+2026-10-31T15:08:21.6570776Z   key: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-10-31T15:08:21.6572144Z   restore-keys: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+
+2026-10-31T15:08:21.6573073Z   enableCrossOsArchive: false
+2026-10-31T15:08:21.6573380Z   fail-on-cache-miss: false
+2026-10-31T15:08:21.6573663Z   lookup-only: false
+2026-10-31T15:08:21.6573912Z   save-always: false
+2026-10-31T15:08:21.6574149Z env:
+2026-10-31T15:08:21.6574362Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6574659Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6574959Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6575268Z   STACK_ROOT: C:\sr
+2026-10-31T15:08:21.6575484Z   CACHE_VERSION: v-1-1-1
+2026-10-31T15:08:21.6575751Z ##[endgroup]
+2026-10-31T15:08:21.9879898Z Cache not found for input keys: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d, cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--

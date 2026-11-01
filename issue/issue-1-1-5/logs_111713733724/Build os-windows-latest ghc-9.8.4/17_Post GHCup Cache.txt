@@ -1,0 +1,5 @@
+﻿2026-10-31T15:08:23.3285945Z Post job cleanup.
+2026-10-31T15:08:23.6479762Z [command]"C:\Program Files\Git\usr\bin\tar.exe" --posix -cf cache.tzst --exclude cache.tzst -P -C D:/a/hakiru/hakiru --files-from manifest.txt --force-local --use-compress-program "zstd -T0"
+2026-10-31T15:08:38.7579100Z Sent 0 of 585186842 (0.0%), 0.0 MBs/sec
+2026-10-31T15:08:39.5684239Z Sent 585186842 of 585186842 (100.0%), 308.0 MBs/sec
+2026-10-31T15:08:39.6941576Z Cache saved with key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1

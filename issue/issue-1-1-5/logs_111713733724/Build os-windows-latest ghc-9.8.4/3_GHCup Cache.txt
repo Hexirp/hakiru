@@ -1,0 +1,21 @@
+﻿2026-10-31T15:05:13.1460190Z ##[group]Run actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-31T15:05:13.1460650Z with:
+2026-10-31T15:05:13.1461021Z   path: C:\ghcup/bin/*
+C:\ghcup/cache/*
+C:\ghcup/config.yaml
+C:\ghcup/ghc/9.8.4
+
+2026-10-31T15:05:13.1461654Z   key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-10-31T15:05:13.1462174Z   enableCrossOsArchive: false
+2026-10-31T15:05:13.1462415Z   fail-on-cache-miss: false
+2026-10-31T15:05:13.1462626Z   lookup-only: false
+2026-10-31T15:05:13.1462818Z   save-always: false
+2026-10-31T15:05:13.1462990Z env:
+2026-10-31T15:05:13.1463155Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1463384Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1463639Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1463883Z   CACHE_VERSION: v-1-1-1
+2026-10-31T15:05:13.1464119Z   GHCUP_ROOT_Linux: ~/.ghcup
+2026-10-31T15:05:13.1464334Z   GHCUP_ROOT_Windows: C:\ghcup
+2026-10-31T15:05:13.1464534Z ##[endgroup]
+2026-10-31T15:05:13.5517584Z Cache not found for input keys: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
