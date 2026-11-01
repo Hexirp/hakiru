@@ -11,9 +11,6 @@ import qualified Text.Pandoc      as Pandoc
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-    -- Copy CHANGELOG.md here.
-    preprocess $ copyFile "../CHANGELOG.md" "releases.markdown"
-
     -- CSS
     match "css/*" $ do
         route   idRoute
