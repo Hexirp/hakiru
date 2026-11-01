@@ -238,3 +238,35 @@ title: Releases
 ```
 
 そこで `/CHANGELOG.md` に触れているのが `/web/releases.markdown` へコピーする処理だけであることを利用して、その処理のみを事前に終わらせる……つまり `/CHANGELOG.md` を `/web/releases.markdown` に移動することにする。
+
+## comment 2026-11-01 5
+
+`new-template` テンプレートにおける `CHANGELOG.md` の内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L89)）は、以下のような内容である。
+
+```md
+# Changelog for `{{ name }}`
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to the
+[Haskell Package Versioning Policy](https://pvp.haskell.org/).
+
+## Unreleased
+
+## 0.1.0.0 - YYYY-MM-DD
+```
+
+今のところは日本語に置き換えることはしないが、改行を取り除いて、以下のようにする。
+
+```md
+# Changelog for `hakiru`
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to the [Haskell Package Versioning Policy](https://pvp.haskell.org/).
+
+## Unreleased
+
+## 0.1.0.0 - YYYY-MM-DD
+```
