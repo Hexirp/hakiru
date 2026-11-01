@@ -2,7 +2,7 @@
 
 ## comment 2026-10-26 1
 
-ここから "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-26 1` の一部をコピーする。
+ここから "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-26 1` の一部を移植する。
 
 [`303c00da75b18f7a33b732347ba135646694ff96`](https://github.com/Hexirp/hakiru/commit/303c00da75b18f7a33b732347ba135646694ff96) をプッシュした。これにより GitHub Actions の実行（[リンク](https://github.com/Hexirp/hakiru/actions/runs/40219334907)）が始まった。
 
@@ -93,7 +93,7 @@ Hakyll は macOS でテストしているんだよな。どうやっているん
 
 macOS でのテストは諦めるべきか？
 
-ここまで "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-26 1` の一部をコピーする。
+ここまで "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-26 1` の一部を移植する。
 
 ## comment 2026-10-28 1
 
@@ -102,3 +102,63 @@ macOS でのテストは諦めるべきか？
 "[actions/runner-images](https://github.com/actions/runner-images)" の [`README.md`](https://github.com/actions/runner-images/blob/09456acd2718d935451373231c236286f861fd9c/README.md) には `macos-latest-large` のアーキテクチャが x64 であると書いてある。
 
 こっちの方を使えば通るかも？
+
+## comment 2026-10-30 1
+
+ここから "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-30 1` の一部を移植する。
+
+GitHub Actions の結果は以下の通りになった。
+
+* [build #2](https://github.com/Hexirp/hakiru/actions/runs/40552975074)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40552975074/job/122361370343)
+  * [Build os-macos-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40552975074/job/122361370953)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40552975074/job/122361371242)
+* [build #3](https://github.com/Hexirp/hakiru/actions/runs/40697634591)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40697634591/job/122848546926)
+  * [Build os-macos-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40697634591/job/122848546691)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40697634591/job/122848546129)
+* [build #4](https://github.com/Hexirp/hakiru/actions/runs/40726439891)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40726439891/job/122950884072)
+  * [Build os-macos-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40726439891/job/122950884585)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40726439891/job/122950884504)
+
+これらのログは 90 日間で消えるので、以下のように保存してある。
+
+* build #2
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_109917615857/2_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-macos-latest ghc-9.8.4](./issue-1-1-5/logs_109917615857/1_Build%20os-macos-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_109917615857/0_Build%20os-windows-latest%20ghc-9.8.4.txt)
+* build #3
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_110311119027/0_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-macos-latest ghc-9.8.4](./issue-1-1-5/logs_110311119027/1_Build%20os-macos-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_110311119027/2_Build%20os-windows-latest%20ghc-9.8.4.txt)
+* build #4
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_110392183366/2_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_110392183366/1_Build%20os-windows-latest%20ghc-9.8.4.txt)
+
+最後のビルドにおいて macOS だけ欠けているのは 3 回の `Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.` から `The job was not acquired by Runner of type hosted even after multiple attempts` となって `Internal server error. Correlation ID: 0e359e02-a74d-4e1a-9d87-a4ea4a9b8084` となって落ちているから。
+
+ここまで "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-30 1` の一部を移植する。
+
+## comment 2026-10-30 2
+
+ここから "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-30 2` の一部を移植する。
+
+GitHub Actions の結果は以下の通りになった。
+
+* [build #5](https://github.com/Hexirp/hakiru/actions/runs/40910985150)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40910985150/job/123578562635)
+  * [Build os-macos-latest-large ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40910985150/job/123578562760)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/40910985150/job/123578562207)
+
+保存したログは以下の通りである。
+
+* build #5
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_110898142089/0_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_110898142089/2_Build%20os-windows-latest%20ghc-9.8.4.txt)
+
+`macos-latest-large` のジョブは `The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings` と出た。これはもうダメかな。 macOS は外そう。
+
+`fbfe1c0603c6f6ae67317ba3405244c7a64a32f3` で macOS を指定する部分をコメントアウトした。
+
+ここまで "[issue-1-1-5.md](./issue-1-1-5.md)" の `comment 2026-10-30 2` の一部を移植する。
