@@ -35,7 +35,7 @@ jobs:
         env:
           CACHE_VERSION: ${{ env.GHCUP_CACHE_VERSION }}
           GHCUP_ROOT_Linux: ~/.ghcup
-          GHCUP_ROOT_Windows: 'C:\ghcup'
+          GHCUP_ROOT_Windows: C:/ghcup
         with:
           path: |
             ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/bin/*
