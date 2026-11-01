@@ -78,16 +78,10 @@ jobs:
             cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--
       - name: Dependencies Build
         id: dependencies-build
-        # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
-        if: false
         run: stack --system-ghc --no-install-ghc --stack-yaml stack-${{ matrix.haskell.resolver }}.yaml build --fast --test --no-run-tests --only-dependencies
       - name: Build
         id: build
-        # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
-        if: false
         run: stack --system-ghc --no-install-ghc --stack-yaml stack-${{ matrix.haskell.resolver }}.yaml build --fast --test --no-run-tests
       - name: Test
         id: test
-        # Dependencies Snapshot ステップが正常に機能するかどうかを確かめたいため、そのためには無関係である重すぎるステップは無効化する。
-        if: false
         run: stack --system-ghc --no-install-ghc --stack-yaml stack-${{ matrix.haskell.resolver }}.yaml build --fast --test
