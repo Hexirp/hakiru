@@ -474,6 +474,8 @@ GHCup についてのキャッシュがあったら `haskell-actions/setup` を�
 
 `$STACK_ROOT/snapshots` と `stack ls dependencies` については、依存ライブラリが少し増えただけで全ての依存ライブラリを再コンパイルすることになるので、使わない。 `$STACK_ROOT/snapshots` の内容が大きく変わるであろう resolver が変わる場合にだけ `$STACK_ROOT/snapshots` のキャッシュのキーを変える。
 
+## comment 2026-10-31 3
+
 えーと、まずは Stack のキャッシュの設定から進めよう。
 
 いや、その前に `matrix` 機能から。
@@ -505,6 +507,8 @@ GHC のバージョンの変数と resolver のバージョンの変数を用意
 GitHub Actions の `matrix` 戦略の設定を変更して `96159eb56f3e2d978c92b2c5c92059539ef180c0` としてコミットした。
 
 そういや "[Running variations of jobs in a workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations)" によれば `matrix` は strategy と分類するのね。 `matrix :: Map String (Array a) -> Array (Map String a)` みたいな？　いや、 `a` に該当する型がそれぞれにおいて不定だから、この型は違うわ。
+
+## comment 2026-10-31 4
 
 `$STACK_ROOT/pantry` のキャッシュについて。
 
@@ -604,6 +608,8 @@ restore-keys: |
 `--no-install-ghc` オプションを書き加えた時には手癖で後から追加した方を後に書いたけど `--system-ghc` オプションと `--no-install-ghc` オプションはどっちを先に置くべきかな？　辞書式順序だと後者が先なんだよね。でも、 GHC を探す場所の指定と GHC がない場合の処理を指定しているとすると、いい順番になるかな。
 
 `6b39c40cd8a7ec58926bf2912cf1d52326a2144a` としてコミットした。
+
+## comment 2026-10-31 5
 
 GHCup のキャッシュについては……
 
