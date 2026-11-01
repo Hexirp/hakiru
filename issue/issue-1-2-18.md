@@ -202,3 +202,12 @@ web/releases.markdown
 ```
 
 こんな感じでいいかな。
+
+## comment 2026-11-01 3
+
+`Setup.hs` については、現在の内容と `new-template` テンプレートにおける内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L62)）が以下の内容で完全に一致しているので変更する必要はない。
+
+```hs
+import Distribution.Simple
+main = defaultMain
+```
