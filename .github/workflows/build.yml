@@ -28,10 +28,10 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
       - name: GHCup Cache
         id: ghcup-cache
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: actions/cache@v6.1.0
         env:
           CACHE_VERSION: ${{ env.GHCUP_CACHE_VERSION }}
           GHCUP_ROOT_Linux: ~/.ghcup
@@ -45,7 +45,7 @@ jobs:
           key: cache--ghcup--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--cabal-${{ matrix.haskell.cabal }}--stack-${{ matrix.haskell.stack }}
       - name: Setup
         id: setup
-        uses: haskell-actions/setup@0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d # v2.12.1
+        uses: haskell-actions/setup@v2.12.1
         with:
           ghc-version: ${{ matrix.haskell.ghc }}
           cabal-version: ${{ matrix.haskell.cabal }}
@@ -54,7 +54,7 @@ jobs:
         if: steps.ghcup-cache.outputs.cache-hit != 'true'
       - name: Stack Pantry Cache
         id: stack-pantry-cache
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: actions/cache@v6.1.0
         env:
           CACHE_VERSION: ${{ env.STACK_PANTRY_CACHE_VERSION }}
         with:
@@ -65,7 +65,7 @@ jobs:
             cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--
       - name: Stack Snapshot Cache
         id: stack-snapshot-cache
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: actions/cache@v6.1.0
         env:
           CACHE_VERSION: ${{ env.STACK_SNAPSHOT_CACHE_VERSION }}
         with:
