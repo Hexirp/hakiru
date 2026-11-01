@@ -1,19 +1,31 @@
-# Ignore swap files and stack/cabal output.
-*.hi
-*.o
-*.swo
-*.swp
-*~
-.DS_Store
-TAGS
-dist
-tags
-cabal.sandbox.config
-.cabal-sandbox/
-.stack-work
+# Use https://github.com/github/gitignore/blob/6bb5af7a1b050e5add3a71b6e6365c93498822ac/Haskell.gitignore
 dist
 dist-*
+cabal-dev
+*.o
+*.hi
+*.hie
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+*.prof
+*.aux
+*.hp
+*.eventlog
+.stack-work/
+cabal.project.local
+cabal.project.local~
+.HTF/
 .ghc.environment.*
+
+# Use https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L130
+.stack-work/
+*~
 
 # Ignore test builds.
 tests/Main
