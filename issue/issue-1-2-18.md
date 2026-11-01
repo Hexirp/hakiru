@@ -278,3 +278,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 `new-template` テンプレートの `LICENSE` の内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L102-L128)）も同じく `BSD-3-Clause` である。
 
 `stack new` の内容を、そのまま使う。
+
+## comment 2026-11-02 2
+
+`new-template` テンプレートの `README.md` の内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L86-L87)）は一つの見出しだけである。
+
+Hakyll についての記述があるため "[issue-1-1-1.md](./issue-1-1-1.md)" にも関わってくる。
+
+こっちも `stack new` の内容をそのまま使う。
