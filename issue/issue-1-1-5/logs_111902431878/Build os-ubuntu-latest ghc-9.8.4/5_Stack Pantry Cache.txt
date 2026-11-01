@@ -1,0 +1,18 @@
+﻿2026-11-01T07:58:52.0544187Z ##[group]Run actions/cache@v6.1.0
+2026-11-01T07:58:52.0544597Z with:
+2026-11-01T07:58:52.0544854Z   path: /pantry
+2026-11-01T07:58:52.0545849Z   key: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-01T07:58:52.0547605Z   restore-keys: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+
+2026-11-01T07:58:52.0548590Z   enableCrossOsArchive: false
+2026-11-01T07:58:52.0549258Z   fail-on-cache-miss: false
+2026-11-01T07:58:52.0549518Z   lookup-only: false
+2026-11-01T07:58:52.0549744Z   save-always: false
+2026-11-01T07:58:52.0549955Z env:
+2026-11-01T07:58:52.0550158Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0550433Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0550723Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0551416Z   CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0551675Z ##[endgroup]
+2026-11-01T07:58:52.4261613Z Cache not found for input keys: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357, cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--

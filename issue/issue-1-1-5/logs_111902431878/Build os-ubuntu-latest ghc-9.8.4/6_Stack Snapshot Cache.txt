@@ -1,0 +1,20 @@
+﻿2026-11-01T07:58:52.6064372Z ##[group]Run actions/cache@v6.1.0
+2026-11-01T07:58:52.6064747Z with:
+2026-11-01T07:58:52.6065020Z   path: /stack.sqlite3
+/snapshots
+
+2026-11-01T07:58:52.6066084Z   key: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-01T07:58:52.6067892Z   restore-keys: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+
+2026-11-01T07:58:52.6068927Z   enableCrossOsArchive: false
+2026-11-01T07:58:52.6069244Z   fail-on-cache-miss: false
+2026-11-01T07:58:52.6069545Z   lookup-only: false
+2026-11-01T07:58:52.6069809Z   save-always: false
+2026-11-01T07:58:52.6070062Z env:
+2026-11-01T07:58:52.6070297Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6070628Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6071263Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6071619Z   CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6071951Z ##[endgroup]
+2026-11-01T07:58:52.9694351Z Cache not found for input keys: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357, cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--

@@ -1,0 +1,36 @@
+﻿2026-11-01T07:58:39.1456713Z Current runner version: '2.338.2'
+2026-11-01T07:58:39.1488716Z ##[group]Runner Image Provisioner
+2026-11-01T07:58:39.1489336Z Hosted Compute Agent
+2026-11-01T07:58:39.1489651Z Version: 20261021.618
+2026-11-01T07:58:39.1489989Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-01T07:58:39.1490430Z Build Date: 2026-10-21T00:45:21Z
+2026-11-01T07:58:39.1490790Z Worker ID: {121e3841-a717-4dcf-838a-7aa5abce9735}
+2026-11-01T07:58:39.1491195Z Region: centralus
+2026-11-01T07:58:39.1491516Z Cloud: Azure
+2026-11-01T07:58:39.1491814Z ##[endgroup]
+2026-11-01T07:58:39.1492866Z ##[group]Operating System
+2026-11-01T07:58:39.1493235Z Microsoft Windows Server 2025
+2026-11-01T07:58:39.1493579Z 10.0.26100
+2026-11-01T07:58:39.1493857Z Datacenter
+2026-11-01T07:58:39.1494137Z ##[endgroup]
+2026-11-01T07:58:39.1494439Z ##[group]Runner Image
+2026-11-01T07:58:39.1494786Z Image: windows-2025-vs2026
+2026-11-01T07:58:39.1495183Z Version: 20261030.294.1
+2026-11-01T07:58:39.1495856Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261030.294/images/windows/Windows2025-VS2026-Readme.md
+2026-11-01T07:58:39.1497087Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261030.294
+2026-11-01T07:58:39.1497621Z ##[endgroup]
+2026-11-01T07:58:39.1498368Z ##[group]GITHUB_TOKEN Permissions
+2026-11-01T07:58:39.1499500Z Contents: read
+2026-11-01T07:58:39.1499839Z Metadata: read
+2026-11-01T07:58:39.1500154Z Packages: read
+2026-11-01T07:58:39.1500494Z ##[endgroup]
+2026-11-01T07:58:39.1501688Z Secret source: Actions
+2026-11-01T07:58:39.1502191Z Cache mode: write
+2026-11-01T07:58:39.1502671Z Using locked action versions from the workflow's lockfile
+2026-11-01T07:58:39.1503178Z Prepare workflow directory
+2026-11-01T07:58:39.1754791Z Prepare all required actions
+2026-11-01T07:58:39.1784738Z Getting action download info
+2026-11-01T07:58:39.3950807Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-01T07:58:39.4745522Z Download action repository 'actions/cache@v6.1.0' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-11-01T07:58:39.5689781Z Download action repository 'haskell-actions/setup@v2.12.1' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-11-01T07:58:39.9532379Z Complete job name: Build os-windows-latest ghc-9.8.4

@@ -1,0 +1,2 @@
+﻿2026-11-01T07:59:23.7584022Z Post job cleanup.
+2026-11-01T07:59:23.8572052Z Cache hit occurred on the primary key cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1, not saving cache.

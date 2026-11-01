@@ -752,3 +752,32 @@ GitHub CLI が必要なので、それをインストールするところから
 インストールした後に `gh actions-lock` をやったけど、ログインが必要であるそうで。
 
 ログインした後に `gh actions-lock` をやって、きちんと生成できた。
+
+## comment 2026-11-01 3
+
+以下の通りになった。
+
+* [build #10](https://github.com/Hexirp/hakiru/actions/runs/41286893739)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41286893739/job/124789907352)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41286893739/job/124789907447)
+
+保存したログは以下の通りである。
+
+* build #10
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_111902431878/0_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_111902431878/1_Build%20os-windows-latest%20ghc-9.8.4.txt)
+
+以下の通り、しっかり Workflow Lockfiles が機能している。
+
+```txt
+2026-11-01T07:58:40.1406744Z Secret source: Actions
+2026-11-01T07:58:40.1408002Z Cache mode: write
+2026-11-01T07:58:40.1408952Z Using locked action versions from the workflow's lockfile
+2026-11-01T07:58:40.1409800Z Prepare workflow directory
+2026-11-01T07:58:40.1835072Z Prepare all required actions
+2026-11-01T07:58:40.1885105Z Getting action download info
+2026-11-01T07:58:40.5329889Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-01T07:58:40.6558790Z Download action repository 'actions/cache@v6.1.0' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-11-01T07:58:40.8552369Z Download action repository 'haskell-actions/setup@v2.12.1' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-11-01T07:58:41.1726071Z Complete job name: Build os-ubuntu-latest ghc-9.8.4
+```

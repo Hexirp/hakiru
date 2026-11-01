@@ -1,0 +1,20 @@
+﻿2026-11-01T07:59:23.0117446Z ##[group]Run actions/cache@v6.1.0
+2026-11-01T07:59:23.0117689Z with:
+2026-11-01T07:59:23.0117819Z   path: /stack.sqlite3
+/snapshots
+
+2026-11-01T07:59:23.0118284Z   key: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-11-01T07:59:23.0119033Z   restore-keys: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+
+2026-11-01T07:59:23.0119516Z   enableCrossOsArchive: false
+2026-11-01T07:59:23.0119668Z   fail-on-cache-miss: false
+2026-11-01T07:59:23.0119812Z   lookup-only: false
+2026-11-01T07:59:23.0119932Z   save-always: false
+2026-11-01T07:59:23.0120042Z env:
+2026-11-01T07:59:23.0120177Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:59:23.0120324Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:59:23.0120485Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:59:23.0120634Z   CACHE_VERSION: v-1-1-1
+2026-11-01T07:59:23.0120801Z ##[endgroup]
+2026-11-01T07:59:23.2793203Z Cache not found for input keys: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d, cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--

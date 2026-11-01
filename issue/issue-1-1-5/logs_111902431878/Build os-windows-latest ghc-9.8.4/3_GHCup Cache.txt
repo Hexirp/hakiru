@@ -1,0 +1,30 @@
+﻿2026-11-01T07:58:44.2285587Z ##[group]Run actions/cache@v6.1.0
+2026-11-01T07:58:44.2285809Z with:
+2026-11-01T07:58:44.2286024Z   path: C:/ghcup/bin/*
+C:/ghcup/cache/*
+C:/ghcup/config.yaml
+C:/ghcup/ghc/9.8.4
+
+2026-11-01T07:58:44.2286372Z   key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-01T07:58:44.2286649Z   enableCrossOsArchive: false
+2026-11-01T07:58:44.2286797Z   fail-on-cache-miss: false
+2026-11-01T07:58:44.2286931Z   lookup-only: false
+2026-11-01T07:58:44.2287046Z   save-always: false
+2026-11-01T07:58:44.2287154Z env:
+2026-11-01T07:58:44.2287260Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:44.2287401Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:44.2287547Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:44.2287689Z   CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:44.2287812Z   GHCUP_ROOT_Linux: ~/.ghcup
+2026-11-01T07:58:44.2287961Z   GHCUP_ROOT_Windows: C:/ghcup
+2026-11-01T07:58:44.2288085Z ##[endgroup]
+2026-11-01T07:58:44.5262645Z Cache hit for: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-01T07:58:45.6899601Z Received 130023424 of 585181698 (22.2%), 122.4 MBs/sec
+2026-11-01T07:58:46.6906342Z Received 205520896 of 585181698 (35.1%), 97.3 MBs/sec
+2026-11-01T07:58:47.6921390Z Received 352321536 of 585181698 (60.2%), 111.4 MBs/sec
+2026-11-01T07:58:48.6923727Z Received 486539264 of 585181698 (83.1%), 115.5 MBs/sec
+2026-11-01T07:58:49.6159248Z Received 585181698 of 585181698 (100.0%), 113.1 MBs/sec
+2026-11-01T07:58:49.6159666Z Cache Size: ~558 MB (585181698 B)
+2026-11-01T07:58:49.6218326Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/bfeb4c9f-8328-4f8a-9f7f-354f8dbebff2/cache.tzst -P -C D:/a/hakiru/hakiru --force-local --use-compress-program "zstd -d"
+2026-11-01T07:59:22.5327703Z Cache restored successfully
+2026-11-01T07:59:22.5764277Z Cache restored from key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1

@@ -1,0 +1,2 @@
+﻿2026-11-01T07:58:53.4205287Z Post job cleanup.
+2026-11-01T07:58:53.5499457Z Cache hit occurred on the primary key cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1, not saving cache.

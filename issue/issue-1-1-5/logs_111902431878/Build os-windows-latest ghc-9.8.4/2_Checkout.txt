@@ -1,0 +1,77 @@
+﻿2026-11-01T07:58:40.0853681Z ##[group]Run actions/checkout@v7.0.1
+2026-11-01T07:58:40.0854418Z with:
+2026-11-01T07:58:40.0854638Z   repository: Hexirp/hakiru
+2026-11-01T07:58:40.0856745Z   token: ***
+2026-11-01T07:58:40.0856959Z   ssh-strict: true
+2026-11-01T07:58:40.0857174Z   ssh-user: git
+2026-11-01T07:58:40.0857394Z   persist-credentials: true
+2026-11-01T07:58:40.0857639Z   clean: true
+2026-11-01T07:58:40.0857861Z   sparse-checkout-cone-mode: true
+2026-11-01T07:58:40.0858122Z   fetch-depth: 1
+2026-11-01T07:58:40.0858336Z   fetch-tags: false
+2026-11-01T07:58:40.0858557Z   show-progress: true
+2026-11-01T07:58:40.0858774Z   lfs: false
+2026-11-01T07:58:40.0858974Z   submodules: false
+2026-11-01T07:58:40.0859213Z   set-safe-directory: true
+2026-11-01T07:58:40.0859467Z   allow-unsafe-pr-checkout: false
+2026-11-01T07:58:40.0859819Z env:
+2026-11-01T07:58:40.0860026Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:40.0860286Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:40.0860565Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:40.0860856Z ##[endgroup]
+2026-11-01T07:58:40.1831961Z Syncing repository: Hexirp/hakiru
+2026-11-01T07:58:40.1833450Z ##[group]Getting Git version info
+2026-11-01T07:58:40.1834385Z Working directory is 'D:\a\hakiru\hakiru'
+2026-11-01T07:58:40.2309693Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-01T07:58:40.5223201Z git version 2.56.0.windows.4
+2026-11-01T07:58:40.5257507Z ##[endgroup]
+2026-11-01T07:58:40.5268347Z Temporarily overriding HOME='D:\a\_temp\4338c3f2-30d3-4b96-86f5-4f0986b73678' before making global git config changes
+2026-11-01T07:58:40.5269121Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-01T07:58:40.5274718Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\hakiru\hakiru
+2026-11-01T07:58:40.5709717Z Deleting the contents of 'D:\a\hakiru\hakiru'
+2026-11-01T07:58:40.5713061Z ##[group]Determining repository object format
+2026-11-01T07:58:40.5714459Z ##[endgroup]
+2026-11-01T07:58:40.5714995Z ##[group]Initializing the repository
+2026-11-01T07:58:40.5719775Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\hakiru\hakiru
+2026-11-01T07:58:40.6495183Z Initialized empty Git repository in D:/a/hakiru/hakiru/.git/
+2026-11-01T07:58:40.6497772Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Hexirp/hakiru
+2026-11-01T07:58:40.7012989Z ##[endgroup]
+2026-11-01T07:58:40.7014016Z ##[group]Disabling automatic garbage collection
+2026-11-01T07:58:40.7018060Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-11-01T07:58:40.7252823Z ##[endgroup]
+2026-11-01T07:58:40.7253804Z ##[group]Setting up auth
+2026-11-01T07:58:40.7254475Z Removing SSH command configuration
+2026-11-01T07:58:40.7259698Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-01T07:58:40.7496177Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-01T07:58:41.9075592Z Removing HTTP extra header
+2026-11-01T07:58:41.9084922Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-01T07:58:41.9328377Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-01T07:58:42.3152780Z Removing includeIf entries pointing to credentials config files
+2026-11-01T07:58:42.3160483Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-01T07:58:42.3408903Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-01T07:58:42.7424782Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-d0c2c31f-75dc-4a66-8222-a29873875d2b.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-01T07:58:42.7719641Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/hakiru/hakiru/.git.path D:\a\_temp\git-credentials-d0c2c31f-75dc-4a66-8222-a29873875d2b.config
+2026-11-01T07:58:42.7968126Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path D:\a\_temp\git-credentials-d0c2c31f-75dc-4a66-8222-a29873875d2b.config
+2026-11-01T07:58:42.8249413Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d0c2c31f-75dc-4a66-8222-a29873875d2b.config
+2026-11-01T07:58:42.8485768Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d0c2c31f-75dc-4a66-8222-a29873875d2b.config
+2026-11-01T07:58:42.8718441Z ##[endgroup]
+2026-11-01T07:58:42.8718803Z ##[group]Fetching the repository
+2026-11-01T07:58:42.8726444Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +03dfb1e5f94f81cfc431aa4ff2855737e19acd1a:refs/remotes/origin/main
+2026-11-01T07:58:43.9077960Z From https://github.com/Hexirp/hakiru
+2026-11-01T07:58:43.9078518Z  * [new ref]         03dfb1e5f94f81cfc431aa4ff2855737e19acd1a -> origin/main
+2026-11-01T07:58:43.9115824Z [command]"C:\Program Files\Git\bin\git.exe" branch --list --remote origin/main
+2026-11-01T07:58:43.9394638Z   origin/main
+2026-11-01T07:58:43.9424534Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/remotes/origin/main
+2026-11-01T07:58:43.9747711Z 03dfb1e5f94f81cfc431aa4ff2855737e19acd1a
+2026-11-01T07:58:43.9769740Z ##[endgroup]
+2026-11-01T07:58:43.9769970Z ##[group]Determining the checkout info
+2026-11-01T07:58:43.9770267Z ##[endgroup]
+2026-11-01T07:58:43.9775352Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-11-01T07:58:44.0117686Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-11-01T07:58:44.0351554Z ##[group]Checking out the ref
+2026-11-01T07:58:44.0357530Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-11-01T07:58:44.1245462Z Switched to a new branch 'main'
+2026-11-01T07:58:44.1259286Z branch 'main' set up to track 'origin/main'.
+2026-11-01T07:58:44.1598822Z ##[endgroup]
+2026-11-01T07:58:44.1603782Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-11-01T07:58:44.1881718Z 03dfb1e5f94f81cfc431aa4ff2855737e19acd1a

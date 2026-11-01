@@ -1,0 +1,233 @@
+﻿2026-11-01T07:58:40.1357091Z Current runner version: '2.338.2'
+2026-11-01T07:58:40.1382653Z ##[group]Runner Image Provisioner
+2026-11-01T07:58:40.1383608Z Hosted Compute Agent
+2026-11-01T07:58:40.1384283Z Version: 20261021.618
+2026-11-01T07:58:40.1384927Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-01T07:58:40.1385716Z Build Date: 2026-10-21T00:45:21Z
+2026-11-01T07:58:40.1386423Z Worker ID: {501bff9f-c460-4401-9759-fce452f949a7}
+2026-11-01T07:58:40.1387212Z Region: westus2
+2026-11-01T07:58:40.1387825Z Cloud: Azure
+2026-11-01T07:58:40.1388370Z ##[endgroup]
+2026-11-01T07:58:40.1390232Z ##[group]Operating System
+2026-11-01T07:58:40.1391356Z Ubuntu
+2026-11-01T07:58:40.1391914Z 24.04.5
+2026-11-01T07:58:40.1392574Z LTS
+2026-11-01T07:58:40.1393106Z ##[endgroup]
+2026-11-01T07:58:40.1393698Z ##[group]Runner Image
+2026-11-01T07:58:40.1394336Z Image: ubuntu-24.04
+2026-11-01T07:58:40.1395039Z Version: 20261025.353.1
+2026-11-01T07:58:40.1396386Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-01T07:58:40.1398009Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-01T07:58:40.1399074Z ##[endgroup]
+2026-11-01T07:58:40.1400276Z ##[group]GITHUB_TOKEN Permissions
+2026-11-01T07:58:40.1402455Z Contents: read
+2026-11-01T07:58:40.1403079Z Metadata: read
+2026-11-01T07:58:40.1403776Z Packages: read
+2026-11-01T07:58:40.1404362Z ##[endgroup]
+2026-11-01T07:58:40.1406744Z Secret source: Actions
+2026-11-01T07:58:40.1408002Z Cache mode: write
+2026-11-01T07:58:40.1408952Z Using locked action versions from the workflow's lockfile
+2026-11-01T07:58:40.1409800Z Prepare workflow directory
+2026-11-01T07:58:40.1835072Z Prepare all required actions
+2026-11-01T07:58:40.1885105Z Getting action download info
+2026-11-01T07:58:40.5329889Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-01T07:58:40.6558790Z Download action repository 'actions/cache@v6.1.0' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-11-01T07:58:40.8552369Z Download action repository 'haskell-actions/setup@v2.12.1' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-11-01T07:58:41.1726071Z Complete job name: Build os-ubuntu-latest ghc-9.8.4
+2026-11-01T07:58:41.2658765Z ##[group]Run actions/checkout@v7.0.1
+2026-11-01T07:58:41.2659751Z with:
+2026-11-01T07:58:41.2660240Z   repository: Hexirp/hakiru
+2026-11-01T07:58:41.2664711Z   token: ***
+2026-11-01T07:58:41.2665194Z   ssh-strict: true
+2026-11-01T07:58:41.2665671Z   ssh-user: git
+2026-11-01T07:58:41.2666158Z   persist-credentials: true
+2026-11-01T07:58:41.2666698Z   clean: true
+2026-11-01T07:58:41.2667183Z   sparse-checkout-cone-mode: true
+2026-11-01T07:58:41.2667746Z   fetch-depth: 1
+2026-11-01T07:58:41.2668211Z   fetch-tags: false
+2026-11-01T07:58:41.2668687Z   show-progress: true
+2026-11-01T07:58:41.2669176Z   lfs: false
+2026-11-01T07:58:41.2669643Z   submodules: false
+2026-11-01T07:58:41.2670148Z   set-safe-directory: true
+2026-11-01T07:58:41.2670701Z   allow-unsafe-pr-checkout: false
+2026-11-01T07:58:41.2671720Z env:
+2026-11-01T07:58:41.2672216Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:41.2672814Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:41.2673484Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:41.2674075Z ##[endgroup]
+2026-11-01T07:58:41.5325679Z Syncing repository: Hexirp/hakiru
+2026-11-01T07:58:41.5328227Z ##[group]Getting Git version info
+2026-11-01T07:58:41.5329363Z Working directory is '/home/runner/work/hakiru/hakiru'
+2026-11-01T07:58:41.5331161Z [command]/usr/bin/git version
+2026-11-01T07:58:41.5365193Z git version 2.56.0
+2026-11-01T07:58:41.5390674Z ##[endgroup]
+2026-11-01T07:58:41.5402574Z Temporarily overriding HOME='/home/runner/work/_temp/0ff30717-df7e-48a0-930f-b83e9cc4a9e7' before making global git config changes
+2026-11-01T07:58:41.5405088Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-01T07:58:41.5409020Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-11-01T07:58:41.5459091Z Deleting the contents of '/home/runner/work/hakiru/hakiru'
+2026-11-01T07:58:41.5463045Z ##[group]Determining repository object format
+2026-11-01T07:58:41.5464651Z ##[endgroup]
+2026-11-01T07:58:41.5465929Z ##[group]Initializing the repository
+2026-11-01T07:58:41.5468739Z [command]/usr/bin/git init /home/runner/work/hakiru/hakiru
+2026-11-01T07:58:41.5583598Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-01T07:58:41.5585530Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-01T07:58:41.5587293Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-01T07:58:41.5588544Z hint: call:
+2026-11-01T07:58:41.5589762Z hint:
+2026-11-01T07:58:41.5591145Z hint: 	git config --global init.defaultBranch <name>
+2026-11-01T07:58:41.5592173Z hint:
+2026-11-01T07:58:41.5593099Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-01T07:58:41.5594637Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-01T07:58:41.5595891Z hint:
+2026-11-01T07:58:41.5596530Z hint: 	git branch -m <name>
+2026-11-01T07:58:41.5597267Z hint:
+2026-11-01T07:58:41.5598274Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-01T07:58:41.5599856Z Initialized empty Git repository in /home/runner/work/hakiru/hakiru/.git/
+2026-11-01T07:58:41.5608965Z [command]/usr/bin/git remote add origin https://github.com/Hexirp/hakiru
+2026-11-01T07:58:41.5664186Z ##[endgroup]
+2026-11-01T07:58:41.5667774Z ##[group]Disabling automatic garbage collection
+2026-11-01T07:58:41.5669018Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-01T07:58:41.5706197Z ##[endgroup]
+2026-11-01T07:58:41.5708181Z ##[group]Setting up auth
+2026-11-01T07:58:41.5709322Z Removing SSH command configuration
+2026-11-01T07:58:41.5713604Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-01T07:58:41.5754298Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-01T07:58:41.6170257Z Removing HTTP extra header
+2026-11-01T07:58:41.6177010Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-01T07:58:41.6244911Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-01T07:58:41.6496586Z Removing includeIf entries pointing to credentials config files
+2026-11-01T07:58:41.6503179Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-01T07:58:41.6550312Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-01T07:58:41.6800198Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-01T07:58:41.6854655Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git.path /home/runner/work/_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:41.6899742Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:41.6947507Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:41.6994805Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:41.7036550Z ##[endgroup]
+2026-11-01T07:58:41.7038239Z ##[group]Fetching the repository
+2026-11-01T07:58:41.7044158Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +03dfb1e5f94f81cfc431aa4ff2855737e19acd1a:refs/remotes/origin/main
+2026-11-01T07:58:42.0761191Z From https://github.com/Hexirp/hakiru
+2026-11-01T07:58:42.0763379Z  * [new ref]         03dfb1e5f94f81cfc431aa4ff2855737e19acd1a -> origin/main
+2026-11-01T07:58:42.0771993Z [command]/usr/bin/git branch --list --remote origin/main
+2026-11-01T07:58:42.0812830Z   origin/main
+2026-11-01T07:58:42.0822991Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-11-01T07:58:42.0859743Z 03dfb1e5f94f81cfc431aa4ff2855737e19acd1a
+2026-11-01T07:58:42.0866354Z ##[endgroup]
+2026-11-01T07:58:42.0868432Z ##[group]Determining the checkout info
+2026-11-01T07:58:42.0870421Z ##[endgroup]
+2026-11-01T07:58:42.0872338Z [command]/usr/bin/git sparse-checkout disable
+2026-11-01T07:58:42.0935882Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-01T07:58:42.0983409Z ##[group]Checking out the ref
+2026-11-01T07:58:42.0984954Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-01T07:58:42.1244896Z Switched to a new branch 'main'
+2026-11-01T07:58:42.1250064Z branch 'main' set up to track 'origin/main'.
+2026-11-01T07:58:42.1259319Z ##[endgroup]
+2026-11-01T07:58:42.1357432Z [command]/usr/bin/git log -1 --format=%H
+2026-11-01T07:58:42.1365480Z 03dfb1e5f94f81cfc431aa4ff2855737e19acd1a
+2026-11-01T07:58:42.1763751Z ##[group]Run actions/cache@v6.1.0
+2026-11-01T07:58:42.1764982Z with:
+2026-11-01T07:58:42.1766395Z   path: ~/.ghcup/bin/*
+~/.ghcup/cache/*
+~/.ghcup/config.yaml
+~/.ghcup/ghc/9.8.4
+
+2026-11-01T07:58:42.1769084Z   key: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-01T07:58:42.1771478Z   enableCrossOsArchive: false
+2026-11-01T07:58:42.1772660Z   fail-on-cache-miss: false
+2026-11-01T07:58:42.1773780Z   lookup-only: false
+2026-11-01T07:58:42.1774845Z   save-always: false
+2026-11-01T07:58:42.1775797Z env:
+2026-11-01T07:58:42.1776680Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:42.1777865Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:42.1779172Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:42.1780429Z   CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:42.1781690Z   GHCUP_ROOT_Linux: ~/.ghcup
+2026-11-01T07:58:42.1782842Z   GHCUP_ROOT_Windows: C:/ghcup
+2026-11-01T07:58:42.1783939Z ##[endgroup]
+2026-11-01T07:58:42.5488419Z Cache hit for: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-01T07:58:43.8392227Z Received 12582912 of 365675446 (3.4%), 12.0 MBs/sec
+2026-11-01T07:58:44.8395542Z Received 134217728 of 365675446 (36.7%), 63.9 MBs/sec
+2026-11-01T07:58:45.8450013Z Received 239075328 of 365675446 (65.4%), 75.9 MBs/sec
+2026-11-01T07:58:46.8453131Z Received 356515840 of 365675446 (97.5%), 84.9 MBs/sec
+2026-11-01T07:58:47.0049760Z Received 365675446 of 365675446 (100.0%), 83.6 MBs/sec
+2026-11-01T07:58:47.0053098Z Cache Size: ~349 MB (365675446 B)
+2026-11-01T07:58:47.0154334Z [command]/usr/bin/tar -xf /home/runner/work/_temp/8dca5b81-ecd0-4726-a8b9-bf992acf28c0/cache.tzst -P -C /home/runner/work/hakiru/hakiru --use-compress-program unzstd
+2026-11-01T07:58:51.4611210Z Cache restored successfully
+2026-11-01T07:58:51.9426958Z Cache restored from key: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-01T07:58:52.0544206Z ##[group]Run actions/cache@v6.1.0
+2026-11-01T07:58:52.0544601Z with:
+2026-11-01T07:58:52.0544867Z   path: /pantry
+2026-11-01T07:58:52.0545855Z   key: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-01T07:58:52.0547620Z   restore-keys: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+
+2026-11-01T07:58:52.0548604Z   enableCrossOsArchive: false
+2026-11-01T07:58:52.0549264Z   fail-on-cache-miss: false
+2026-11-01T07:58:52.0549521Z   lookup-only: false
+2026-11-01T07:58:52.0549746Z   save-always: false
+2026-11-01T07:58:52.0549959Z env:
+2026-11-01T07:58:52.0550168Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0550437Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0550726Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0551425Z   CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.0551741Z ##[endgroup]
+2026-11-01T07:58:52.4261645Z Cache not found for input keys: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357, cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+2026-11-01T07:58:52.6064383Z ##[group]Run actions/cache@v6.1.0
+2026-11-01T07:58:52.6064750Z with:
+2026-11-01T07:58:52.6065024Z   path: /stack.sqlite3
+/snapshots
+
+2026-11-01T07:58:52.6066088Z   key: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-01T07:58:52.6067897Z   restore-keys: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+
+2026-11-01T07:58:52.6068930Z   enableCrossOsArchive: false
+2026-11-01T07:58:52.6069247Z   fail-on-cache-miss: false
+2026-11-01T07:58:52.6069547Z   lookup-only: false
+2026-11-01T07:58:52.6069812Z   save-always: false
+2026-11-01T07:58:52.6070064Z env:
+2026-11-01T07:58:52.6070299Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6070631Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6071269Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6071673Z   CACHE_VERSION: v-1-1-1
+2026-11-01T07:58:52.6071954Z ##[endgroup]
+2026-11-01T07:58:52.9694389Z Cache not found for input keys: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357, cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--, cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+2026-11-01T07:58:53.0461309Z Post job cleanup.
+2026-11-01T07:58:53.1853624Z [warning]Path Validation Error: Path(s) specified in the action for caching do(es) not exist, hence no cache is being saved.
+2026-11-01T07:58:53.2635892Z Post job cleanup.
+2026-11-01T07:58:53.4019583Z [warning]Path Validation Error: Path(s) specified in the action for caching do(es) not exist, hence no cache is being saved.
+2026-11-01T07:58:53.4205303Z Post job cleanup.
+2026-11-01T07:58:53.5499500Z Cache hit occurred on the primary key cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1, not saving cache.
+2026-11-01T07:58:53.5640174Z Post job cleanup.
+2026-11-01T07:58:53.6593874Z [command]/usr/bin/git version
+2026-11-01T07:58:53.6647719Z git version 2.56.0
+2026-11-01T07:58:53.6689037Z Temporarily overriding HOME='/home/runner/work/_temp/cb5ddb95-6448-4f3d-b943-24275bd768df' before making global git config changes
+2026-11-01T07:58:53.6690642Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-01T07:58:53.6695030Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-11-01T07:58:53.6737714Z Removing SSH command configuration
+2026-11-01T07:58:53.6745942Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-01T07:58:53.6793737Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-01T07:58:53.7150433Z Removing HTTP extra header
+2026-11-01T07:58:53.7158265Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-01T07:58:53.7221291Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-01T07:58:53.7623966Z Removing includeIf entries pointing to credentials config files
+2026-11-01T07:58:53.7631592Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-01T07:58:53.7678703Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-11-01T07:58:53.7679854Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-11-01T07:58:53.7681281Z includeif.gitdir:/github/workspace/.git.path
+2026-11-01T07:58:53.7682228Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-01T07:58:53.7690459Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-11-01T07:58:53.7728686Z /home/runner/work/_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:53.7741944Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-31cc7048\-b215\-4cc1\-a42d\-bbc4c50204a7\.config
+2026-11-01T07:58:53.7792923Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-11-01T07:58:53.7836035Z /home/runner/work/_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:53.7847185Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-31cc7048\-b215\-4cc1\-a42d\-bbc4c50204a7\.config
+2026-11-01T07:58:53.7895480Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-01T07:58:53.7936241Z /github/runner_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:53.7947955Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-31cc7048\-b215\-4cc1\-a42d\-bbc4c50204a7\.config
+2026-11-01T07:58:53.8001571Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-01T07:58:53.8044572Z /github/runner_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config
+2026-11-01T07:58:53.8054134Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-31cc7048\-b215\-4cc1\-a42d\-bbc4c50204a7\.config
+2026-11-01T07:58:53.8109302Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-01T07:58:53.8384809Z Removing credentials config '/home/runner/work/_temp/git-credentials-31cc7048-b215-4cc1-a42d-bbc4c50204a7.config'
+2026-11-01T07:58:53.8583741Z Cleaning up orphan processes
