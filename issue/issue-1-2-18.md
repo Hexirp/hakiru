@@ -286,3 +286,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Hakyll についての記述があるため "[issue-1-1-1.md](./issue-1-1-1.md)" にも関わってくる。
 
 こっちも `stack new` の内容をそのまま使う。
+
+## comment 2026-11-02 3
+
+`stack.yaml` については、 `new-template` テンプレートの内部ではなく、 Stack そのものが生成しているようである。
+
+使い方についての丁寧な説明のコメントがある。これらは不要であるため、削除する。
+
+元々のコードには以下のような記述があるが Nix に対応することは予定していないため削除する。
+
+```yaml
+nix:
+  packages:
+    - openssh  # for deployment
+    - rsync    # for deployment
+    - zlib
+    - pkgconfig
+```
+
+`stack-lts-23.28.yaml` についても同様に変更する。
