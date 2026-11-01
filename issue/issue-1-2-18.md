@@ -211,3 +211,30 @@ web/releases.markdown
 import Distribution.Simple
 main = defaultMain
 ```
+
+## comment 2026-11-01 4
+
+次は `CHANGELOG.md` である。しかし、このファイルについては現在 (`099ba3399ec53491386a8ad6a419264f9b5c55ad`) の `/web/site.hs` において必要なファイルとして扱われている。つまり、当該のコードには次のような処理がある。
+
+```hs
+-- Copy CHANGELOG.md here.
+preprocess $ copyFile "../CHANGELOG.md" "releases.markdown"
+```
+
+このため、普通の手段で置き換えてしまうと、ビルドに失敗してしまう。たとえば、現在 (`099ba3399ec53491386a8ad6a419264f9b5c55ad`) の `/CHANGELOG.md` の冒頭には以下のような記述があり、これは Hakyll のビルドの際にタイトルとして参照されるため、これを消すと Hakyll によるビルドが失敗してしまう。
+
+```md
+---
+title: Releases
+---
+
+# Releases
+
+## 4.17.1.0
+
+- Added support for `aeson` 2.3
+- Added support for `pandoc` 3.11 (#1110)
+- Re-export `Hakyll.Core.Dependencies` from `Hakyll` (#1104)
+```
+
+そこで `/CHANGELOG.md` に触れているのが `/web/releases.markdown` へコピーする処理だけであることを利用して、その処理のみを事前に終わらせる……つまり `/CHANGELOG.md` を `/web/releases.markdown` に移動することにする。
