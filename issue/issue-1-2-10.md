@@ -13,3 +13,7 @@ Stack を使って別のプロジェクトを生成して、現在の Stack の�
 ```sh
 stack new hakiru new-template -p "author-email:https://github.com/Hexirp/hakiru" -p "author-name:Hexirp" -p "category:Web" -p "copyright:(C) Hexirp 2026" -p "github-username:Hexirp"
 ```
+
+## comment 2026-11-01 1
+
+"[issue-1-1-7.md](./issue-1-1-7.md)" と重複しているから、こっちの方を正とする。こっちの方に具体性があるから。
