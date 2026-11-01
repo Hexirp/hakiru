@@ -23,7 +23,7 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 
-# Use https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L130
+# Use https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L130-L132
 .stack-work/
 *~
 

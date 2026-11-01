@@ -153,7 +153,7 @@ tags
 
 ううむ……？　そもそも、このようなローカルの環境に依存するようなものを加えるのは不適切なのでは？
 
-でも `~*` は `stack new` の時にもあった。 `stack new` の時に使ったテンプレートは "[`new-template.hsfiles`](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L130)" だね。
+でも `~*` は `stack new` の時にもあった。 `stack new` の時に使ったテンプレートは "[`new-template.hsfiles`](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L130-L132)" だね。
 
 ```gitignore
 # Use https://github.com/github/gitignore/blob/6bb5af7a1b050e5add3a71b6e6365c93498822ac/Haskell.gitignore
@@ -181,7 +181,7 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 
-# Use https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L130
+# Use https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L130-L132
 .stack-work/
 *~
 
@@ -205,7 +205,7 @@ web/releases.markdown
 
 ## comment 2026-11-01 3
 
-`Setup.hs` については、現在の内容と `new-template` テンプレートにおける内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L62)）が以下の内容で完全に一致しているので変更する必要はない。
+`Setup.hs` については、現在の内容と `new-template` テンプレートにおける内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L62-L64)）が以下の内容で完全に一致しているので変更する必要はない。
 
 ```hs
 import Distribution.Simple
@@ -241,7 +241,7 @@ title: Releases
 
 ## comment 2026-11-01 5
 
-`new-template` テンプレートにおける `CHANGELOG.md` の内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L89)）は、以下のような内容である。
+`new-template` テンプレートにおける `CHANGELOG.md` の内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L89-L100)）は、以下のような内容である。
 
 ```md
 # Changelog for `{{ name }}`
