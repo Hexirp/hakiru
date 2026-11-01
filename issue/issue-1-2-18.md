@@ -270,3 +270,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## 0.1.0.0 - YYYY-MM-DD
 ```
+
+## comment 2026-11-02 1
+
+`LICENSE` ファイルは、そのまま置き換える。 Hakyll はフラグ次第で `GPL-2.0-or-later` である Pandoc に依存しているんだけど、たしか、まとめてソースコードを配布するでもなく、静的リンクあるいは動的リンクする必要があるバイナリを配布するでもなく、ただ単に Hakyll のソースコードのみを配布して、ユーザーが手元でビルドするから、 `BSD-3-Clause` でいいということだったはず。
+
+`new-template` テンプレートの `LICENSE` の内容（[リンク](https://github.com/commercialhaskell/stack-templates/blob/360442dbdc3d114df5fe377306978d4f47694370/new-template.hsfiles#L102-L128)）も同じく `BSD-3-Clause` である。
+
+`stack new` の内容を、そのまま使う。
