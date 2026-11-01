@@ -718,3 +718,37 @@ push した。
   * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_111713733724/0_Build%20os-windows-latest%20ghc-9.8.4.txt)
 
 Windows においてシングルクォーテーションを囲んで `C:\ghcup` をキャッシュしている件だけど、その必要がないように `C:/ghcup` に変更しよう。
+
+## comment 2026-11-01 2
+
+今の GitHub Actions のワークフローの設定においては外部のアクションを指定する時にコミットの完全 ID を指定している。タグを使って指定すると、第三者がタグの位置を変更することにより、本来において意図していたのと異なるアクションを実行してしまうことがあるので。手動でのロックファイルのような感じである。
+
+最近 GitHub Actions に "Workflow Lockfiles" という機能が増えたそうである。たまたま、 "[GitHub Actions の「 Workflow Lockfiles 」が GA されたので実際に動かして検証してみた](https://zenn.dev/pensol/articles/bde1c2eb6c2f03)" (pensol, 2026) という記事が検索に引っかかって気付いた。
+
+コミットの完全 ID を指定する方法については、（人間が理解しにくいという欠点については耐えればいいだけとしても）推移的な依存関係の中にタグ指定が混入していた時に、そこを基点としてサプライチェーン攻撃をすることができてしまうのである。ぜんぜん気付いていなかったし、気付いていたとしても当該のプロジェクトにイシューを立てるようなコストが高い解決策しかないけど、その通りである。
+
+"Workflow Lockfiles" は、推移的な依存関係まで固定することができるので、そのような事態も防ぐことができる。ありがたい。
+
+GitHub CLI が必要なので、それをインストールするところから始めないと。
+
+"[About GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli)" と "[GitHub CLI § Installation](https://github.com/cli/cli/blob/9490d204a2ba95434153dedce99898ce9f281426/README.md#installation)" と "[Installing gh on Windows](https://github.com/cli/cli/blob/9490d204a2ba95434153dedce99898ce9f281426/docs/install_windows.md)" を読んだ。
+
+ようするに `winget` コマンドかインストーラーかを使うことを推奨している。
+
+"[Use WinGet to install and manage applications](https://learn.microsoft.com/en-us/windows/package-manager/winget/)" を読んだ。ふむ。
+
+"winget 罠" で検索しておく。 "[winget - what's the catch?](https://www.reddit.com/r/sysadmin/comments/1erbcrc/winget_whats_the_catch/)" (Reddit, 2024) と "[AppGet Creator Says Microsoft Stole His Product](https://www.thurrott.com/windows/windows-10/235783/appget-creator-says-microsoft-stole-his-product)" (Paul Thurrott, 2020) を読んだ。
+
+やっぱり、インストーラーにするか。
+
+"[GitHub CLI 2.103.3](https://github.com/cli/cli/releases/tag/v2.103.3)" を使う。 `386`, `amd64`, `arm64` の 3 種類があるんだけど、なになのかよくわからないな。 `arm64` だけはわかるけど。調べたけど `386` は `x86` で `amd64` は `x64` なのね。 "GitHub CLI 2.103.3 windows amd64 installer" を選択する。
+
+ううむ？　`gh actions-lock` が存在しない？
+
+公式のドキュメントを読もう。 "[GitHub Actions workflow lockfiles are generally available](https://github.blog/changelog/2026-10-28-github-actions-workflow-lockfiles-are-generally-available/)" (GitHub Blog, 2026-10-28) と "[Workflow dependency lockfiles](https://docs.github.com/en/actions/concepts/security/workflow-dependency-lockfiles)" と "[Locking action dependencies in a repository's workflows](https://docs.github.com/en/actions/how-tos/secure-your-work/lock-workflow-dependencies)" "[gh-actions-lock](https://github.com/github/gh-actions-lock/blob/113f91d77e0af03838b6ae3bef0e038cbab4c696/README.md)" を読んだ。
+
+`gh extension install github/gh-actions-lock` をやらないと使えないらしい。現状では拡張機能なので。
+
+インストールした後に `gh actions-lock` をやったけど、ログインが必要であるそうで。
+
+ログインした後に `gh actions-lock` をやって、きちんと生成できた。
