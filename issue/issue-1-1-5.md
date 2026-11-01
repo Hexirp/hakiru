@@ -781,3 +781,11 @@ GitHub CLI が必要なので、それをインストールするところから
 2026-11-01T07:58:40.8552369Z Download action repository 'haskell-actions/setup@v2.12.1' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
 2026-11-01T07:58:41.1726071Z Complete job name: Build os-ubuntu-latest ghc-9.8.4
 ```
+
+## comment 2026-11-02 1
+
+"[issue-1-2-18.md](./issue-1-2-18.md)" にあるように、ビルドするためのプロジェクトの設定を更新し終えた。
+
+`hakyll.cabal` および `package.yaml` についてはまだ更新していないけど、 "[issue-1-2-10.md](./issue-1-2-10.md)" にも書いてあるように最も重いタスクであり、ビルド可能性を見ながら進めたいというところもある。
+
+そこで、今までは常時スキップしていた Stack を使ったビルドを有効化する。
