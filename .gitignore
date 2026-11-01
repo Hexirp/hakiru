@@ -41,3 +41,6 @@ web/reference
 
 # This is generated from the CHANGELOG
 web/releases.markdown
+
+# Ignore `ignore/` directories
+ignore/
