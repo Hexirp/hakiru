@@ -131,3 +131,11 @@ Stack のデータはライブラリの依存関係で、ここで考えてい�
 ## comment 2026-10-30 1
 
 `pandoc` ライブラリは `blaze-builder` ライブラリに依存しているのが微妙だと感じている。
+
+## comment 2026-11-04 1
+
+`haskell blaze-builder` と検索したら `bytestring` ライブラリの `Data.ByteString.Builder` モジュールが後継であるという文章を Google AI が出力した。 "[Haskell Tips (文字列編)](https://bicycle1885.hatenablog.com/entry/2012/12/24/234707)" (bicycle1885, 2012) が参考文献の項目に入っている。
+
+`blaze-builder` ライブラリのコードを読んだら、なんか複雑な偽モナドを使っているから、 `blaze-builder` ライブラリにしかできないことがあるのかなと思っていたけど、そうじゃなかったの？　そもそもそんなに `blaze-builder` ライブラリが古い出自を持つというのも意識していなかった。
+
+`Data.ByteString.Builder vs Blaze.ByteString.Builder` と検索したら `Data.ByteString.Builder` は `Blaze.ByteString.Builder` を元にしているという文章を Google AI が出力した。 "[bytestring-builder: The new bytestring builder, packaged outside of GHC](https://hackage.haskell.org/package/bytestring-builder)" が参考文献の項目に入っている。
