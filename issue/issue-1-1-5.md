@@ -418,7 +418,7 @@ push した。
   * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_111391323375/0_Build%20os-windows-latest%20ghc-9.8.4.txt)
   * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_111391323375/1_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
 
-`stack upload` により長いダウンロードが入っているけど、これ以降はキャッシュにより高速で通るはずである。
+`stack upload` により長いダウンロードが入っているけど、これ以降はキャッシュにより高速で通るはずである。そういや、 `stack update` の時に起こった挙動は以前に言及した `stack ls` の失敗の時に起こった挙動と同じである。
 
 やっぱり `$STACK_ROOT/pantry` に GHC のバージョンあるいは resolver のバージョンが関係するとは思えないんだよな。おそらく Hackage に存在する全部のパッケージの全部のバージョンのメタデータを保存しているだろうから。やはり GHC のバージョンに合わせて更新する必要があるとは思えない。
 
