@@ -51,7 +51,6 @@ jobs:
           cabal-version: ${{ matrix.haskell.cabal }}
           stack-version: ${{ matrix.haskell.stack }}
           enable-stack: true
-        if: steps.ghcup-cache.outputs.cache-hit != 'true'
       - name: Stack Pantry Cache
         id: stack-pantry-cache
         uses: actions/cache@v6.1.0
