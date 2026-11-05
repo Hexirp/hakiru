@@ -7,6 +7,8 @@ env:
   GHCUP_CACHE_VERSION: v-1-1-1
   STACK_PANTRY_CACHE_VERSION: v-1-1-1
   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+  GHCUP_ROOT_Linux: ~/.ghcup
+  GHCUP_ROOT_Windows: C:/ghcup
 
 jobs:
   build:
@@ -34,8 +36,6 @@ jobs:
         uses: actions/cache@v6.1.0
         env:
           CACHE_VERSION: ${{ env.GHCUP_CACHE_VERSION }}
-          GHCUP_ROOT_Linux: ~/.ghcup
-          GHCUP_ROOT_Windows: C:/ghcup
         with:
           path: |
             ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/bin/*
