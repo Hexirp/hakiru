@@ -833,3 +833,19 @@ Debug: GitHub Actions における Stack を使うステップを有効化する
 いや、もう一つ、 GHCup のキャッシュを諦める方法もあるな。
 
 迷う。
+
+## comment 2026-11-06 1
+
+やはり GHCup の更新も負担になるケースがあるようだから、 GHCup のキャッシュは使う。
+
+* "[Allow stack to use the GHC installed by GHCup](https://github.com/haskell-actions/setup/issues/50)"
+* "[Installing GHC is slow. Possibly use cache?](https://github.com/haskell-actions/setup/issues/52)"
+* "[Document how to cache stack](https://github.com/haskell-actions/setup/issues/86)"
+* "[Use using existing ghcup/ghc/mingw installations on Windows](https://github.com/haskell-actions/setup/issues/92)"
+* "[Does this action reuse pre-installed versions of GHC and Cabal?](https://github.com/haskell-actions/setup/issues/119)"
+
+ううむ……第三の選択肢として Stack のみを使う方法もあるか？
+
+Stack が GHC をインストールする位置は Linux と Windows でかなり違っていて、かなり厄介なんだよね。手元の環境と合わせるという意味でも、今は見送る。
+
+`1179f1de7df81bbc314a17b4023d7a0a6f62bbe0` としてコミットした。
