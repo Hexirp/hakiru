@@ -1,0 +1,28 @@
+﻿2026-11-05T07:28:25.9402852Z ##[group]Run actions/cache@v6.1.0
+2026-11-05T07:28:25.9404152Z with:
+2026-11-05T07:28:25.9405564Z   path: ~/.ghcup/bin/*
+~/.ghcup/cache/*
+~/.ghcup/config.yaml
+~/.ghcup/ghc/9.8.4
+
+2026-11-05T07:28:25.9408288Z   key: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-05T07:28:25.9410524Z   enableCrossOsArchive: false
+2026-11-05T07:28:25.9411711Z   fail-on-cache-miss: false
+2026-11-05T07:28:25.9412936Z   lookup-only: false
+2026-11-05T07:28:25.9414031Z   save-always: false
+2026-11-05T07:28:25.9415011Z env:
+2026-11-05T07:28:25.9415943Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:25.9417105Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:25.9418368Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:25.9419919Z   CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:25.9420989Z   GHCUP_ROOT_Linux: ~/.ghcup
+2026-11-05T07:28:25.9422140Z   GHCUP_ROOT_Windows: C:/ghcup
+2026-11-05T07:28:25.9423278Z ##[endgroup]
+2026-11-05T07:28:26.2050020Z Cache hit for: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-05T07:28:27.3567682Z Received 134217728 of 365675446 (36.7%), 128.0 MBs/sec
+2026-11-05T07:28:28.3605794Z Received 348127232 of 365675446 (95.2%), 166.0 MBs/sec
+2026-11-05T07:28:28.4304976Z Received 365675446 of 365675446 (100.0%), 168.1 MBs/sec
+2026-11-05T07:28:28.4306332Z Cache Size: ~349 MB (365675446 B)
+2026-11-05T07:28:28.4385743Z [command]/usr/bin/tar -xf /home/runner/work/_temp/22c298aa-5fff-4b5f-8fdd-935e3a16175d/cache.tzst -P -C /home/runner/work/hakiru/hakiru --use-compress-program unzstd
+2026-11-05T07:28:34.8575111Z Cache restored successfully
+2026-11-05T07:28:35.7377296Z Cache restored from key: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1

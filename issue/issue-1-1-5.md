@@ -813,3 +813,23 @@ Debug: GitHub Actions における Stack を使うステップを有効化する
 どちらの方法にも欠点があるけど、そもそも `if` 構文を使ってスキップしたりするのは良い設計ではないのではと考えて、一つ目の方法にする。
 
 `f73ac981404c84bc45f7bc9920fdf583229ec74f` としてコミットした。
+
+## comment 2026-11-05 2
+
+以下の通りになった。
+
+* [build #14](https://github.com/Hexirp/hakiru/actions/runs/41987455928)
+  * [Build os-ubuntu-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41987455928/job/127111484344)
+  * [Build os-windows-latest ghc-9.8.4](https://github.com/Hexirp/hakiru/actions/runs/41987455928/job/127111484067)
+
+保存したログは以下の通りである。
+
+* build #14
+  * [Build os-ubuntu-latest ghc-9.8.4](./issue-1-1-5/logs_113773410569/0_Build%20os-ubuntu-latest%20ghc-9.8.4.txt)
+  * [Build os-windows-latest ghc-9.8.4](./issue-1-1-5/logs_113773410569/1_Build%20os-windows-latest%20ghc-9.8.4.txt)
+
+重複してインストールしようとすると、 GHCup が冪等に働かず、失敗する。となると、二つ目の方法だな。
+
+いや、もう一つ、 GHCup のキャッシュを諦める方法もあるな。
+
+迷う。

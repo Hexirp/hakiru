@@ -1,0 +1,55 @@
+﻿2026-11-05T07:29:31.8214913Z ##[group]Run haskell-actions/setup@v2.12.1
+2026-11-05T07:29:31.8215363Z with:
+2026-11-05T07:29:31.8215557Z   ghc-version: 9.8.4
+2026-11-05T07:29:31.8215783Z   cabal-version: 3.16.1.0
+2026-11-05T07:29:31.8215997Z   stack-version: 3.11.1
+2026-11-05T07:29:31.8216201Z   enable-stack: true
+2026-11-05T07:29:31.8216398Z   cabal-update: true
+2026-11-05T07:29:31.8216600Z env:
+2026-11-05T07:29:31.8216780Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-05T07:29:31.8217157Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-05T07:29:31.8217502Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-05T07:29:31.8217750Z ##[endgroup]
+2026-11-05T07:29:31.9211308Z Preparing to setup a Haskell environment
+2026-11-05T07:29:31.9220236Z ##[group]Preparing ghcup environment
+2026-11-05T07:29:31.9220730Z Adding ghcup release channel: prereleases
+2026-11-05T07:29:31.9760806Z [command]C:\ghcup\bin\ghcup.exe config add-release-channel prereleases
+2026-11-05T07:29:32.0354694Z ##[endgroup]
+2026-11-05T07:29:32.0355319Z ##[group]Preparing ghc environment
+2026-11-05T07:29:32.0356011Z ##[endgroup]
+2026-11-05T07:29:32.0356511Z ##[group]Installing ghc version 9.8.4
+2026-11-05T07:29:32.1141395Z [command]C:\ghcup\bin\ghcup.exe whereis ghc 9.8.4
+2026-11-05T07:29:32.1493362Z C:/ghcup/ghc/9.8.4/bin/ghc.exe
+2026-11-05T07:29:32.1493728Z 
+2026-11-05T07:29:32.1494179Z Attempting to access tool ghc at location <not-found>
+2026-11-05T07:29:32.1496372Z Failed to access tool ghc at location <not-found>
+2026-11-05T07:29:32.1496846Z Attempting to access tool ghc at location C:/ghcup/bin
+2026-11-05T07:29:32.1497945Z Succeeded accessing tool ghc at location C:/ghcup/bin
+2026-11-05T07:29:32.1931949Z [command]C:\ghcup\bin\ghcup.exe set ghc 9.8.4
+2026-11-05T07:29:32.3368578Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-11-05T07:29:32.4405489Z [1m[92m[ Info  ][0m[0m ghc 9.8.4 successfully set as default version
+2026-11-05T07:29:32.6542427Z Found ghc 9.8.4 in cache at path C:/ghcup/bin. Setup successful.
+2026-11-05T07:29:32.6543838Z ##[endgroup]
+2026-11-05T07:29:32.6544620Z ##[group]Preparing cabal environment
+2026-11-05T07:29:32.6545227Z ##[endgroup]
+2026-11-05T07:29:32.6545689Z ##[group]Installing cabal version 3.16.1.0
+2026-11-05T07:29:32.7030516Z [command]C:\ghcup\bin\ghcup.exe whereis cabal 3.16.1.0
+2026-11-05T07:29:32.7308691Z C:/ghcup/bin/cabal-3.16.1.0.exe
+2026-11-05T07:29:32.7309000Z 
+2026-11-05T07:29:32.7309413Z Attempting to access tool cabal at location <not-found>
+2026-11-05T07:29:32.7310761Z Failed to access tool cabal at location <not-found>
+2026-11-05T07:29:32.7311204Z Attempting to access tool cabal at location C:/ghcup/bin
+2026-11-05T07:29:32.7312348Z Succeeded accessing tool cabal at location C:/ghcup/bin
+2026-11-05T07:29:32.7813176Z [command]C:\ghcup\bin\ghcup.exe set cabal 3.16.1.0
+2026-11-05T07:29:32.9166436Z [1m[92m[ Info  ][0m[0m verifying digest of: gs.exe
+2026-11-05T07:29:32.9346730Z [1m[92m[ Info  ][0m[0m cabal 3.16.1.0 successfully set as default version
+2026-11-05T07:29:33.1029517Z Found cabal 3.16.1.0 in cache at path C:/ghcup/bin. Setup successful.
+2026-11-05T07:29:33.1030779Z ##[endgroup]
+2026-11-05T07:29:33.1031289Z ##[group]Preparing stack environment
+2026-11-05T07:29:33.1031864Z ##[endgroup]
+2026-11-05T07:29:33.1032321Z ##[group]Installing stack version 3.11.1
+2026-11-05T07:29:33.1540748Z Found stack 3.11.1 in cache at path C:\hostedtoolcache\windows\stack\3.11.1\x64. Setup successful.
+2026-11-05T07:29:33.1541535Z ##[endgroup]
+2026-11-05T07:29:33.1542050Z ##[group]Setting up cabal
+2026-11-05T07:29:33.4039681Z ##[endgroup]
+2026-11-05T07:29:33.4078949Z ##[error]The process 'C:\ghcup\bin\cabal.exe' failed with exit code 1

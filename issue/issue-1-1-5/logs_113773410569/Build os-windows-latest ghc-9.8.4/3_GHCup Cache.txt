@@ -1,0 +1,33 @@
+﻿2026-11-05T07:28:34.3017944Z ##[group]Run actions/cache@v6.1.0
+2026-11-05T07:28:34.3018264Z with:
+2026-11-05T07:28:34.3018572Z   path: C:/ghcup/bin/*
+C:/ghcup/cache/*
+C:/ghcup/config.yaml
+C:/ghcup/ghc/9.8.4
+
+2026-11-05T07:28:34.3019104Z   key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-05T07:28:34.3019540Z   enableCrossOsArchive: false
+2026-11-05T07:28:34.3019758Z   fail-on-cache-miss: false
+2026-11-05T07:28:34.3019954Z   lookup-only: false
+2026-11-05T07:28:34.3020132Z   save-always: false
+2026-11-05T07:28:34.3020294Z env:
+2026-11-05T07:28:34.3020469Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:34.3020697Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:34.3020927Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:34.3021148Z   CACHE_VERSION: v-1-1-1
+2026-11-05T07:28:34.3021343Z   GHCUP_ROOT_Linux: ~/.ghcup
+2026-11-05T07:28:34.3021569Z   GHCUP_ROOT_Windows: C:/ghcup
+2026-11-05T07:28:34.3021773Z ##[endgroup]
+2026-11-05T07:28:34.8547955Z Cache hit for: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-05T07:28:36.1539585Z Received 12582912 of 585181698 (2.2%), 12.0 MBs/sec
+2026-11-05T07:28:37.1606952Z Received 113246208 of 585181698 (19.4%), 53.9 MBs/sec
+2026-11-05T07:28:38.1581462Z Received 176160768 of 585181698 (30.1%), 55.9 MBs/sec
+2026-11-05T07:28:39.1608509Z Received 268435456 of 585181698 (45.9%), 63.9 MBs/sec
+2026-11-05T07:28:40.1752029Z Received 394264576 of 585181698 (67.4%), 74.9 MBs/sec
+2026-11-05T07:28:41.1760568Z Received 457179136 of 585181698 (78.1%), 72.4 MBs/sec
+2026-11-05T07:28:42.2671611Z Received 536870912 of 585181698 (91.7%), 72.0 MBs/sec
+2026-11-05T07:28:43.0177890Z Received 585181698 of 585181698 (100.0%), 71.0 MBs/sec
+2026-11-05T07:28:43.0178322Z Cache Size: ~558 MB (585181698 B)
+2026-11-05T07:28:43.0277088Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/3de33636-e3a5-4a99-90e6-23eaab48475e/cache.tzst -P -C D:/a/hakiru/hakiru --force-local --use-compress-program "zstd -d"
+2026-11-05T07:29:31.7486812Z Cache restored successfully
+2026-11-05T07:29:31.7908370Z Cache restored from key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
