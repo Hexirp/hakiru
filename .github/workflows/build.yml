@@ -9,6 +9,8 @@ env:
   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
   GHCUP_ROOT_Linux: ~/.ghcup
   GHCUP_ROOT_Windows: C:/ghcup
+  STACK_ROOT_Linux: ~/.stack
+  STACK_ROOT_Windows: C:/sr
 
 jobs:
   build:
@@ -51,13 +53,14 @@ jobs:
           cabal-version: ${{ matrix.haskell.cabal }}
           stack-version: ${{ matrix.haskell.stack }}
           enable-stack: true
+        if: steps.ghcup-cache.outputs.cache-hit != 'true'
       - name: Stack Pantry Cache
         id: stack-pantry-cache
         uses: actions/cache@v6.1.0
         env:
           CACHE_VERSION: ${{ env.STACK_PANTRY_CACHE_VERSION }}
         with:
-          path: ${{ steps.setup.outputs.stack-root }}/pantry
+          path: ${{ env[format('STACK_ROOT_{0}', runner.os)] }}/pantry
           key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
           restore-keys: |
             cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
@@ -69,8 +72,8 @@ jobs:
           CACHE_VERSION: ${{ env.STACK_SNAPSHOT_CACHE_VERSION }}
         with:
           path: |
-            ${{ steps.setup.outputs.stack-root }}/stack.sqlite3
-            ${{ steps.setup.outputs.stack-root }}/snapshots
+            ${{ env[format('STACK_ROOT_{0}', runner.os)] }}/stack.sqlite3
+            ${{ env[format('STACK_ROOT_{0}', runner.os)] }}/snapshots
           key: cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
           restore-keys: |
             cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
