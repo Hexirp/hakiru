@@ -849,3 +849,45 @@ Debug: GitHub Actions における Stack を使うステップを有効化する
 Stack が GHC をインストールする位置は Linux と Windows でかなり違っていて、かなり厄介なんだよね。手元の環境と合わせるという意味でも、今は見送る。
 
 `1179f1de7df81bbc314a17b4023d7a0a6f62bbe0` としてコミットした。
+
+# comment 2026-11-08 1
+
+Linux においてはキャッシュのステップが機能しているけど、 Windows においてはキャッシュのステップが機能しない。
+
+今は `C:/sr` ディレクトリを指定しているけど、 Windows のジョブのログを見ると `C:\Users\runneradmin\AppData\Roaming\stack` ディレクトリの方を使っている。
+
+つまり、 `~/AppData/Roaming/stack` に変えないといけないということである。
+
+しかし、 `steps.setup.outputs.stack-root` を経由して使っていた以前のジョブを見ると `C:/sr` ディレクトリの方を使っているんだよね。
+
+もしかして [`haskell-actions/setup`](https://github.com/haskell-actions/setup) を通っているかどうかによって Stack のキャッシュの位置が変わるとか？
+
+`haskell-actions/setup` リポジトリにそれらしきコード（[リンク](https://github.com/haskell-actions/setup/blob/0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d/src/installer.ts#L30-L32)）はあった。
+
+```ts
+const sr =
+  process.env['STACK_ROOT'] ??
+  (os === 'win32' ? 'C:\\sr' : `${process.env.HOME}/.stack`);
+```
+
+[`haskell-actions/setup`](https://github.com/haskell-actions/setup) における Stack のルートは `STACK_ROOT` 環境変数を参照していると書いてある。この機能を使って固定するとか？
+
+単純に指定するだけだと Linux と Windows で同じパスを使わないといけなくなり、良くないことになる。
+
+動的に `STACK_ROOT` 環境変数をセットする機能が必要である。
+
+`GITHUB_ENV` 環境変数に書き込めば可能であるけど、やっぱり静的かつ宣言的に書きたい。
+
+`env` 機能を使って静的に行うことはできないだろうか？
+
+それぞれのステップの内部において `env` 機能と三項演算子を使って設定すると重複が多くなりすぎる。
+
+ジョブにおいて `env` 機能と三項演算子を使って設定すると、様々な制約を理由にして `runner.os` と `env` を使えないため、 `matrix.os` を分岐条件に使うしかなく、網羅的ではない分岐をするのは筋が悪いし、変なところにファイルパスをべた書きすることになるし、より多くの OS に対応したい場合に三項演算子が重なってしまう。
+
+`matrix.os` に合わせて変化させたい環境変数となると、 resolver のバージョンの場合と同じ解決策が使える。
+
+古い `matrix.os` を新しい `matrix.os.version` に移して、 `matrix.os.stack-root` の値を `STACK_ROOT` 環境変数として定義する。ついでに GHCup についても同じようにする。
+
+`format` 関数を使った動的な環境変数の呼び出しがなくなって、宣言的になった。
+
+`cb52121eb78d728ccc1f39e6b37ea7a78a3799ce` としてコミットした。
