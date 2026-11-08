@@ -7,10 +7,6 @@ env:
   GHCUP_CACHE_VERSION: v-1-1-1
   STACK_PANTRY_CACHE_VERSION: v-1-1-1
   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
-  GHCUP_ROOT_Linux: ~/.ghcup
-  GHCUP_ROOT_Windows: C:/ghcup
-  STACK_ROOT_Linux: ~/.stack
-  STACK_ROOT_Windows: C:/sr
 
 jobs:
   build:
@@ -18,17 +14,26 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest
+          - version: ubuntu-latest
+            ghcup-root: ~/.ghcup
+            stack-root: ~/.stack
           # アーキテクチャの問題のため無効化する。詳細は /issue/issue-1-1-5.md と /issue/issue-1-2-16.md に書いてある。
-          # - macos-latest
-          - windows-latest
+          # - name: macos-latest
+          #   ghcup-root: ~/.ghcup
+          #   stack-root: ~/.stack
+          - version: windows-latest
+            ghcup-root: C:/ghcup
+            stack-root: C:/sr
         haskell:
           - ghc: 9.8.4
             cabal: 3.16.1.0
             stack: 3.11.1
             resolver: lts-23.28
-    name: Build os-${{ matrix.os }} ghc-${{ matrix.haskell.ghc }}
-    runs-on: ${{ matrix.os }}
+    name: Build os-${{ matrix.os.version }} ghc-${{ matrix.haskell.ghc }}
+    runs-on: ${{ matrix.os.version }}
+    env:
+      GHCUP_ROOT: ${{ matrix.os.ghcup-root }}
+      STACK_ROOT: ${{ matrix.os.stack-root }}
     steps:
       - name: Checkout
         id: checkout
@@ -40,11 +45,11 @@ jobs:
           CACHE_VERSION: ${{ env.GHCUP_CACHE_VERSION }}
         with:
           path: |
-            ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/bin/*
-            ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/cache/*
-            ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/config.yaml
-            ${{ env[format('GHCUP_ROOT_{0}', runner.os)] }}/ghc/${{ matrix.haskell.ghc }}
-          key: cache--ghcup--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--cabal-${{ matrix.haskell.cabal }}--stack-${{ matrix.haskell.stack }}
+            ${{ env.GHCUP_ROOT }}/bin/*
+            ${{ env.GHCUP_ROOT }}/cache/*
+            ${{ env.GHCUP_ROOT }}/config.yaml
+            ${{ env.GHCUP_ROOT }}/ghc/${{ matrix.haskell.ghc }}
+          key: cache--ghcup--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os.version }}--ghc-${{ matrix.haskell.ghc }}--cabal-${{ matrix.haskell.cabal }}--stack-${{ matrix.haskell.stack }}
       - name: Setup
         id: setup
         uses: haskell-actions/setup@v2.12.1
@@ -60,11 +65,11 @@ jobs:
         env:
           CACHE_VERSION: ${{ env.STACK_PANTRY_CACHE_VERSION }}
         with:
-          path: ${{ env[format('STACK_ROOT_{0}', runner.os)] }}/pantry
-          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+          path: ${{ env.STACK_ROOT }}/pantry
+          key: cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os.version }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
           restore-keys: |
-            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
-            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--
+            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os.version }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
+            cache--stack-pantry--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os.version }}--ghc-${{ matrix.haskell.ghc }}--
       - name: Stack Snapshot Cache
         id: stack-snapshot-cache
         uses: actions/cache@v6.1.0
@@ -72,12 +77,12 @@ jobs:
           CACHE_VERSION: ${{ env.STACK_SNAPSHOT_CACHE_VERSION }}
         with:
           path: |
-            ${{ env[format('STACK_ROOT_{0}', runner.os)] }}/stack.sqlite3
-            ${{ env[format('STACK_ROOT_{0}', runner.os)] }}/snapshots
-          key: cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
+            ${{ env.STACK_ROOT }}/stack.sqlite3
+            ${{ env.STACK_ROOT }}/snapshots
+          key: cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os.version }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--${{ hashFiles(format('stack-{0}.yaml.lock', matrix.haskell.resolver)) }}
           restore-keys: |
-            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
-            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os }}--ghc-${{ matrix.haskell.ghc }}--
+            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os.version }}--ghc-${{ matrix.haskell.ghc }}--resolver-${{ matrix.haskell.resolver }}--
+            cache--stack-snapshot--${{ env.CACHE_VERSION }}--${{ runner.os }}--${{ matrix.os.version }}--ghc-${{ matrix.haskell.ghc }}--
       - name: Dependencies Build
         id: dependencies-build
         run: stack --system-ghc --no-install-ghc --stack-yaml stack-${{ matrix.haskell.resolver }}.yaml build --fast --test --no-run-tests --only-dependencies
