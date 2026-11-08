@@ -850,7 +850,7 @@ Stack が GHC をインストールする位置は Linux と Windows でかな�
 
 `1179f1de7df81bbc314a17b4023d7a0a6f62bbe0` としてコミットした。
 
-# comment 2026-11-08 1
+## comment 2026-11-08 1
 
 Linux においてはキャッシュのステップが機能しているけど、 Windows においてはキャッシュのステップが機能しない。
 
@@ -891,3 +891,25 @@ const sr =
 `format` 関数を使った動的な環境変数の呼び出しがなくなって、宣言的になった。
 
 `cb52121eb78d728ccc1f39e6b37ea7a78a3799ce` としてコミットした。
+
+## comment 2026-11-08 2
+
+Linux 環境において `Failed to parse STACK_ROOT environment variable (expected absolute directory): ~/.stack` というエラーが発生した。
+
+読み込みのタイミングがあるため `${{ env.HOME }}/.stack` と書くことはできない。
+
+`$HOME/.stack` と書くと `actions/cache` アクションが機能しないし `stack` コマンドが機能しないはずである。
+
+より早いタイミングでホームディレクトリを取得できないかな？
+
+絶対パスしかないか？
+
+`/home/runner/.stack` になるけど、ユーザー名を決め打ちすると罠がありそうで怖いんだよね。
+
+Windows だと最初から絶対パスだから動いているけど。
+
+動的に追加するにしても OS による分岐の扱いが難しいんじゃ？
+
+`/home/runner` にするか。
+
+`1118182fe38e0a24d6e4d11a230295f01e3ecac5` としてコミットした。
