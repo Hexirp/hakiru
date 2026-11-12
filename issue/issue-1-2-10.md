@@ -23,3 +23,77 @@ stack new hakiru new-template -p "author-email:https://github.com/Hexirp/hakiru"
 "[issue-1-2-18.md](./issue-1-2-18.md)" において `package.yaml` ファイル以外も含む全体について管理している。
 
 `package.yaml` ファイルに関する作業は重くなると予想できるため、ここで特別に管理する。
+
+## comment 2026-11-12 1
+
+以下のコマンドで生成した `package.yaml` ファイルを引っ張ってきたけど、 `spec-version` はどうするべきだろうか？
+
+```sh
+stack new hakiru new-template -p "author-email:https://github.com/Hexirp/hakiru" -p "author-name:Hexirp" -p "category:Web" -p "copyright:(C) Hexirp 2026" -p "github-username:Hexirp"
+```
+
+[`README.md`](https://github.com/sol/hpack/blob/2db1ac370df9aab08508fc3913394db0bf44ad3b/README.md) にはあんまり情報が載っていない。最新の方法で `Paths_*` モジュールを使いたいなら `spec-version: 0.36.0` を使えとだけ。
+
+一応 "[2. Package description](https://docs.haskellstack.org/en/stable/tutorial/package_description/)" の "Must package components have distinct source file directories?" においては `spec-version: 0.36.0` を使っている。
+
+`data-dir` フィールド周りを指定しようとしているけど、 `data-files` フィールドにおいて `data` ディレクトリの下ではなく `example` ディレクトリの下にあるファイルが指定されているんだけど、これってどういうことなんだろう？
+
+```cabal
+Data-Dir:      data
+
+Data-files:
+  example/posts/2015-11-28-carpe-diem.markdown
+  example/posts/2015-10-07-rosa-rosa-rosam.markdown
+  example/posts/2015-12-07-tu-quoque.markdown
+  example/posts/2015-08-12-spqr.markdown
+  example/site.hs
+  example/images/haskell-logo.png
+  example/templates/post-list.html
+  example/templates/default.html
+  example/templates/archive.html
+  example/templates/post.html
+  example/css/default.css
+  example/index.html
+  example/about.rst
+  example/contact.markdown
+
+Extra-source-files:
+  CHANGELOG.md
+  tests/data/biblio/chicago.csl
+  tests/data/biblio/cites-meijer-pandoc-2.0.0plus.golden
+  tests/data/biblio/cites-meijer-pandoc-3.0.0plus.golden
+  tests/data/biblio/cites-meijer-pandoc-3.1.8plus.golden
+  tests/data/biblio/cites-multiple-pandoc-2.0.0plus.golden
+  tests/data/biblio/cites-multiple-pandoc-3.0.0plus.golden
+  tests/data/biblio/cites-multiple-pandoc-3.1.8plus.golden
+  tests/data/biblio/cites-multiple.markdown
+  tests/data/biblio/default.html
+  tests/data/biblio/page.markdown
+  tests/data/biblio/refs.bib
+  tests/data/biblio/refs.yaml
+  tests/data/biblio/refs2.yaml
+  tests/data/embed.html
+  tests/data/example.md
+  tests/data/example.md.metadata
+  tests/data/images/favicon.ico
+  tests/data/just-meta.html
+  tests/data/just-meta.html.out
+  tests/data/partial-helper.html
+  tests/data/partial.html
+  tests/data/partial.html.out
+  tests/data/posts/2010-08-26-birthday.md
+  tests/data/posts/2018-09-26.md
+  tests/data/posts/2019/05/10/tomorrow.md
+  tests/data/russian.md
+  tests/data/strip.html
+  tests/data/strip.html.out
+  tests/data/template-empty.html
+  tests/data/template.html
+  tests/data/template.html.out
+  data/templates/atom-item.xml
+  data/templates/atom.xml
+  data/templates/rss-item.xml
+  data/templates/rss.xml
+  data/templates/feed.json
+  data/templates/feed-item.json
+```
