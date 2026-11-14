@@ -107,20 +107,28 @@ Library
   Default-language: Haskell2010
 
   Exposed-Modules:
+    Data.List.Extended
+    Data.Yaml.Extended
     Hakyll
+    Hakyll.Check
     Hakyll.Commands
     Hakyll.Core.Compiler
     Hakyll.Core.Compiler.Internal
+    Hakyll.Core.Compiler.Require
     Hakyll.Core.Configuration
     Hakyll.Core.Dependencies
     Hakyll.Core.File
     Hakyll.Core.Identifier
     Hakyll.Core.Identifier.Pattern
+    Hakyll.Core.Identifier.Pattern.Internal
     Hakyll.Core.Item
+    Hakyll.Core.Item.SomeItem
     Hakyll.Core.Logger
     Hakyll.Core.Metadata
     Hakyll.Core.Provider
+    Hakyll.Core.Provider.Internal
     Hakyll.Core.Provider.Metadata
+    Hakyll.Core.Provider.MetadataCache
     Hakyll.Core.Routes
     Hakyll.Core.Rules
     Hakyll.Core.Rules.Internal
@@ -128,9 +136,12 @@ Library
     Hakyll.Core.Store
     Hakyll.Core.UnixFilter
     Hakyll.Core.Util.File
+    Hakyll.Core.Util.Parser
     Hakyll.Core.Util.String
     Hakyll.Core.Writable
     Hakyll.Main
+    Hakyll.Preview.Poll
+    Hakyll.Preview.Server
     Hakyll.Web.CompressCss
     Hakyll.Web.Feed
     Hakyll.Web.Html
@@ -141,6 +152,7 @@ Library
     Hakyll.Web.Paginate
     Hakyll.Web.Pandoc
     Hakyll.Web.Pandoc.Biblio
+    Hakyll.Web.Pandoc.Binary
     Hakyll.Web.Pandoc.FileType
     Hakyll.Web.Redirect
     Hakyll.Web.Tags
@@ -152,18 +164,6 @@ Library
     Hakyll.Web.Template.List
 
   Other-Modules:
-    Data.List.Extended
-    Data.Yaml.Extended
-    Hakyll.Check
-    Hakyll.Core.Compiler.Require
-    Hakyll.Core.Identifier.Pattern.Internal
-    Hakyll.Core.Item.SomeItem
-    Hakyll.Core.Provider.Internal
-    Hakyll.Core.Provider.MetadataCache
-    Hakyll.Core.Util.Parser
-    Hakyll.Preview.Poll
-    Hakyll.Preview.Server
-    Hakyll.Web.Pandoc.Binary
     Paths_hakyll
 
   Build-Depends:
