@@ -18,4 +18,4 @@ Hakiru 0.1.0.0 をリリースするためには。
 
  ## comment 2026-11-14 1
 
- `.ghci` ファイルと `.hlint.yaml` ファイルと `CODE_OF_CONDUCT.md` ファイルと `logo.svg` ファイルと `RELEASE-CHECKLIST.md` ファイルと `tests.hs` ファイルについては "[issue-1-2-23.md](./issue-1-2-23.md)" に。
+ `.ghci` ファイルと `.hlint.yaml` ファイルと `CODE_OF_CONDUCT.md` ファイルと `logo.svg` ファイルと `RELEASE-CHECKLIST.md` ファイルと `test.hs` ファイルについては "[issue-1-2-23.md](./issue-1-2-23.md)" に。
