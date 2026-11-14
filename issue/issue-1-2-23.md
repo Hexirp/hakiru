@@ -41,3 +41,7 @@ main = hakyll $ do
 ……なんか見てはいけないものを見てしまった気分である。
 
 [@jaspervdj](https://github.com/jaspervdj) さんが [`030864a921d38405778ddeb1286e8922955c8ab4`](https://github.com/Hexirp/hakiru/commit/030864a921d38405778ddeb1286e8922955c8ab4) において追加しているけど、その意図は不明である。
+
+## comment 2026-11-14 2
+
+`59c84e745c2d7082cd1eaf9c328d8437159b1958` において `test.hs` を削除した。
