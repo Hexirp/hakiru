@@ -97,3 +97,21 @@ Extra-source-files:
   data/templates/feed.json
   data/templates/feed-item.json
 ```
+
+## comment 2026-11-14 1
+
+`data` ディレクトリの下に `example/about.rst` があるということね。つまり `data/example/about.rst` である。見落としていた。
+
+Cabal の公式ドキュメントを読もう。
+
+`data-files` フィールド（[リンク](https://cabal.readthedocs.io/en/3.18/cabal-package-description-file.html#pkg-field-data-files)）はメインプログラムの実行時に使うファイルを入れるところで。
+
+`data-dir` フィールド（[リンク](https://cabal.readthedocs.io/en/3.18/cabal-package-description-file.html#pkg-field-data-dir)）は `data-files` フィールドで参照するディレクトリの位置で。デフォルトではソースが入っているディレクトリになる。
+
+`extra-source-files` フィールド（[リンク](https://cabal.readthedocs.io/en/3.18/cabal-package-description-file.html#pkg-field-data-dir)）は、 `cabal sdist` の時に入れたいファイルを、つまり一緒に配布したいファイルを入れるところで。 `CHANGELOG.md` とかを入れたりメインプログラムでは使わないけどテストプログラムに使うファイルを入れるところで。
+
+今は `package.yaml` ファイルを編集しているけど、その前に `hakyll.cabal` ファイルを編集した方がいいこともあるような気がしてきた。
+
+たとえば `build-depends` フィールドを編集して、依存ライブラリのバージョンの指定を LTS 23.28 に合わせて縮めるとか。 "[issue-1-2-12.md](./issue-1-2-12.md)" だね。
+
+たとえば、ビルドフラグを編集して全部デフォルトで `True` にするとか。ビルドフラグはあまり良くないと思っているので。ありとあらゆるビルドフラグの組み合わせの全部でコンパイルできることを保証するのは難しいし。とはいっても、最初から全部消すとコードの方も変えないといけないし、全部 `True` にしておく。そうすれば `stack.yaml` ファイルの方でビルドフラグを指定する必要もなくなるし。
