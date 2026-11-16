@@ -36,6 +36,8 @@ stack new hakiru new-template -p "author-email:https://github.com/Hexirp/hakiru"
 
 一応 "[2. Package description](https://docs.haskellstack.org/en/stable/tutorial/package_description/)" の "Must package components have distinct source file directories?" においては `spec-version: 0.36.0` を使っている。
 
+`stable` バージョンという指定だと内容が変わりうるから、具体的なバージョンを指定しようとしたら、 `v3.11.1`, `v3.9.3`, ... というように具体的なバージョンのドキュメントのどれにも該当する記述がないという現象に遭遇した。リポジトリを見てみると `doc/tutorial/package_description.md` ファイルに記述（[リンク](https://github.com/commercialhaskell/stack/blob/master/doc/tutorial/package_description.md?plain=1#L287-L347)）があった。 [`11e40c9da1726dbefed11507e2fe0107188269d0`](https://github.com/commercialhaskell/stack/commit/11e40c9da1726dbefed11507e2fe0107188269d0) において追加されている。どうやら `stable` バージョンだけが先行して変更されているようである。
+
 `data-dir` フィールド周りを指定しようとしているけど、 `data-files` フィールドにおいて `data` ディレクトリの下ではなく `example` ディレクトリの下にあるファイルが指定されているんだけど、これってどういうことなんだろう？
 
 ```cabal
