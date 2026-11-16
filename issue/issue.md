@@ -132,7 +132,7 @@ Use: [issue-1-2-10.md](./issue-1-2-10.md)
 
 Status: Open
 
-Depends: [issue-1-2-22.md](./issue-1-2-22.md), [issue-1-2-24.md](./issue-1-2-24.md)
+Depends: [issue-1-2-12.md](./issue-1-2-12.md), [issue-1-2-22.md](./issue-1-2-22.md), [issue-1-2-24.md](./issue-1-2-24.md)
 
 Cabal から Hpack に移行する。 `*.cabal` ファイルから `package.yaml` ファイルに移行する。
 
