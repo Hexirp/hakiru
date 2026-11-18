@@ -224,7 +224,7 @@ Use: [issue-1-2-20.md](./issue-1-2-20.md)
 
 Status: Open
 
-`preview` サブコマンドを復活するかどうかを検討する。
+`preview` サブコマンドを deprecated にしておくのは正しいのかどうかを検討する。
 
 ## issue 21
 
@@ -266,3 +266,11 @@ Use: [issue-1-2-24.md](./issue-1-2-24.md)
 Status: Resolved
 
 ライブラリのモジュールを全て公開する。
+
+## issue 25
+
+Use: [issue-1-2-25.md](./issue-1-2-25.md)
+
+Status: Resolved
+
+依存ライブラリのバージョンを指定する時にキャレット演算子を使う。
