@@ -276,3 +276,11 @@ Use: [issue-1-2-25.md](./issue-1-2-25.md)
 Status: Resolved
 
 依存ライブラリのバージョンを指定する時にキャレット演算子を使う。
+
+## issue 26
+
+Use: [issue-1-2-26.md](./issue-1-2-26.md)
+
+Status: Open
+
+テストスイートのコンポーネントにおいて `-threaded` オプションを有効にする。
