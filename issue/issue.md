@@ -84,6 +84,8 @@ Use: [issue-1-1-3.md](./issue-1-1-3.md)
 
 Status: Resolved
 
+Depends: [issue-1-2-16.md](./issue-1-2-16.md)
+
 GitHub Actions を使って CI を実行する。
 
 ## issue 6
@@ -182,7 +184,7 @@ Use: [issue-1-2-16.md](./issue-1-2-16.md)
 
 Status: Closed
 
-GitHub Actions の MacOS の環境でビルドする。
+GitHub Actions の MacOS の環境においてビルドするジョブを作る。
 
 ## issue 17
 
