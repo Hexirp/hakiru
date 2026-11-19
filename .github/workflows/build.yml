@@ -17,11 +17,11 @@ jobs:
           - version: ubuntu-latest
             ghcup-root: /home/runner/.ghcup
             stack-root: /home/runner/.stack
-          # アーキテクチャの問題のため無効化する。詳細は /issue/issue-1-1-5.md と /issue/issue-1-2-16.md に書いてある。
-          # - name: macos-latest
           - version: windows-latest
             ghcup-root: C:/ghcup
             stack-root: C:/sr
+          # アーキテクチャの問題のため無効化する。詳細は /issue/issue-1-1-5.md と /issue/issue-1-2-16.md に書いてある。
+          # - version: macos-latest
         haskell:
           - ghc: 9.8.4
             cabal: 3.16.1.0
