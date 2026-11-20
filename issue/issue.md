@@ -292,3 +292,11 @@ Use: [issue-1-2-27.md](./issue-1-2-27.md)
 Status: Open
 
 GHC のオプションの選択を `stack new` のテンプレートに合わせる。
+
+## issue 28
+
+Use: [issue-1-2-28.md](./issue-1-2-28.md)
+
+Status: Resolved
+
+GitHub Actions のジョブを実行するブランチを制限する。
