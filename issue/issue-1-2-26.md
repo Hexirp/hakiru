@@ -21,3 +21,18 @@ Test-suite hakyll-tests
 並列処理が無理なら、テストコードの中において逐次処理することを強制すればいいんじゃない？
 
 `tasty` ライブラリ（[リンク](https://hackage-content.haskell.org/package/tasty-1.5.5)）を使っているから、たぶん `dependentTestGroup` 関数（[リンク](https://hackage-content.haskell.org/package/tasty-1.5.5/docs/Test-Tasty.html#v:dependentTestGroup)）が使える。
+
+## comment 2026-11-20 1
+
+`stack new` のテンプレートにおいては、次のようになっている。
+
+```yaml
+ghc-options:
+  - -threaded
+  - -rtsopts
+  - -with-rtsopts=-N
+```
+
+現在において resolver は LTS 23.28 を使っていて、その時の `tasty` ライブラリは `1.5.3` バージョンだから `sequentialTestGroup` 関数（[リンク](https://hackage-content.haskell.org/package/tasty-1.5.3/docs/Test-Tasty.html#v:sequentialTestGroup)）を使わないといけない。
+
+あと、 `tasty` ライブラリの `1.5.5` バージョンにおいても `inOrderTestGroup` 関数（[リンク](https://hackage-content.haskell.org/package/tasty-1.5.5/docs/Test-Tasty.html#v:inOrderTestGroup)）の方が適切っぽい。
