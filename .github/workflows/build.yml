@@ -2,6 +2,13 @@ name: build
 
 on:
   push:
+    branches:
+      - 'main'
+      - 'main-*'
+      - 'work'
+      - 'work-*'
+      - 'issue'
+      - 'issue-*'
 
 env:
   GHCUP_CACHE_VERSION: v-1-1-1
