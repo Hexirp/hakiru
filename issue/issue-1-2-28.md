@@ -30,3 +30,7 @@ on:
 こんな感じかな？
 
 "[Workflow syntax for GitHub Actions § Filter pattern cheat sheet](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#filter-pattern-cheat-sheet)" によれば、アスタリスクは特殊文字なのでエスケープするためにシングルクォーテーションで囲む必要がある。
+
+## comment 2026-11-21 2
+
+`2bec1009230939a3448e885c4c7b2c948b0e32f3` としてコミットした。
