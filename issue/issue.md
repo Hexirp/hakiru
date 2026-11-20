@@ -284,3 +284,11 @@ Use: [issue-1-2-26.md](./issue-1-2-26.md)
 Status: Open
 
 テストスイートのコンポーネントにおいて `-threaded` オプションを有効にする。
+
+## issue 27
+
+Use: [issue-1-2-27.md](./issue-1-2-27.md)
+
+Status: Open
+
+GHC のオプションの選択を `stack new` のテンプレートに合わせる。
