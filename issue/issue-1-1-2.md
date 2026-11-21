@@ -961,3 +961,79 @@ prefix code をパースするならバックトラックすることはない�
 ## comment 2026-11-12 2
 
 `OsString` 型（[リンク](https://hackage-content.haskell.org/package/os-string-2.0.11/docs/System-OsString.html#t:OsString)）みたいなのを使うのはベンチマークしてからにしよう。
+
+## comment 2026-11-13 1
+
+Elm の `elm/parser` ライブラリ（[リンク](https://package.elm-lang.org/packages/elm/parser/1.1.0/)）と Haskell の `parsec` ライブラリ（[リンク](https://hackage.haskell.org/package/parsec-3.1.18.0)）の設計について。
+
+Haskell の `parsec` ライブラリ（[リンク](https://hackage.haskell.org/package/parsec)）の核となる型は `s -> ((Bool, w), Maybe (s, a))` または `StateT s (MaybeT (WriterT (Bool, w) m))` である。 `ParsecT` 型（[リンク](https://hackage.haskell.org/package/parsec-3.1.18.0/docs/Text-Parsec-Prim.html#t:ParsecT)）が核となっている。
+
+Elm の `elm/parser` ライブラリ（[リンク](https://package.elm-lang.org/packages/elm/parser/1.1.0/)）の核となる型は `s -> (Bool, Either e (s, a))` または `StateT s (ExceptT e (WriterT Bool m))` である。 `Parser` 型（[リンク](https://package.elm-lang.org/packages/elm/parser/1.1.0/Parser-Advanced#Parser)）が核となっている。
+
+Elm の `elm/parser` ライブラリ（[リンク](https://package.elm-lang.org/packages/elm/parser/1.1.0/)）のソースコードを読みに行く。 `Parser` 型の定義のコード（[リンク](https://github.com/elm/parser/blob/02839df10e462d8423c91917271f4b6f8d2f284d/src/Parser/Advanced.elm#L122-L123)）を読む。セマンティックスのドキュメント（[リンク](https://github.com/elm/parser/blob/7506b07eaa93a93d13b508b948c016105b0953c8/semantics.md)）を読む。
+
+バックトラックできるかどうかを管理する `Bool` 型を保存するのは暫定的に `WriterT` モナドにしていて、つまり `(&&)` のモノイドとして扱っていて、これはモナドの範囲においては正しいけど、保存している状態を読み込む `(<|>)` の時の挙動が独特である。
+
+このような挙動を一般化する方法はあるのだろうか？
+
+「バックトラックできるかどうか」と「成功しているかどうか」の直積によって 4 種類の状態があるというのは、もはや定番である。
+
+`megaparsec` ライブラリ（[リンク](https://hackage.haskell.org/package/megaparsec-9.8.3)）と `attoparsec` ライブラリ（[リンク](https://hackage.haskell.org/package/attoparsec-0.14.4)）と `trifecta` ライブラリ（[リンク](https://hackage.haskell.org/package/trifecta-2.1.4)）でも同じであるはず。
+
+バックトラックできるかどうかを考える時において気になるのは線形型を導入したとき。 Rust ではどうしているんだろう？
+
+バックトラックのありなしを `Bool` 型を超えていって表現するために、バックトラックする時に引き継ぐ最初の状態に戻るためのデータを用意するとかは？　そのデータの型が `Void` 型だったらバックトラックなしのパーサーだということで。
+
+Rust で考えると通常のパーサーは不変借用になるけどインクリメンタルパーサーは所有権の移動になる。
+
+文字列の所有権を移動するパーサーは、バックトラック演算子の時に状態を保存するため、限定継続にも似ている。
+
+`git stash` コマンドにも似ている。 stack に push したり。復帰する時に pop したり。
+
+`try` 関数は一つのブロックを作る。ブロックに入る時に状態を記録して、ブロックを出る時に状態を復元する。
+
+継続モナドを足すと `(<|>)` を使わなくてもバックトラックできるようになるけど使い所がないかも。
+
+うーん？
+
+バックトラックありなしで挙動を切り替えるのがうまくいかない。
+
+バックトラックありの時にロールバックするための情報の型を `v` としたいんだけど、 `v` 型の値を保存するのは `State` モナドなのか `Writer` モナドなのかが釈然としない。 `v` に `Void` 型を入れるとバックトラックできなくなるとすると `State` モナドじゃ空虚な真になってしまうから `Writer` モナドじゃないと無理なんだけど。
+
+バックトラックありなしを型に表示して graded monad にするとか？
+
+いつでも外側から `try` 関数でバックトラックありにされる可能性があるから、常に `v` 型の値を保存しないといけなくて、インクリメンタルパーサーが成立しない。
+
+free monad にしてインタープリンターで処理しないといけないかも？
+
+`logChunk` が高階エフェクトだから free monad で実装しづらいんだよなあ…… `Forest` 型（[リンク](https://hackage-content.haskell.org/package/containers-0.8.1/docs/Data-Tree.html#t:Forest)）の値を状態に持って `censor` 関数（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-CPS.html#v:censor)）でグループ化するやつね。こいつは "[Heftiaエフェクトシステムライブラリ入門 Part 2 - 高階エフェクト](https://zenn.dev/lanexpr/articles/b63f31525c0a4d)" でも例に出されているように高階エフェクトになる。
+
+バックトラックありなしを型で切り替えるために、バックトラック操作の多重度の上限を型にするとか？
+
+```hs
+data Parser bt st it m a
+  = Pure a
+  | Pop (Maybe it -> Parser bt st it m a)
+  | Log String (Parser bt st it m a)
+  | LogChunk (Parser bt st it m a)
+  | Try bt (Parser bt st it m a)
+  | Fail (Void -> Parser bt st it m a)
+```
+
+うーん？
+
+バックトラック操作を重ねることができる回数って微妙な抽象化じゃない？
+
+`f 0 = 0` かつ `n >= 1 -> f n = ω` である型を考えて……これは `f n = n × ω` で。
+
+`Try (bt, Word) r` にすれば？
+
+`Word` は内部でカウントする。どのようなバックトラックであるのかのメッセージで。 `String` に。いや、タグに。
+
+`try :: tg -> Parser tg st it m a -> Parser tg st it m a` に。
+
+バックトラックのタグの型が `Void` 型だったらバックトラックなし。
+
+`try :: Parser ('Cons tg tgs) st it m a -> Parser tgs st it m a` とかは？
+
+まあ、型レベルだと設計が厄介になるよね。
