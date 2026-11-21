@@ -953,3 +953,11 @@ prefix code をパースするならバックトラックすることはない�
 バックトラックしない時は、ストリームの先頭を解放してしまう。バックトラックする時はカーソルの位置だけを動かす。
 
 `ReaderT Handle (ExceptT e (WriterT LogTree IO))` という感じかな？
+
+## comment 2026-11-12 1
+
+ファイルの名前を扱うなら `ShortByteString` 型（[リンク](https://hackage-content.haskell.org/package/bytestring-0.12.2.0/docs/Data-ByteString-Short.html#t:ShortByteString)）になる。 `OsString` 型（[リンク](https://hackage-content.haskell.org/package/os-string-2.0.11/docs/System-OsString.html#t:OsString)）ね。 `String` 型だと変換が入るから遅い。 `System.OsPath` モジュール（[リンク](https://hackage-content.haskell.org/package/filepath-1.5.5.0/docs/System-OsPath.html)）のドキュメントに書いてあるように。
+
+## comment 2026-11-12 2
+
+`OsString` 型（[リンク](https://hackage-content.haskell.org/package/os-string-2.0.11/docs/System-OsString.html#t:OsString)）みたいなのを使うのはベンチマークしてからにしよう。
