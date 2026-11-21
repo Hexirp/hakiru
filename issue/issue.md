@@ -300,3 +300,11 @@ Use: [issue-1-2-28.md](./issue-1-2-28.md)
 Status: Resolved
 
 GitHub Actions のジョブを実行するブランチを制限する。
+
+## issue 29
+
+Use: [issue-1-2-29.md](./issue-1-2-29.md)
+
+Status: Open
+
+複数の GHC のバージョンに対応する。
