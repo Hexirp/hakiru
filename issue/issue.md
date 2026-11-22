@@ -234,7 +234,7 @@ Use: [issue-1-2-21.md](./issue-1-2-21.md)
 
 Status: Open
 
-Depends: [issue-1-2-10.md](./issue-1-2-10.md), [issue-1-2-18.md](./issue-1-2-18.md), [issue-1-2-23.md](./issue-1-2-23.md)
+Depends: [issue-1-2-10.md](./issue-1-2-10.md), [issue-1-2-18.md](./issue-1-2-18.md), [issue-1-2-23.md](./issue-1-2-23.md), [issue-1-2-30.md](./issue-1-2-30.md)
 
 Hakiru 0.1.0.0 をリリースするために必要である作業を終わらせる。
 
@@ -308,3 +308,11 @@ Use: [issue-1-2-29.md](./issue-1-2-29.md)
 Status: Open
 
 複数の GHC のバージョンに対応する。
+
+## issue 30
+
+Use: [issue-1-2-30.md](./issue-1-2-30.md)
+
+Status: Open
+
+複数のパッケージに分割する。
