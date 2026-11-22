@@ -289,7 +289,7 @@ Status: Open
 
 Use: [issue-1-2-27.md](./issue-1-2-27.md)
 
-Status: Open
+Status: Resolved
 
 GHC のオプションの選択を `stack new` のテンプレートに合わせる。
 
