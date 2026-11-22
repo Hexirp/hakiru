@@ -1088,3 +1088,7 @@ tagless final スタイルだと高階エフェクトを書きやすい。 free 
 全部 `transmute` 関数で実装する。
 
 ブロックの内側に入るのは、読み込んでいる文字列の途中に縦棒を差し込むような。あるいは、しおりを挟むような。
+
+## comment 2026-11-22 1
+
+`transmute` 関数に該当するものを探したけど少なくとも `Control.Monad.Trans.State.Strict` モジュール（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-State-Strict.html)）にはないみたい。
