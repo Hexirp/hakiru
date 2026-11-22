@@ -198,7 +198,7 @@ Status: Resolved
 
 Use: [issue-1-2-18.md](./issue-1-2-18.md)
 
-Status: Open
+Status: Resolved
 
 Depends: [issue-1-2-10.md](./issue-1-2-10.md)
 
