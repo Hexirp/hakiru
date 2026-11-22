@@ -132,7 +132,7 @@ Status: Duplicated ([issue-1-1-5.md](./issue-1-1-5.md))
 
 Use: [issue-1-2-10.md](./issue-1-2-10.md)
 
-Status: Open
+Status: Resolved
 
 Depends: [issue-1-2-12.md](./issue-1-2-12.md), [issue-1-2-22.md](./issue-1-2-22.md), [issue-1-2-24.md](./issue-1-2-24.md)
 

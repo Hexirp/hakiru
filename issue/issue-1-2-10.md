@@ -167,3 +167,7 @@ Hpack のドキュメント（[リンク](https://github.com/sol/hpack/blob/2db1
 ```sh
 stack new hakiru new-template -p "author-email:https://github.com/Hexirp/hakiru" -p "author-name:Hexirp" -p "category:Web" -p "copyright:(C) Hexirp 2026" -p "github-username:Hexirp"
 ```
+
+## comment 2026-11-23 1
+
+`48b2728965c8c8e87caccbb870031b7d51f82008` としてマージした。
