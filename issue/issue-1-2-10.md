@@ -153,3 +153,17 @@ LTS 23.28 のみを resolver に指定してビルドしているため、それ
 いや、 "[issue-1-2-27.md](./issue-1-2-27.md)" も同じく `package.yaml` ファイルへの更新の後にやっても記述量は増えたりしないな？
 
 これらは `package.yaml` ファイルに移行した後にやる。
+
+## comment 2026-11-22 2
+
+Hpack のドキュメント（[リンク](https://github.com/sol/hpack/blob/2db1ac370df9aab08508fc3913394db0bf44ad3b/README.md#common-fields)）によれば、 `language` フィールドと `cpp-options` フィールドはトップレベルに置くことができる。 `default-language` ではなく `language` なのに注意する必要がある。
+
+`Path_hakyll` の問題があるので、まだライブラリの名前は `hakyll` から `hakiru` に変えることができない。
+
+変更が重いので別のブランチを切る。
+
+以下のコマンドを使って生成した `package.yaml` ファイルを最初において、その後に変更するという形をとる。
+
+```sh
+stack new hakiru new-template -p "author-email:https://github.com/Hexirp/hakiru" -p "author-name:Hexirp" -p "category:Web" -p "copyright:(C) Hexirp 2026" -p "github-username:Hexirp"
+```
