@@ -1006,7 +1006,7 @@ Rust で考えると通常のパーサーは不変借用になるけどインク
 
 free monad にしてインタープリンターで処理しないといけないかも？
 
-`logChunk` が高階エフェクトだから free monad で実装しづらいんだよなあ…… `Forest` 型（[リンク](https://hackage-content.haskell.org/package/containers-0.8.1/docs/Data-Tree.html#t:Forest)）の値を状態に持って `censor` 関数（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-CPS.html#v:censor)）でグループ化するやつね。こいつは "[Heftiaエフェクトシステムライブラリ入門 Part 2 - 高階エフェクト](https://zenn.dev/lanexpr/articles/b63f31525c0a4d)" でも例に出されているように高階エフェクトになる。
+`logChunk` が高階エフェクトだから free monad で実装しづらいんだよなあ…… `Forest` 型（[リンク](https://hackage-content.haskell.org/package/containers-0.8.1/docs/Data-Tree.html#t:Forest)）の値を状態に持って `censor` 関数（[リンク](https://hackage-content.haskell.org/package/transformers-0.6.3.0/docs/Control-Monad-Trans-Writer-CPS.html#v:censor)）でグループ化するやつね。こいつは "[Heftia エフェクトシステムライブラリ入門 Part 2 - 高階エフェクト](https://zenn.dev/lanexpr/articles/b63f31525c0a4d)" (Riyo, 2024) でも例に出されているように高階エフェクトになる。
 
 バックトラックありなしを型で切り替えるために、バックトラック操作の多重度の上限を型にするとか？
 
@@ -1037,3 +1037,28 @@ data Parser bt st it m a
 `try :: Parser ('Cons tg tgs) st it m a -> Parser tgs st it m a` とかは？
 
 まあ、型レベルだと設計が厄介になるよね。
+
+## comment 2026-11-14 1
+
+こういうことだよね。
+
+```hs
+class Parser tg st it m where
+  pop :: m (Maybe it)
+  fail :: m a
+  log :: String -> m ()
+  logChunk :: m a -> m a
+  try :: tg -> m a -> m a
+```
+
+tagless final スタイルだと高階エフェクトを書きやすい。 free monad スタイルだと一階のエフェクトの返り値を表すための再帰と高階のエフェクトを表すための再帰の区別がつかないからね。 freer monad スタイルだとそもそも高階エフェクトを書けない。
+
+あれ？
+
+もしかして。
+
+`State` モナドと適切な状態の設定だけで所有権の移動ありのバックトラックが可能であるかもしれない。
+
+`transmute :: (s -> s') -> (s' -> s) -> State s' a -> State s a` みたいな関数を使えば……
+
+`try` 関数のブロックを処理する時に、既に読んだ文字列を溜めるモードに状態を切り替えて、終わらせる時に溜めた文字列を戻す処理をするというのは、昨日に考えたことだけど、このような処理をそのまま `State` モナドで実装できることに気付いた。 `Reader` モナドの `local` 関数のような方法を使えば。
