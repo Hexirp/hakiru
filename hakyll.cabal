@@ -313,7 +313,7 @@ test-suite hakyll-test
       TestSuite.Util
   hs-source-dirs:
       tests
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   cpp-options: -DPREVIEW_SERVER -DWATCH_SERVER -DCHECK_EXTERNAL -DUSE_PANDOC
   build-depends:
       QuickCheck >=2.14.3 && <2.15
