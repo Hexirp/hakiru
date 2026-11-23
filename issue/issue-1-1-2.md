@@ -155,7 +155,7 @@ Elm の公式ライブラリだと、成功失敗の二種類があって、バ�
 
 継続モナド。後で何かするというのは継続モナドで表現できる。
 
-そもそもバックトラックという時点で継続モナドなんだわ。気づいていなかったんだけど。
+そもそもバックトラックという時点で継続モナドなんだわ。気付いていなかったんだけど。
 
 `Codensity` モナド（[リンク](https://hackage-content.haskell.org/package/kan-extensions-5.2.8/docs/Control-Monad-Codensity.html)）で性能よく継続と `Free` の作用を加える。
 

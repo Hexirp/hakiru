@@ -95,3 +95,39 @@ Windows において失敗したのは以下のテストである。
 とりあえず　`tests/TestSuite.hs` を見てみるけど `sequentialTestGroup` 関数（[リンク](https://hackage-content.haskell.org/package/tasty-1.5.3/docs/Test-Tasty.html#v:sequentialTestGroup)）を使うのは最小限にしたいんだよね。そうしないと並列処理ができないから……
 
 でも、それぞれのモジュールの中にあるテスト同士で干渉し合っているし、モジュールを跨いだテスト同士でも干渉し合っているみたいなんだよね。となると、問題が発生した、それぞれのモジュールにおいて逐次処理するようにして、 `tests/TestSuite.hs` でも逐次処理するという感じにするしかないかな？　`Hakyll.Core.Identifier.Tests` とかでは問題が発生していなかったから、並列処理のままでも大丈夫であるはず。
+
+## comment 2026-11-23 4
+
+`sequentialTestGroup` 関数（[リンク](https://hackage-content.haskell.org/package/tasty-1.5.3/docs/Test-Tasty.html#v:sequentialTestGroup)）に置き換えた。モジュールの内部において一つのテストケースしか定義されていない場合には、モジュールの内部における干渉が発生しないということだから、 `tests/TestGroup.hs` において逐次処理して他のモジュールとの干渉を防ぐだけで成功するようになったけど、並列処理ができないコードということで、今後において別のテストケースを追加することも考えて、 `sequentialTestGroup` 関数（[リンク](https://hackage-content.haskell.org/package/tasty-1.5.3/docs/Test-Tasty.html#v:sequentialTestGroup)）に置き換えておく。
+
+これで一件落着と思いきや `Hakyll.Core.Runtime.Tests` において新しいパターンの失敗をするようになった。どうしてこうなるのか私の理解を超えている。
+
+```txt
+  Hakyll.Core.Runtime.Tests
+    01_run:                    OK (0.12s)
+    02_run:                    OK (0.01s)
+    03_run:                    FAIL
+      tests\Hakyll\Core\Runtime\Tests.hs:140:
+      expected: 1
+       but got: 9
+      Use -p '/Hakyll.Core.Runtime.Tests.03_run/' to rerun this test only.
+    04_run:                    FAIL
+      tests\Hakyll\Core\Runtime\Tests.hs:172:
+      expected: 1
+       but got: 12
+      Use -p '/Hakyll.Core.Runtime.Tests.04_run/' to rerun this test only.
+    05_run:                    OK (0.02s)
+    06_run:                    OK (0.01s)
+    07_run:                    OK (0.02s)
+    08_run:                    OK
+```
+
+依存関係の循環を検出する処理に対するテストで、具体的には `Hakyll.Core.Runtime` の `run` 関数をテストしているんだけど、なぜか依存関係の循環の検出の結果が一致しない。
+
+具体的には、依存関係の循環が発生しているのは 1 つだけであるはずなのに 9 つとか 12 つとかに増えている。
+
+もしかしたら並列処理すると `Hakyll.Core.Runtime` の `run` 関数の結果が変わるという可能性が……？
+
+ただ単に、普通は依存関係の循環が発生しないように気を付けるし、依存関係の循環を検出できないとか誤検出してしまうとかそういうタイプのバグじゃなくて、依存関係の循環の有無を正しく検出できるけど内訳を間違えるというタイプのバグだから、今まで気付かれていなかっただけで……
+
+非常にデバッグしづらい。やっぱり effect system は必要なんじゃない？　いや、 DI を考えるなら `ReaderT IO` パターンでもいいかもしれないけど。
