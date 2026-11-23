@@ -409,3 +409,140 @@ Date:   Wed Aug 23 19:24:20 2023 +0200
 ```txt
 Hakyll.Core.Runtime.Tests が失敗する理由を解明しなさい。
 ```
+
+## comment 2026-11-23 7
+
+Author: GitHub Copilot
+
+### やり取りの記録
+
+以下に、質問から回答までの確認可能な発言と作業経過を、順序を保って記録する。コマンド出力は調査結果を確認できるよう要点を残し、ファイルの内容全体を再掲する代わりに対象と確認箇所を示す。
+
+#### 入力
+
+```txt
+Hakyll.Core.Runtime.Tests が失敗する理由を解明しなさい。
+```
+
+調査対象として指定されたファイルは次の三つ。
+
+* `issue/issue-1-2-26.md`
+* `lib/Hakyll/Core/Runtime.hs`
+* `tests/Hakyll/Core/Runtime/Tests.hs`
+
+#### 発言
+
+調査開始時の進行説明：
+
+> 失敗の再現条件と、テスト・実装・関連 issue 記述の食い違いを照合します。まず対象ファイルと作業ツリーの状態を確認します。
+
+テスト構成・スケジューラの調査に移る際の進行説明：
+
+> この実装では、テストは依存循環の「検出回数」を厳密に数え、スケジューラは `forkIO` で実行されます。次に、テストランナーの実行方式・共有テスト環境・CI の実行条件を確認し、単なるログ重複と実際の並行スケジューラ不具合を切り分けます。
+
+回答をまとめる前の進行説明：
+
+> 原因候補は絞れました。単にテストケース同士の並列実行ではなく、`run` 自体の非同期ワーカーが再現に関与しています。最後に、テスト実行で作業ツリーの変更が増えていないことを確認し、再現結果とコード上の根拠をまとめます。
+
+#### 作業経過
+
+最初に対象ファイルと作業ツリーを確認した。issue ファイルと Runtime 実装は一度の表示で読める上限を超えたため、issue の各コメントと Runtime の複数の範囲に分けて読み直した。Runtime.Tests は全体を確認した。
+
+作業開始時の `git status --short` には `M issue/issue-1-2-26.md` が表示されていた。既存の変更を戻さず、調査のみを行った。
+
+issue の記述から、CI build #37 で Linux の `Hakyll.Core.Runtime.Tests` に次の失敗があったことを確認した。
+
+* 03_run: 循環エラーのログ数が `expected: 1` に対して `got: 3`
+* 04_run: 循環エラーのログ数が `expected: 1` に対して `got: 4`
+* 07_run: `missing 'multiple writes' errors`
+* Windows の同じ build では Runtime.Tests は成功
+
+さらに前の build #36 では 03_run と04_runのログ数がそれぞれ 9 と12になっていたという記録も確認した。
+
+`tests/TestSuite.hs` と `tests/TestSuite/Util.hs` を確認した。テストスイート全体は `sequentialTestGroup "Hakyll" AllFinish`、Runtime.Tests 内部も `sequentialTestGroup` を使う。テスト環境は `_testsite`、`_teststore`、`_testtmp` を利用し、`cleanTestEnv` で後片付けする。
+
+`hakyll.cabal` と `package.yaml` のテスト設定を検索した。現在の設定には `-threaded -rtsopts -with-rtsopts=-N` がある。Runtime の `build` は `rtsSupportsBoundThreads` が真なら同期版でなく `pickAndChaseAsync` を選び、その関数は `getNumCapabilities` 個のワーカーを `forkIO` で起動する。
+
+Runtime のスケジューラを追った。`schedulerPop` はキューが空、処理中がなく、ブロック中の項目があると循環エラーを `schedulerErrors` に追加する。一方、その状態を「報告済み」に変更する処理はない。Runtime.Tests の case03/case04 は循環エラーに該当するログの数がちょうど1であることを検証する。
+
+`pickAndChaseAsync` は各ワーカーが `SchedulerError` または `SchedulerFinish` を返した際に `MVar.tryPutMVar` で通知し、親側は `MVar.readMVar` で通知を一つ受け取る。起動したワーカーをすべて待ち合わせる処理は見当たらなかった。`work` ではコンパイラーエラーも `SchedulerError` として返す。
+
+`schedulerRoute` は `atomicModifyIORef'` で route map を更新し、同じ route に異なる Identifier が現れたら `"multiple writes"` エラーを記録する。Logger の in-memory 実装も `atomicModifyIORef'` を利用する。このため、「IORef は並列に弱い」という一般論だけでは、観測した件数増加を説明できないと判断した。
+
+Stack でテストを試した。最初のコマンドは存在しないコンポーネント名を指定して失敗した。
+
+```powershell
+stack test hakyll:test --test-arguments "-p /Hakyll.Core.Runtime.Tests/"
+```
+
+出力は `Component test does not exist in package hakyll.`。テストスイート名を指定し直した。
+
+次のコマンドは実行できたが、結果には Runtime 以外のテストも含まれた。
+
+```powershell
+stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests/"
+```
+
+このローカル実行では、Runtime 01_run で `_teststore` に対する `Store.set: invalid argument (cannot decode byte sequence starting from 143)` が出て、生成物がなくなったため02_runも失敗した。03_run と04_runはそれぞれ循環エラー数が8件、issue1000（07_run）は成功し、スイート全体では `4 out of 51 tests failed` だった。
+
+Tasty が失敗時に提示したパターンを引用符付きで渡す試みは `Could not parse: '/Hakyll.Core.Runtime.Tests/&&/Hakyll.Core.Runtime.Tests.03_run/' is not a valid pattern` となった。
+
+続けて次を実行した。テストのパターン指定では case03 とともに01_run/02_runも実行され、case03 は `expected: 1 but got: 11` となった。
+
+```powershell
+stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests.03_run/"
+```
+
+同じパターンに `+RTS -N1 -RTS` を付けて実行した。01_runに前述のローカル Store エラーが残り、02_runは成功、03_runは成功した。
+
+```powershell
+stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests/&&/Hakyll.Core.Runtime.Tests.03_run/ +RTS -N1 -RTS"
+```
+
+これは循環ログ数が RTS の並列度・実行タイミングで変わる観測と一致した。ただし、ローカルではテストスイート全体が成功したわけではない。
+
+最後に `git status --short` を確認し、調査による追加のソース変更がないことを確認した。
+
+#### 回答
+
+> ## 原因
+> <!-- space -->
+> 主因は Tasty のテスト並列実行ではなく、`run` が内部で起動する非同期ワーカーです。テストコンポーネントには `-threaded` と `-with-rtsopts=-N` が指定されており、`build の分岐`は `rtsSupportsBoundThreads` が真なら `forkIO` を使う経路を選びます。したがって、テストを `sequentialTestGroup` にしても、各 `run` 内の処理は並列になり得ます。
+> <!-- space -->
+> 依存循環の件はコード上ではっきり説明できます。`schedulerPop`は、キューが空で処理中の項目がなく、ブロック中の項目があると循環エラーを記録します。しかし、その状態を「エラー報告済み」に変えません。複数のワーカーが同じ状態を確認すれば、同じ循環を繰り返し記録できます。そのため、`case03 と case04`が期待する「循環エラーのログが1件」が、ワーカー数やタイミングによって複数件になります。`schedulerCycles` が循環を過剰検出しているというより、エラー報告が一度限りになっていない問題です。
+> <!-- space -->
+> さらに、`pickAndChaseAsync`はワーカーを `forkIO` で起動し、いずれかが `SchedulerError` または `SchedulerFinish` を通知すると戻りますが、残りのワーカーを待ち合わせていません。`run`は戻った直後にエラー一覧を読み取るため、別のワーカーの処理完了前に結果を確定する可能性があります。これは結果のタイミング依存や、`run` の終了後まで残るワーカーにつながります。
+> <!-- space -->
+> ただし、issue1000 の「multiple writes」欠落をこの再現だけで完全に特定できたとは言えません。`schedulerRoute`のルート記録自体は `atomicModifyIORef'` で保護されています。少なくとも、単純な `IORef` のスレッド安全性不足が原因ではありません。非同期ワーカーの終了・待ち合わせの問題は疑わしいものの、このケースには追加の切り分けが必要です。
+> <!-- space -->
+> ## 確認結果
+> <!-- space -->
+> この環境で既定の RTS 設定で実行すると、case03 / case04 の循環エラー件数がそれぞれ8件以上になりました。一方、`+RTS -N1 -RTS` では case03 は成功しました。これは並列度による変動と整合します。実行中、case01 では `_teststore` の文字コード関連エラーも発生したため、ローカル環境でテストスイート全体が成功したわけではありません。
+> <!-- space -->
+> 要するに、**逐次化できているのは Tasty のテストケースであり、`run` 内部のスケジューラではありません。循環エラーの報告が非冪等で、非同期ワーカーも確実に待ち合わせていないことが、確認できた失敗の中核です。**
+
+## comment 2026-11-23 8
+
+GitHub Copilot の性能は期待以上であった。その一方で経緯と結果を他人に共有できる形で記録する時に難がある。上記のような出力をさせるまでに時間がかかったし、これでも満足していない。もっと「何々というファイルを調べた」とか「何々と検索した」とかが並ぶシステマチックなログのような出力が欲しかったんだけど。次のように入力したんだけど、こうするまでに 6 回はやり直した。
+
+```txt
+私の入力も途中経過のステップも含めて、上記までの経緯を順番を保ってマークアップも含めて一字一句まで可能な限り詳細かつ忠実に再現して issue-1-2-26.md の末尾に出力しなさい。
+```
+
+というか "Copy All" からコピーしてもリンクが保存されないのに困っていたんだけど、特定のファイルの内容を参照しているから、外部にコピーしたらリンク切れになるからリンクがなくなるということ？
+
+さて、どうやって解決するべきか？　並列処理のための分岐を変更して、必ず逐次処理するようにするという方法もある。あと、 GitHub Copilot に修正させるという方法もある。
+
+私に理解できる範囲でやるなら、逐次処理するようにする方向かな。
+
+あるいは失敗を許容するテスト。
+
+今すぐは修正できないけど、テストの内容を変えて対応したり、内部実装をいじったり、 GitHub Copilot に修正させたりしても、あとあと困りそうだから、失敗を許容するテストにするか。
+
+いや、調べたけど、すぐにできる方法がないみたい。
+
+循環を検出したやつについて「エラー報告済み」に変えていないせいで重複報告が発生しているっていうけど、最初からそういう仕組みがないのか、あるいはあるけどやり忘れているだけなのか？
+
+`pickAndChaseAsync` 関数は、すべてのスレッドを待っていなくて、最初に戻ってきた値を使うというけど、デッドロックになったスレッドに影響されずに終わらせることができるというメリットがあるのでは？
+
+とりあえず一番目の質問について GitHub Copilot に尋ねるか。
