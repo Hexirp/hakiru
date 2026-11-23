@@ -1,0 +1,722 @@
+﻿2026-11-22T15:47:33.5438330Z Current runner version: '2.338.2'
+2026-11-22T15:47:33.5474318Z ##[group]Runner Image Provisioner
+2026-11-22T15:47:33.5475750Z Hosted Compute Agent
+2026-11-22T15:47:33.5476789Z Version: 20261111.635
+2026-11-22T15:47:33.5478147Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+2026-11-22T15:47:33.5479689Z Build Date: 2026-11-11T01:49:01Z
+2026-11-22T15:47:33.5480883Z Worker ID: {98ffc095-f8db-47ee-bcc5-5929f89a9daf}
+2026-11-22T15:47:33.5482255Z Region: eastus
+2026-11-22T15:47:33.5483213Z Cloud: Azure
+2026-11-22T15:47:33.5484235Z ##[endgroup]
+2026-11-22T15:47:33.5486788Z ##[group]Operating System
+2026-11-22T15:47:33.5487937Z Ubuntu
+2026-11-22T15:47:33.5489084Z 26.04.1
+2026-11-22T15:47:33.5490151Z LTS
+2026-11-22T15:47:33.5491180Z ##[endgroup]
+2026-11-22T15:47:33.5492259Z ##[group]Runner Image
+2026-11-22T15:47:33.5493396Z Image: ubuntu-26.04
+2026-11-22T15:47:33.5494425Z Version: 20261116.202.1
+2026-11-22T15:47:33.5497270Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-22T15:47:33.5500531Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+2026-11-22T15:47:33.5502427Z ##[endgroup]
+2026-11-22T15:47:33.5504515Z ##[group]GITHUB_TOKEN Permissions
+2026-11-22T15:47:33.5507286Z Contents: read
+2026-11-22T15:47:33.5508385Z Metadata: read
+2026-11-22T15:47:33.5509700Z Packages: read
+2026-11-22T15:47:33.5510657Z ##[endgroup]
+2026-11-22T15:47:33.5514107Z Secret source: Actions
+2026-11-22T15:47:33.5515835Z Cache mode: write
+2026-11-22T15:47:33.5517237Z Using locked action versions from the workflow's lockfile
+2026-11-22T15:47:33.5518615Z Prepare workflow directory
+2026-11-22T15:47:33.6313987Z Prepare all required actions
+2026-11-22T15:47:33.6391857Z Getting action download info
+2026-11-22T15:47:33.8595745Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-22T15:47:33.9607520Z Download action repository 'actions/cache@v6.1.0' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-11-22T15:47:34.0384637Z Download action repository 'haskell-actions/setup@v2.12.1' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-11-22T15:47:34.2505330Z Complete job name: Build os-ubuntu-latest ghc-9.8.4
+2026-11-22T15:47:34.3355422Z ##[group]Run actions/checkout@v7.0.1
+2026-11-22T15:47:34.3356359Z with:
+2026-11-22T15:47:34.3356809Z   repository: Hexirp/hakiru
+2026-11-22T15:47:34.3361075Z   token: ***
+2026-11-22T15:47:34.3361530Z   ssh-strict: true
+2026-11-22T15:47:34.3361977Z   ssh-user: git
+2026-11-22T15:47:34.3362572Z   persist-credentials: true
+2026-11-22T15:47:34.3363278Z   clean: true
+2026-11-22T15:47:34.3363732Z   sparse-checkout-cone-mode: true
+2026-11-22T15:47:34.3364260Z   fetch-depth: 1
+2026-11-22T15:47:34.3364693Z   fetch-tags: false
+2026-11-22T15:47:34.3365138Z   show-progress: true
+2026-11-22T15:47:34.3365606Z   lfs: false
+2026-11-22T15:47:34.3366021Z   submodules: false
+2026-11-22T15:47:34.3366481Z   set-safe-directory: true
+2026-11-22T15:47:34.3367002Z   allow-unsafe-pr-checkout: false
+2026-11-22T15:47:34.3367838Z env:
+2026-11-22T15:47:34.3368284Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:34.3368962Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:34.3369575Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:34.3370154Z   GHCUP_ROOT: /home/runner/.ghcup
+2026-11-22T15:47:34.3370683Z   STACK_ROOT: /home/runner/.stack
+2026-11-22T15:47:34.3371189Z ##[endgroup]
+2026-11-22T15:47:34.6469564Z Syncing repository: Hexirp/hakiru
+2026-11-22T15:47:34.6472392Z ##[group]Getting Git version info
+2026-11-22T15:47:34.6473490Z Working directory is '/home/runner/work/hakiru/hakiru'
+2026-11-22T15:47:34.6475323Z [command]/usr/bin/git version
+2026-11-22T15:47:34.6476761Z git version 2.56.1
+2026-11-22T15:47:34.6507084Z ##[endgroup]
+2026-11-22T15:47:34.6522630Z Temporarily overriding HOME='/home/runner/work/_temp/64cca9d3-7a10-40c7-8e59-015a14e88a40' before making global git config changes
+2026-11-22T15:47:34.6525628Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-22T15:47:34.6531510Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-11-22T15:47:34.6613956Z Deleting the contents of '/home/runner/work/hakiru/hakiru'
+2026-11-22T15:47:34.6618642Z ##[group]Determining repository object format
+2026-11-22T15:47:34.6620568Z ##[endgroup]
+2026-11-22T15:47:34.6621870Z ##[group]Initializing the repository
+2026-11-22T15:47:34.6625979Z [command]/usr/bin/git init /home/runner/work/hakiru/hakiru
+2026-11-22T15:47:34.6755039Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-22T15:47:34.6756704Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-22T15:47:34.6757970Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-22T15:47:34.6759286Z hint: call:
+2026-11-22T15:47:34.6760486Z hint:
+2026-11-22T15:47:34.6761547Z hint: 	git config --global init.defaultBranch <name>
+2026-11-22T15:47:34.6762715Z hint:
+2026-11-22T15:47:34.6763875Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-22T15:47:34.6765588Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-22T15:47:34.6766812Z hint:
+2026-11-22T15:47:34.6767824Z hint: 	git branch -m <name>
+2026-11-22T15:47:34.6769206Z hint:
+2026-11-22T15:47:34.6770673Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-22T15:47:34.6772830Z Initialized empty Git repository in /home/runner/work/hakiru/hakiru/.git/
+2026-11-22T15:47:34.6781724Z [command]/usr/bin/git remote add origin https://github.com/Hexirp/hakiru
+2026-11-22T15:47:34.6842260Z ##[endgroup]
+2026-11-22T15:47:34.6843213Z ##[group]Disabling automatic garbage collection
+2026-11-22T15:47:34.6845386Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-22T15:47:34.6885411Z ##[endgroup]
+2026-11-22T15:47:34.6887152Z ##[group]Setting up auth
+2026-11-22T15:47:34.6888213Z Removing SSH command configuration
+2026-11-22T15:47:34.6890769Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-22T15:47:34.6930511Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-22T15:47:34.7426695Z Removing HTTP extra header
+2026-11-22T15:47:34.7433862Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-22T15:47:34.7470632Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-22T15:47:34.7747203Z Removing includeIf entries pointing to credentials config files
+2026-11-22T15:47:34.7752257Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-22T15:47:34.7789884Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-22T15:47:34.8078436Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-22T15:47:34.8122032Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git.path /home/runner/work/_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:47:34.8155569Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:47:34.8193158Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:47:34.8226085Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:47:34.8335925Z ##[endgroup]
+2026-11-22T15:47:34.8338378Z ##[group]Fetching the repository
+2026-11-22T15:47:34.8341587Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a230b3f91e77a7262e538295a85aa519021885d1:refs/remotes/origin/main
+2026-11-22T15:47:35.1239858Z From https://github.com/Hexirp/hakiru
+2026-11-22T15:47:35.1242752Z  * [new ref]         a230b3f91e77a7262e538295a85aa519021885d1 -> origin/main
+2026-11-22T15:47:35.1250788Z [command]/usr/bin/git branch --list --remote origin/main
+2026-11-22T15:47:35.1281063Z   origin/main
+2026-11-22T15:47:35.1289642Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-11-22T15:47:35.1316052Z a230b3f91e77a7262e538295a85aa519021885d1
+2026-11-22T15:47:35.1322305Z ##[endgroup]
+2026-11-22T15:47:35.1324382Z ##[group]Determining the checkout info
+2026-11-22T15:47:35.1326132Z ##[endgroup]
+2026-11-22T15:47:35.1327801Z [command]/usr/bin/git sparse-checkout disable
+2026-11-22T15:47:35.1389553Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-22T15:47:35.1425237Z ##[group]Checking out the ref
+2026-11-22T15:47:35.1428266Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-22T15:47:35.1710484Z Switched to a new branch 'main'
+2026-11-22T15:47:35.1715572Z branch 'main' set up to track 'origin/main'.
+2026-11-22T15:47:35.1725596Z ##[endgroup]
+2026-11-22T15:47:35.1780288Z [command]/usr/bin/git log -1 --format=%H
+2026-11-22T15:47:35.1810053Z a230b3f91e77a7262e538295a85aa519021885d1
+2026-11-22T15:47:35.2217572Z ##[group]Run actions/cache@v6.1.0
+2026-11-22T15:47:35.2218958Z with:
+2026-11-22T15:47:35.2221188Z   path: /home/runner/.ghcup/bin/*
+/home/runner/.ghcup/cache/*
+/home/runner/.ghcup/config.yaml
+/home/runner/.ghcup/ghc/9.8.4
+
+2026-11-22T15:47:35.2224728Z   key: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-22T15:47:35.2227074Z   enableCrossOsArchive: false
+2026-11-22T15:47:35.2228285Z   fail-on-cache-miss: false
+2026-11-22T15:47:35.2229515Z   lookup-only: false
+2026-11-22T15:47:35.2230533Z   save-always: false
+2026-11-22T15:47:35.2231506Z env:
+2026-11-22T15:47:35.2232400Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:35.2233599Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:35.2234905Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:35.2236211Z   GHCUP_ROOT: /home/runner/.ghcup
+2026-11-22T15:47:35.2237448Z   STACK_ROOT: /home/runner/.stack
+2026-11-22T15:47:35.2238634Z   CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:35.2239807Z ##[endgroup]
+2026-11-22T15:47:35.4200072Z Cache hit for: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-22T15:47:36.5000712Z Received 209715200 of 365626815 (57.4%), 198.8 MBs/sec
+2026-11-22T15:47:37.1228384Z Received 365626815 of 365626815 (100.0%), 214.4 MBs/sec
+2026-11-22T15:47:37.1229360Z Cache Size: ~349 MB (365626815 B)
+2026-11-22T15:47:37.1291986Z [command]/usr/bin/tar -xf /home/runner/work/_temp/5cf7fb2e-fd67-4dab-a91e-0fd3d6bbf3ec/cache.tzst -P -C /home/runner/work/hakiru/hakiru --use-compress-program unzstd
+2026-11-22T15:47:41.4627618Z Cache restored successfully
+2026-11-22T15:47:41.8937484Z Cache restored from key: cache--ghcup--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-22T15:47:42.2113434Z ##[group]Run actions/cache@v6.1.0
+2026-11-22T15:47:42.2113810Z with:
+2026-11-22T15:47:42.2114090Z   path: /home/runner/.stack/pantry
+2026-11-22T15:47:42.2114901Z   key: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-22T15:47:42.2116225Z   restore-keys: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+
+2026-11-22T15:47:42.2117076Z   enableCrossOsArchive: false
+2026-11-22T15:47:42.2117669Z   fail-on-cache-miss: false
+2026-11-22T15:47:42.2117962Z   lookup-only: false
+2026-11-22T15:47:42.2118238Z   save-always: false
+2026-11-22T15:47:42.2118507Z env:
+2026-11-22T15:47:42.2119170Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:42.2119519Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:42.2119856Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:42.2120239Z   GHCUP_ROOT: /home/runner/.ghcup
+2026-11-22T15:47:42.2120557Z   STACK_ROOT: /home/runner/.stack
+2026-11-22T15:47:42.2120855Z   CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:42.2121160Z ##[endgroup]
+2026-11-22T15:47:42.4301515Z Cache hit for: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-22T15:47:43.5129592Z Received 251658240 of 406663301 (61.9%), 239.8 MBs/sec
+2026-11-22T15:47:44.1418833Z Received 406663301 of 406663301 (100.0%), 237.2 MBs/sec
+2026-11-22T15:47:44.1421473Z Cache Size: ~388 MB (406663301 B)
+2026-11-22T15:47:44.1458128Z [command]/usr/bin/tar -xf /home/runner/work/_temp/04afe37a-2014-4d72-9931-e5e864a88753/cache.tzst -P -C /home/runner/work/hakiru/hakiru --use-compress-program unzstd
+2026-11-22T15:47:47.7897428Z Cache restored successfully
+2026-11-22T15:47:47.8163394Z Cache restored from key: cache--stack-pantry--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-22T15:47:47.9086260Z ##[group]Run actions/cache@v6.1.0
+2026-11-22T15:47:47.9086582Z with:
+2026-11-22T15:47:47.9086912Z   path: /home/runner/.stack/stack.sqlite3
+/home/runner/.stack/snapshots
+
+2026-11-22T15:47:47.9087808Z   key: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-22T15:47:47.9089379Z   restore-keys: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--
+
+2026-11-22T15:47:47.9090223Z   enableCrossOsArchive: false
+2026-11-22T15:47:47.9090501Z   fail-on-cache-miss: false
+2026-11-22T15:47:47.9090748Z   lookup-only: false
+2026-11-22T15:47:47.9090979Z   save-always: false
+2026-11-22T15:47:47.9091212Z env:
+2026-11-22T15:47:47.9091417Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:47.9091681Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:47.9092013Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:47.9092302Z   GHCUP_ROOT: /home/runner/.ghcup
+2026-11-22T15:47:47.9092573Z   STACK_ROOT: /home/runner/.stack
+2026-11-22T15:47:47.9092824Z   CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:47.9093056Z ##[endgroup]
+2026-11-22T15:47:48.1071453Z Cache hit for: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-22T15:47:48.8423832Z Received 128332080 of 128332080 (100.0%), 195.8 MBs/sec
+2026-11-22T15:47:48.8429477Z Cache Size: ~122 MB (128332080 B)
+2026-11-22T15:47:48.8503003Z [command]/usr/bin/tar -xf /home/runner/work/_temp/1f804b50-d057-4337-8b1c-22d234a65c54/cache.tzst -P -C /home/runner/work/hakiru/hakiru --use-compress-program unzstd
+2026-11-22T15:47:50.7837618Z Cache restored successfully
+2026-11-22T15:47:50.9077059Z Cache restored from key: cache--stack-snapshot--v-1-1-1--Linux--ubuntu-latest--ghc-9.8.4--resolver-lts-23.28--41275adf86c66d07b2b1cdefee338753c6e23c5d654b72682192dfba78b89357
+2026-11-22T15:47:50.9614690Z ##[group]Run stack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests --only-dependencies
+2026-11-22T15:47:50.9615763Z [36;1mstack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests --only-dependencies[0m
+2026-11-22T15:47:50.9655168Z shell: /usr/bin/bash -e {0}
+2026-11-22T15:47:50.9655455Z env:
+2026-11-22T15:47:50.9655679Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:50.9655970Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:50.9656272Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:50.9656832Z   GHCUP_ROOT: /home/runner/.ghcup
+2026-11-22T15:47:50.9657107Z   STACK_ROOT: /home/runner/.stack
+2026-11-22T15:47:50.9657379Z ##[endgroup]
+2026-11-22T15:47:56.8479823Z [1 of 3] Compiling Main             ( /home/runner/.stack/setup-exe-src/setup-w2MFVN35.hs, /home/runner/.stack/setup-exe-src/setup-w2MFVN35.o )
+2026-11-22T15:47:56.9013140Z [2 of 3] Compiling StackSetupShim   ( /home/runner/.stack/setup-exe-src/setup-shim-w2MFVN35.hs, /home/runner/.stack/setup-exe-src/setup-shim-w2MFVN35.o )
+2026-11-22T15:47:56.9641552Z [3 of 3] Linking /home/runner/.stack/setup-exe-cache/x86_64-linux/tmp-Cabal-simple_w2MFVN35_3.10.3.0_ghc-9.8.4
+2026-11-22T15:47:59.6973615Z ##[group]Run stack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests
+2026-11-22T15:47:59.6974516Z [36;1mstack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests[0m
+2026-11-22T15:47:59.7008363Z shell: /usr/bin/bash -e {0}
+2026-11-22T15:47:59.7008662Z env:
+2026-11-22T15:47:59.7009247Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:59.7009562Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:59.7009878Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-22T15:47:59.7010179Z   GHCUP_ROOT: /home/runner/.ghcup
+2026-11-22T15:47:59.7010466Z   STACK_ROOT: /home/runner/.stack
+2026-11-22T15:47:59.7010736Z ##[endgroup]
+2026-11-22T15:48:00.2826172Z All test running disabled by --no-run-tests flag. To mute this message in future, set
+2026-11-22T15:48:00.2827154Z notify-if-no-run-tests: false in Stack's configuration.
+2026-11-22T15:48:00.2834439Z hakyll> configure (lib + exe + test)
+2026-11-22T15:48:00.3040401Z Configuring hakyll-0.1.0.0...
+2026-11-22T15:48:01.2371988Z hakyll> build (lib + exe + test) with ghc-9.8.4
+2026-11-22T15:48:01.3431288Z Preprocessing library for hakyll-0.1.0.0..
+2026-11-22T15:48:01.3431963Z Building library for hakyll-0.1.0.0..
+2026-11-22T15:48:01.7095481Z [ 1 of 56] Compiling Data.List.Extended
+2026-11-22T15:48:01.7295627Z 
+2026-11-22T15:48:01.7299122Z /home/runner/work/hakiru/hakiru/lib/Data/List/Extended.hs:6:18: warning: [GHC-82347] [-Wcompat-unqualified-imports]
+2026-11-22T15:48:01.7300064Z     To ensure compatibility with future core libraries changes
+2026-11-22T15:48:01.7300533Z     imports to Data.List should be
+2026-11-22T15:48:01.7300920Z     either qualified or have an explicit import list.
+2026-11-22T15:48:01.7301298Z   |
+2026-11-22T15:48:01.7301532Z 6 | import           Data.List
+2026-11-22T15:48:01.7301835Z   |                  ^^^^^^^^^
+2026-11-22T15:48:01.7747197Z [ 2 of 56] Compiling Data.Yaml.Extended
+2026-11-22T15:48:01.9432077Z [ 3 of 56] Compiling Hakyll.Core.Configuration
+2026-11-22T15:48:02.0940910Z [ 4 of 56] Compiling Hakyll.Core.Identifier
+2026-11-22T15:48:02.1681159Z [ 5 of 56] Compiling Hakyll.Core.Identifier.Pattern.Internal
+2026-11-22T15:48:02.3711660Z [ 6 of 56] Compiling Hakyll.Core.Logger
+2026-11-22T15:48:02.4478969Z [ 7 of 56] Compiling Hakyll.Core.Store
+2026-11-22T15:48:02.5809918Z [ 8 of 56] Compiling Hakyll.Core.Util.File
+2026-11-22T15:48:02.6151987Z [ 9 of 56] Compiling Hakyll.Core.Provider.Internal
+2026-11-22T15:48:02.7483737Z [10 of 56] Compiling Hakyll.Core.Util.Parser
+2026-11-22T15:48:02.7793328Z [11 of 56] Compiling Hakyll.Core.Util.String
+2026-11-22T15:48:02.8163110Z [12 of 56] Compiling Hakyll.Core.Identifier.Pattern
+2026-11-22T15:48:02.8953546Z [13 of 56] Compiling Hakyll.Core.Dependencies
+2026-11-22T15:48:03.0832903Z [14 of 56] Compiling Hakyll.Core.Metadata
+2026-11-22T15:48:03.1703017Z [15 of 56] Compiling Hakyll.Core.Provider.Metadata
+2026-11-22T15:48:03.2640745Z [16 of 56] Compiling Hakyll.Core.Provider.MetadataCache
+2026-11-22T15:48:03.3099107Z [17 of 56] Compiling Hakyll.Core.Provider
+2026-11-22T15:48:03.3329069Z [18 of 56] Compiling Hakyll.Core.Routes
+2026-11-22T15:48:03.3777824Z [19 of 56] Compiling Hakyll.Core.Compiler.Internal
+2026-11-22T15:48:03.6255497Z [20 of 56] Compiling Hakyll.Core.Item
+2026-11-22T15:48:03.7031320Z [21 of 56] Compiling Hakyll.Core.Compiler.Require
+2026-11-22T15:48:03.7614007Z [22 of 56] Compiling Hakyll.Core.Compiler
+2026-11-22T15:48:03.8412609Z [23 of 56] Compiling Hakyll.Core.UnixFilter
+2026-11-22T15:48:03.9112473Z [24 of 56] Compiling Hakyll.Core.Writable
+2026-11-22T15:48:03.9361017Z [25 of 56] Compiling Hakyll.Core.Item.SomeItem
+2026-11-22T15:48:03.9493863Z [26 of 56] Compiling Hakyll.Core.Rules.Internal
+2026-11-22T15:48:04.0310958Z [27 of 56] Compiling Hakyll.Core.Runtime
+2026-11-22T15:48:04.3832825Z [28 of 56] Compiling Hakyll.Core.Rules
+2026-11-22T15:48:04.4735415Z [29 of 56] Compiling Hakyll.Core.File
+2026-11-22T15:48:04.5385917Z [30 of 56] Compiling Hakyll.Preview.Poll
+2026-11-22T15:48:04.5777955Z [31 of 56] Compiling Hakyll.Preview.Server
+2026-11-22T15:48:04.6159500Z [32 of 56] Compiling Hakyll.Web.CompressCss
+2026-11-22T15:48:04.6801507Z [33 of 56] Compiling Hakyll.Web.Html
+2026-11-22T15:48:04.8469242Z [34 of 56] Compiling Hakyll.Web.Html.RelativizeUrls
+2026-11-22T15:48:04.8662533Z [35 of 56] Compiling Hakyll.Web.Pandoc.Binary
+2026-11-22T15:48:04.9296841Z 
+2026-11-22T15:48:04.9299873Z /home/runner/work/hakiru/hakiru/lib/Hakyll/Web/Pandoc/Binary.hs:1:1: warning: [GHC-85401] [-Wmissing-export-lists]
+2026-11-22T15:48:04.9302016Z     The export item ‘module Hakyll.Web.Pandoc.Binary’ is missing an export list
+2026-11-22T15:48:04.9302888Z   |
+2026-11-22T15:48:04.9303317Z 1 | {-# OPTIONS_GHC -fno-warn-orphans #-}
+2026-11-22T15:48:04.9303791Z   | ^
+2026-11-22T15:48:05.5486926Z [36 of 56] Compiling Hakyll.Web.Pandoc.FileType
+2026-11-22T15:48:05.6440872Z [37 of 56] Compiling Hakyll.Web.Pandoc
+2026-11-22T15:48:05.7597560Z [38 of 56] Compiling Hakyll.Web.Pandoc.Biblio
+2026-11-22T15:48:05.8875946Z [39 of 56] Compiling Hakyll.Web.Redirect
+2026-11-22T15:48:05.9534438Z [40 of 56] Compiling Hakyll.Web.Template.Context
+2026-11-22T15:48:06.1273004Z [41 of 56] Compiling Hakyll.Web.Tags
+2026-11-22T15:48:06.2550948Z [42 of 56] Compiling Hakyll.Web.Paginate
+2026-11-22T15:48:06.3471832Z [43 of 56] Compiling Hakyll.Web.Template.Internal.Element
+2026-11-22T15:48:06.6087554Z [44 of 56] Compiling Hakyll.Web.Template.Internal.Trim
+2026-11-22T15:48:06.6530029Z [45 of 56] Compiling Hakyll.Web.Template.Internal
+2026-11-22T15:48:06.8602250Z [46 of 56] Compiling Hakyll.Web.Template
+2026-11-22T15:48:06.9080433Z [47 of 56] Compiling Hakyll.Web.Meta.TwitterCard
+2026-11-22T15:48:06.9282675Z [48 of 56] Compiling Hakyll.Web.Meta.OpenGraph
+2026-11-22T15:48:06.9439521Z [49 of 56] Compiling Hakyll.Web.Meta.JSONLD
+2026-11-22T15:48:07.0059662Z [50 of 56] Compiling Hakyll.Web.Template.List
+2026-11-22T15:48:07.0457996Z [51 of 56] Compiling Hakyll.Web.Feed
+2026-11-22T15:48:09.4112275Z [52 of 56] Compiling Paths_hakyll
+2026-11-22T15:48:09.4467026Z [53 of 56] Compiling Hakyll.Check
+2026-11-22T15:48:09.6682117Z [54 of 56] Compiling Hakyll.Commands
+2026-11-22T15:48:09.7092199Z [55 of 56] Compiling Hakyll.Main
+2026-11-22T15:48:09.7301761Z 
+2026-11-22T15:48:09.7309297Z /home/runner/work/hakiru/hakiru/lib/Hakyll/Main.hs:129:16: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-22T15:48:09.7310658Z     Use of partial record field selector: ‘internal_links’
+2026-11-22T15:48:09.7311093Z     |
+2026-11-22T15:48:09.7315290Z 129 |     | Check   {internal_links :: Bool}
+2026-11-22T15:48:09.7315819Z     |                ^^^^^^^^^^^^^^
+2026-11-22T15:48:09.7316114Z 
+2026-11-22T15:48:09.7316465Z /home/runner/work/hakiru/hakiru/lib/Hakyll/Main.hs:135:16: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-22T15:48:09.7317467Z     Use of partial record field selector: ‘port’
+2026-11-22T15:48:09.7317818Z     |
+2026-11-22T15:48:09.7318061Z 135 |     | Preview {port :: Int}
+2026-11-22T15:48:09.7318351Z     |                ^^^^
+2026-11-22T15:48:09.7318518Z 
+2026-11-22T15:48:09.7319190Z /home/runner/work/hakiru/hakiru/lib/Hakyll/Main.hs:139:16: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-22T15:48:09.7320203Z     Use of partial record field selector: ‘host’
+2026-11-22T15:48:09.7320597Z     |
+2026-11-22T15:48:09.7320853Z 139 |     | Server  {host :: String, port :: Int}
+2026-11-22T15:48:09.7321555Z     |                ^^^^
+2026-11-22T15:48:09.7321717Z 
+2026-11-22T15:48:09.7322044Z /home/runner/work/hakiru/hakiru/lib/Hakyll/Main.hs:141:45: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-22T15:48:09.7322694Z     Use of partial record field selector: ‘no_server’
+2026-11-22T15:48:09.7323042Z     |
+2026-11-22T15:48:09.7323334Z 141 |     | Watch   {host :: String, port :: Int, no_server :: Bool }
+2026-11-22T15:48:09.7323741Z     |                                             ^^^^^^^^^
+2026-11-22T15:48:09.8656498Z [56 of 56] Compiling Hakyll
+2026-11-22T15:48:18.5124773Z Preprocessing executable 'hakyll-website' for hakyll-0.1.0.0..
+2026-11-22T15:48:18.5125900Z Building executable 'hakyll-website' for hakyll-0.1.0.0..
+2026-11-22T15:48:18.6035079Z [1 of 1] Compiling Main
+2026-11-22T15:48:18.7602631Z 
+2026-11-22T15:48:18.7605662Z /home/runner/work/hakiru/hakiru/web/site.hs:7:1: warning: [GHC-66111] [-Wunused-imports]
+2026-11-22T15:48:18.7607008Z     The import of ‘System.Directory’ is redundant
+2026-11-22T15:48:18.7608008Z       except perhaps to import instances from ‘System.Directory’
+2026-11-22T15:48:18.7620119Z     To import instances alone, use: import System.Directory()
+2026-11-22T15:48:18.7620497Z   |
+2026-11-22T15:48:18.7620860Z 7 | import           System.Directory (copyFile)
+2026-11-22T15:48:18.7621312Z   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-22T15:48:18.9832314Z [2 of 2] Linking /home/runner/work/hakiru/hakiru/.stack-work/dist/x86_64-linux/ghc-9.8.4/build/hakyll-website/hakyll-website
+2026-11-22T15:48:23.3647113Z Preprocessing test suite 'hakyll-test' for hakyll-0.1.0.0..
+2026-11-22T15:48:23.3648094Z Building test suite 'hakyll-test' for hakyll-0.1.0.0..
+2026-11-22T15:48:23.5591846Z [ 1 of 21] Compiling TestSuite.Util
+2026-11-22T15:48:23.9052302Z [ 2 of 21] Compiling Hakyll.Web.Template.Tests
+2026-11-22T15:48:24.8017196Z [ 3 of 21] Compiling Hakyll.Web.Template.Context.Tests
+2026-11-22T15:48:24.8263059Z [ 4 of 21] Compiling Hakyll.Web.Tags.Tests
+2026-11-22T15:48:24.8434031Z [ 5 of 21] Compiling Hakyll.Web.Pandoc.FileType.Tests
+2026-11-22T15:48:24.8580600Z [ 6 of 21] Compiling Hakyll.Web.Pandoc.Biblio.Tests
+2026-11-22T15:48:25.2061643Z [ 7 of 21] Compiling Hakyll.Web.Html.Tests
+2026-11-22T15:48:25.2953777Z [ 8 of 21] Compiling Hakyll.Web.Html.RelativizeUrls.Tests
+2026-11-22T15:48:25.3167502Z [ 9 of 21] Compiling Hakyll.Web.Feed.Tests
+2026-11-22T15:48:25.3374239Z [10 of 21] Compiling Hakyll.Web.CompressCss.Tests
+2026-11-22T15:48:25.3952282Z [11 of 21] Compiling Hakyll.Core.Util.String.Tests
+2026-11-22T15:48:25.4508189Z [12 of 21] Compiling Hakyll.Core.UnixFilter.Tests
+2026-11-22T15:48:25.4734835Z [13 of 21] Compiling Hakyll.Core.Store.Tests
+2026-11-22T15:48:25.5205502Z [14 of 21] Compiling Hakyll.Core.Runtime.Tests
+2026-11-22T15:48:25.6634401Z [15 of 21] Compiling Hakyll.Core.Rules.Tests
+2026-11-22T15:48:25.7160953Z [16 of 21] Compiling Hakyll.Core.Routes.Tests
+2026-11-22T15:48:25.7407513Z [17 of 21] Compiling Hakyll.Core.Provider.Tests
+2026-11-22T15:48:25.7615091Z [18 of 21] Compiling Hakyll.Core.Provider.Metadata.Tests
+2026-11-22T15:48:25.7962773Z [19 of 21] Compiling Hakyll.Core.Identifier.Tests
+2026-11-22T15:48:25.8737235Z [20 of 21] Compiling Hakyll.Core.Dependencies.Tests
+2026-11-22T15:48:25.9077372Z [21 of 21] Compiling Main
+2026-11-22T15:48:26.8819451Z [22 of 22] Linking /home/runner/work/hakiru/hakiru/.stack-work/dist/x86_64-linux/ghc-9.8.4/build/hakyll-test/hakyll-test
+2026-11-22T15:48:30.8943080Z Preprocessing executable 'hakyll-init' for hakyll-0.1.0.0..
+2026-11-22T15:48:30.8943641Z Building executable 'hakyll-init' for hakyll-0.1.0.0..
+2026-11-22T15:48:31.0140062Z [1 of 2] Compiling Paths_hakyll
+2026-11-22T15:48:31.0793261Z [2 of 2] Compiling Main
+2026-11-22T15:48:31.3640586Z [3 of 3] Linking /home/runner/work/hakiru/hakiru/.stack-work/dist/x86_64-linux/ghc-9.8.4/build/hakyll-init/hakyll-init
+2026-11-22T15:48:33.6213212Z hakyll> copy/register
+2026-11-22T15:48:33.7780032Z Installing library in /home/runner/work/hakiru/hakiru/.stack-work/install/x86_64-linux/16ec37b807a19eaa51667d15ec6d37db9030de880314f0c105c1cf6f584b67b2/9.8.4/lib/x86_64-linux-ghc-9.8.4/hakyll-0.1.0.0-7NHJXQFhse03tdkSObLWaL
+2026-11-22T15:48:34.0366855Z Installing executable hakyll-website in /home/runner/work/hakiru/hakiru/.stack-work/install/x86_64-linux/16ec37b807a19eaa51667d15ec6d37db9030de880314f0c105c1cf6f584b67b2/9.8.4/bin
+2026-11-22T15:48:34.3317165Z Installing executable hakyll-init in /home/runner/work/hakiru/hakiru/.stack-work/install/x86_64-linux/16ec37b807a19eaa51667d15ec6d37db9030de880314f0c105c1cf6f584b67b2/9.8.4/bin
+2026-11-22T15:48:34.5830669Z Registering library for hakyll-0.1.0.0..
+2026-11-22T15:48:34.6989895Z ##[group]Run stack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test
+2026-11-22T15:48:34.6991313Z [36;1mstack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test[0m
+2026-11-22T15:48:34.7041189Z shell: /usr/bin/bash -e {0}
+2026-11-22T15:48:34.7041641Z env:
+2026-11-22T15:48:34.7042016Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-22T15:48:34.7042548Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-22T15:48:34.7043088Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-22T15:48:34.7043634Z   GHCUP_ROOT: /home/runner/.ghcup
+2026-11-22T15:48:34.7044135Z   STACK_ROOT: /home/runner/.stack
+2026-11-22T15:48:34.7044582Z ##[endgroup]
+2026-11-22T15:48:36.5166394Z hakyll> test (suite: hakyll-test)
+2026-11-22T15:48:36.5167348Z 
+2026-11-22T15:48:36.5257420Z Hakyll
+2026-11-22T15:48:36.5261707Z   Hakyll.Core.Dependencies.Tests
+2026-11-22T15:48:36.5264081Z     01_analyze:                OK
+2026-11-22T15:48:36.5264987Z     02_analyze:                OK
+2026-11-22T15:48:36.5265608Z     03_analyze:                OK
+2026-11-22T15:48:36.5266065Z     04_analyze:                OK
+2026-11-22T15:48:36.5266489Z     05_analyze:                OK
+2026-11-22T15:48:36.5266931Z   Hakyll.Core.Identifier.Tests
+2026-11-22T15:48:36.5267379Z     01_capture:                OK
+2026-11-22T15:48:36.5267794Z     02_capture:                OK
+2026-11-22T15:48:36.5268216Z     03_capture:                OK
+2026-11-22T15:48:36.5268657Z     04_capture:                OK
+2026-11-22T15:48:36.5269328Z     05_capture:                OK
+2026-11-22T15:48:36.5269747Z     06_capture:                OK
+2026-11-22T15:48:36.5270176Z     07_capture:                OK
+2026-11-22T15:48:36.5270595Z     08_capture:                OK
+2026-11-22T15:48:36.5271017Z     09_capture:                OK
+2026-11-22T15:48:36.5271435Z     10_capture:                OK
+2026-11-22T15:48:36.5271850Z     11_capture:                OK
+2026-11-22T15:48:36.5272107Z     12_capture:                OK
+2026-11-22T15:48:36.5272364Z     13_capture:                OK
+2026-11-22T15:48:36.5272612Z     14_capture:                OK
+2026-11-22T15:48:36.5272882Z     15_capture:                OK
+2026-11-22T15:48:36.5273138Z     01_matches:                OK
+2026-11-22T15:48:36.5273386Z     02_matches:                OK
+2026-11-22T15:48:36.5273624Z     03_matches:                OK
+2026-11-22T15:48:36.5273883Z     04_matches:                OK
+2026-11-22T15:48:36.5274127Z     05_matches:                OK
+2026-11-22T15:48:36.5284249Z     06_matches:                OK
+2026-11-22T15:48:36.5289392Z     07_matches:                OK
+2026-11-22T15:48:36.5290155Z     08_matches:                OK
+2026-11-22T15:48:36.5290901Z     09_matches:                OK
+2026-11-22T15:48:36.5297740Z     toFilePath . fromFilePath: OK
+2026-11-22T15:48:36.5299490Z       +++ OK, passed 100 tests.
+2026-11-22T15:48:36.5299991Z   Hakyll.Core.Provider.Metadata.Tests
+2026-11-22T15:48:36.5300479Z     01_page:                   OK
+2026-11-22T15:48:36.5308646Z     02_page:                   OK
+2026-11-22T15:48:36.5309421Z   Hakyll.Core.Provider.Tests
+2026-11-22T15:48:36.5342977Z     case01:                    FAIL
+2026-11-22T15:48:36.5369280Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5370284Z       Use -p '/Hakyll.Core.Provider.Tests.case01/' to rerun this test only.
+2026-11-22T15:48:36.5370935Z   Hakyll.Core.Routes.Tests
+2026-11-22T15:48:36.5371198Z     01_runRoutes:              OK
+2026-11-22T15:48:36.5371469Z     02_runRoutes:              FAIL
+2026-11-22T15:48:36.5372422Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5373107Z       Use -p '/02_runRoutes/' to rerun this test only.
+2026-11-22T15:48:36.5373415Z     03_runRoutes:              FAIL
+2026-11-22T15:48:36.5374217Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5374882Z       Use -p '/03_runRoutes/' to rerun this test only.
+2026-11-22T15:48:36.5507373Z     04_runRoutes:              OK (0.02s)
+2026-11-22T15:48:36.5507942Z     05_runRoutes:              FAIL
+2026-11-22T15:48:36.5509233Z       Exception: _teststore: removeDirectoryRecursive:removeContentsRecursive:removeDirectory: unsatisfied constraints (Directory not empty)
+2026-11-22T15:48:36.5510492Z       Use -p '/05_runRoutes/' to rerun this test only.
+2026-11-22T15:48:36.5511045Z     06_runRoutes:              FAIL
+2026-11-22T15:48:36.5511685Z       Exception: Data.Binary.Get.runGet at position 0: not enough bytes
+2026-11-22T15:48:36.5512485Z       CallStack (from HasCallStack):
+2026-11-22T15:48:36.5513348Z         error, called at libraries/binary/src/Data/Binary/Get.hs:345:5 in binary-0.8.9.1-c9d0:Data.Binary.Get
+2026-11-22T15:48:36.5513965Z       Use -p '/06_runRoutes/' to rerun this test only.
+2026-11-22T15:48:36.5514307Z     07_runRoutes:              FAIL
+2026-11-22T15:48:36.5514680Z       Exception: Data.Binary.Get.runGet at position 0: not enough bytes
+2026-11-22T15:48:36.5515077Z       CallStack (from HasCallStack):
+2026-11-22T15:48:36.5515567Z         error, called at libraries/binary/src/Data/Binary/Get.hs:345:5 in binary-0.8.9.1-c9d0:Data.Binary.Get
+2026-11-22T15:48:36.5516105Z       Use -p '/07_runRoutes/' to rerun this test only.
+2026-11-22T15:48:36.5516422Z     08_runRoutes:              FAIL
+2026-11-22T15:48:36.5517262Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5518024Z       Use -p '/08_runRoutes/' to rerun this test only.
+2026-11-22T15:48:36.5518350Z     09_runRoutes:              FAIL
+2026-11-22T15:48:36.5518920Z       Exception: Data.Binary.Get.runGet at position 0: not enough bytes
+2026-11-22T15:48:36.5519653Z       CallStack (from HasCallStack):
+2026-11-22T15:48:36.5520458Z         error, called at libraries/binary/src/Data/Binary/Get.hs:345:5 in binary-0.8.9.1-c9d0:Data.Binary.Get
+2026-11-22T15:48:36.5521029Z       Use -p '/09_runRoutes/' to rerun this test only.
+2026-11-22T15:48:36.5521348Z   Hakyll.Core.Rules.Tests
+2026-11-22T15:48:36.5521600Z     01_runRules:               FAIL
+2026-11-22T15:48:36.5522360Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5523638Z       Use -p '/01_runRules/' to rerun this test only.
+2026-11-22T15:48:36.5524227Z   Hakyll.Core.Runtime.Tests
+2026-11-22T15:48:36.5524671Z     01_run:                    FAIL
+2026-11-22T15:48:36.5525641Z       Exception: _teststore/8791962016881733505 for Hakyll.Core.Runtime.run/facts: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5526880Z       Use -p '/Hakyll.Core.Runtime.Tests.01_run/' to rerun this test only.
+2026-11-22T15:48:36.5581495Z     02_run:                    FAIL
+2026-11-22T15:48:36.5613199Z       Exception: _testsite/favicon.ico: openFile: does not exist (No such file or directory)
+2026-11-22T15:48:36.5614329Z       Use -p '/Hakyll.Core.Runtime.Tests.02_run/' to rerun this test only.
+2026-11-22T15:48:36.5614984Z     03_run:                    FAIL
+2026-11-22T15:48:36.5615988Z       Exception: _teststore/8791962016881733505 for Hakyll.Core.Runtime.run/facts: Store.get: does not exist (No such file or directory)
+2026-11-22T15:48:36.5617195Z       Use -p '/Hakyll.Core.Runtime.Tests.03_run/' to rerun this test only.
+2026-11-22T15:48:36.5617805Z     04_run:                    FAIL
+2026-11-22T15:48:36.5618885Z       Exception: _teststore/8791962016881733505 for Hakyll.Core.Runtime.run/facts: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5619829Z       Use -p '/Hakyll.Core.Runtime.Tests.04_run/' to rerun this test only.
+2026-11-22T15:48:36.5620429Z     05_run:                    FAIL
+2026-11-22T15:48:36.5621669Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5622726Z       Use -p '/Hakyll.Core.Runtime.Tests.05_run/' to rerun this test only.
+2026-11-22T15:48:36.5623306Z     06_run:                    FAIL
+2026-11-22T15:48:36.5624453Z       Exception: _teststore/-814063872418736342: removeDirectoryRecursive:removeContentsRecursive:removePathRecursive:getSymbolicLinkStatus: does not exist (No such file or directory)
+2026-11-22T15:48:36.5625603Z       Use -p '/Hakyll.Core.Runtime.Tests.06_run/' to rerun this test only.
+2026-11-22T15:48:36.5626148Z     07_run:                    FAIL
+2026-11-22T15:48:36.5627152Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5628145Z       Use -p '/Hakyll.Core.Runtime.Tests.07_run/' to rerun this test only.
+2026-11-22T15:48:36.5628877Z     08_run:                    FAIL
+2026-11-22T15:48:36.5630052Z       Exception: _teststore/392287088793372954: removeDirectoryRecursive:removeContentsRecursive:removePathRecursive:getSymbolicLinkStatus: does not exist (No such file or directory)
+2026-11-22T15:48:36.5631215Z       Use -p '/Hakyll.Core.Runtime.Tests.08_run/' to rerun this test only.
+2026-11-22T15:48:36.5631799Z   Hakyll.Core.Store.Tests
+2026-11-22T15:48:36.5632311Z     simple get . set:          FAIL
+2026-11-22T15:48:36.5633548Z       *** Failed! Exception: '_teststore/6712876889041999715: removeDirectoryRecursive:removeContentsRecursive:removePathRecursive:getSymbolicLinkStatus: does not exist (No such file or directory)' (after 1 test):
+2026-11-22T15:48:36.5634881Z       Use --quickcheck-replay="(SMGen 10775226793798572557 6153741485617509891,0)" to reproduce.
+2026-11-22T15:48:36.5635584Z       Use -p '/simple get . set/' to rerun this test only.
+2026-11-22T15:48:36.5636184Z     persistent get . set:      FAIL
+2026-11-22T15:48:36.5637541Z       *** Failed! Exception: '_teststore: removeDirectoryRecursive:removeContentsRecursive:removeDirectory: unsatisfied constraints (Directory not empty)' (after 1 test):
+2026-11-22T15:48:36.5639358Z       Use --quickcheck-replay="(SMGen 12819385675859535371 15247356036873059365,0)" to reproduce.
+2026-11-22T15:48:36.5640257Z       Use -p '/persistent get . set/' to rerun this test only.
+2026-11-22T15:48:36.5833361Z     WrongType get . set:       FAIL
+2026-11-22T15:48:36.5861988Z       Exception: _teststore/6712876889041999715: removeDirectoryRecursive:removeContentsRecursive:removePathRecursive:getSymbolicLinkStatus: does not exist (No such file or directory)
+2026-11-22T15:48:36.5867778Z       Use -p '/WrongType get . set/' to rerun this test only.
+2026-11-22T15:48:36.5868682Z     isMembertest . set:        FAIL
+2026-11-22T15:48:36.5874655Z       Exception: _teststore/-6788049628694929514: removeDirectoryRecursive:removeContentsRecursive:removePathRecursive:getSymbolicLinkStatus: does not exist (No such file or directory)
+2026-11-22T15:48:36.5876550Z       Use -p '/isMembertest . set/' to rerun this test only.
+2026-11-22T15:48:36.5877344Z   Hakyll.Core.UnixFilter.Tests
+2026-11-22T15:48:36.5898207Z     unixFilter rev:            OK (0.03s)
+2026-11-22T15:48:36.5984965Z     unixFilter false:          OK (0.04s)
+2026-11-22T15:48:36.5985336Z     unixFilter error:          FAIL
+2026-11-22T15:48:36.5986020Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.5987244Z       Use -p '/unixFilter error/' to rerun this test only.
+2026-11-22T15:48:36.5987868Z   Hakyll.Core.Util.String.Tests
+2026-11-22T15:48:36.5988399Z     01_trim:                   OK
+2026-11-22T15:48:36.5989107Z     01_replaceAll:             OK
+2026-11-22T15:48:36.5989606Z     02_replaceAll:             OK
+2026-11-22T15:48:36.5990065Z     03_replaceAll:             OK
+2026-11-22T15:48:36.5990505Z     04_replaceAll:             OK
+2026-11-22T15:48:36.5990951Z     05_replaceAll:             OK
+2026-11-22T15:48:36.5991609Z     06_replaceAll:             OK
+2026-11-22T15:48:36.5992069Z     07_replaceAll:             OK
+2026-11-22T15:48:36.5992506Z     01_splitAll:               OK
+2026-11-22T15:48:36.5992947Z     02_splitAll:               OK
+2026-11-22T15:48:36.5993306Z     03_splitAll:               OK
+2026-11-22T15:48:36.5993555Z     04_splitAll:               OK
+2026-11-22T15:48:36.5993805Z     05_splitAll:               OK
+2026-11-22T15:48:36.5994057Z     06_splitAll:               OK
+2026-11-22T15:48:36.5994309Z     07_splitAll:               OK
+2026-11-22T15:48:36.6026619Z     01_needlePrefix:           OK
+2026-11-22T15:48:36.6033147Z     02_needlePrefix:           OK
+2026-11-22T15:48:36.6033840Z     03_needlePrefix:           OK
+2026-11-22T15:48:36.6034558Z     04_needlePrefix:           OK
+2026-11-22T15:48:36.6035191Z     05_needlePrefix:           OK
+2026-11-22T15:48:36.6035823Z     06_needlePrefix:           OK
+2026-11-22T15:48:36.6036441Z     07_needlePrefix:           OK
+2026-11-22T15:48:36.6037099Z   Hakyll.Web.CompressCss.Tests
+2026-11-22T15:48:36.6037753Z     01_compressCss:            OK
+2026-11-22T15:48:36.6038507Z     02_compressCss:            OK
+2026-11-22T15:48:36.6039326Z     03_compressCss:            OK
+2026-11-22T15:48:36.6039932Z     04_compressCss:            OK
+2026-11-22T15:48:36.6040519Z     05_compressCss:            OK
+2026-11-22T15:48:36.6041088Z     06_compressCss:            OK
+2026-11-22T15:48:36.6069868Z     07_compressCss:            OK
+2026-11-22T15:48:36.6074527Z     08_compressCss:            OK
+2026-11-22T15:48:36.6075378Z     09_compressCss:            OK (0.02s)
+2026-11-22T15:48:36.6076139Z     10_compressCss:            OK (0.02s)
+2026-11-22T15:48:36.6076864Z     11_compressCss:            OK
+2026-11-22T15:48:36.6077585Z     12_compressCss:            OK
+2026-11-22T15:48:36.6078369Z     13_compressCss:            OK
+2026-11-22T15:48:36.6079517Z     14_compressCss:            OK
+2026-11-22T15:48:36.6079974Z     15_compressCss:            OK
+2026-11-22T15:48:36.6080412Z     16_compressCss:            OK
+2026-11-22T15:48:36.6080823Z     17_compressCss:            OK
+2026-11-22T15:48:36.6081227Z     18_compressCss:            OK
+2026-11-22T15:48:36.6081631Z     19_compressCss:            OK
+2026-11-22T15:48:36.6082265Z     20_compressCss:            OK
+2026-11-22T15:48:36.6082971Z     21_compressCss:            OK
+2026-11-22T15:48:36.6083655Z     22_compressCss:            OK
+2026-11-22T15:48:36.6084361Z     23_compressCss:            OK
+2026-11-22T15:48:36.6085053Z     24_compressCss:            OK
+2026-11-22T15:48:36.6085778Z     25_compressCss:            OK
+2026-11-22T15:48:36.6086454Z     26_compressCss:            OK
+2026-11-22T15:48:36.6087216Z     27_compressCss:            OK
+2026-11-22T15:48:36.6087931Z     28_compressCss:            OK
+2026-11-22T15:48:36.6088874Z     29_compressCss:            OK
+2026-11-22T15:48:36.6089728Z   Hakyll.Web.Html.RelativizeUrls.Tests
+2026-11-22T15:48:36.6090711Z     01_relativizeUrls:         OK
+2026-11-22T15:48:36.6091617Z     02_relativizeUrls:         OK
+2026-11-22T15:48:36.6092424Z     03_relativizeUrls:         OK
+2026-11-22T15:48:36.6093098Z     04_relativizeUrls:         OK
+2026-11-22T15:48:36.6093753Z     05_relativizeUrls:         OK
+2026-11-22T15:48:36.6094389Z     06_relativizeUrls:         OK
+2026-11-22T15:48:36.6095012Z     07_relativizeUrls:         OK
+2026-11-22T15:48:36.6095479Z   Hakyll.Web.Html.Tests
+2026-11-22T15:48:36.6095885Z     01_demoteHeaders:          OK
+2026-11-22T15:48:36.6096517Z     02_demoteHeaders:          OK
+2026-11-22T15:48:36.6096784Z     01_demoteHeadersBy:        OK
+2026-11-22T15:48:36.6097047Z     02_demoteHeadersBy:        OK
+2026-11-22T15:48:36.6097301Z     03_demoteHeadersBy:        OK
+2026-11-22T15:48:36.6097560Z     01_getUrls:                OK
+2026-11-22T15:48:36.6097800Z     02_getUrls:                OK
+2026-11-22T15:48:36.6098041Z     03_getUrls:                OK
+2026-11-22T15:48:36.6098283Z     01_withUrls:               OK
+2026-11-22T15:48:36.6098649Z     02_withUrls:               OK
+2026-11-22T15:48:36.6099218Z     03_withUrls:               OK
+2026-11-22T15:48:36.6099468Z     04_withUrls:               OK
+2026-11-22T15:48:36.6099716Z     05_withUrls:               OK
+2026-11-22T15:48:36.6099963Z     06_withUrls:               OK
+2026-11-22T15:48:36.6100210Z     07_withUrls:               OK
+2026-11-22T15:48:36.6100462Z     08_withUrls:               OK
+2026-11-22T15:48:36.6100708Z     09_withUrls:               OK
+2026-11-22T15:48:36.6100955Z     01_toUrl:                  OK
+2026-11-22T15:48:36.6101193Z     02_toUrl:                  OK
+2026-11-22T15:48:36.6101440Z     03_toUrl:                  OK
+2026-11-22T15:48:36.6101682Z     04_toUrl:                  OK
+2026-11-22T15:48:36.6101922Z     05_toUrl:                  OK
+2026-11-22T15:48:36.6138404Z     06_toUrl:                  OK
+2026-11-22T15:48:36.6147556Z     07_toUrl:                  OK
+2026-11-22T15:48:36.6148221Z     08_toUrl:                  OK
+2026-11-22T15:48:36.6149210Z     01_toSiteRoot:             OK
+2026-11-22T15:48:36.6149696Z     02_toSiteRoot:             OK
+2026-11-22T15:48:36.6150168Z     03_toSiteRoot:             OK
+2026-11-22T15:48:36.6150561Z     04_toSiteRoot:             OK
+2026-11-22T15:48:36.6151124Z     05_toSiteRoot:             OK
+2026-11-22T15:48:36.6161312Z     06_toSiteRoot:             OK
+2026-11-22T15:48:36.6161822Z     01_isExternal:             OK
+2026-11-22T15:48:36.6162202Z     02_isExternal:             OK
+2026-11-22T15:48:36.6162699Z     03_isExternal:             OK
+2026-11-22T15:48:36.6163139Z     04_isExternal:             OK
+2026-11-22T15:48:36.6163575Z     05_isExternal:             OK
+2026-11-22T15:48:36.6164011Z     01_stripTags:              OK
+2026-11-22T15:48:36.6164450Z     02_stripTags:              OK
+2026-11-22T15:48:36.6164878Z     03_stripTags:              OK
+2026-11-22T15:48:36.6165309Z     01_escapeHtml:             OK
+2026-11-22T15:48:36.6165733Z     02_escapeHtml:             OK
+2026-11-22T15:48:36.6166209Z   Hakyll.Web.Pandoc.Biblio.Tests
+2026-11-22T15:48:36.6166703Z     biblio01:                  FAIL
+2026-11-22T15:48:36.6167645Z       _teststore/8791962016881733505 for Hakyll.Core.Runtime.run/facts: Store.set: does not exist (No such file or directory)
+2026-11-22T15:48:36.6170001Z       Use -p '/biblio01/' to rerun this test only.
+2026-11-22T15:48:36.6170587Z     biblio02:                  FAIL (0.03s)
+2026-11-22T15:48:36.6171412Z       _testsite/page.html: withBinaryFile: does not exist (No such file or directory)
+2026-11-22T15:48:36.6172276Z       Use -p '/biblio02/' to rerun this test only.
+2026-11-22T15:48:36.6172812Z     biblio03:                  FAIL
+2026-11-22T15:48:36.6173546Z       _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.set: resource busy (file is locked)
+2026-11-22T15:48:36.6174196Z       Use -p '/biblio03/' to rerun this test only.
+2026-11-22T15:48:36.6174524Z   Hakyll.Web.Pandoc.FileType.Tests
+2026-11-22T15:48:36.6174826Z     01_fileType:               OK
+2026-11-22T15:48:36.6175089Z     02_fileType:               OK
+2026-11-22T15:48:36.6175341Z     03_fileType:               OK
+2026-11-22T15:48:36.6175617Z     04_fileType:               OK
+2026-11-22T15:48:36.6175862Z     05_fileType:               OK
+2026-11-22T15:48:36.6176112Z   Hakyll.Web.Tags
+2026-11-22T15:48:36.6176360Z     testGetCategory:           FAIL
+2026-11-22T15:48:36.6177020Z       Exception: _teststore: removeDirectoryRecursive:removeContentsRecursive:removeDirectory: unsatisfied constraints (Directory not empty)
+2026-11-22T15:48:36.6180157Z       Use -p '/testGetCategory/' to rerun this test only.
+2026-11-22T15:48:36.6180536Z   Hakyll.Web.Template.Context.Tests
+2026-11-22T15:48:36.6180839Z     testDateField:             FAIL
+2026-11-22T15:48:36.6181627Z       Exception: _teststore/9007191838936915666: removeDirectoryRecursive:removeContentsRecursive:removePathRecursive:getSymbolicLinkStatus: does not exist (No such file or directory)
+2026-11-22T15:48:36.6182479Z       Use -p '/testDateField/' to rerun this test only.
+2026-11-22T15:48:36.6182991Z   Hakyll.Web.Template.Tests
+2026-11-22T15:48:36.6183267Z     case01:                    FAIL
+2026-11-22T15:48:36.6183897Z       Exception: _teststore: removeDirectoryRecursive:removeContentsRecursive:removeDirectory: unsatisfied constraints (Directory not empty)
+2026-11-22T15:48:36.6184662Z       Use -p '/Hakyll.Web.Template.Tests.case01/' to rerun this test only.
+2026-11-22T15:48:36.6185051Z     case02:                    FAIL
+2026-11-22T15:48:36.6185696Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: resource busy (file is locked)
+2026-11-22T15:48:36.6186375Z       Use -p '/case02/' to rerun this test only.
+2026-11-22T15:48:36.6186672Z     case03:                    FAIL
+2026-11-22T15:48:36.6187290Z       Exception: _teststore: removeDirectoryRecursive:removeContentsRecursive:removeDirectory: unsatisfied constraints (Directory not empty)
+2026-11-22T15:48:36.6187946Z       Use -p '/case03/' to rerun this test only.
+2026-11-22T15:48:36.6188259Z     applyJoinTemplateList:     FAIL
+2026-11-22T15:48:36.6189193Z       Exception: _teststore: removeDirectoryRecursive:removeContentsRecursive:removeDirectory: unsatisfied constraints (Directory not empty)
+2026-11-22T15:48:36.6190365Z       Use -p '/applyJoinTemplateList/' to rerun this test only.
+2026-11-22T15:48:36.6190946Z     01_parseTemplate:          OK
+2026-11-22T15:48:36.6191386Z     02_parseTemplate:          OK
+2026-11-22T15:48:36.6191844Z     03_parseTemplate:          OK
+2026-11-22T15:48:36.6192143Z     04_parseTemplate:          OK
+2026-11-22T15:48:36.6192395Z     05_parseTemplate:          OK
+2026-11-22T15:48:36.6192651Z     06_parseTemplate:          OK
+2026-11-22T15:48:36.6192897Z     07_parseTemplate:          OK
+2026-11-22T15:48:36.6193162Z     08_parseTemplate:          OK
+2026-11-22T15:48:36.6193413Z     embeddedTemplate:          OK
+2026-11-22T15:48:36.6193670Z   Hakyll.Web.Feed.Tests
+2026-11-22T15:48:36.6193907Z     validateSucceeds:          OK
+2026-11-22T15:48:36.6194188Z     validateFails:             FAIL
+2026-11-22T15:48:36.6194860Z       Exception: _teststore/6712876889041999715 for Hakyll.Core.Provider.Internal.newProvider/oldFiles: Store.get: does not exist (No such file or directory)
+2026-11-22T15:48:36.6195598Z       Use -p '/validateFails/' to rerun this test only.
+2026-11-22T15:48:36.6195834Z 
+2026-11-22T15:48:36.6195936Z 32 out of 182 tests failed (0.10s)
+2026-11-22T15:48:36.6225675Z 
+2026-11-22T15:48:36.6225691Z 
+2026-11-22T15:48:36.6225696Z 
+2026-11-22T15:48:36.6225868Z hakyll> Test suite hakyll-test failed
+2026-11-22T15:48:36.6268666Z 
+2026-11-22T15:48:36.6268990Z Error: [S-7282]
+2026-11-22T15:48:36.6269419Z        Stack failed to execute the build plan.
+2026-11-22T15:48:36.6270036Z        
+2026-11-22T15:48:36.6270501Z        While executing the build plan, Stack encountered the error:
+2026-11-22T15:48:36.6270997Z        
+2026-11-22T15:48:36.6271200Z        Error: [S-1995]
+2026-11-22T15:48:36.6271481Z        Test suite failure for package hakyll-0.1.0.0
+2026-11-22T15:48:36.6271849Z            hakyll-test:  exited with: ExitFailure 1
+2026-11-22T15:48:36.6272163Z        Logs printed to console
+2026-11-22T15:48:36.6272405Z        
+2026-11-22T15:48:36.6272603Z        HasCallStack backtrace:
+2026-11-22T15:48:36.6273205Z          collectBacktraces, called at libraries/ghc-internal/src/GHC/Internal/Exception.hs:169:13 in ghc-internal:GHC.Internal.Exception
+2026-11-22T15:48:36.6274116Z          toExceptionWithBacktrace, called at libraries/ghc-internal/src/GHC/Internal/IO.hs:260:11 in ghc-internal:GHC.Internal.IO
+2026-11-22T15:48:36.6275558Z          throwIO, called at libraries/ghc-internal/src/GHC/Internal/Control/Exception/Base.hs:195:43 in ghc-internal:GHC.Internal.Control.Exception.Base
+2026-11-22T15:48:36.6276197Z        
+2026-11-22T15:48:36.6276374Z        
+2026-11-22T15:48:36.6354452Z ##[error]Process completed with exit code 1.
+2026-11-22T15:48:36.6478242Z Post job cleanup.
+2026-11-22T15:48:36.7359136Z [command]/usr/bin/git version
+2026-11-22T15:48:36.7406069Z git version 2.56.1
+2026-11-22T15:48:36.7443585Z Temporarily overriding HOME='/home/runner/work/_temp/90c1ecb4-5210-4d62-8505-4efd87511d9f' before making global git config changes
+2026-11-22T15:48:36.7444886Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-22T15:48:36.7447950Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hakiru/hakiru
+2026-11-22T15:48:36.7483759Z Removing SSH command configuration
+2026-11-22T15:48:36.7490504Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-22T15:48:36.7532027Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-22T15:48:36.7861011Z Removing HTTP extra header
+2026-11-22T15:48:36.7867269Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-22T15:48:36.7909280Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-22T15:48:36.8218137Z Removing includeIf entries pointing to credentials config files
+2026-11-22T15:48:36.8225005Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-22T15:48:36.8252849Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-11-22T15:48:36.8253678Z includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-11-22T15:48:36.8254142Z includeif.gitdir:/github/workspace/.git.path
+2026-11-22T15:48:36.8254536Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-22T15:48:36.8261939Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path
+2026-11-22T15:48:36.8285870Z /home/runner/work/_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:48:36.8296262Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-46c206b6\-08dd\-4694\-be5a\-3a33b6ec65c7\.config
+2026-11-22T15:48:36.8347030Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path
+2026-11-22T15:48:36.8373220Z /home/runner/work/_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:48:36.8384561Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/hakiru/hakiru/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-46c206b6\-08dd\-4694\-be5a\-3a33b6ec65c7\.config
+2026-11-22T15:48:36.8421022Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-22T15:48:36.8445075Z /github/runner_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:48:36.8454723Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-46c206b6\-08dd\-4694\-be5a\-3a33b6ec65c7\.config
+2026-11-22T15:48:36.8489854Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-22T15:48:36.8515571Z /github/runner_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config
+2026-11-22T15:48:36.8523654Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-46c206b6\-08dd\-4694\-be5a\-3a33b6ec65c7\.config
+2026-11-22T15:48:36.8559138Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-22T15:48:36.8831105Z Removing credentials config '/home/runner/work/_temp/git-credentials-46c206b6-08dd-4694-be5a-3a33b6ec65c7.config'
+2026-11-22T15:48:36.8985949Z Cleaning up orphan processes
