@@ -7,7 +7,7 @@ module Hakyll.Web.Template.Tests
 
 
 --------------------------------------------------------------------------------
-import           Test.Tasty                   (TestTree, testGroup)
+import           Test.Tasty                   (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit             (Assertion, assertBool, testCase,
                                                (@=?), (@?=))
 
@@ -28,7 +28,7 @@ import           TestSuite.Util
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Web.Template.Tests" $ concat
+tests = sequentialTestGroup "Hakyll.Web.Template.Tests" AllFinish $ concat
     [ [ testCase "case01" $ test ("template.html.out", "template.html", "example.md")
       , testCase "case02" $ test ("strip.html.out", "strip.html", "example.md")
       , testCase "case03" $ test ("just-meta.html.out", "just-meta.html", "example.md")

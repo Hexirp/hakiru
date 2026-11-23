@@ -8,14 +8,14 @@ module Hakyll.Core.Provider.Tests
 --------------------------------------------------------------------------------
 import           Hakyll.Core.Metadata
 import           Hakyll.Core.Provider
-import           Test.Tasty           (TestTree, testGroup)
+import           Test.Tasty           (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit     (Assertion, testCase, (@=?))
 import           TestSuite.Util
 
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Core.Provider.Tests"
+tests = sequentialTestGroup "Hakyll.Core.Provider.Tests" AllFinish
     [ testCase "case01" case01
     ]
 

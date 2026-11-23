@@ -8,7 +8,7 @@ module Hakyll.Web.Pandoc.Biblio.Tests
 
 --------------------------------------------------------------------------------
 import           System.FilePath            ((</>))
-import           Test.Tasty                 (TestTree, testGroup)
+import           Test.Tasty                 (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.Golden          (goldenVsString)
 import qualified Data.ByteString            as B
 import qualified Data.ByteString.Lazy       as LBS
@@ -23,7 +23,7 @@ import           TestSuite.Util
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Web.Pandoc.Biblio.Tests" $
+tests = sequentialTestGroup "Hakyll.Web.Pandoc.Biblio.Tests" AllFinish $
     [ goldenTest01
     , goldenTest02
     , goldenTest03

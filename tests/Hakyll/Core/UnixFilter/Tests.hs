@@ -7,7 +7,7 @@ module Hakyll.Core.UnixFilter.Tests
 
 
 --------------------------------------------------------------------------------
-import           Test.Tasty             (TestTree, testGroup)
+import           Test.Tasty             (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit       (testCase)
 import qualified Test.Tasty.HUnit       as H
 
@@ -22,7 +22,7 @@ import           TestSuite.Util
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Core.UnixFilter.Tests" $
+tests = sequentialTestGroup "Hakyll.Core.UnixFilter.Tests" AllFinish $
 #ifdef mingw32_HOST_OS
     [] -- The `rev` utility is not present by default on Windows
 #else

@@ -18,14 +18,14 @@ import           Hakyll.Core.Routes
 import           Hakyll.Core.Rules
 import           Hakyll.Core.Rules.Internal
 import           System.FilePath                ((</>), normalise)
-import           Test.Tasty                     (TestTree, testGroup)
+import           Test.Tasty                     (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit               (Assertion, (@=?))
 import           TestSuite.Util
 
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Core.Rules.Tests" $ fromAssertions "runRules"
+tests = sequentialTestGroup "Hakyll.Core.Rules.Tests" AllFinish $ fromAssertions "runRules"
     [case01]
 
 

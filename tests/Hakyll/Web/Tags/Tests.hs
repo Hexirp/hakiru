@@ -5,7 +5,7 @@ module Hakyll.Web.Tags.Tests
     ) where
 
 --------------------------------------------------------------------------------
-import           Test.Tasty                  (TestTree, testGroup)
+import           Test.Tasty                  (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit            (Assertion, testCase, (@?=))
 
 --------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ import           Hakyll.Web.Tags
 import           TestSuite.Util
 
 tests :: TestTree
-tests = testGroup "Hakyll.Web.Tags"
+tests = sequentialTestGroup "Hakyll.Web.Tags" AllFinish
     [ testCase "testGetCategory" testGetCategory
     ]
 

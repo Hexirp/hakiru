@@ -6,7 +6,7 @@ module Hakyll.Web.Feed.Tests
 
 
 --------------------------------------------------------------------------------
-import           Test.Tasty       (TestTree, testGroup)
+import           Test.Tasty       (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit (Assertion, testCase)
 
 
@@ -18,7 +18,7 @@ import           Hakyll.Web.Template.Context
 import           TestSuite.Util
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Web.Feed.Tests"
+tests = sequentialTestGroup "Hakyll.Web.Feed.Tests" AllFinish
     [ testCase "validateSucceeds" validateSucceeds
     , testCase "validateFails" validateFails
     ]

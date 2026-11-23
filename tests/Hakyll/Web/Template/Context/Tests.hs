@@ -6,7 +6,7 @@ module Hakyll.Web.Template.Context.Tests
 
 
 --------------------------------------------------------------------------------
-import           Test.Tasty                  (TestTree, testGroup)
+import           Test.Tasty                  (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit            (Assertion, testCase, (@=?))
 
 
@@ -21,7 +21,7 @@ import           TestSuite.Util
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Web.Template.Context.Tests"
+tests = sequentialTestGroup "Hakyll.Web.Template.Context.Tests" AllFinish
     [ testCase "testDateField" testDateField
     ]
 

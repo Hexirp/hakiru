@@ -6,7 +6,7 @@ module Main
 
 
 --------------------------------------------------------------------------------
-import           Test.Tasty                           (defaultMain, testGroup)
+import           Test.Tasty                           (defaultMain, sequentialTestGroup, DependencyType (AllFinish))
 
 
 --------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ import qualified Hakyll.Web.Feed.Tests
 
 --------------------------------------------------------------------------------
 main :: IO ()
-main = defaultMain $ testGroup "Hakyll"
+main = defaultMain $ sequentialTestGroup "Hakyll" AllFinish
     [ Hakyll.Core.Dependencies.Tests.tests
     , Hakyll.Core.Identifier.Tests.tests
     , Hakyll.Core.Provider.Metadata.Tests.tests

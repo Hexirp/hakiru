@@ -9,7 +9,7 @@ module Hakyll.Core.Store.Tests
 import           Data.Typeable           (typeOf)
 import qualified Test.QuickCheck         as Q
 import qualified Test.QuickCheck.Monadic as Q
-import           Test.Tasty              (TestTree, testGroup)
+import           Test.Tasty              (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit        (testCase)
 import qualified Test.Tasty.HUnit        as H
 import           Test.Tasty.QuickCheck   (testProperty)
@@ -22,7 +22,7 @@ import           TestSuite.Util
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Core.Store.Tests"
+tests = sequentialTestGroup "Hakyll.Core.Store.Tests" AllFinish
     [ testProperty "simple get . set"     simpleSetGet
     , testProperty "persistent get . set" persistentSetGet
     , testCase     "WrongType get . set"  wrongType

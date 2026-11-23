@@ -11,7 +11,7 @@ import qualified Data.ByteString     as B
 import           Data.List           (isInfixOf)
 import           System.Exit         (ExitCode (..))
 import           System.FilePath     ((</>))
-import           Test.Tasty          (TestTree, testGroup)
+import           Test.Tasty          (TestTree, sequentialTestGroup, DependencyType (AllFinish))
 import           Test.Tasty.HUnit    (Assertion, assertBool, (@?=))
 
 
@@ -24,7 +24,7 @@ import           TestSuite.Util
 
 --------------------------------------------------------------------------------
 tests :: TestTree
-tests = testGroup "Hakyll.Core.Runtime.Tests" $ fromAssertions "run"
+tests = sequentialTestGroup "Hakyll.Core.Runtime.Tests" AllFinish $ fromAssertions "run"
     [ case01
     , case02
     , case03
