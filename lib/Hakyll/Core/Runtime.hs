@@ -234,8 +234,11 @@ schedulerPop scheduler@Scheduler {..} = case Seq.viewl schedulerQueue of
                         intercalate ", " (show <$> Set.toList schedulerBlocked)
                     | otherwise = "Dependency cycles: " <>
                         intercalate "; "
-                            (map (intercalate " -> " . map show) cycles) in
-            SchedulerError <$ schedulerError Nothing msg scheduler
+                            (map (intercalate " -> " . map show) cycles)
+                errorKey = (Nothing, msg)
+            in if errorKey `elem` schedulerErrors
+                then (scheduler, SchedulerError)
+                else SchedulerError <$ schedulerError Nothing msg scheduler
         | otherwise -> (scheduler, SchedulerFinish)
     x Seq.:< xs
         | x `Set.member` schedulerDone ->
