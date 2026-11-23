@@ -1,0 +1,639 @@
+﻿2026-11-23T04:04:02.4238901Z Current runner version: '2.338.2'
+2026-11-23T04:04:02.4259245Z ##[group]Runner Image Provisioner
+2026-11-23T04:04:02.4259899Z Hosted Compute Agent
+2026-11-23T04:04:02.4260368Z Version: 20261111.635
+2026-11-23T04:04:02.4261238Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+2026-11-23T04:04:02.4261796Z Build Date: 2026-11-11T01:49:01Z
+2026-11-23T04:04:02.4262343Z Worker ID: {9554a96a-31e6-4c4b-a38b-d8110a24eec2}
+2026-11-23T04:04:02.4262873Z Region: westus
+2026-11-23T04:04:02.4263260Z Cloud: Azure
+2026-11-23T04:04:02.4263676Z ##[endgroup]
+2026-11-23T04:04:02.4264699Z ##[group]Operating System
+2026-11-23T04:04:02.4265172Z Microsoft Windows Server 2025
+2026-11-23T04:04:02.4265686Z 10.0.26100
+2026-11-23T04:04:02.4266102Z Datacenter
+2026-11-23T04:04:02.4266528Z ##[endgroup]
+2026-11-23T04:04:02.4266934Z ##[group]Runner Image
+2026-11-23T04:04:02.4267390Z Image: windows-2025-vs2026
+2026-11-23T04:04:02.4267874Z Version: 20261116.315.1
+2026-11-23T04:04:02.4269058Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261116.315/images/windows/Windows2025-VS2026-Readme.md
+2026-11-23T04:04:02.4270320Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261116.315
+2026-11-23T04:04:02.4271053Z ##[endgroup]
+2026-11-23T04:04:02.4271960Z ##[group]GITHUB_TOKEN Permissions
+2026-11-23T04:04:02.4273425Z Contents: read
+2026-11-23T04:04:02.4273871Z Metadata: read
+2026-11-23T04:04:02.4274283Z Packages: read
+2026-11-23T04:04:02.4274689Z ##[endgroup]
+2026-11-23T04:04:02.4276283Z Secret source: Actions
+2026-11-23T04:04:02.4277006Z Cache mode: write
+2026-11-23T04:04:02.4277634Z Using locked action versions from the workflow's lockfile
+2026-11-23T04:04:02.4278202Z Prepare workflow directory
+2026-11-23T04:04:02.4682928Z Prepare all required actions
+2026-11-23T04:04:02.4724847Z Getting action download info
+2026-11-23T04:04:02.7917353Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-23T04:04:02.8928256Z Download action repository 'actions/cache@v6.1.0' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-11-23T04:04:03.0100473Z Download action repository 'haskell-actions/setup@v2.12.1' (SHA:0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d)
+2026-11-23T04:04:03.4396813Z Complete job name: Build os-windows-latest ghc-9.8.4
+2026-11-23T04:04:03.5486412Z ##[group]Run actions/checkout@v7.0.1
+2026-11-23T04:04:03.5487260Z with:
+2026-11-23T04:04:03.5487561Z   repository: Hexirp/hakiru
+2026-11-23T04:04:03.5490808Z   token: ***
+2026-11-23T04:04:03.5491113Z   ssh-strict: true
+2026-11-23T04:04:03.5491417Z   ssh-user: git
+2026-11-23T04:04:03.5491726Z   persist-credentials: true
+2026-11-23T04:04:03.5492062Z   clean: true
+2026-11-23T04:04:03.5492368Z   sparse-checkout-cone-mode: true
+2026-11-23T04:04:03.5492730Z   fetch-depth: 1
+2026-11-23T04:04:03.5493027Z   fetch-tags: false
+2026-11-23T04:04:03.5493332Z   show-progress: true
+2026-11-23T04:04:03.5493639Z   lfs: false
+2026-11-23T04:04:03.5493927Z   submodules: false
+2026-11-23T04:04:03.5494267Z   set-safe-directory: true
+2026-11-23T04:04:03.5494617Z   allow-unsafe-pr-checkout: false
+2026-11-23T04:04:03.5495123Z env:
+2026-11-23T04:04:03.5495406Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-23T04:04:03.5495773Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-23T04:04:03.5496195Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-23T04:04:03.5496578Z   GHCUP_ROOT: C:/ghcup
+2026-11-23T04:04:03.5496887Z   STACK_ROOT: C:/sr
+2026-11-23T04:04:03.5497181Z ##[endgroup]
+2026-11-23T04:04:03.6696343Z Syncing repository: Hexirp/hakiru
+2026-11-23T04:04:03.6698384Z ##[group]Getting Git version info
+2026-11-23T04:04:03.6699135Z Working directory is 'D:\a\hakiru\hakiru'
+2026-11-23T04:04:03.7270424Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-23T04:04:03.9948776Z git version 2.56.1.windows.1
+2026-11-23T04:04:03.9989644Z ##[endgroup]
+2026-11-23T04:04:04.0002376Z Temporarily overriding HOME='D:\a\_temp\22b45427-a65c-49bd-9cde-46a25ff413fb' before making global git config changes
+2026-11-23T04:04:04.0010172Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-23T04:04:04.0011391Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\hakiru\hakiru
+2026-11-23T04:04:04.0567421Z Deleting the contents of 'D:\a\hakiru\hakiru'
+2026-11-23T04:04:04.0571483Z ##[group]Determining repository object format
+2026-11-23T04:04:04.0573144Z ##[endgroup]
+2026-11-23T04:04:04.0574583Z ##[group]Initializing the repository
+2026-11-23T04:04:04.0580144Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\hakiru\hakiru
+2026-11-23T04:04:04.1337013Z Initialized empty Git repository in D:/a/hakiru/hakiru/.git/
+2026-11-23T04:04:04.1376674Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Hexirp/hakiru
+2026-11-23T04:04:04.1906953Z ##[endgroup]
+2026-11-23T04:04:04.1908084Z ##[group]Disabling automatic garbage collection
+2026-11-23T04:04:04.1916217Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-11-23T04:04:04.2271496Z ##[endgroup]
+2026-11-23T04:04:04.2273249Z ##[group]Setting up auth
+2026-11-23T04:04:04.2274518Z Removing SSH command configuration
+2026-11-23T04:04:04.2280646Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-23T04:04:04.2575967Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-23T04:04:05.5046365Z Removing HTTP extra header
+2026-11-23T04:04:05.5054156Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-23T04:04:05.5343866Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-23T04:04:05.9849327Z Removing includeIf entries pointing to credentials config files
+2026-11-23T04:04:05.9861662Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-23T04:04:06.0158941Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-23T04:04:06.4660260Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-23T04:04:06.5009126Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/hakiru/hakiru/.git.path D:\a\_temp\git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:04:06.5309944Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path D:\a\_temp\git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:04:06.5644357Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:04:06.5939296Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:04:06.6239291Z ##[endgroup]
+2026-11-23T04:04:06.6239791Z ##[group]Fetching the repository
+2026-11-23T04:04:06.6249726Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +70ca1d7a9ac958391c252f9bb601d38522c2900d:refs/remotes/origin/main
+2026-11-23T04:04:07.6625176Z From https://github.com/Hexirp/hakiru
+2026-11-23T04:04:07.6626314Z  * [new ref]         70ca1d7a9ac958391c252f9bb601d38522c2900d -> origin/main
+2026-11-23T04:04:07.6664979Z [command]"C:\Program Files\Git\bin\git.exe" branch --list --remote origin/main
+2026-11-23T04:04:07.6982481Z   origin/main
+2026-11-23T04:04:07.7014882Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/remotes/origin/main
+2026-11-23T04:04:07.7329275Z 70ca1d7a9ac958391c252f9bb601d38522c2900d
+2026-11-23T04:04:07.7357571Z ##[endgroup]
+2026-11-23T04:04:07.7358231Z ##[group]Determining the checkout info
+2026-11-23T04:04:07.7359227Z ##[endgroup]
+2026-11-23T04:04:07.7368278Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-11-23T04:04:07.7766851Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-11-23T04:04:07.8053126Z ##[group]Checking out the ref
+2026-11-23T04:04:07.8059448Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-11-23T04:04:07.9249828Z Switched to a new branch 'main'
+2026-11-23T04:04:07.9265965Z branch 'main' set up to track 'origin/main'.
+2026-11-23T04:04:07.9303341Z ##[endgroup]
+2026-11-23T04:04:07.9680135Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-11-23T04:04:07.9953886Z 70ca1d7a9ac958391c252f9bb601d38522c2900d
+2026-11-23T04:04:08.0400554Z ##[group]Run actions/cache@v6.1.0
+2026-11-23T04:04:08.0400834Z with:
+2026-11-23T04:04:08.0401128Z   path: C:/ghcup/bin/*
+C:/ghcup/cache/*
+C:/ghcup/config.yaml
+C:/ghcup/ghc/9.8.4
+
+2026-11-23T04:04:08.0401618Z   key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-23T04:04:08.0401995Z   enableCrossOsArchive: false
+2026-11-23T04:04:08.0402191Z   fail-on-cache-miss: false
+2026-11-23T04:04:08.0402365Z   lookup-only: false
+2026-11-23T04:04:08.0402538Z   save-always: false
+2026-11-23T04:04:08.0402718Z env:
+2026-11-23T04:04:08.0402867Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-23T04:04:08.0403060Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-23T04:04:08.0403266Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-23T04:04:08.0403487Z   GHCUP_ROOT: C:/ghcup
+2026-11-23T04:04:08.0403644Z   STACK_ROOT: C:/sr
+2026-11-23T04:04:08.0403795Z   CACHE_VERSION: v-1-1-1
+2026-11-23T04:04:08.0403957Z ##[endgroup]
+2026-11-23T04:04:08.4961702Z Cache hit for: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-23T04:04:09.7932252Z Received 33554432 of 585181698 (5.7%), 31.9 MBs/sec
+2026-11-23T04:04:10.8072226Z Received 130023424 of 585181698 (22.2%), 61.5 MBs/sec
+2026-11-23T04:04:11.8089434Z Received 163577856 of 585181698 (28.0%), 51.7 MBs/sec
+2026-11-23T04:04:12.8164412Z Received 264241152 of 585181698 (45.2%), 62.6 MBs/sec
+2026-11-23T04:04:13.8136439Z Received 268435456 of 585181698 (45.9%), 51.0 MBs/sec
+2026-11-23T04:04:14.8238260Z Received 398458880 of 585181698 (68.1%), 63.0 MBs/sec
+2026-11-23T04:04:15.8325895Z Received 452984832 of 585181698 (77.4%), 61.3 MBs/sec
+2026-11-23T04:04:16.9351642Z Received 536870912 of 585181698 (91.7%), 62.9 MBs/sec
+2026-11-23T04:04:17.5013570Z Received 585181698 of 585181698 (100.0%), 64.1 MBs/sec
+2026-11-23T04:04:17.5018375Z Cache Size: ~558 MB (585181698 B)
+2026-11-23T04:04:17.5108051Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/1c4bd9b9-f57c-4a96-8203-2c69db2c484e/cache.tzst -P -C D:/a/hakiru/hakiru --force-local --use-compress-program "zstd -d"
+2026-11-23T04:05:16.5329571Z Cache restored successfully
+2026-11-23T04:05:16.5682352Z Cache restored from key: cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1
+2026-11-23T04:05:16.6772797Z ##[group]Run actions/cache@v6.1.0
+2026-11-23T04:05:16.6773073Z with:
+2026-11-23T04:05:16.6773245Z   path: C:/sr/pantry
+2026-11-23T04:05:16.6773816Z   key: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-11-23T04:05:16.6774843Z   restore-keys: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+
+2026-11-23T04:05:16.6775673Z   enableCrossOsArchive: false
+2026-11-23T04:05:16.6775867Z   fail-on-cache-miss: false
+2026-11-23T04:05:16.6776045Z   lookup-only: false
+2026-11-23T04:05:16.6776204Z   save-always: false
+2026-11-23T04:05:16.6776365Z env:
+2026-11-23T04:05:16.6776515Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:16.6776713Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:16.6776923Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:16.6777176Z   GHCUP_ROOT: C:/ghcup
+2026-11-23T04:05:16.6777342Z   STACK_ROOT: C:/sr
+2026-11-23T04:05:16.6777495Z   CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:16.6777668Z ##[endgroup]
+2026-11-23T04:05:17.1074280Z Cache hit for: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-11-23T04:05:18.3656060Z Received 33411065 of 33411065 (100.0%), 33.0 MBs/sec
+2026-11-23T04:05:18.3657928Z Cache Size: ~32 MB (33411065 B)
+2026-11-23T04:05:18.3712738Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/21e5aab8-3071-47f1-a2ea-90ccbd0fdbf4/cache.tzst -P -C D:/a/hakiru/hakiru --force-local --use-compress-program "zstd -d"
+2026-11-23T04:05:18.6964325Z Cache restored successfully
+2026-11-23T04:05:18.7073230Z Cache restored from key: cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-11-23T04:05:18.8073482Z ##[group]Run actions/cache@v6.1.0
+2026-11-23T04:05:18.8073758Z with:
+2026-11-23T04:05:18.8073956Z   path: C:/sr/stack.sqlite3
+C:/sr/snapshots
+
+2026-11-23T04:05:18.8074602Z   key: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-11-23T04:05:18.8075643Z   restore-keys: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--
+cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--
+
+2026-11-23T04:05:18.8076294Z   enableCrossOsArchive: false
+2026-11-23T04:05:18.8076495Z   fail-on-cache-miss: false
+2026-11-23T04:05:18.8076686Z   lookup-only: false
+2026-11-23T04:05:18.8076851Z   save-always: false
+2026-11-23T04:05:18.8077002Z env:
+2026-11-23T04:05:18.8077160Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:18.8077360Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:18.8077586Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:18.8077847Z   GHCUP_ROOT: C:/ghcup
+2026-11-23T04:05:18.8078022Z   STACK_ROOT: C:/sr
+2026-11-23T04:05:18.8078204Z   CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:18.8078386Z ##[endgroup]
+2026-11-23T04:05:19.2161825Z Cache hit for: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-11-23T04:05:20.4932004Z Received 46137344 of 95616093 (48.3%), 43.7 MBs/sec
+2026-11-23T04:05:21.1786540Z Received 95616093 of 95616093 (100.0%), 53.8 MBs/sec
+2026-11-23T04:05:21.1789878Z Cache Size: ~91 MB (95616093 B)
+2026-11-23T04:05:21.1820822Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/fb8f94f2-d9d7-4c82-a285-2e0695f22d13/cache.tzst -P -C D:/a/hakiru/hakiru --force-local --use-compress-program "zstd -d"
+2026-11-23T04:05:27.0307059Z Cache restored successfully
+2026-11-23T04:05:27.0445446Z Cache restored from key: cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d
+2026-11-23T04:05:27.0751005Z ##[group]Run stack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests --only-dependencies
+2026-11-23T04:05:27.0752699Z [36;1mstack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests --only-dependencies[0m
+2026-11-23T04:05:27.1851009Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-23T04:05:27.1851551Z env:
+2026-11-23T04:05:27.1851722Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:27.1851945Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:27.1852168Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:27.1852464Z   GHCUP_ROOT: C:/ghcup
+2026-11-23T04:05:27.1852944Z   STACK_ROOT: C:/sr
+2026-11-23T04:05:27.1853195Z ##[endgroup]
+2026-11-23T04:05:34.6002984Z 
+2026-11-23T04:05:35.4812871Z Warning: Stack is not using a Stack-supplied MSYS2.
+2026-11-23T04:05:35.4813458Z [1 of 3] Compiling Main             ( C:\sr\setup-exe-src\setup-O_vy6YIf.hs, C:\sr\setup-exe-src\setup-O_vy6YIf.o )
+2026-11-23T04:05:35.5568930Z [2 of 3] Compiling StackSetupShim   ( C:\sr\setup-exe-src\setup-shim-O_vy6YIf.hs, C:\sr\setup-exe-src\setup-shim-O_vy6YIf.o )
+2026-11-23T04:05:35.6506544Z [3 of 3] Linking C:\\sr\\setup-exe-cache\\x86_64-windows\\tmp-Cabal-simple_O_vy6YIf_3.10.3.0_ghc-9.8.4.exe
+2026-11-23T04:05:37.0264407Z ##[group]Run stack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests
+2026-11-23T04:05:37.0265515Z [36;1mstack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test --no-run-tests[0m
+2026-11-23T04:05:37.0325887Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-23T04:05:37.0326175Z env:
+2026-11-23T04:05:37.0326342Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:37.0326559Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:37.0326780Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-23T04:05:37.0326999Z   GHCUP_ROOT: C:/ghcup
+2026-11-23T04:05:37.0327176Z   STACK_ROOT: C:/sr
+2026-11-23T04:05:37.0327348Z ##[endgroup]
+2026-11-23T04:05:37.5156063Z 
+2026-11-23T04:05:37.5156428Z Warning: Stack is not using a Stack-supplied MSYS2.
+2026-11-23T04:05:37.8494229Z All test running disabled by --no-run-tests flag. To mute this message in future, set
+2026-11-23T04:05:37.8494762Z notify-if-no-run-tests: false in Stack's configuration.
+2026-11-23T04:05:37.8554730Z hakyll> configure (lib + exe + test)
+2026-11-23T04:05:38.1385329Z Configuring hakyll-0.1.0.0...
+2026-11-23T04:05:43.1395151Z hakyll> build (lib + exe + test) with ghc-9.8.4
+2026-11-23T04:05:43.3139146Z Preprocessing library for hakyll-0.1.0.0..
+2026-11-23T04:05:43.3139581Z Building library for hakyll-0.1.0.0..
+2026-11-23T04:05:44.9940817Z [ 1 of 56] Compiling Data.List.Extended
+2026-11-23T04:05:45.0171688Z 
+2026-11-23T04:05:45.0182904Z D:\a\hakiru\hakiru\lib\Data\List\Extended.hs:6:18: warning: [GHC-82347] [-Wcompat-unqualified-imports]
+2026-11-23T04:05:45.0183862Z     To ensure compatibility with future core libraries changes
+2026-11-23T04:05:45.0184287Z     imports to Data.List should be
+2026-11-23T04:05:45.0184673Z     either qualified or have an explicit import list.
+2026-11-23T04:05:45.0185032Z   |
+2026-11-23T04:05:45.0185257Z 6 | import           Data.List
+2026-11-23T04:05:45.0185873Z   |                  ^^^^^^^^^
+2026-11-23T04:05:45.1135235Z [ 2 of 56] Compiling Data.Yaml.Extended
+2026-11-23T04:05:45.3514469Z [ 3 of 56] Compiling Hakyll.Core.Configuration
+2026-11-23T04:05:45.5769603Z [ 4 of 56] Compiling Hakyll.Core.Identifier
+2026-11-23T04:05:45.6785469Z [ 5 of 56] Compiling Hakyll.Core.Identifier.Pattern.Internal
+2026-11-23T04:05:45.8071480Z [ 6 of 56] Compiling Hakyll.Core.Logger
+2026-11-23T04:05:45.9816534Z [ 7 of 56] Compiling Hakyll.Core.Store
+2026-11-23T04:05:46.0965593Z [ 8 of 56] Compiling Hakyll.Core.Util.File
+2026-11-23T04:05:46.1484050Z [ 9 of 56] Compiling Hakyll.Core.Provider.Internal
+2026-11-23T04:05:46.2508298Z [10 of 56] Compiling Hakyll.Core.Util.Parser
+2026-11-23T04:05:46.3002132Z [11 of 56] Compiling Hakyll.Core.Util.String
+2026-11-23T04:05:46.3623820Z [12 of 56] Compiling Hakyll.Core.Identifier.Pattern
+2026-11-23T04:05:46.4294357Z [13 of 56] Compiling Hakyll.Core.Dependencies
+2026-11-23T04:05:46.5641643Z [14 of 56] Compiling Hakyll.Core.Metadata
+2026-11-23T04:05:46.6387680Z [15 of 56] Compiling Hakyll.Core.Provider.Metadata
+2026-11-23T04:05:46.7176440Z [16 of 56] Compiling Hakyll.Core.Provider.MetadataCache
+2026-11-23T04:05:46.7716300Z [17 of 56] Compiling Hakyll.Core.Provider
+2026-11-23T04:05:46.8117213Z [18 of 56] Compiling Hakyll.Core.Routes
+2026-11-23T04:05:46.8652480Z [19 of 56] Compiling Hakyll.Core.Compiler.Internal
+2026-11-23T04:05:47.0523800Z [20 of 56] Compiling Hakyll.Core.Item
+2026-11-23T04:05:47.1302358Z [21 of 56] Compiling Hakyll.Core.Compiler.Require
+2026-11-23T04:05:47.1939399Z [22 of 56] Compiling Hakyll.Core.Compiler
+2026-11-23T04:05:47.2703684Z [23 of 56] Compiling Hakyll.Core.UnixFilter
+2026-11-23T04:05:47.3386879Z [24 of 56] Compiling Hakyll.Core.Writable
+2026-11-23T04:05:47.3811908Z [25 of 56] Compiling Hakyll.Core.Item.SomeItem
+2026-11-23T04:05:47.4211555Z [26 of 56] Compiling Hakyll.Core.Rules.Internal
+2026-11-23T04:05:47.4957747Z [27 of 56] Compiling Hakyll.Core.Runtime
+2026-11-23T04:05:47.7344620Z [28 of 56] Compiling Hakyll.Core.Rules
+2026-11-23T04:05:47.8332994Z [29 of 56] Compiling Hakyll.Core.File
+2026-11-23T04:05:47.9147507Z [30 of 56] Compiling Hakyll.Preview.Poll
+2026-11-23T04:05:47.9947451Z [31 of 56] Compiling Hakyll.Preview.Server
+2026-11-23T04:05:48.0553706Z [32 of 56] Compiling Hakyll.Web.CompressCss
+2026-11-23T04:05:48.1209142Z [33 of 56] Compiling Hakyll.Web.Html
+2026-11-23T04:05:48.2545502Z [34 of 56] Compiling Hakyll.Web.Html.RelativizeUrls
+2026-11-23T04:05:48.2961511Z [35 of 56] Compiling Hakyll.Web.Pandoc.Binary
+2026-11-23T04:05:48.3533680Z 
+2026-11-23T04:05:48.3543795Z D:\a\hakiru\hakiru\lib\Hakyll\Web\Pandoc\Binary.hs:1:1: warning: [GHC-85401] [-Wmissing-export-lists]
+2026-11-23T04:05:48.3544634Z     The export item `module Hakyll.Web.Pandoc.Binary' is missing an export list
+2026-11-23T04:05:48.3545127Z   |
+2026-11-23T04:05:48.3545418Z 1 | {-# OPTIONS_GHC -fno-warn-orphans #-}
+2026-11-23T04:05:48.3545747Z   | ^
+2026-11-23T04:05:48.6405628Z [36 of 56] Compiling Hakyll.Web.Pandoc.FileType
+2026-11-23T04:05:48.7286593Z [37 of 56] Compiling Hakyll.Web.Pandoc
+2026-11-23T04:05:48.9690536Z [38 of 56] Compiling Hakyll.Web.Pandoc.Biblio
+2026-11-23T04:05:49.0748116Z [39 of 56] Compiling Hakyll.Web.Redirect
+2026-11-23T04:05:49.1404943Z [40 of 56] Compiling Hakyll.Web.Template.Context
+2026-11-23T04:05:49.2671055Z [41 of 56] Compiling Hakyll.Web.Tags
+2026-11-23T04:05:49.3731383Z [42 of 56] Compiling Hakyll.Web.Paginate
+2026-11-23T04:05:49.4498072Z [43 of 56] Compiling Hakyll.Web.Template.Internal.Element
+2026-11-23T04:05:49.6035645Z [44 of 56] Compiling Hakyll.Web.Template.Internal.Trim
+2026-11-23T04:05:49.6556889Z [45 of 56] Compiling Hakyll.Web.Template.Internal
+2026-11-23T04:05:49.8036070Z [46 of 56] Compiling Hakyll.Web.Template
+2026-11-23T04:05:49.8553148Z [47 of 56] Compiling Hakyll.Web.Meta.TwitterCard
+2026-11-23T04:05:49.8897265Z [48 of 56] Compiling Hakyll.Web.Meta.OpenGraph
+2026-11-23T04:05:49.9346093Z [49 of 56] Compiling Hakyll.Web.Meta.JSONLD
+2026-11-23T04:05:49.9974396Z [50 of 56] Compiling Hakyll.Web.Template.List
+2026-11-23T04:05:50.0481921Z [51 of 56] Compiling Hakyll.Web.Feed
+2026-11-23T04:05:56.2417854Z [52 of 56] Compiling Paths_hakyll
+2026-11-23T04:05:56.2882802Z [53 of 56] Compiling Hakyll.Check
+2026-11-23T04:05:56.4460192Z [54 of 56] Compiling Hakyll.Commands
+2026-11-23T04:05:56.4994853Z [55 of 56] Compiling Hakyll.Main
+2026-11-23T04:05:56.5172550Z 
+2026-11-23T04:05:56.5180178Z D:\a\hakiru\hakiru\lib\Hakyll\Main.hs:129:16: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-23T04:05:56.5180824Z     Use of partial record field selector: `internal_links'
+2026-11-23T04:05:56.5181124Z     |
+2026-11-23T04:05:56.5184681Z 129 |     | Check   {internal_links :: Bool}
+2026-11-23T04:05:56.5185062Z     |                ^^^^^^^^^^^^^^
+2026-11-23T04:05:56.5185261Z 
+2026-11-23T04:05:56.5185554Z D:\a\hakiru\hakiru\lib\Hakyll\Main.hs:135:16: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-23T04:05:56.5186124Z     Use of partial record field selector: `port'
+2026-11-23T04:05:56.5186464Z     |
+2026-11-23T04:05:56.5186718Z 135 |     | Preview {port :: Int}
+2026-11-23T04:05:56.5187005Z     |                ^^^^
+2026-11-23T04:05:56.5187488Z 
+2026-11-23T04:05:56.5187765Z D:\a\hakiru\hakiru\lib\Hakyll\Main.hs:139:16: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-23T04:05:56.5188145Z     Use of partial record field selector: `host'
+2026-11-23T04:05:56.5188366Z     |
+2026-11-23T04:05:56.5188539Z 139 |     | Server  {host :: String, port :: Int}
+2026-11-23T04:05:56.5188756Z     |                ^^^^
+2026-11-23T04:05:56.5188864Z 
+2026-11-23T04:05:56.5189342Z D:\a\hakiru\hakiru\lib\Hakyll\Main.hs:141:45: warning: [GHC-82712] [-Wpartial-fields]
+2026-11-23T04:05:56.5189900Z     Use of partial record field selector: `no_server'
+2026-11-23T04:05:56.5190247Z     |
+2026-11-23T04:05:56.5190514Z 141 |     | Watch   {host :: String, port :: Int, no_server :: Bool }
+2026-11-23T04:05:56.5190808Z     |                                             ^^^^^^^^^
+2026-11-23T04:05:56.6114771Z [56 of 56] Compiling Hakyll
+2026-11-23T04:05:57.0432265Z Preprocessing executable 'hakyll-website' for hakyll-0.1.0.0..
+2026-11-23T04:05:57.0432680Z Building executable 'hakyll-website' for hakyll-0.1.0.0..
+2026-11-23T04:05:57.1415554Z [1 of 1] Compiling Main
+2026-11-23T04:05:57.3289963Z 
+2026-11-23T04:05:57.3297530Z D:\a\hakiru\hakiru\web\site.hs:7:1: warning: [GHC-66111] [-Wunused-imports]
+2026-11-23T04:05:57.3298081Z     The import of `System.Directory' is redundant
+2026-11-23T04:05:57.3298529Z       except perhaps to import instances from `System.Directory'
+2026-11-23T04:05:57.3299016Z     To import instances alone, use: import System.Directory()
+2026-11-23T04:05:57.3299412Z   |
+2026-11-23T04:05:57.3299681Z 7 | import           System.Directory (copyFile)
+2026-11-23T04:05:57.3300069Z   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-23T04:05:57.5873975Z [2 of 2] Linking D:\\a\\hakiru\\hakiru\\.stack-work\\dist\\f24b2e15\\build\\hakyll-website\\hakyll-website.exe
+2026-11-23T04:06:00.0245672Z Preprocessing test suite 'hakyll-test' for hakyll-0.1.0.0..
+2026-11-23T04:06:00.0246257Z Building test suite 'hakyll-test' for hakyll-0.1.0.0..
+2026-11-23T04:06:00.3719971Z [ 1 of 21] Compiling TestSuite.Util
+2026-11-23T04:06:00.7211920Z [ 2 of 21] Compiling Hakyll.Web.Template.Tests
+2026-11-23T04:06:06.6985005Z [ 3 of 21] Compiling Hakyll.Web.Template.Context.Tests
+2026-11-23T04:06:06.7491167Z [ 4 of 21] Compiling Hakyll.Web.Tags.Tests
+2026-11-23T04:06:06.7942511Z [ 5 of 21] Compiling Hakyll.Web.Pandoc.FileType.Tests
+2026-11-23T04:06:06.8371598Z [ 6 of 21] Compiling Hakyll.Web.Pandoc.Biblio.Tests
+2026-11-23T04:06:07.2601688Z [ 7 of 21] Compiling Hakyll.Web.Html.Tests
+2026-11-23T04:06:07.3760117Z [ 8 of 21] Compiling Hakyll.Web.Html.RelativizeUrls.Tests
+2026-11-23T04:06:07.4238938Z [ 9 of 21] Compiling Hakyll.Web.Feed.Tests
+2026-11-23T04:06:07.4718688Z [10 of 21] Compiling Hakyll.Web.CompressCss.Tests
+2026-11-23T04:06:07.5562639Z [11 of 21] Compiling Hakyll.Core.Util.String.Tests
+2026-11-23T04:06:07.6416228Z [12 of 21] Compiling Hakyll.Core.UnixFilter.Tests
+2026-11-23T04:06:07.6856372Z [13 of 21] Compiling Hakyll.Core.Store.Tests
+2026-11-23T04:06:07.7655832Z [14 of 21] Compiling Hakyll.Core.Runtime.Tests
+2026-11-23T04:06:07.9236085Z [15 of 21] Compiling Hakyll.Core.Rules.Tests
+2026-11-23T04:06:08.0040227Z [16 of 21] Compiling Hakyll.Core.Routes.Tests
+2026-11-23T04:06:08.0551348Z [17 of 21] Compiling Hakyll.Core.Provider.Tests
+2026-11-23T04:06:08.1038697Z [18 of 21] Compiling Hakyll.Core.Provider.Metadata.Tests
+2026-11-23T04:06:08.3570398Z [19 of 21] Compiling Hakyll.Core.Identifier.Tests
+2026-11-23T04:06:08.4497831Z [20 of 21] Compiling Hakyll.Core.Dependencies.Tests
+2026-11-23T04:06:08.5058858Z [21 of 21] Compiling Main
+2026-11-23T04:06:10.0107844Z [22 of 22] Linking D:\\a\\hakiru\\hakiru\\.stack-work\\dist\\f24b2e15\\build\\hakyll-test\\hakyll-test.exe
+2026-11-23T04:06:12.4610139Z Preprocessing executable 'hakyll-init' for hakyll-0.1.0.0..
+2026-11-23T04:06:12.4610566Z Building executable 'hakyll-init' for hakyll-0.1.0.0..
+2026-11-23T04:06:12.6473202Z [1 of 2] Compiling Paths_hakyll
+2026-11-23T04:06:12.7418589Z [2 of 2] Compiling Main
+2026-11-23T04:06:13.1361571Z [3 of 3] Linking D:\\a\\hakiru\\hakiru\\.stack-work\\dist\\f24b2e15\\build\\hakyll-init\\hakyll-init.exe
+2026-11-23T04:06:16.7302997Z hakyll> copy/register
+2026-11-23T04:06:16.9134589Z Installing library in D:\a\hakiru\hakiru\.stack-work\install\6e87360e\lib\x86_64-windows-ghc-9.8.4\hakyll-0.1.0.0-7EdnkGkt3WWGAgUAFemg68
+2026-11-23T04:06:16.9135250Z Installing executable hakyll-website in D:\a\hakiru\hakiru\.stack-work\install\6e87360e\bin
+2026-11-23T04:06:17.6657121Z Installing executable hakyll-init in D:\a\hakiru\hakiru\.stack-work\install\6e87360e\bin
+2026-11-23T04:06:17.9399596Z Registering library for hakyll-0.1.0.0..
+2026-11-23T04:06:18.2059749Z ##[group]Run stack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test
+2026-11-23T04:06:18.2060397Z [36;1mstack --system-ghc --no-install-ghc --stack-yaml stack-lts-23.28.yaml build --fast --test[0m
+2026-11-23T04:06:18.2119993Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-23T04:06:18.2120301Z env:
+2026-11-23T04:06:18.2120468Z   GHCUP_CACHE_VERSION: v-1-1-1
+2026-11-23T04:06:18.2120687Z   STACK_PANTRY_CACHE_VERSION: v-1-1-1
+2026-11-23T04:06:18.2120904Z   STACK_SNAPSHOT_CACHE_VERSION: v-1-1-1
+2026-11-23T04:06:18.2121128Z   GHCUP_ROOT: C:/ghcup
+2026-11-23T04:06:18.2121305Z   STACK_ROOT: C:/sr
+2026-11-23T04:06:18.2121477Z ##[endgroup]
+2026-11-23T04:06:18.7086439Z 
+2026-11-23T04:06:18.7086883Z Warning: Stack is not using a Stack-supplied MSYS2.
+2026-11-23T04:06:20.6646844Z hakyll> test (suite: hakyll-test)
+2026-11-23T04:06:20.6647058Z 
+2026-11-23T04:06:20.6929085Z Hakyll
+2026-11-23T04:06:20.6931663Z   Hakyll.Core.Dependencies.Tests
+2026-11-23T04:06:20.6934718Z     01_analyze:                OK
+2026-11-23T04:06:20.6936991Z     02_analyze:                OK
+2026-11-23T04:06:20.6937709Z     03_analyze:                OK
+2026-11-23T04:06:20.6938016Z     04_analyze:                OK
+2026-11-23T04:06:20.6938282Z     05_analyze:                OK
+2026-11-23T04:06:20.6938643Z   Hakyll.Core.Identifier.Tests
+2026-11-23T04:06:20.6938906Z     01_capture:                OK
+2026-11-23T04:06:20.6939182Z     02_capture:                OK
+2026-11-23T04:06:20.6939444Z     03_capture:                OK
+2026-11-23T04:06:20.6939725Z     04_capture:                OK
+2026-11-23T04:06:20.6939998Z     05_capture:                OK
+2026-11-23T04:06:20.6940271Z     06_capture:                OK
+2026-11-23T04:06:20.6940522Z     07_capture:                OK
+2026-11-23T04:06:20.6940794Z     08_capture:                OK
+2026-11-23T04:06:20.6941061Z     09_capture:                OK
+2026-11-23T04:06:20.6941350Z     10_capture:                OK
+2026-11-23T04:06:20.6941613Z     11_capture:                OK
+2026-11-23T04:06:20.6942427Z     12_capture:                OK
+2026-11-23T04:06:20.6943116Z     13_capture:                OK
+2026-11-23T04:06:20.6943724Z     14_capture:                OK
+2026-11-23T04:06:20.6944041Z     15_capture:                OK
+2026-11-23T04:06:20.6944330Z     01_matches:                OK
+2026-11-23T04:06:20.6944601Z     02_matches:                OK
+2026-11-23T04:06:20.6944887Z     03_matches:                OK
+2026-11-23T04:06:20.6945169Z     04_matches:                OK
+2026-11-23T04:06:20.6945416Z     05_matches:                OK
+2026-11-23T04:06:20.6945605Z     06_matches:                OK
+2026-11-23T04:06:20.6945787Z     07_matches:                OK
+2026-11-23T04:06:20.6945968Z     08_matches:                OK
+2026-11-23T04:06:20.6946140Z     09_matches:                OK
+2026-11-23T04:06:20.7001161Z     toFilePath . fromFilePath: OK
+2026-11-23T04:06:20.7001910Z       +++ OK, passed 100 tests.
+2026-11-23T04:06:20.7002229Z   Hakyll.Core.Provider.Metadata.Tests
+2026-11-23T04:06:20.7011318Z     01_page:                   OK
+2026-11-23T04:06:20.7011763Z     02_page:                   OK
+2026-11-23T04:06:20.7012204Z   Hakyll.Core.Provider.Tests
+2026-11-23T04:06:20.7349705Z     case01:                    OK (0.03s)
+2026-11-23T04:06:20.7350417Z   Hakyll.Core.Routes.Tests
+2026-11-23T04:06:20.7407295Z     01_runRoutes:              OK
+2026-11-23T04:06:20.7463234Z     02_runRoutes:              OK
+2026-11-23T04:06:20.7517937Z     03_runRoutes:              OK
+2026-11-23T04:06:20.7574750Z     04_runRoutes:              OK
+2026-11-23T04:06:20.7630033Z     05_runRoutes:              OK
+2026-11-23T04:06:20.7726020Z     06_runRoutes:              OK
+2026-11-23T04:06:20.7791304Z     07_runRoutes:              OK
+2026-11-23T04:06:20.7849450Z     08_runRoutes:              OK
+2026-11-23T04:06:20.7918747Z     09_runRoutes:              OK
+2026-11-23T04:06:20.7920977Z   Hakyll.Core.Rules.Tests
+2026-11-23T04:06:20.8002025Z     01_runRules:               OK
+2026-11-23T04:06:20.8002378Z   Hakyll.Core.Runtime.Tests
+2026-11-23T04:06:20.9184811Z     01_run:                    OK (0.12s)
+2026-11-23T04:06:20.9261967Z     02_run:                    OK
+2026-11-23T04:06:20.9363710Z     03_run:                    OK (0.01s)
+2026-11-23T04:06:20.9427835Z     04_run:                    OK
+2026-11-23T04:06:20.9571797Z     05_run:                    OK (0.01s)
+2026-11-23T04:06:20.9701010Z     06_run:                    OK (0.01s)
+2026-11-23T04:06:20.9820306Z     07_run:                    OK (0.01s)
+2026-11-23T04:06:20.9893506Z     08_run:                    OK
+2026-11-23T04:06:20.9893866Z   Hakyll.Core.Store.Tests
+2026-11-23T04:06:21.0799109Z     simple get . set:          OK (0.09s)
+2026-11-23T04:06:21.0799412Z       +++ OK, passed 100 tests.
+2026-11-23T04:06:21.1921492Z     persistent get . set:      OK (0.11s)
+2026-11-23T04:06:21.1921785Z       +++ OK, passed 100 tests.
+2026-11-23T04:06:21.1928977Z     WrongType get . set:       OK
+2026-11-23T04:06:21.1937388Z     isMembertest . set:        OK
+2026-11-23T04:06:21.1937744Z   Hakyll.Core.UnixFilter.Tests
+2026-11-23T04:06:21.2350547Z     unixFilter false:          OK (0.04s)
+2026-11-23T04:06:21.2848471Z     unixFilter error:          OK (0.05s)
+2026-11-23T04:06:21.2849197Z   Hakyll.Core.Util.String.Tests
+2026-11-23T04:06:21.2849703Z     01_trim:                   OK
+2026-11-23T04:06:21.2850166Z     01_replaceAll:             OK
+2026-11-23T04:06:21.2850607Z     02_replaceAll:             OK
+2026-11-23T04:06:21.2853123Z     03_replaceAll:             OK
+2026-11-23T04:06:21.2853768Z     04_replaceAll:             OK
+2026-11-23T04:06:21.2854055Z     05_replaceAll:             OK
+2026-11-23T04:06:21.2859069Z     06_replaceAll:             OK
+2026-11-23T04:06:21.2860906Z     07_replaceAll:             OK
+2026-11-23T04:06:21.2862036Z     01_splitAll:               OK
+2026-11-23T04:06:21.2863351Z     02_splitAll:               OK
+2026-11-23T04:06:21.2863746Z     03_splitAll:               OK
+2026-11-23T04:06:21.2864263Z     04_splitAll:               OK
+2026-11-23T04:06:21.2864557Z     05_splitAll:               OK
+2026-11-23T04:06:21.2864854Z     06_splitAll:               OK
+2026-11-23T04:06:21.2865142Z     07_splitAll:               OK
+2026-11-23T04:06:21.2865460Z     01_needlePrefix:           OK
+2026-11-23T04:06:21.2865763Z     02_needlePrefix:           OK
+2026-11-23T04:06:21.2866100Z     03_needlePrefix:           OK
+2026-11-23T04:06:21.2866791Z     04_needlePrefix:           OK
+2026-11-23T04:06:21.2867274Z     05_needlePrefix:           OK
+2026-11-23T04:06:21.2867693Z     06_needlePrefix:           OK
+2026-11-23T04:06:21.2868369Z     07_needlePrefix:           OK
+2026-11-23T04:06:21.2868987Z   Hakyll.Web.CompressCss.Tests
+2026-11-23T04:06:21.2869466Z     01_compressCss:            OK
+2026-11-23T04:06:21.2871472Z     02_compressCss:            OK
+2026-11-23T04:06:21.2871913Z     03_compressCss:            OK
+2026-11-23T04:06:21.2872311Z     04_compressCss:            OK
+2026-11-23T04:06:21.2884172Z     05_compressCss:            OK
+2026-11-23T04:06:21.2884460Z     06_compressCss:            OK
+2026-11-23T04:06:21.2884735Z     07_compressCss:            OK
+2026-11-23T04:06:21.2884988Z     08_compressCss:            OK
+2026-11-23T04:06:21.2886265Z     09_compressCss:            OK
+2026-11-23T04:06:21.2886538Z     10_compressCss:            OK
+2026-11-23T04:06:21.2886816Z     11_compressCss:            OK
+2026-11-23T04:06:21.2887088Z     12_compressCss:            OK
+2026-11-23T04:06:21.2887350Z     13_compressCss:            OK
+2026-11-23T04:06:21.2887598Z     14_compressCss:            OK
+2026-11-23T04:06:21.2887872Z     15_compressCss:            OK
+2026-11-23T04:06:21.2888139Z     16_compressCss:            OK
+2026-11-23T04:06:21.2888410Z     17_compressCss:            OK
+2026-11-23T04:06:21.2888678Z     18_compressCss:            OK
+2026-11-23T04:06:21.2888953Z     19_compressCss:            OK
+2026-11-23T04:06:21.2889981Z     20_compressCss:            OK
+2026-11-23T04:06:21.2890277Z     21_compressCss:            OK
+2026-11-23T04:06:21.2890552Z     22_compressCss:            OK
+2026-11-23T04:06:21.2890841Z     23_compressCss:            OK
+2026-11-23T04:06:21.2891580Z     24_compressCss:            OK
+2026-11-23T04:06:21.2892114Z     25_compressCss:            OK
+2026-11-23T04:06:21.2892294Z     26_compressCss:            OK
+2026-11-23T04:06:21.2892476Z     27_compressCss:            OK
+2026-11-23T04:06:21.2892660Z     28_compressCss:            OK
+2026-11-23T04:06:21.2892847Z     29_compressCss:            OK
+2026-11-23T04:06:21.2893048Z   Hakyll.Web.Html.RelativizeUrls.Tests
+2026-11-23T04:06:21.2893267Z     01_relativizeUrls:         OK
+2026-11-23T04:06:21.2893451Z     02_relativizeUrls:         OK
+2026-11-23T04:06:21.2893636Z     03_relativizeUrls:         OK
+2026-11-23T04:06:21.2893811Z     04_relativizeUrls:         OK
+2026-11-23T04:06:21.2894012Z     05_relativizeUrls:         OK
+2026-11-23T04:06:21.2894213Z     06_relativizeUrls:         OK
+2026-11-23T04:06:21.2894392Z     07_relativizeUrls:         OK
+2026-11-23T04:06:21.2894581Z   Hakyll.Web.Html.Tests
+2026-11-23T04:06:21.2894759Z     01_demoteHeaders:          OK
+2026-11-23T04:06:21.2894942Z     02_demoteHeaders:          OK
+2026-11-23T04:06:21.2895124Z     01_demoteHeadersBy:        OK
+2026-11-23T04:06:21.2895312Z     02_demoteHeadersBy:        OK
+2026-11-23T04:06:21.2895493Z     03_demoteHeadersBy:        OK
+2026-11-23T04:06:21.2895678Z     01_getUrls:                OK
+2026-11-23T04:06:21.2895853Z     02_getUrls:                OK
+2026-11-23T04:06:21.2896033Z     03_getUrls:                OK
+2026-11-23T04:06:21.2896202Z     01_withUrls:               OK
+2026-11-23T04:06:21.2896381Z     02_withUrls:               OK
+2026-11-23T04:06:21.2896551Z     03_withUrls:               OK
+2026-11-23T04:06:21.2896728Z     04_withUrls:               OK
+2026-11-23T04:06:21.2896899Z     05_withUrls:               OK
+2026-11-23T04:06:21.2897858Z     06_withUrls:               OK
+2026-11-23T04:06:21.2898224Z     07_withUrls:               OK
+2026-11-23T04:06:21.2898508Z     08_withUrls:               OK
+2026-11-23T04:06:21.2898790Z     09_withUrls:               OK
+2026-11-23T04:06:21.2899080Z     01_toUrl:                  OK
+2026-11-23T04:06:21.2899338Z     02_toUrl:                  OK
+2026-11-23T04:06:21.2899609Z     03_toUrl:                  OK
+2026-11-23T04:06:21.2899801Z     04_toUrl:                  OK
+2026-11-23T04:06:21.2900110Z     05_toUrl:                  OK
+2026-11-23T04:06:21.2900379Z     06_toUrl:                  OK
+2026-11-23T04:06:21.2900665Z     07_toUrl:                  OK
+2026-11-23T04:06:21.2900965Z     08_toUrl:                  OK
+2026-11-23T04:06:21.2901246Z     01_toSiteRoot:             OK
+2026-11-23T04:06:21.2901869Z     02_toSiteRoot:             OK
+2026-11-23T04:06:21.2902249Z     03_toSiteRoot:             OK
+2026-11-23T04:06:21.2902582Z     04_toSiteRoot:             OK
+2026-11-23T04:06:21.2902857Z     05_toSiteRoot:             OK
+2026-11-23T04:06:21.2903140Z     06_toSiteRoot:             OK
+2026-11-23T04:06:21.2903419Z     01_isExternal:             OK
+2026-11-23T04:06:21.2903717Z     02_isExternal:             OK
+2026-11-23T04:06:21.2904299Z     03_isExternal:             OK
+2026-11-23T04:06:21.2904823Z     04_isExternal:             OK
+2026-11-23T04:06:21.2905103Z     05_isExternal:             OK
+2026-11-23T04:06:21.2905375Z     01_stripTags:              OK
+2026-11-23T04:06:21.2905656Z     02_stripTags:              OK
+2026-11-23T04:06:21.2906341Z     03_stripTags:              OK
+2026-11-23T04:06:21.2906545Z     01_escapeHtml:             OK
+2026-11-23T04:06:21.2906736Z     02_escapeHtml:             OK
+2026-11-23T04:06:21.2907054Z   Hakyll.Web.Pandoc.Biblio.Tests
+2026-11-23T04:06:21.3078822Z     biblio01:                  OK (0.02s)
+2026-11-23T04:06:21.3242830Z     biblio02:                  OK (0.02s)
+2026-11-23T04:06:21.3719874Z     biblio03:                  OK (0.05s)
+2026-11-23T04:06:21.3720371Z   Hakyll.Web.Pandoc.FileType.Tests
+2026-11-23T04:06:21.3720711Z     01_fileType:               OK
+2026-11-23T04:06:21.3721018Z     02_fileType:               OK
+2026-11-23T04:06:21.3721297Z     03_fileType:               OK
+2026-11-23T04:06:21.3721588Z     04_fileType:               OK
+2026-11-23T04:06:21.3721895Z     05_fileType:               OK
+2026-11-23T04:06:21.3722181Z   Hakyll.Web.Tags
+2026-11-23T04:06:21.3783430Z     testGetCategory:           OK
+2026-11-23T04:06:21.3783893Z   Hakyll.Web.Template.Context.Tests
+2026-11-23T04:06:21.3899948Z     testDateField:             OK (0.01s)
+2026-11-23T04:06:21.3900377Z   Hakyll.Web.Template.Tests
+2026-11-23T04:06:21.3991515Z     case01:                    OK
+2026-11-23T04:06:21.4082846Z     case02:                    OK
+2026-11-23T04:06:21.4175966Z     case03:                    OK
+2026-11-23T04:06:21.4231138Z     applyJoinTemplateList:     OK
+2026-11-23T04:06:21.4231747Z     01_parseTemplate:          OK
+2026-11-23T04:06:21.4232454Z     02_parseTemplate:          OK
+2026-11-23T04:06:21.4233875Z     03_parseTemplate:          OK
+2026-11-23T04:06:21.4234384Z     04_parseTemplate:          OK
+2026-11-23T04:06:21.4234678Z     05_parseTemplate:          OK
+2026-11-23T04:06:21.4234969Z     06_parseTemplate:          OK
+2026-11-23T04:06:21.4235289Z     07_parseTemplate:          OK
+2026-11-23T04:06:21.4235571Z     08_parseTemplate:          OK
+2026-11-23T04:06:21.4295546Z     embeddedTemplate:          OK
+2026-11-23T04:06:21.4295903Z   Hakyll.Web.Feed.Tests
+2026-11-23T04:06:21.4381530Z     validateSucceeds:          OK
+2026-11-23T04:06:21.4456750Z     validateFails:             OK
+2026-11-23T04:06:21.4456995Z 
+2026-11-23T04:06:21.4457911Z All 181 tests passed (0.76s)
+2026-11-23T04:06:21.4555020Z 
+2026-11-23T04:06:21.4555028Z 
+2026-11-23T04:06:21.4555032Z 
+2026-11-23T04:06:21.4555302Z hakyll> Test suite hakyll-test passed
+2026-11-23T04:06:21.6612365Z Post job cleanup.
+2026-11-23T04:06:21.7840915Z Cache hit occurred on the primary key cache--stack-snapshot--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d, not saving cache.
+2026-11-23T04:06:21.8891103Z Post job cleanup.
+2026-11-23T04:06:22.0179825Z Cache hit occurred on the primary key cache--stack-pantry--v-1-1-1--Windows--windows-latest--ghc-9.8.4--resolver-lts-23.28--23282848cb04724ea2676713698f10150b1cea03692fdcce7d1a718a8f9b7a1d, not saving cache.
+2026-11-23T04:06:22.0392147Z Post job cleanup.
+2026-11-23T04:06:22.1612366Z Cache hit occurred on the primary key cache--ghcup--v-1-1-1--Windows--windows-latest--ghc-9.8.4--cabal-3.16.1.0--stack-3.11.1, not saving cache.
+2026-11-23T04:06:22.1852802Z Post job cleanup.
+2026-11-23T04:06:22.3175207Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-23T04:06:22.3453026Z git version 2.56.1.windows.1
+2026-11-23T04:06:22.3513137Z Temporarily overriding HOME='D:\a\_temp\8c77afb8-9a76-4e9e-b1ac-beceff076c38' before making global git config changes
+2026-11-23T04:06:22.3514179Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-23T04:06:22.3522413Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\hakiru\hakiru
+2026-11-23T04:06:22.3840031Z Removing SSH command configuration
+2026-11-23T04:06:22.3848460Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-23T04:06:22.4151246Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-23T04:06:22.8771109Z Removing HTTP extra header
+2026-11-23T04:06:22.8779600Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-23T04:06:22.9079808Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-23T04:06:23.3834247Z Removing includeIf entries pointing to credentials config files
+2026-11-23T04:06:23.3843830Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-23T04:06:23.4107833Z includeif.gitdir:D:/a/hakiru/hakiru/.git.path
+2026-11-23T04:06:23.4108349Z includeif.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path
+2026-11-23T04:06:23.4109196Z includeif.gitdir:/github/workspace/.git.path
+2026-11-23T04:06:23.4109707Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-23T04:06:23.4141754Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/hakiru/hakiru/.git.path
+2026-11-23T04:06:23.4402696Z D:\a\_temp\git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:06:23.4443196Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/hakiru/hakiru/.git.path D\:\\a\\_temp\\git\-credentials\-27018004\-3d59\-493a\-8685\-7d48ec887b55\.config
+2026-11-23T04:06:23.4738963Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path
+2026-11-23T04:06:23.4997365Z D:\a\_temp\git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:06:23.5030866Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/hakiru/hakiru/.git/worktrees/*.path D\:\\a\\_temp\\git\-credentials\-27018004\-3d59\-493a\-8685\-7d48ec887b55\.config
+2026-11-23T04:06:23.5323617Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-23T04:06:23.5586156Z /github/runner_temp/git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:06:23.5620752Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-27018004\-3d59\-493a\-8685\-7d48ec887b55\.config
+2026-11-23T04:06:23.5914936Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-23T04:06:23.6169110Z /github/runner_temp/git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config
+2026-11-23T04:06:23.6202438Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-27018004\-3d59\-493a\-8685\-7d48ec887b55\.config
+2026-11-23T04:06:23.6525234Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-23T04:06:24.0962141Z Removing credentials config 'D:\a\_temp\git-credentials-27018004-3d59-493a-8685-7d48ec887b55.config'
+2026-11-23T04:06:24.1128220Z Cleaning up orphan processes
