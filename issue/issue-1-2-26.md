@@ -387,3 +387,25 @@ pickAndChaseAsync = do
 もうお手上げって感じだし、 GitHub Copilot に任せてしまうか？
 
 それか、テストコードの条件を緩めるとか。
+
+## comment 2026-11-23 6
+
+`9696a859da5d5227edb79f08a85739a6f2d4d92a` のコミットメッセージ。
+
+```txt
+commit 9696a859da5d5227edb79f08a85739a6f2d4d92a
+Author: Jasper Van der Jeugt <m@jaspervdj.be>
+Date:   Wed Aug 23 19:24:20 2023 +0200
+
+    Improve async runtime scaling (#946)
+```
+
+`#946` は "[Improve async runtime scaling](https://github.com/jaspervdj/hakyll/pull/946)" のことね。
+
+`github copilot バグ修正` で検索した時の Google AI によると、 GitHub Copilot にバグを直させるためには、まず `@workspace /explain` を使って原因を探させて `/fix` で直させるって感じらしい。 `@workspace` は、ワークスペースにあるすべてのファイルを読み込ませるコマンドである。
+
+えっと、この使い方はなんかよくわからないけどできないみたい。 `issue/issue-1-2-26.md` ファイルと `lib/Hakyll/Core/Runtime.hs` ファイルと `tests/Hakyll/Core/Runtime/Tests.hs` ファイルを読み込ませて、原因を分析させることにする。
+
+```txt
+Hakyll.Core.Runtime.Tests が失敗する理由を解明しなさい。
+```
