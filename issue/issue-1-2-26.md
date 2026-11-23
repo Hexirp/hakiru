@@ -546,3 +546,173 @@ GitHub Copilot の性能は期待以上であった。その一方で経緯と�
 `pickAndChaseAsync` 関数は、すべてのスレッドを待っていなくて、最初に戻ってきた値を使うというけど、デッドロックになったスレッドに影響されずに終わらせることができるというメリットがあるのでは？
 
 とりあえず一番目の質問について GitHub Copilot に尋ねるか。
+
+## comment 2026-11-23 9
+
+下記のようになった。
+
+```txt
+User: Hakyll.Core.Runtime.Tests が失敗する理由を解明しなさい。
+
+Copilot: 失敗の再現条件と、テスト・実装・関連 issue 記述の食い違いを照合します。まず対象ファイルと作業ツリーの状態を確認します。
+
+Read 
+Completed with input: {
+  "path": "$PROJECT_ROOT\\issue\\issue-1-2-26.md"
+}
+
+Read 
+Completed with input: {
+  "path": "$PROJECT_ROOT\\lib\\Hakyll\\Core\\Runtime.hs"
+}
+
+Read 
+Completed with input: {
+  "path": "$PROJECT_ROOT\\tests\\Hakyll\\Core\\Runtime\\Tests.hs"
+}
+
+Ran terminal command: git status --short; Get-ChildItem -Name
+
+Read , lines 1 to 140
+Completed with input: {
+  "path": "$PROJECT_ROOT\\issue\\issue-1-2-26.md",
+  "view_range": [
+    1,
+    140
+  ]
+}
+
+Read , lines 141 to 280
+Completed with input: {
+  "path": "$PROJECT_ROOT\\issue\\issue-1-2-26.md",
+  "view_range": [
+    141,
+    280
+  ]
+}
+
+Read , lines 281 to 412
+Completed with input: {
+  "path": "$PROJECT_ROOT\\issue\\issue-1-2-26.md",
+  "view_range": [
+    281,
+    412
+  ]
+}
+
+Read , lines 1 to 180
+Completed with input: {
+  "path": "$PROJECT_ROOT\\lib\\Hakyll\\Core\\Runtime.hs",
+  "view_range": [
+    1,
+    180
+  ]
+}
+
+Read , lines 181 to 360
+Completed with input: {
+  "path": "$PROJECT_ROOT\\lib\\Hakyll\\Core\\Runtime.hs",
+  "view_range": [
+    181,
+    360
+  ]
+}
+
+Read , lines 361 to 540
+Completed with input: {
+  "path": "$PROJECT_ROOT\\lib\\Hakyll\\Core\\Runtime.hs",
+  "view_range": [
+    361,
+    540
+  ]
+}
+
+この実装では、テストは依存循環の「検出回数」を厳密に数え、スケジューラは `forkIO` で実行されます。次に、テストランナーの実行方式・共有テスト環境・CI の実行条件を確認し、単なるログ重複と実際の並行スケジューラ不具合を切り分けます。
+
+Search for `testConfiguration|cleanTestEnv|sequentialTestGroup|testGroup|defaultMain|with...`
+
+Search for `SchedulerError|SchedulerStarve|schedulerPop|schedulerBlock|schedulerUnblock|s...`
+
+Read 
+Completed with input: {
+  "path": "$PROJECT_ROOT\\tests\\TestSuite.hs"
+}
+
+Read 
+Completed with input: {
+  "path": "$PROJECT_ROOT\\tests\\TestGroup.hs"
+}
+Tool execution failed: Path does not exist
+
+Read , lines 240 to 335
+Completed with input: {
+  "path": "$PROJECT_ROOT\\hakyll.cabal",
+  "view_range": [
+    240,
+    335
+  ]
+}
+
+Read 
+Completed with input: {
+  "path": "$PROJECT_ROOT\\tests\\TestSuite\\Util.hs"
+}
+
+Ran terminal command: stack test hakyll:test --test-arguments "-p /Hakyll.Core.Runtime.Tests/"
+Tool execution failed with exit code 1
+
+Ran terminal command: stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests/"
+Tool execution failed with exit code 1
+
+Ran terminal command: stack test hakyll:test:hakyll-test --test-arguments "-p '/Hakyll.Core.Runtime.Tests/&&/Hakyll.Core.Runtime.Tests.03_run/'"
+Tool execution failed with exit code 1
+
+Ran terminal command: stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests.03_run/"
+Tool execution failed with exit code 1
+
+Ran terminal command: stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests/&&/Hakyll.Core.Runtime.Tests.03_run/ +RTS -N1 -RTS"
+Tool execution failed with exit code 1
+
+原因候補は絞れました。単にテストケース同士の並列実行ではなく、`run` 自体の非同期ワーカーが再現に関与しています。最後に、テスト実行で作業ツリーの変更が増えていないことを確認し、再現結果とコード上の根拠をまとめます。
+
+Ran terminal command: git status --short
+
+## 原因
+
+主因は Tasty のテスト並列実行ではなく、`run` が内部で起動する非同期ワーカーです。テストコンポーネントには `-threaded` と `-with-rtsopts=-N` が指定されており、`build の分岐`は `rtsSupportsBoundThreads` が真なら `forkIO` を使う経路を選びます。したがって、テストを `sequentialTestGroup` にしても、各 `run` 内の処理は並列になり得ます。
+
+依存循環の件はコード上ではっきり説明できます。`schedulerPop`は、キューが空で処理中の項目がなく、ブロック中の項目があると循環エラーを記録します。しかし、その状態を「エラー報告済み」に変えません。複数のワーカーが同じ状態を確認すれば、同じ循環を繰り返し記録できます。そのため、`case03 と case04`が期待する「循環エラーのログが1件」が、ワーカー数やタイミングによって複数件になります。`schedulerCycles` が循環を過剰検出しているというより、エラー報告が一度限りになっていない問題です。
+
+さらに、`pickAndChaseAsync`はワーカーを `forkIO` で起動し、いずれかが `SchedulerError` または `SchedulerFinish` を通知すると戻りますが、残りのワーカーを待ち合わせていません。`run`は戻った直後にエラー一覧を読み取るため、別のワーカーの処理完了前に結果を確定する可能性があります。これは結果のタイミング依存や、`run` の終了後まで残るワーカーにつながります。
+
+ただし、issue1000 の「multiple writes」欠落をこの再現だけで完全に特定できたとは言えません。`schedulerRoute`のルート記録自体は `atomicModifyIORef'` で保護されています。少なくとも、単純な `IORef` のスレッド安全性不足が原因ではありません。非同期ワーカーの終了・待ち合わせの問題は疑わしいものの、このケースには追加の切り分けが必要です。
+
+## 確認結果
+
+この環境で既定の RTS 設定で実行すると、case03 / case04 の循環エラー件数がそれぞれ8件以上になりました。一方、`+RTS -N1 -RTS` では case03 は成功しました。これは並列度による変動と整合します。実行中、case01 では `_teststore` の文字コード関連エラーも発生したため、ローカル環境でテストスイート全体が成功したわけではありません。
+
+要するに、**逐次化できているのは Tasty のテストケースであり、`run` 内部のスケジューラではありません。循環エラーの報告が非冪等で、非同期ワーカーも確実に待ち合わせていないことが、確認できた失敗の中核です。**
+
+User: `schedulerPop` 関数の処理において、循環エラーを報告した後に「エラー報告済み」フラグを付与しないというが、これは最初からそのような仕組みがないということであるか？　それとも、そのような仕組みがあるが利用していないということであるか？
+
+Copilot: 質問を issue の追記内容と現行実装の両方に照らして確認します。
+
+Read , lines 480 to 549
+Completed with input: {
+  "path": "$PROJECT_ROOT\\issue\\issue-1-2-26.md",
+  "view_range": [
+    480,
+    549
+  ]
+}
+
+Search for `data Scheduler|schedulerErrors|schedulerPop|schedulerError|schedulerDone|sche...`
+
+Ran terminal command: git status --short
+
+現行実装では、**「エラー報告済み」を表す専用の仕組み自体がありません**。既存の仕組みを使い忘れている、ということではありません。
+
+`Scheduler`には、処理済み項目を記録する `schedulerDone` や、エラーを蓄積する `schedulerErrors` はあります。しかし、循環を報告した状態を記録するフィールドはありません。`schedulerPop`は循環条件に当たると `schedulerError` でエラーを追加しますが、`schedulerErrors` に同じエラーがあるかを確認して報告を抑止する処理もありません。
+
+つまり、`SchedulerError` はその呼び出しで返す結果であり、以後の報告を止める永続的なフラグではありません。なお、`schedulerErrors` を報告済み判定に転用する設計は可能ですが、現在はその用途では使われていません。
+```
