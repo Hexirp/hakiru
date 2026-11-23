@@ -716,3 +716,90 @@ Ran terminal command: git status --short
 
 つまり、`SchedulerError` はその呼び出しで返す結果であり、以後の報告を止める永続的なフラグではありません。なお、`schedulerErrors` を報告済み判定に転用する設計は可能ですが、現在はその用途では使われていません。
 ```
+
+## comment 2026-11-23 10
+
+修正させてみた。
+
+```txt
+User: `schedulerPop` 関数において循環エラーを報告する際に `schedulerErrors` フィールドにおいて同様のエラーが存在するか確認して既に存在する場合はエラー報告をスキップするように変更しなさい。
+
+Copilot: 循環エラーの既存テストを回帰確認に使い、重複判定を `Scheduler` 状態更新の中で行う形にします。まず現在の該当処理と未コミット変更を確認します。
+
+Read , lines 132 to 245
+Completed with input: {
+  "path": "$PROJECT_ROOT\\lib\\Hakyll\\Core\\Runtime.hs",
+  "view_range": [
+    132,
+    245
+  ]
+}
+
+Read , lines 110 to 185
+Completed with input: {
+  "path": "$PROJECT_ROOT\\tests\\Hakyll\\Core\\Runtime\\Tests.hs",
+  "view_range": [
+    110,
+    185
+  ]
+}
+
+Ran terminal command: git status --short; git diff -- lib/Hakyll/Core/Runtime.hs tests/Hakyll/Core/Runtime/Tests.hs
+
+Edit 
+
+重複判定を追加しました。同じ `(Nothing, msg)` が既に記録されていれば状態を変更せず `SchedulerError` を返し、初回だけエラーを蓄積する実装です。既存の case03 / case04 を複数 capability で検証します。
+
+Ran terminal command: stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests.03_run/ +RTS -N4 -RTS"
+Tool execution failed with exit code 1
+
+Ran terminal command: stack test hakyll:test:hakyll-test --test-arguments "-p /Hakyll.Core.Runtime.Tests.04_run/ +RTS -N4 -RTS"
+Tool execution failed with exit code 1
+
+複数 capability の実行で case03 と case04 自体はともに成功しました。選択したケースの前提として同じテストスイートの case01 も実行され、Windows の Store 文字コードエラーで失敗するため、最後に差分を確認して結果を分けて報告します。
+
+Ran terminal command: git diff --check; git diff -- lib/Hakyll/Core/Runtime.hs
+
+Ran terminal command: git status --short
+
+`schedulerPop`を変更し、循環エラーの `(Nothing, msg)` が `schedulerErrors` に既にあれば、エラーを追加せずに `SchedulerError` を返すようにしました。エラーの重複記録は防ぎつつ、ワーカーにはエラー状態を引き続き通知します。
+
+`-N4` で実行したところ、回帰対象の case03・case04 は両方成功しました。ただし、テストスイートの先行 case01 は Windows の Store 文字コードエラーで失敗しており、スイート全体の成功は確認できていません。`git diff --check` の警告は、既存の変更がある issue ファイル内の末尾空白によるものです。
+```
+
+テストが通るようになった。
+
+下記の変更を提案してきた。
+
+```diff
+diff --git a/lib/Hakyll/Core/Runtime.hs b/lib/Hakyll/Core/Runtime.hs
+index 07296f2..fa9911d 100644
+--- a/lib/Hakyll/Core/Runtime.hs
++++ b/lib/Hakyll/Core/Runtime.hs
+@@ -234,8 +234,11 @@ schedulerPop scheduler@Scheduler {..} = case Seq.viewl schedulerQueue of
+                         intercalate ", " (show <$> Set.toList schedulerBlocked)
+                     | otherwise = "Dependency cycles: " <>
+                         intercalate "; "
+-                            (map (intercalate " -> " . map show) cycles) in
+-            SchedulerError <$ schedulerError Nothing msg scheduler
++                            (map (intercalate " -> " . map show) cycles)
++                errorKey = (Nothing, msg) in
++            if errorKey `elem` schedulerErrors
++                then (scheduler, SchedulerError)
++                else SchedulerError <$ schedulerError Nothing msg scheduler
+         | otherwise -> (scheduler, SchedulerFinish)
+     x Seq.:< xs
+         | x `Set.member` schedulerDone ->
+```
+
+すぐわかる欠点は `in` の位置がおかしい他にはない。
+
+でも、よくよく見るとなんか捨てていて怪しくない？
+
+いや、 `schedulerError` 関数を適用して新しい `scheduler` を作るのがデフォルトで、それを飛ばしているだけである。
+
+正しい。
+
+タプルの一番目の値を `Nothing` にするのも怪しいとは思っていたけど、デフォルトにおいて `schedulerError` 関数に与えているのが `Nothing` と `msg` だから正しい。
+
+いやはや GitHub Copilot をコード補完じゃなくてバグ修正のために使ったのは初めてだけど、こんなに高性能だとは。
